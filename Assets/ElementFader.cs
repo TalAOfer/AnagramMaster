@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class ElementFader : MonoBehaviour
 {
     [SerializeField] private CanvasGroup GameplayBG;
-    [SerializeField] private CanvasGroup GameplayGroup;
+    [SerializeField] private CanvasGroup GameplayBaseGroup;
+    [SerializeField] private CanvasGroup GameplayTransluscentGroup;
 
     [SerializeField] private CanvasGroup MainMenuBG;
     [SerializeField] private CanvasGroup MainMenuGroup;
@@ -24,7 +25,8 @@ public class ElementFader : MonoBehaviour
         sequence.Join(GameplayBG.DOFade(1, duration));
         sequence.AppendInterval(duration);
 
-        sequence.Append(GameplayGroup.DOFade(1, duration));
+        sequence.Append(GameplayBaseGroup.DOFade(1, duration));
+        sequence.Join(GameplayTransluscentGroup.DOFade(1, duration));
 
         sequence.Play();
     }
