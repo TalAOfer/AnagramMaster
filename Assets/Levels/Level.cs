@@ -14,11 +14,11 @@ public class Level
     public int Index { get; private set; }
     public string CurrentLetters;
     public List<string> NextLetters = new();
-    public List<string> correctGuesses = new();
+    public List<string> correctAnswers = new();
 
     public bool OnCorrectAnswer(string answer)
     {
-        correctGuesses.Add(answer);
+        correctAnswers.Add(answer);
 
         if (NextLetters.Count > 0)
         {

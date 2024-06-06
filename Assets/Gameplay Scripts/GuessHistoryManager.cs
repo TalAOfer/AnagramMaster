@@ -15,7 +15,7 @@ public class GuessHistoryManager : MonoBehaviour
     {
         this.level = level;
 
-        int totalNodesRequired = level.correctGuesses.Count + level.NextLetters.Count + 1;
+        int totalNodesRequired = level.correctAnswers.Count + level.NextLetters.Count + 1;
 
         for (int i = 0; i < PremadeGuessHistoryNodes.Count; i++)
         {
@@ -26,9 +26,9 @@ public class GuessHistoryManager : MonoBehaviour
                 currentNode.gameObject.SetActive(true);
                 _activeNodes.Add(currentNode);
 
-                if (i < level.correctGuesses.Count)
+                if (i < level.correctAnswers.Count)
                 {
-                    currentNode.SetToAnswered(level.correctGuesses[i]);
+                    currentNode.SetToAnswered(level.correctAnswers[i]);
                 }
             }
 
@@ -46,7 +46,7 @@ public class GuessHistoryManager : MonoBehaviour
             if (node.Answered) continue;
             else
             {
-                node.SetToAnswered(level.correctGuesses[^1]);
+                node.SetToAnswered(level.correctAnswers[^1]);
                 break;
             }
         }

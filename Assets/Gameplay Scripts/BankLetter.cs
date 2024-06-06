@@ -22,7 +22,7 @@ public class BankLetter : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
     [SerializeField] private GameEvent LetterPointerDown;
     [SerializeField] private GameEvent LetterPointerEnter;
-    public AnswerLetter AnswerLetterInstance { get; private set; }
+    public GuessLetter GuessLetterInstance { get; private set; }
 
     public BankLetterState State { get; private set; }
 
@@ -31,8 +31,8 @@ public class BankLetter : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         Tmp.text = letter.ToUpper();
 
         bool includeInactive = true;
-        AnswerLetterInstance = GetComponentInChildren<AnswerLetter>(includeInactive);
-        AnswerLetterInstance.Initialize(this);
+        GuessLetterInstance = GetComponentInChildren<GuessLetter>(includeInactive);
+        GuessLetterInstance.Initialize(this);
     }
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -49,9 +49,9 @@ public class BankLetter : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         this.State = state;
     }
 
-    public void ResetAnswerLetterToBankLetterTransform()
+    public void ResetGuessLetterToBankLetterTransform()
     {
-        AnswerLetterInstance.MoveToParentLetter();
+        GuessLetterInstance.MoveToParentLetter();
     }
 
 

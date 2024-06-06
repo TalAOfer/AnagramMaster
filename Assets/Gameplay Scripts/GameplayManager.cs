@@ -9,8 +9,9 @@ public class GameplayManager : MonoBehaviour
 
     private readonly List<BankLetter> usedLetters = new();
 
-    [SerializeField] private AnswerManager answerManager;
+    [SerializeField] private GuessManager guessManager;
     [SerializeField] private GuessHistoryManager guessHistoryManager;
+    [SerializeField] private AnswerManager answerManager;
 
     private Level level;
 
@@ -44,7 +45,7 @@ public class GameplayManager : MonoBehaviour
     public void OnLetterPointerDown(Component sender, object data)
     {
         BankLetter clickedLetter = (BankLetter)sender;
-        if (usedLetters.Count == 0)
+        if (!_inputEnabled || usedLetters.Count == 0)
         {
             UseLetter(clickedLetter);
         }
@@ -53,7 +54,7 @@ public class GameplayManager : MonoBehaviour
     public void OnLetterHovered(Component sender, object data)
     {
         BankLetter hoveredLetter = (BankLetter)sender;
-        if (usedLetters.Count == 0) return;
+        if (!_inputEnabled || usedLetters.Count == 0) return;
 
         if (usedLetters.Count >= 2 && hoveredLetter == usedLetters[^2])
         {
@@ -80,7 +81,7 @@ public class GameplayManager : MonoBehaviour
 
         usedLetters.Add(letter);
         int index = usedLetters.Count - 1;
-        answerManager.AddLetter(letter.AnswerLetterInstance, index);
+        guessManager.AddLetter(letter.GuessLetterInstance, index);
     }
 
     public void RemoveLastUsedLetter()
@@ -89,19 +90,19 @@ public class GameplayManager : MonoBehaviour
 
         BankLetter lastLetter = usedLetters[^1];
         usedLetters.RemoveAt(usedLetters.Count - 1);
-        lastLetter.ResetAnswerLetterToBankLetterTransform();
+        lastLetter.ResetGuessLetterToBankLetterTransform();
     }
 
-    private string GetAnswer()
+    private string GetGuess()
     {
-        string answer = "";
+        string guess = "";
 
         foreach (BankLetter letterChar in usedLetters)
         {
-            answer += letterChar.Tmp.text;
+            guess += letterChar.Tmp.text;
         }
 
-        return answer;
+        return guess;
     }
 
     public IEnumerator OnPointerUp()
@@ -110,9 +111,9 @@ public class GameplayManager : MonoBehaviour
 
         _inputEnabled = false;
 
-        if (letterBank.ActiveLetters.Count == usedLetters.Count && DictionaryLoader.Instance.IsWordValid(GetAnswer()))
+        if (letterBank.ActiveLetters.Count == usedLetters.Count && DictionaryLoader.Instance.IsWordValid(GetGuess()))
         {
-            yield return OnCorrectAnswer();
+            yield return OnCorrectGuess();
         }
         else
         {
@@ -121,7 +122,7 @@ public class GameplayManager : MonoBehaviour
 
         foreach (BankLetter letter in usedLetters)
         {
-            letter.ResetAnswerLetterToBankLetterTransform();
+            letter.ResetGuessLetterToBankLetterTransform();
         }
 
         usedLetters.Clear();
@@ -129,13 +130,14 @@ public class GameplayManager : MonoBehaviour
         _inputEnabled = true;
     }
 
-    public IEnumerator OnCorrectAnswer()
+    public IEnumerator OnCorrectGuess()
     {
-        yield return answerManager.CorrectAnswerAnimation();
+        yield return guessManager.CorrectGuessAnimation();
+        yield return answerManager.OnNewAnswer(usedLetters);
 
-        bool isFinished = level.OnCorrectAnswer(GetAnswer());
+        bool isFinished = level.OnCorrectAnswer(GetGuess());
 
-        guessHistoryManager.HandleNewAnsweredNode();
+        //guessHistoryManager.HandleNewGuessedNode();
 
         if (isFinished)
         {
@@ -145,12 +147,12 @@ public class GameplayManager : MonoBehaviour
 
         letterBank.EnableNextLetter(level.CurrentLetters.Length - 1);
         letterBank.DistributeLetters();
-        answerManager.ActivateNextContainer();
+        guessManager.ActivateNextContainer();
     }
 
     public IEnumerator OnMistake()
     {
-        yield return answerManager.MistakeAnimation();
+        yield return guessManager.MistakeAnimation();
         Debug.Log("Mistake.");
     }
 

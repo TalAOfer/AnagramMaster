@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnswerContainer : MonoBehaviour
+public class GuessContainer : MonoBehaviour
 {
     [SerializeField] private RectTransform rect;
     public RectTransform Rect {  get { return rect; } }

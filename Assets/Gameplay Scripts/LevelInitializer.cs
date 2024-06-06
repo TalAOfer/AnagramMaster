@@ -11,6 +11,7 @@ public class LevelInitializer : MonoBehaviour
     [SerializeField] private GuessHistoryManager GuessHistoryManager;
     [SerializeField] private TextMeshProUGUI LevelIndexText;
     [SerializeField] private GameplayManager GameplayManager;
+    [SerializeField] private GuessManager GuessManager;
     [SerializeField] private AnswerManager AnswerManager;
 
     public void Awake()
@@ -26,6 +27,7 @@ public class LevelInitializer : MonoBehaviour
         GuessHistoryManager.Initialize(level);
         LevelIndexText.text = "Level " + (level.Index + 1).ToString();
         GameplayManager.Initialize(level);
-        AnswerManager.Initialize(level);
+        GuessManager.Initialize(level);
+        AnswerManager.Initialize();
     }
 }
