@@ -122,8 +122,8 @@ Material:
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
-    - _ScaleRatioB: 0.6770833
-    - _ScaleRatioC: 0.6770833
+    - _ScaleRatioB: 0.8333333
+    - _ScaleRatioC: 0.8333333
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -142,7 +142,7 @@ Material:
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
-    - _WeightBold: 0.75
+    - _WeightBold: -0.21
     - _WeightNormal: 0
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
@@ -383,7 +383,7 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 50.4375
       m_Height: 49.890625
-      m_HorizontalBearingX: 5.03125
+      m_HorizontalBearingX: 13.04
       m_HorizontalBearingY: 49.265625
       m_HorizontalAdvance: 60.4375
     m_GlyphRect:
@@ -486,9 +486,9 @@ MonoBehaviour:
     m_ClassDefinitionType: 0
   - m_Index: 187
     m_Metrics:
-      m_Width: 44.09375
+      m_Width: 46.5
       m_Height: 49.265625
-      m_HorizontalBearingX: -0.203125
+      m_HorizontalBearingX: -0.8
       m_HorizontalBearingY: 48.640625
       m_HorizontalAdvance: 43.609375
     m_GlyphRect:
@@ -2804,7 +2804,7 @@ MonoBehaviour:
   fontWeights: []
   normalStyle: 0
   normalSpacingOffset: 0
-  boldStyle: 0.75
+  boldStyle: -0.21
   boldSpacing: 7
   italicStyle: 35
   tabSize: 10
