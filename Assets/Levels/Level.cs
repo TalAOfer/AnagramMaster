@@ -11,7 +11,7 @@ public class Level
         CurrentLetters = blueprint.StartingLetters;
         NextLetters = blueprint.NextLetters.ToList();
     }
-    public int Index { get; private set; }
+    public int Index;
     public string CurrentLetters;
     public List<string> NextLetters = new();
     public List<string> correctAnswers = new();

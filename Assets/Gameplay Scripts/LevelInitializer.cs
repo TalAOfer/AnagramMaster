@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class LevelInitializer : MonoBehaviour
 {
-    [SerializeField] private LevelBlueprint levelBlueprint;
     [SerializeField] private LetterBank LetterBank;
     [SerializeField] private GuessHistoryManager GuessHistoryManager;
     [SerializeField] private TextMeshProUGUI LevelIndexText;
@@ -14,13 +13,8 @@ public class LevelInitializer : MonoBehaviour
     [SerializeField] private GuessManager GuessManager;
     [SerializeField] private AnswerManager AnswerManager;
 
-    public void Awake()
-    {
-        Initialize();
-    }
-
     [Button]
-    public void Initialize()
+    public void Initialize(LevelBlueprint levelBlueprint)
     {
         Level level = new(0, levelBlueprint);
         LetterBank.Initialize(level);

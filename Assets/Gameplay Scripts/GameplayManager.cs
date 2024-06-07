@@ -12,6 +12,7 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private GuessManager guessManager;
     [SerializeField] private GuessHistoryManager guessHistoryManager;
     [SerializeField] private AnswerManager answerManager;
+    [SerializeField] private ElementFader fader;
 
     private Level level;
 
@@ -111,6 +112,8 @@ public class GameplayManager : MonoBehaviour
 
         _inputEnabled = false;
 
+        bool finished = level.NextLetters.Count == 0;
+
         if (letterBank.ActiveLetters.Count == usedLetters.Count && DictionaryLoader.Instance.IsWordValid(GetGuess()))
         {
             yield return OnCorrectGuess();
@@ -118,6 +121,15 @@ public class GameplayManager : MonoBehaviour
         else
         {
             yield return OnMistake();
+        }
+
+        if (finished)
+        {
+            //Do wave
+
+            yield return new WaitForSeconds(0.25f);
+            yield return fader.GameplayFinish();
+
         }
 
         foreach (BankLetter letter in usedLetters)
