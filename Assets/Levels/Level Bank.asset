@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced8cfdfa840826439ceb0e34d9dfefe, type: 3}
   m_Name: Level Bank
   m_EditorClassIdentifier: 
-  Value: []
+  Value:
+  - {fileID: 11400000, guid: dd6c4417e3dab59418b278d3f94b339c, type: 2}
+  - {fileID: 11400000, guid: bee6d812639a16542b7e6b9ce95c58ef, type: 2}
+  - {fileID: 11400000, guid: b073475fa7453734c952138b4ea0004f, type: 2}

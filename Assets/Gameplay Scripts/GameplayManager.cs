@@ -13,6 +13,7 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private GuessHistoryManager guessHistoryManager;
     [SerializeField] private AnswerManager answerManager;
     [SerializeField] private ElementFader fader;
+    [SerializeField] private CurrentLevel currentLevel;
 
     private Level level;
 
@@ -148,6 +149,7 @@ public class GameplayManager : MonoBehaviour
         yield return answerManager.OnNewAnswer(usedLetters);
 
         bool isFinished = level.OnCorrectAnswer(GetGuess());
+        currentLevel.Value = level;
 
         //guessHistoryManager.HandleNewGuessedNode();
 

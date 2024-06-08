@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -52,6 +53,13 @@ public class BankLetter : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     public void ResetGuessLetterToBankLetterTransform()
     {
         GuessLetterInstance.MoveToParentLetter();
+    }
+
+    public void ResetAllNestedLetters()
+    {
+        GuessLetterInstance.MoveToParentLetter();
+        GuessLetterInstance.AnswerLetter.SetUsed(false);
+        GuessLetterInstance.AnswerLetter.ResetTransformToZero();
     }
 
 

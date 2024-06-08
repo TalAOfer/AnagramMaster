@@ -42,7 +42,7 @@ public class AnswerManager : MonoBehaviour
             BankLetter bankLetter = bankLetters[i];
             AnswerLetter answerLetter = bankLetter.GuessLetterInstance.AnswerLetter;
 
-            answerLetter.SetUsed();
+            answerLetter.SetUsed(true);
             answerLetter.Rect.SetParent(container);
 
             Tween tween = answerLetter.Rect.DOAnchorPos(Vector2.zero, 1f).SetEase(Ease.OutQuad);

@@ -10,18 +10,25 @@ public class AnswerLetter : MonoBehaviour
     [SerializeField] private RectTransform rect;
     public RectTransform Rect { get { return rect; } private set { } }
     public bool IsUsed {  get; private set; }
+    private GuessLetter originalParentLetter;
 
-    public void SetUsed() 
+    public void SetUsed(bool isUsed) 
     {
-        if (!IsUsed)
+        if (IsUsed != isUsed)
         {
-            IsUsed = true;
-            gameObject.SetActive(true);
+            IsUsed = isUsed;
+            gameObject.SetActive(isUsed);
+        }
+
+        if (!isUsed)
+        {
+            rect.SetParent(originalParentLetter.Rect);
         }
     }
-    
+
     public void Initialize(GuessLetter parentLetter)
     {
+        originalParentLetter = parentLetter;
         Tmp.text = parentLetter.Tmp.text;
     }
 

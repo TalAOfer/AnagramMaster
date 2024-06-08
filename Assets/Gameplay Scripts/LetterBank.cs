@@ -32,14 +32,20 @@ public class LetterBank : MonoBehaviour
             }
         }
 
+        foreach (BankLetter letter in ActiveLetters)
+        {
+            letter.ResetAllNestedLetters();            
+        }
+
         DistributeLetters();
     }
     public BankLetter EnableNextLetter(int index)
     {
         string letterStr = level.CurrentLetters[index].ToString();
         BankLetter letter = PremadeLetters[index];
-        letter.gameObject.SetActive(true);
         letter.Initialize(letterStr);
+        letter.ResetAllNestedLetters();
+        letter.gameObject.SetActive(true);
         ActiveLetters.Add(letter);
         return letter;
     }
