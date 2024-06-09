@@ -14,7 +14,7 @@ public class GuessLetter : MonoBehaviour
     [SerializeField] private AnswerLetter answerLetter;
     public AnswerLetter AnswerLetter { get { return answerLetter; } private set { } }
 
-    public BankLetter OriginalParentLetter {  get; private set; }
+    [SerializeField] private BankLetter OriginalParentLetter;
     public GuessContainer CurrentGuessContainer { get; private set; }
     
     public void Initialize(BankLetter parentLetter)

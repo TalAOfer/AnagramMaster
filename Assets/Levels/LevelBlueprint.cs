@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,4 +8,6 @@ public class LevelBlueprint : ScriptableObject
 {
     public string StartingLetters;
     public string[] NextLetters;
+    public string[] PossibleAnswers;
 }
+

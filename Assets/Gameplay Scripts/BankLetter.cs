@@ -23,17 +23,13 @@ public class BankLetter : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
     [SerializeField] private GameEvent LetterPointerDown;
     [SerializeField] private GameEvent LetterPointerEnter;
-    public GuessLetter GuessLetterInstance { get; private set; }
-
-    public BankLetterState State { get; private set; }
+    [SerializeField] private GuessLetter guessLetter;
+    public GuessLetter GuessLetter { get { return guessLetter; } private set { } } 
 
     public void Initialize(string letter)
     {
         Tmp.text = letter.ToUpper();
-
-        bool includeInactive = true;
-        GuessLetterInstance = GetComponentInChildren<GuessLetter>(includeInactive);
-        GuessLetterInstance.Initialize(this);
+        GuessLetter.Initialize(this);
     }
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -45,21 +41,18 @@ public class BankLetter : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         LetterPointerEnter.Raise(this, this);
     }
 
-    public void SetState(BankLetterState state)
-    {
-        this.State = state;
-    }
 
     public void ResetGuessLetterToBankLetterTransform()
     {
-        GuessLetterInstance.MoveToParentLetter();
+        GuessLetter.MoveToParentLetter();
     }
 
     public void ResetAllNestedLetters()
     {
-        GuessLetterInstance.MoveToParentLetter();
-        GuessLetterInstance.AnswerLetter.SetUsed(false);
-        GuessLetterInstance.AnswerLetter.ResetTransformToZero();
+        GuessLetter.gameObject.SetActive(false);
+        GuessLetter.MoveToParentLetter();
+        GuessLetter.AnswerLetter.SetUsed(false);
+        GuessLetter.AnswerLetter.ResetTransformToZero();
     }
 
 

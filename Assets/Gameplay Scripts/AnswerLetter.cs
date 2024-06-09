@@ -10,7 +10,7 @@ public class AnswerLetter : MonoBehaviour
     [SerializeField] private RectTransform rect;
     public RectTransform Rect { get { return rect; } private set { } }
     public bool IsUsed {  get; private set; }
-    private GuessLetter originalParentLetter;
+    [SerializeField] private GuessLetter originalParentLetter;
 
     public void SetUsed(bool isUsed) 
     {
@@ -28,7 +28,6 @@ public class AnswerLetter : MonoBehaviour
 
     public void Initialize(GuessLetter parentLetter)
     {
-        originalParentLetter = parentLetter;
         Tmp.text = parentLetter.Tmp.text;
     }
 

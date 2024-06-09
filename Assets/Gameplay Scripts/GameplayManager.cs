@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -72,18 +73,9 @@ public class GameplayManager : MonoBehaviour
     {
         if (usedLetters.Contains(letter)) return; // Prevent re-adding the same letter
 
-        if (usedLetters.Count == 0)
-        {
-            letter.SetState(BankLetterState.First);
-        }
-        else
-        {
-            letter.SetState(BankLetterState.UsedButNotFirst);
-        }
-
         usedLetters.Add(letter);
         int index = usedLetters.Count - 1;
-        guessManager.AddLetter(letter.GuessLetterInstance, index);
+        guessManager.AddLetter(letter.GuessLetter, index);
     }
 
     public void RemoveLastUsedLetter()
@@ -115,22 +107,22 @@ public class GameplayManager : MonoBehaviour
 
         bool finished = level.NextLetters.Count == 0;
 
-        if (letterBank.ActiveLetters.Count == usedLetters.Count && DictionaryLoader.Instance.IsWordValid(GetGuess()))
+        if (letterBank.ActiveLetters.Count == usedLetters.Count && IsFoundInDictionary(GetGuess()))
         {
-            yield return OnCorrectGuess();
+            yield return OnCorrectGuess(); 
+            
+            if (finished)
+            {
+                //Do wave
+                yield return new WaitForSeconds(0.25f);
+                yield return fader.GameplayFinish();
+
+            }
         }
+
         else
         {
             yield return OnMistake();
-        }
-
-        if (finished)
-        {
-            //Do wave
-
-            yield return new WaitForSeconds(0.25f);
-            yield return fader.GameplayFinish();
-
         }
 
         foreach (BankLetter letter in usedLetters)
@@ -153,11 +145,7 @@ public class GameplayManager : MonoBehaviour
 
         //guessHistoryManager.HandleNewGuessedNode();
 
-        if (isFinished)
-        {
-            Debug.Log("YOU WON!");
-            yield break;
-        }
+        if (isFinished) yield break;
 
         letterBank.EnableNextLetter(level.CurrentLetters.Length - 1);
         letterBank.DistributeLetters();
@@ -168,6 +156,11 @@ public class GameplayManager : MonoBehaviour
     {
         yield return guessManager.MistakeAnimation();
         Debug.Log("Mistake.");
+    }
+
+    private bool IsFoundInDictionary(string answer)
+    {
+        return level.PossibleAnswers.Exists(a => a.Equals(answer, StringComparison.OrdinalIgnoreCase));
     }
 
     #endregion

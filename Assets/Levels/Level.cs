@@ -10,11 +10,14 @@ public class Level
         Index = index;
         CurrentLetters = blueprint.StartingLetters;
         NextLetters = blueprint.NextLetters.ToList();
+        PossibleAnswers = blueprint.PossibleAnswers.ToList();
     }
+
     public int Index;
     public string CurrentLetters;
     public List<string> NextLetters = new();
     public List<string> correctAnswers = new();
+    public List<string> PossibleAnswers;
 
     public bool OnCorrectAnswer(string answer)
     {

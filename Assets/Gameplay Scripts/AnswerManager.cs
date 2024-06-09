@@ -5,13 +5,31 @@ using UnityEngine;
 
 public class AnswerManager : MonoBehaviour
 {
-    [SerializeField] List<RectTransform> PremadeAnswerContainers;
+    [SerializeField] private List<RectTransform> PremadeAnswerContainers;
+    [SerializeField] private LetterBank letterBank;
 
-    public void Initialize()
+    public void Initialize(Level level)
     {
-        foreach (var container in PremadeAnswerContainers)
+        string lastAnswer = level.correctAnswers.Count > 0 ? level.correctAnswers[^1] : "";
+
+        for (int i = 0; i < PremadeAnswerContainers.Count; i++)
         {
-            container.gameObject.SetActive(false);
+            RectTransform container = PremadeAnswerContainers[i];
+
+            if (i < lastAnswer.Length)
+            {
+                container.gameObject.SetActive(true);
+                BankLetter bankLetter = letterBank.FindLetter(lastAnswer[i].ToString());
+                AnswerLetter answerLetter = bankLetter.GuessLetter.AnswerLetter;
+                answerLetter.SetUsed(true);
+                answerLetter.Rect.SetParent(container);
+                answerLetter.ResetTransformToZero();
+            } 
+            
+            else
+            {
+                container.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -20,13 +38,13 @@ public class AnswerManager : MonoBehaviour
         for (int i = 0; i < bankLetters.Count; i++)
         {
             BankLetter bankLetter = bankLetters[i];
-            AnswerLetter answerLetter = bankLetter.GuessLetterInstance.AnswerLetter;
+            AnswerLetter answerLetter = bankLetter.GuessLetter.AnswerLetter;
             answerLetter.Rect.SetParent(this.transform);
         }
 
         yield return new WaitForEndOfFrame();
 
-        for (int i = 0 ; i < bankLetters.Count; i++)
+        for (int i = 0; i < bankLetters.Count; i++)
         {
             RectTransform container = PremadeAnswerContainers[i];
             container.gameObject.SetActive(true);
@@ -40,18 +58,18 @@ public class AnswerManager : MonoBehaviour
         {
             RectTransform container = PremadeAnswerContainers[i];
             BankLetter bankLetter = bankLetters[i];
-            AnswerLetter answerLetter = bankLetter.GuessLetterInstance.AnswerLetter;
+            AnswerLetter answerLetter = bankLetter.GuessLetter.AnswerLetter;
 
             answerLetter.SetUsed(true);
             answerLetter.Rect.SetParent(container);
 
             Tween tween = answerLetter.Rect.DOAnchorPos(Vector2.zero, 1f).SetEase(Ease.OutQuad);
-            
+
             if (i == 0)
             {
                 sequence.Append(tween);
-            } 
-            
+            }
+
             else
             {
                 sequence.Join(tween);

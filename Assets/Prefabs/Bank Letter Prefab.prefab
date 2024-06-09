@@ -152,6 +152,7 @@ MonoBehaviour:
   rect: {fileID: 8693131730991094511}
   LetterPointerDown: {fileID: 11400000, guid: 69a977dc434833d42b03e9f0ba1fb189, type: 2}
   LetterPointerEnter: {fileID: 11400000, guid: 66a93c78ebffb0849867903f50407dde, type: 2}
+  guessLetter: {fileID: 628792615207314088}
 --- !u!1 &3879100306191433783
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +304,7 @@ MonoBehaviour:
   tmp: {fileID: 687666490495447701}
   rect: {fileID: 5141797170236096245}
   answerLetter: {fileID: 7131318199692219831}
+  OriginalParentLetter: {fileID: 1916609197554275572}
 --- !u!1 &7924564399919816853
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,3 +454,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tmp: {fileID: 1146230914240483174}
   rect: {fileID: 1958517762621455056}
+  originalParentLetter: {fileID: 628792615207314088}

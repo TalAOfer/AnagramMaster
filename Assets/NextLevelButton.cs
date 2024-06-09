@@ -13,7 +13,6 @@ public class NextLevelButton : MonoBehaviour
     
     private void OnEnable()
     {
-        Debug.Log("happened");
         bool isFirstStage = !CurrentLevel.IsInitialized;
         if (isFirstStage)
         {
@@ -31,8 +30,12 @@ public class NextLevelButton : MonoBehaviour
             }
         }
 
-        LevelInitializer.Initialize(CurrentLevel.Value);
         int indexForText = CurrentLevel.Value.Index + 1;
         Tmp.text = "Level " + indexForText.ToString();   
+    }
+
+    public void OnClick()
+    {
+        LevelInitializer.Initialize(CurrentLevel.Value);
     }
 }

@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine.UI;
+using Unity.VisualScripting.Antlr3.Runtime;
 
 public class LetterBank : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class LetterBank : MonoBehaviour
 
         for (int i = 0; i < PremadeLetters.Count; i++)
         {
+            BankLetter letter = PremadeLetters[i];
+            letter.ResetAllNestedLetters();
+
             if (i < level.CurrentLetters.Length)
             {
                 EnableNextLetter(i);
@@ -32,19 +36,14 @@ public class LetterBank : MonoBehaviour
             }
         }
 
-        foreach (BankLetter letter in ActiveLetters)
-        {
-            letter.ResetAllNestedLetters();            
-        }
-
         DistributeLetters();
     }
+
     public BankLetter EnableNextLetter(int index)
     {
         string letterStr = level.CurrentLetters[index].ToString();
         BankLetter letter = PremadeLetters[index];
         letter.Initialize(letterStr);
-        letter.ResetAllNestedLetters();
         letter.gameObject.SetActive(true);
         ActiveLetters.Add(letter);
         return letter;
@@ -62,6 +61,21 @@ public class LetterBank : MonoBehaviour
             Vector3 position = new(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0);
             ActiveLetters[i].Rect.anchoredPosition = position; // Use anchoredPosition to correctly position within UI
         }
+    }
+
+    public BankLetter FindLetter(string letterChar)
+    {
+        foreach(BankLetter letter in ActiveLetters)
+        {
+            if (letter.Tmp.text == letterChar && 
+                !letter.GuessLetter.AnswerLetter.IsUsed)
+            {
+                return letter;
+            }
+        }
+
+        Debug.Log("No letter found");
+        return null;
     }
 
     #endregion

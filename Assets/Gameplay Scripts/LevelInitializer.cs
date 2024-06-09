@@ -19,6 +19,6 @@ public class LevelInitializer : MonoBehaviour
         LevelIndexText.text = "Level " + (level.Index + 1).ToString();
         GameplayManager.Initialize(level);
         GuessManager.Initialize(level);
-        AnswerManager.Initialize();
+        AnswerManager.Initialize(level);
     }
 }

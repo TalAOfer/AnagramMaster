@@ -16,3 +16,12 @@ MonoBehaviour:
   NextLetters:
   - S
   - E
+  PossibleAnswers:
+  - Pat
+  - Tap
+  - Apt
+  - Past
+  - Pats
+  - Taps
+  - Apts
+  - Paste

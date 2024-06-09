@@ -16,3 +16,13 @@ MonoBehaviour:
   NextLetters:
   - S
   - M
+  PossibleAnswers:
+  - tea
+  - ate
+  - eat
+  - seat
+  - east
+  - steam
+  - teams
+  - meats
+  - mates

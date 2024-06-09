@@ -9,20 +9,18 @@ public class GuessManager : MonoBehaviour
 {
     [SerializeField] private List<GuessContainer> PremadeGuessContainers;
     private readonly List<GuessContainer> _activeGuessContainers = new();
-    private bool isInitialized = false;
 
     public void Initialize(Level level)
     {
+        _activeGuessContainers.Clear();
+
         for (int i = 0; i < PremadeGuessContainers.Count; i++)
         {
             GuessContainer currentContainer = PremadeGuessContainers[i];
             if (i < level.CurrentLetters.Length)
             {
                 currentContainer.gameObject.SetActive(true);
-                if (!isInitialized)
-                {
-                    _activeGuessContainers.Add(currentContainer);
-                }
+                _activeGuessContainers.Add(currentContainer);
             }
 
             else
@@ -30,8 +28,6 @@ public class GuessManager : MonoBehaviour
                 currentContainer.gameObject.SetActive(false);
             }
         }
-
-        isInitialized = true;
     }
     public void ActivateNextContainer()
     {

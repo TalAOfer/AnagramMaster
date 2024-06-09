@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsInitialized: 1
   Value:
-    Index: 0
-    CurrentLetters: TAES
-    NextLetters:
-    - M
+    Index: 2
+    CurrentLetters: OLWHE
+    NextLetters: []
     correctAnswers:
-    - EAT
+    - OWL
+    - HOWL
+    - WHOLE
+    PossibleAnswers:
+    - Owl
+    - Low
+    - Howl
+    - Whole
