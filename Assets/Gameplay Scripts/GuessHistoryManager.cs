@@ -8,14 +8,14 @@ public class GuessHistoryManager : MonoBehaviour
 {
     [SerializeField] private GameObject GuessNodePrefab;
     [SerializeField] private List<GuessHistoryNode> PremadeGuessHistoryNodes;
-    private Level level;
+    private GameData data;
 
     private readonly List<GuessHistoryNode> _activeNodes = new();
-    public void Initialize(Level level)
+    public void Initialize(GameData data)
     {
-        this.level = level;
+        this.data = data;
 
-        int totalNodesRequired = level.correctAnswers.Count + level.NextLetters.Count + 1;
+        int totalNodesRequired = data.CorrectAnswers.Count + data.NextLetters.Count + 1;
 
         for (int i = 0; i < PremadeGuessHistoryNodes.Count; i++)
         {
@@ -26,9 +26,9 @@ public class GuessHistoryManager : MonoBehaviour
                 currentNode.gameObject.SetActive(true);
                 _activeNodes.Add(currentNode);
 
-                if (i < level.correctAnswers.Count)
+                if (i < data.CorrectAnswers.Count)
                 {
-                    currentNode.SetToAnswered(level.correctAnswers[i]);
+                    currentNode.SetToAnswered(data.CorrectAnswers[i]);
                 }
             }
 
@@ -46,7 +46,7 @@ public class GuessHistoryManager : MonoBehaviour
             if (node.Answered) continue;
             else
             {
-                node.SetToAnswered(level.correctAnswers[^1]);
+                node.SetToAnswered(data.CorrectAnswers[^1]);
                 break;
             }
         }

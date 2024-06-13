@@ -9,12 +9,20 @@ public class GuessContainer : MonoBehaviour
     public RectTransform Rect {  get { return rect; } }
     [SerializeField] private Image image;
     public Image Image { get { return image; } }
+    [SerializeField] private Tweener tweener;
+    public Tweener Tweener { get {  return tweener; } }
+    [SerializeField] private TweenBlueprint correctAnswerAnim;
 
     [SerializeField] private Color defaultContainerColor;
     [SerializeField] private Sprite defaultContainerSprite; 
 
     [SerializeField] private Sprite filledContainerSprite;
-    [SerializeField] private Color filledContainerColor;
+    private Color _filledContainerColor;
+
+    public void Initialize(Color color)
+    {
+        _filledContainerColor = color;
+    }
 
     public void SetVisualToDefault()
     {
@@ -25,6 +33,11 @@ public class GuessContainer : MonoBehaviour
     public void SetVisualToFull()
     {
         Image.sprite = filledContainerSprite;
-        Image.color = filledContainerColor;
+        Image.color = _filledContainerColor;
+    }
+
+    public void StartCorrectAnswerAnimation()
+    {
+        tweener.TriggerTween(correctAnswerAnim);
     }
 }

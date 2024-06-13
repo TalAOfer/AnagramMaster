@@ -24,13 +24,73 @@ public class BankLetter : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     [SerializeField] private GameEvent LetterPointerDown;
     [SerializeField] private GameEvent LetterPointerEnter;
     [SerializeField] private GuessLetter guessLetter;
-    public GuessLetter GuessLetter { get { return guessLetter; } private set { } } 
-
-    public void Initialize(string letter)
+    public GuessLetter GuessLetter { get { return guessLetter; } private set { } }
+    
+    private Image container;
+    private Color activeContainerColor;
+    [SerializeField] private Color ActiveTextColor;
+    [SerializeField] private Color DefaultTextColor;
+    private LetterBankLineManager lineManager;
+    public void Initialize(int index, GameData data, LetterBankLineManager lineManager, Color activeContainerColor)
     {
-        Tmp.text = letter.ToUpper();
-        GuessLetter.Initialize(this);
+        this.lineManager = lineManager;
+        this.activeContainerColor = activeContainerColor;
+
+        ResetAllNestedLetters();
+        ChangeColor(false);
+
+        bool withinRangeOfUseForLevel = index < data.CurrentLetters.Length + data.NextLetters.Count;
+        if (withinRangeOfUseForLevel)
+        {
+            int indexInList;
+            string letterText;
+
+            bool withinRangeOfCurrentUse = index < data.CurrentLetters.Length;
+            if (withinRangeOfCurrentUse)
+            {
+                indexInList = index;
+                letterText = data.CurrentLetters[indexInList].ToString().ToUpper();
+            } 
+            
+            else
+            {
+                indexInList = index - data.CurrentLetters.Length;
+                letterText = data.NextLetters[indexInList].ToString().ToUpper();
+            }
+
+            Tmp.text = letterText;
+            GuessLetter.Initialize(this);
+        } 
     }
+
+    public void SetAndSaveParentContainer(Image container)
+    {
+        rect.SetParent(container.transform);
+        this.container = container;
+        container.color = activeContainerColor;
+    }
+
+    public void ChangeColor(bool toActive) 
+    {
+        tmp.color = toActive ? ActiveTextColor : DefaultTextColor;
+    }
+
+    public Image ToggleContainer(bool toggle)
+    {
+        container.enabled = toggle;
+        if (toggle)
+        {
+            lineManager.AddPoint(container.rectTransform.position);
+        }
+
+        else
+        {
+            lineManager.RemovePoint();
+        }
+
+        return container;
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         LetterPointerDown.Raise(this, this);

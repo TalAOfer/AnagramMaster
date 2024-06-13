@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,15 +10,23 @@ public class GuessManager : MonoBehaviour
 {
     [SerializeField] private List<GuessContainer> PremadeGuessContainers;
     private readonly List<GuessContainer> _activeGuessContainers = new();
+    
+    [SerializeField] private Tweener tweener;
+    [SerializeField] private TweenBlueprint mistakeAnim;
 
-    public void Initialize(Level level)
+    [SerializeField] private float correctAnswerAnimDelayBetweenLetters = 0.15f;
+    [SerializeField] private LevelBank levelBank;
+
+    public void Initialize(GameData data)
     {
         _activeGuessContainers.Clear();
 
         for (int i = 0; i < PremadeGuessContainers.Count; i++)
         {
             GuessContainer currentContainer = PremadeGuessContainers[i];
-            if (i < level.CurrentLetters.Length)
+            currentContainer.Initialize(levelBank.Value[data.Index].containerBG);
+
+            if (i < data.CurrentLetters.Length)
             {
                 currentContainer.gameObject.SetActive(true);
                 _activeGuessContainers.Add(currentContainer);
@@ -42,13 +51,20 @@ public class GuessManager : MonoBehaviour
         letter.MoveToGuessContainer(guessContainer);
     }
 
+    [Button] 
+    public void TestCorrectGuessAnimation()
+    {
+        StartCoroutine(CorrectGuessAnimation());
+    }
+
     public IEnumerator CorrectGuessAnimation()
     {
         Sequence sequence = DOTween.Sequence();
 
         foreach (var guessContainer in _activeGuessContainers)
         {
-            sequence.Append(guessContainer.transform.DOPunchPosition(Vector3.up * 5, 0.15f));
+            sequence.AppendCallback(()=> guessContainer.StartCorrectAnswerAnimation());
+            sequence.AppendInterval(correctAnswerAnimDelayBetweenLetters);
         }
 
         sequence.AppendInterval(0.15f);
@@ -56,10 +72,16 @@ public class GuessManager : MonoBehaviour
         yield return sequence.WaitForCompletion();
     }
 
+    [Button]
+    public void TestMistakeAnimation()
+    {
+        StartCoroutine(MistakeAnimation());
+    }
+
     public IEnumerator MistakeAnimation()
     {
 
-        transform.DOShakePosition(0.5f, 5, 10, 0, false, true, ShakeRandomnessMode.Harmonic);
+        tweener.TriggerTween(mistakeAnim);
 
         yield return null;
     }

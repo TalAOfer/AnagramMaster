@@ -11,14 +11,20 @@ public class LevelInitializer : MonoBehaviour
     [SerializeField] private GuessManager GuessManager;
     [SerializeField] private AnswerManager AnswerManager;
 
-
-    public void Initialize(Level level)
+    [Button]
+    public void ResetData()
     {
-        LetterBank.Initialize(level);
-        GuessHistoryManager.Initialize(level);
-        LevelIndexText.text = "Level " + (level.Index + 1).ToString();
-        GameplayManager.Initialize(level);
-        GuessManager.Initialize(level);
-        AnswerManager.Initialize(level);
+        GameData data = new();
+        SaveSystem.Save(data);
+    }
+
+    public void Initialize(GameData data)
+    {
+        LetterBank.Initialize(data);
+        GuessHistoryManager.Initialize(data);
+        LevelIndexText.text = "Level " + (data.Index + 1).ToString();
+        GameplayManager.Initialize(data);
+        GuessManager.Initialize(data);
+        AnswerManager.Initialize(data);
     }
 }

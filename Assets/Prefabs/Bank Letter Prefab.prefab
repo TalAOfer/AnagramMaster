@@ -153,6 +153,8 @@ MonoBehaviour:
   LetterPointerDown: {fileID: 11400000, guid: 69a977dc434833d42b03e9f0ba1fb189, type: 2}
   LetterPointerEnter: {fileID: 11400000, guid: 66a93c78ebffb0849867903f50407dde, type: 2}
   guessLetter: {fileID: 628792615207314088}
+  ActiveTextColor: {r: 0.8584906, g: 0.8557909, b: 0.8557909, a: 1}
+  DefaultTextColor: {r: 0.05490196, g: 0.05490196, b: 0.2, a: 1}
 --- !u!1 &3879100306191433783
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +232,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281536014
-  m_fontColor: {r: 0.05490196, g: 0.05490196, b: 0.2, a: 1}
+  m_fontColor: {r: 0.85882354, g: 0.85490197, b: 0.85490197, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

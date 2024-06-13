@@ -1,26 +1,30 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
 {
-    [SerializeField] private LetterBank letterBank;
     private bool _inputEnabled;
 
     private readonly List<BankLetter> usedLetters = new();
 
+    [SerializeField] private LetterBank letterBank;
     [SerializeField] private GuessManager guessManager;
     [SerializeField] private GuessHistoryManager guessHistoryManager;
     [SerializeField] private AnswerManager answerManager;
     [SerializeField] private ElementFader fader;
-    [SerializeField] private CurrentLevel currentLevel;
 
-    private Level level;
+    [SerializeField] private LevelBank levelBank;
 
-    public void Initialize(Level level)
+    private GameData data;
+
+    public void Initialize(GameData data)
     {
-        this.level = level;
+        this.data = data;
         _inputEnabled = true;
     }
 
@@ -73,6 +77,8 @@ public class GameplayManager : MonoBehaviour
     {
         if (usedLetters.Contains(letter)) return; // Prevent re-adding the same letter
 
+        letter.ToggleContainer(true);
+        letter.ChangeColor(true);
         usedLetters.Add(letter);
         int index = usedLetters.Count - 1;
         guessManager.AddLetter(letter.GuessLetter, index);
@@ -83,6 +89,8 @@ public class GameplayManager : MonoBehaviour
         if (usedLetters.Count == 0) return;
 
         BankLetter lastLetter = usedLetters[^1];
+        lastLetter.ToggleContainer(false);
+        lastLetter.ChangeColor(false);
         usedLetters.RemoveAt(usedLetters.Count - 1);
         lastLetter.ResetGuessLetterToBankLetterTransform();
     }
@@ -103,26 +111,35 @@ public class GameplayManager : MonoBehaviour
     {
         if (usedLetters.Count == 0) yield break;
 
-        _inputEnabled = false;
-
-        bool finished = level.NextLetters.Count == 0;
-
-        if (letterBank.ActiveLetters.Count == usedLetters.Count && IsFoundInDictionary(GetGuess()))
+        foreach (BankLetter letter in usedLetters)
         {
-            yield return OnCorrectGuess(); 
-            
-            if (finished)
-            {
-                //Do wave
-                yield return new WaitForSeconds(0.25f);
-                yield return fader.GameplayFinish();
-
-            }
+            letter.ToggleContainer(false);
+            letter.ChangeColor(false);
         }
 
-        else
+        _inputEnabled = false;
+
+        bool lastWordInLevel = data.NextLetters.Count == 0;
+
+        if (data.CurrentLetters.Length == usedLetters.Count)
         {
-            yield return OnMistake();
+            if (IsFoundInDictionary(GetGuess()))
+            {
+                yield return OnCorrectGuess();
+
+                if (lastWordInLevel)
+                {
+                    //Do wave
+                    yield return new WaitForSeconds(0.25f);
+                    yield return fader.GameplayFinish();
+
+                }
+            }
+
+            else
+            {
+                yield return PlayMistakeAnimation();
+            }
         }
 
         foreach (BankLetter letter in usedLetters)
@@ -140,27 +157,26 @@ public class GameplayManager : MonoBehaviour
         yield return guessManager.CorrectGuessAnimation();
         yield return answerManager.OnNewAnswer(usedLetters);
 
-        bool isFinished = level.OnCorrectAnswer(GetGuess());
-        currentLevel.Value = level;
+        bool isFinished = data.UpdateLevelData(GetGuess());
 
         //guessHistoryManager.HandleNewGuessedNode();
 
         if (isFinished) yield break;
 
-        letterBank.EnableNextLetter(level.CurrentLetters.Length - 1);
-        letterBank.DistributeLetters();
+        letterBank.ActivateNextLetter();
+
         guessManager.ActivateNextContainer();
     }
 
-    public IEnumerator OnMistake()
+    public IEnumerator PlayMistakeAnimation()
     {
         yield return guessManager.MistakeAnimation();
-        Debug.Log("Mistake.");
     }
 
     private bool IsFoundInDictionary(string answer)
     {
-        return level.PossibleAnswers.Exists(a => a.Equals(answer, StringComparison.OrdinalIgnoreCase));
+        string[] possibleAnswers = levelBank.Value[data.Index].PossibleAnswers;
+        return possibleAnswers.Any(a => a.Equals(answer, StringComparison.OrdinalIgnoreCase));
     }
 
     #endregion

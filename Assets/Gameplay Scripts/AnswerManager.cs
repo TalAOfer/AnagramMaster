@@ -8,9 +8,9 @@ public class AnswerManager : MonoBehaviour
     [SerializeField] private List<RectTransform> PremadeAnswerContainers;
     [SerializeField] private LetterBank letterBank;
 
-    public void Initialize(Level level)
+    public void Initialize(GameData data)
     {
-        string lastAnswer = level.correctAnswers.Count > 0 ? level.correctAnswers[^1] : "";
+        string lastAnswer = data.CorrectAnswers.Count > 0 ? data.CorrectAnswers[^1] : "";
 
         for (int i = 0; i < PremadeAnswerContainers.Count; i++)
         {

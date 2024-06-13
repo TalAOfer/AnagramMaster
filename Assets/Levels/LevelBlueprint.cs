@@ -9,5 +9,6 @@ public class LevelBlueprint : ScriptableObject
     public string StartingLetters;
     public string[] NextLetters;
     public string[] PossibleAnswers;
+    public Color containerBG;
 }
 

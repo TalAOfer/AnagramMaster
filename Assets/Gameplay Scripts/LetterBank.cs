@@ -4,70 +4,173 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine.UI;
 using Unity.VisualScripting.Antlr3.Runtime;
+using System;
+using System.Reflection;
 
 public class LetterBank : MonoBehaviour
 {
     [SerializeField] private Image circleImage;
     [SerializeField] private RectTransform circleTransform;
     [SerializeField] private List<BankLetter> PremadeLetters;
-    public List<BankLetter> ActiveLetters { get; private set; } = new();
-    private Level level;
+    [SerializeField] private List<Image> PremadeContainers;
+    [SerializeField] private LetterBankLineManager lineManager;
+    [SerializeField] private LevelBank levelBank;
 
+    private GameData data;
+
+    [ShowInInspector]
+    private readonly List<Image> _activeContainers = new();
+
+    [ShowInInspector]
+    private readonly List<BankLetter> _activeLetters = new();
+
+    private string GetLetterStringByIndex(int index) => data.CurrentLetters[index].ToString();
+    
     #region Initialization & Spawning
 
-    public void Initialize(Level level)
+
+    public void Initialize(GameData data)
     {
-        this.level = level;
-        ActiveLetters.Clear();
+        this.data = data;
+        Color levelColor = levelBank.Value[data.Index].containerBG;
+
+        lineManager.Initialize(data, levelColor);
+
+        _activeLetters.Clear();
+        _activeContainers.Clear();
 
         for (int i = 0; i < PremadeLetters.Count; i++)
         {
             BankLetter letter = PremadeLetters[i];
-            letter.ResetAllNestedLetters();
+            letter.Initialize(i, data, lineManager, levelColor);
 
-            if (i < level.CurrentLetters.Length)
+            bool withinRangeOfCurrentUse = i < data.CurrentLetters.Length;
+
+            if (withinRangeOfCurrentUse)
             {
-                EnableNextLetter(i);
+                Image container = ActivateContainerByIndex(i);
+                ActivateLetterByIndex(i);
+                letter.SetAndSaveParentContainer(container);
+                letter.Rect.anchoredPosition = Vector2.zero;
             }
 
             else
             {
-                PremadeLetters[i].gameObject.SetActive(false);
+                Image container = PremadeContainers[i];
+                container.gameObject.SetActive(false);
+                letter.gameObject.SetActive(false);
             }
         }
 
-        DistributeLetters();
+        SnapDistributeContainers();
     }
 
-    public BankLetter EnableNextLetter(int index)
+    public Image ActivateContainerByIndex(int index)
     {
-        string letterStr = level.CurrentLetters[index].ToString();
+        Image container = PremadeContainers[index];
+        container.gameObject.SetActive(true);
+        _activeContainers.Add(container);
+        return container;
+    }
+
+    public BankLetter ActivateLetterByIndex(int index)
+    {
         BankLetter letter = PremadeLetters[index];
-        letter.Initialize(letterStr);
         letter.gameObject.SetActive(true);
-        ActiveLetters.Add(letter);
+        _activeLetters.Add(letter);
         return letter;
     }
 
-    public void DistributeLetters()
+    public void ActivateNextLetter()
     {
-        int letterCount = ActiveLetters.Count;
-        float angleStep = 360f / letterCount;
+        int nextLetterIndex = data.CurrentLetters.Length - 1;
+        BankLetter letter = ActivateLetterByIndex(nextLetterIndex);
+        Color temp = letter.Tmp.color;
+        temp.a = 0;
+        letter.Tmp.color = temp;
+
+        Image container = ActivateContainerByIndex(nextLetterIndex);
+        DistributeContainersOverTime();
+       
+        letter.SetAndSaveParentContainer(container);
+        letter.Rect.DOAnchorPos(Vector2.zero, 1);
+        letter.Tmp.DOFade(1, 1);
+    }
+
+
+    private List<Vector2> GetContainersPositions()
+    {
+        int containerCount = _activeContainers.Count;
+        float angleStep = 360f / containerCount;
         float radius = circleTransform.sizeDelta.x / 3;
 
-        for (int i = 0; i < letterCount; i++)
+        List<Vector2> positions = new();
+
+        for (int i = 0; i < _activeContainers.Count; i++)
         {
             float angle = (i * angleStep - 90) * Mathf.Deg2Rad; // Start at the top (270 degrees)
             Vector3 position = new(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0);
-            ActiveLetters[i].Rect.anchoredPosition = position; // Use anchoredPosition to correctly position within UI
+            positions.Add(position);
+        }
+
+        return positions;
+    }
+    public void SnapDistributeContainers()
+    {
+        List<Vector2> containersPositions = GetContainersPositions();
+
+        for (int i = 0; i < _activeContainers.Count; i++)
+        {
+            _activeContainers[i].rectTransform.anchoredPosition = containersPositions[i];
         }
     }
 
+    public void DistributeContainersOverTime()
+    {
+        List<Vector2> containersPositions = GetContainersPositions();
+
+        for (int i = 0; i < _activeContainers.Count; i++)
+        {
+            bool isLast = i == _activeContainers.Count - 1;
+            if (isLast)
+            {
+                _activeContainers[i].rectTransform.anchoredPosition = containersPositions[i];
+            }
+            else
+            {
+                _activeContainers[i].rectTransform.DOAnchorPos(containersPositions[i], 1);
+            }
+        }
+    }
+
+
+    [Button]
+    public void SnapDistributeContainersManually()
+    {
+        _activeContainers.Clear();
+
+        foreach (Image container in PremadeContainers)
+        {
+            if (container.isActiveAndEnabled)
+            {
+                _activeContainers.Add(container);
+            }
+        }
+
+        List<Vector2> containersPositions = GetContainersPositions();
+
+        for (int i = 0; i < _activeContainers.Count; i++)
+        {
+            _activeContainers[i].rectTransform.anchoredPosition = containersPositions[i];
+        }
+    }
+
+
     public BankLetter FindLetter(string letterChar)
     {
-        foreach(BankLetter letter in ActiveLetters)
+        foreach (BankLetter letter in _activeLetters)
         {
-            if (letter.Tmp.text == letterChar && 
+            if (letter.Tmp.text == letterChar &&
                 !letter.GuessLetter.AnswerLetter.IsUsed)
             {
                 return letter;

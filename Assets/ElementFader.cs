@@ -2,35 +2,42 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using System.Collections;
 using TMPro;
-using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ElementFader : MonoBehaviour
 {
     [SerializeField] private CanvasGroup TranslucentOverlay;
+    [SerializeField] private float elementDelay = 0.5f;
+    [SerializeField] private float crossFadeDelay = 1;
 
+    [Title("Gameplay")]
     [SerializeField] private CanvasGroup GameplayBG;
-    [SerializeField] private CanvasGroup GameplayElementsBase;
-    [SerializeField] private CanvasGroup GameplayTranslucent;
+    [SerializeField] private CanvasGroup GameplayTopPanel;
+    [SerializeField] private CanvasGroup GameplayGuessContainers;
+    [SerializeField] private CanvasGroup GameplayAnswer;
+    [SerializeField] private CanvasGroup GameplayLetterBank;
 
+    [Title("Start Menu")]
     [SerializeField] private CanvasGroup StartMenuBG;
-    [SerializeField] private CanvasGroup StartMenuElements;
+    [SerializeField] private CanvasGroup StartMenuLogo;
+    [SerializeField] private CanvasGroup StartMenuInteractables;
 
+    [Title("Winning")]
     [SerializeField] private CanvasGroup WinningElements;
 
-    [SerializeField] private float duration;
 
     [Button]
-    public void ResetToMenu()
+    public void ResetToMenu(bool withElements)
     {
         ToggleGroup(StartMenuBG, true);
-        ToggleGroup(StartMenuElements, true);
-        ToggleGroup(TranslucentOverlay, true);
+        ToggleGroup(StartMenuLogo, withElements);
+        ToggleGroup(StartMenuInteractables, withElements);
+        ToggleGroup(TranslucentOverlay, withElements);
 
         ToggleGroup(GameplayBG, false);
-        ToggleGroup(GameplayElementsBase, false);
-        ToggleGroup(GameplayTranslucent, false);
+        ToggleGroup(GameplayGuessContainers, false);
+        ToggleGroup(GameplayLetterBank, false);
         
         ToggleGroup(WinningElements, false);
     }
@@ -39,11 +46,11 @@ public class ElementFader : MonoBehaviour
     public void ResetToGameplay()
     {
         ToggleGroup(GameplayBG, true);
-        ToggleGroup(GameplayElementsBase, true);
-        ToggleGroup(GameplayTranslucent, true);
+        ToggleGroup(GameplayGuessContainers, true);
+        ToggleGroup(GameplayLetterBank, true);
 
         ToggleGroup(StartMenuBG, false);
-        ToggleGroup(StartMenuElements, false);
+        ToggleGroup(StartMenuInteractables, false);
         ToggleGroup(TranslucentOverlay, false);
 
         ToggleGroup(WinningElements, false);
@@ -54,24 +61,37 @@ public class ElementFader : MonoBehaviour
         int alpha = toggle ? 1 : 0;
         group.alpha = alpha;
         group.gameObject.SetActive(toggle);
-    } 
+    }
+
+    private void Awake()
+    {
+        Sequence sequence = DOTween.Sequence();
+
+        sequence.Append(FadeGroup(TranslucentOverlay, Fade.In, FadeDuration.Element));
+
+        sequence.AppendInterval(elementDelay);
+
+        sequence.Append(FadeGroup(StartMenuLogo, Fade.In, FadeDuration.Element));
+        
+        sequence.AppendInterval(elementDelay);
+
+        sequence.Append(FadeGroup(StartMenuInteractables, Fade.In, FadeDuration.Element));
+    }
 
     public void FadeStartMenuToGameplay()
     {
         Sequence sequence = DOTween.Sequence();
 
-        sequence.Append(FadeGroup(StartMenuElements, false));
+        sequence.Append(FadeGroup(StartMenuLogo, Fade.Out, FadeDuration.Element));
+        sequence.Append(FadeGroup(StartMenuInteractables, Fade.Out, FadeDuration.Element));
+        sequence.Append(FadeGroup(StartMenuBG, Fade.Out, FadeDuration.Crossfade));
+        sequence.Join(FadeGroup(TranslucentOverlay, Fade.Out, FadeDuration.Crossfade));
+        sequence.Join(FadeGroup(GameplayBG, Fade.In, FadeDuration.Crossfade));
 
-        sequence.AppendInterval(duration);
-
-        sequence.Append(FadeGroup(StartMenuBG, false));
-        sequence.Join(FadeGroup(TranslucentOverlay, false));
-        sequence.Join(FadeGroup(GameplayBG, true));
-
-        sequence.AppendInterval(duration);
-
-        sequence.Append(FadeGroup(GameplayElementsBase, true));
-        sequence.Join(FadeGroup(GameplayTranslucent, true));
+        //sequence.Append(FadeGroup(GameplayTopPanel, Fade.In, FadeDuration.Element));
+        sequence.Append(FadeGroup(GameplayGuessContainers, Fade.In, FadeDuration.Element));
+        sequence.Join(FadeGroup(GameplayAnswer, Fade.In, FadeDuration.Element));
+        sequence.Append(FadeGroup(GameplayLetterBank, Fade.In, FadeDuration.Element));
 
         sequence.Play();
     }
@@ -79,10 +99,15 @@ public class ElementFader : MonoBehaviour
     public IEnumerator GameplayFinish()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(FadeGroup(GameplayElementsBase, false));
-        sequence.Join(FadeGroup(GameplayTranslucent, false));
-        sequence.AppendInterval(duration);
-        sequence.Append(FadeGroup(WinningElements, true));
+
+        sequence.Append(FadeGroup(GameplayGuessContainers, Fade.Out, FadeDuration.Element));
+        sequence.Join(FadeGroup(GameplayLetterBank, Fade.Out, FadeDuration.Element));
+        //sequence.Join(FadeGroup(GameplayTopPanel, Fade.Out, FadeDuration.Element));
+        sequence.Join(FadeGroup(GameplayGuessContainers, Fade.Out, FadeDuration.Element));
+        sequence.Join(FadeGroup(GameplayAnswer, Fade.Out, FadeDuration.Element));
+
+        sequence.AppendInterval(crossFadeDelay);
+        sequence.Append(FadeGroup(WinningElements, Fade.In, FadeDuration.Element));
 
         yield return sequence.WaitForCompletion();
     }
@@ -90,10 +115,13 @@ public class ElementFader : MonoBehaviour
     public void WinningToGameplay()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(FadeGroup(WinningElements, false));
-        sequence.AppendInterval(duration);
-        sequence.Append(FadeGroup(GameplayElementsBase, true));
-        sequence.Join(FadeGroup(GameplayTranslucent, true));
+
+        sequence.Append(FadeGroup(WinningElements, Fade.Out, FadeDuration.Element));
+        sequence.AppendInterval(crossFadeDelay);
+        //sequence.Append(FadeGroup(GameplayTopPanel, Fade.In, FadeDuration.Element));
+        sequence.Append(FadeGroup(GameplayGuessContainers, Fade.In, FadeDuration.Element));
+        sequence.Join(FadeGroup(GameplayAnswer, Fade.In, FadeDuration.Element));
+        sequence.Append(FadeGroup(GameplayLetterBank, Fade.In, FadeDuration.Element));
     }
 
     public void ToggleInteractability(CanvasGroup canvasGroup, bool toggle)
@@ -102,18 +130,18 @@ public class ElementFader : MonoBehaviour
         canvasGroup.blocksRaycasts = toggle;
     }
 
-    public Sequence FadeGroup(CanvasGroup group, bool fadeIn)
+    public Sequence FadeGroup(CanvasGroup group, Fade fade, FadeDuration delay)
     {
         Sequence sequence = DOTween.Sequence();
-        if (fadeIn)
+        if (fade is Fade.In)
         {
             sequence.AppendCallback(() => group.alpha = 0);
             sequence.AppendCallback(() => group.gameObject.SetActive(true));
         }
 
-        sequence.Append(group.DOFade(fadeIn ? 1 : 0, duration));
+        sequence.Append(group.DOFade(fade is Fade.In ? 1 : 0, GetFadeDuration(delay)));
 
-        if (!fadeIn)
+        if (fade is Fade.Out)
         {
             sequence.AppendCallback(() => group.gameObject.SetActive(false));
         }
@@ -121,4 +149,30 @@ public class ElementFader : MonoBehaviour
         return sequence;
     }
 
+    private float GetFadeDuration(FadeDuration delay)
+    {
+        switch (delay)
+        {
+            case FadeDuration.Element:
+                return elementDelay;
+            case FadeDuration.Crossfade:
+                return crossFadeDelay;
+            default:
+                Debug.Log("No delay type");
+                return 0;
+
+        }
+    }
+}
+
+public enum Fade
+{
+    In,
+    Out
+}
+
+public enum FadeDuration
+{
+    Element,
+    Crossfade
 }
