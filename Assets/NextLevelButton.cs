@@ -9,6 +9,8 @@ public class NextLevelButton : MonoBehaviour
 {
     [SerializeField] private LevelBank LevelBank;
     [SerializeField] private LevelInitializer LevelInitializer;
+    [SerializeField] private ElementFader fader;
+    [SerializeField] private bool fromWinning;
     [SerializeField] private TextMeshProUGUI Tmp;
     [SerializeField] private Tweener tweener;
     [SerializeField] private TweenBlueprint buttonClickAnim;
@@ -44,6 +46,20 @@ public class NextLevelButton : MonoBehaviour
     public void OnClick()
     {
         LevelInitializer.Initialize(data);
-        tweener.TriggerTween(buttonClickAnim);
+        StartCoroutine(ClickSequence());
+    }
+
+    public IEnumerator ClickSequence()
+    {
+        yield return tweener.TriggerTween(buttonClickAnim).WaitForCompletion();
+        if (fromWinning)
+        {
+            fader.WinningToGameplay();
+        } else
+        {
+            fader.FadeStartMenuToGameplay();
+        }
+
+
     }
 }

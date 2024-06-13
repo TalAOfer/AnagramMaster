@@ -2364,11 +2364,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee3ebcb9edf94f49824e2673664e4fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TranslucentSource: {fileID: 2076107796}
+  TransluscentBlurConfig: {x: 2, y: 1}
+  TransluscentGlassConfig: {x: 3, y: 2}
+  IntroSequence: {fileID: 11400000, guid: 511854d68cf33df45a79a379b8fe2d1e, type: 2}
+  StartMenuToGameplayBlueprint: {fileID: 11400000, guid: 94763153e00682f4da92cfb34fafd64b, type: 2}
+  GameplayToWinningBlueprint: {fileID: 11400000, guid: 21d97bb66e7790b4380dfb025c707684, type: 2}
+  WinningToGameplayBlueprint: {fileID: 11400000, guid: 006650eda1550f1409e5235c276a3b27, type: 2}
   TranslucentOverlay: {fileID: 1397751067}
-  elementDelay: 0.5
-  crossFadeDelay: 1
   GameplayBG: {fileID: 2064946458}
-  GameplayTopPanel: {fileID: 0}
   GameplayGuessContainers: {fileID: 91248233}
   GameplayAnswer: {fileID: 365985682}
   GameplayLetterBank: {fileID: 2090277447}
@@ -7212,7 +7216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee01e66702087b4798e633ca34c7956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blurConfig: {fileID: 11400000, guid: aa525d393fcfb264cb81b3b07f85c049, type: 2}
+  blurConfig: {fileID: 11400000, guid: 45ac4b3d5f9dfc746a89d180929cc72e, type: 2}
   downsample: 1
   blurRegion:
     serializedVersion: 2
@@ -7523,6 +7527,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5276192898518746067, guid: 89b3ff7c0e6a59a4ca8e9c2daa0e47e3, type: 3}
+      propertyPath: fader
+      value: 
+      objectReference: {fileID: 584424280}
+    - target: {fileID: 5276192898518746067, guid: 89b3ff7c0e6a59a4ca8e9c2daa0e47e3, type: 3}
+      propertyPath: fromWinning
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276192898518746067, guid: 89b3ff7c0e6a59a4ca8e9c2daa0e47e3, type: 3}
       propertyPath: LevelInitializer
       value: 
       objectReference: {fileID: 1822476739}
@@ -7767,6 +7779,10 @@ PrefabInstance:
       value: Level Button
       objectReference: {fileID: 0}
     - target: {fileID: 3550672036515264455, guid: 89b3ff7c0e6a59a4ca8e9c2daa0e47e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3550672036515264455, guid: 89b3ff7c0e6a59a4ca8e9c2daa0e47e3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 584424280}
@@ -7848,6 +7864,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3891683964201988889, guid: 89b3ff7c0e6a59a4ca8e9c2daa0e47e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276192898518746067, guid: 89b3ff7c0e6a59a4ca8e9c2daa0e47e3, type: 3}
+      propertyPath: fader
+      value: 
+      objectReference: {fileID: 584424280}
+    - target: {fileID: 5276192898518746067, guid: 89b3ff7c0e6a59a4ca8e9c2daa0e47e3, type: 3}
+      propertyPath: fromWinning
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5276192898518746067, guid: 89b3ff7c0e6a59a4ca8e9c2daa0e47e3, type: 3}

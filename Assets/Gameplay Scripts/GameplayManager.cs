@@ -131,7 +131,7 @@ public class GameplayManager : MonoBehaviour
                 {
                     //Do wave
                     yield return new WaitForSeconds(0.25f);
-                    yield return fader.GameplayFinish();
+                    yield return fader.FadeGameplayToWinning();
 
                 }
             }
