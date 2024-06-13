@@ -4,7 +4,6 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using TMPro;
-using UnityEditor.iOS;
 using UnityEngine;
 using UnityEngine.UI;
 

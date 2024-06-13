@@ -17,7 +17,7 @@ public class FaderTween
     public GameVisualElement Element;
     public SequencingType SequencingType;
     public Fade Fade;
-    public float Duration;
+    public float Duration = 1;
     public float PostDelay = 0;
     [ShowIf("Fade", Fade.Out)]
     public TransluscentSwitch TransluscentSwitch;
