@@ -9,15 +9,8 @@ using UnityEngine.UI;
 
 public class ElementFader : MonoBehaviour
 {
+    private AnimationData AnimData => AssetLocator.Instance.AnimationData;
     [SerializeField] private TranslucentImageSource TranslucentSource;
-    [SerializeField] private Vector2Int TransluscentBlurConfig;
-    [SerializeField] private Vector2Int TransluscentGlassConfig;
-
-    [Title("Fade Sequences")]
-    [SerializeField] private FaderTweenBlueprint IntroSequence;
-    [SerializeField] private FaderTweenBlueprint StartMenuToGameplayBlueprint;
-    [SerializeField] private FaderTweenBlueprint GameplayToWinningBlueprint;
-    [SerializeField] private FaderTweenBlueprint WinningToGameplayBlueprint;
 
     [Title("Overlay")]
     [SerializeField] private CanvasGroup TranslucentOverlay;
@@ -126,27 +119,62 @@ public class ElementFader : MonoBehaviour
     }
 
 
+    public Sequence FadeGroup(FaderTween blueprint)
+    {
+        CanvasGroup element = GetElementCanvasGroup(blueprint.Element);
+
+        Sequence sequence = DOTween.Sequence();
+        if (blueprint.Fade is Fade.In)
+        {
+            if (blueprint.TransluscentSwitch != TransluscentSwitch.None)
+            {
+                sequence.AppendCallback(() => SwitchTransluscentType(blueprint.TransluscentSwitch));
+            }
+
+            sequence.AppendCallback(() => element.alpha = 0);
+            sequence.AppendCallback(() => element.gameObject.SetActive(true));
+        }
+
+        sequence.Append(element.DOFade(blueprint.Fade is Fade.In ? 1 : 0, blueprint.Duration).SetEase(blueprint.Ease));
+
+        if (blueprint.Fade is Fade.Out)
+        {
+            sequence.AppendCallback(() => element.gameObject.SetActive(false));
+            
+            if (blueprint.TransluscentSwitch != TransluscentSwitch.None)
+            {
+                sequence.AppendCallback(() => SwitchTransluscentType(blueprint.TransluscentSwitch));
+            }
+        }
+
+        if (blueprint.PostDelay > 0)
+        {
+            sequence.AppendInterval(blueprint.PostDelay);
+        }
+
+        return sequence;
+    }
 
     private void Awake()
     {
-        CreateSequence(IntroSequence).Play();
+        CreateSequence(AnimData.IntroSequence).Play();
     }
 
     public void FadeStartMenuToGameplay()
     {
-        CreateSequence(StartMenuToGameplayBlueprint).Play();
+        CreateSequence(AnimData.StartMenuToGameplayBlueprint).Play();
     }
 
     public IEnumerator FadeGameplayToWinning()
     {
-        Sequence sequence = CreateSequence(GameplayToWinningBlueprint);
+        Sequence sequence = CreateSequence(AnimData.GameplayToWinningBlueprint);
 
         yield return sequence.WaitForCompletion();
     }
 
     public void WinningToGameplay()
     {
-        CreateSequence(WinningToGameplayBlueprint).Play();
+        CreateSequence(AnimData.WinningToGameplayBlueprint).Play();
     }
 
     public void ToggleInteractability(CanvasGroup canvasGroup, bool toggle)
@@ -164,44 +192,15 @@ public class ElementFader : MonoBehaviour
             case TransluscentSwitch.None:
                 break;
             case TransluscentSwitch.ToGlass:
-                blurSettings.Iteration = TransluscentGlassConfig.x;
-                TranslucentSource.Downsample = TransluscentGlassConfig.y;
+                blurSettings.Iteration = AnimData.TransluscentGlassConfig.x;
+                TranslucentSource.Downsample = AnimData.TransluscentGlassConfig.y;
                 break;
             case TransluscentSwitch.ToBlur:
-                blurSettings.Iteration = TransluscentBlurConfig.x;
-                TranslucentSource.Downsample = TransluscentBlurConfig.y;
+                blurSettings.Iteration = AnimData.TransluscentBlurConfig.x;
+                TranslucentSource.Downsample = AnimData.TransluscentBlurConfig.y;
                 break;
         }
     }
 
-    public Sequence FadeGroup(FaderTween blueprint)
-    {
-        CanvasGroup element = GetElementCanvasGroup(blueprint.Element);
-
-        Sequence sequence = DOTween.Sequence();
-        if (blueprint.Fade is Fade.In)
-        {
-            sequence.AppendCallback(() => element.alpha = 0);
-            sequence.AppendCallback(() => element.gameObject.SetActive(true));
-        }
-
-        sequence.Append(element.DOFade(blueprint.Fade is Fade.In ? 1 : 0, blueprint.Duration).SetEase(blueprint.Ease));
-
-        if (blueprint.Fade is Fade.Out)
-        {
-            sequence.AppendCallback(() => element.gameObject.SetActive(false));
-            if (blueprint.TransluscentSwitch != TransluscentSwitch.None)
-            {
-                sequence.AppendCallback(() => SwitchTransluscentType(blueprint.TransluscentSwitch));
-            }
-        }
-
-        if (blueprint.PostDelay > 0)
-        {
-            sequence.AppendInterval(blueprint.PostDelay);
-        }
-
-        return sequence;
-    }
 
 }

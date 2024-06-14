@@ -18,7 +18,7 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private AnswerManager answerManager;
     [SerializeField] private ElementFader fader;
 
-    [SerializeField] private LevelBank levelBank;
+    LevelBank LevelBank => AssetLocator.Instance.LevelBank;
 
     private GameData data;
 
@@ -175,7 +175,7 @@ public class GameplayManager : MonoBehaviour
 
     private bool IsFoundInDictionary(string answer)
     {
-        string[] possibleAnswers = levelBank.Value[data.Index].PossibleAnswers;
+        string[] possibleAnswers = LevelBank.Value[data.Index].PossibleAnswers;
         return possibleAnswers.Any(a => a.Equals(answer, StringComparison.OrdinalIgnoreCase));
     }
 

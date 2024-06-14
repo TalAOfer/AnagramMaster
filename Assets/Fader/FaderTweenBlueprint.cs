@@ -19,7 +19,6 @@ public class FaderTween
     public Fade Fade;
     public float Duration = 1;
     public float PostDelay = 0;
-    [ShowIf("Fade", Fade.Out)]
     public TransluscentSwitch TransluscentSwitch;
     public Ease Ease;
 }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f3e43523cb78d4396b513f79b6ccab, type: 3}
+  m_Name: Animation Data
+  m_EditorClassIdentifier: 
+  IntroSequence: {fileID: 11400000, guid: 511854d68cf33df45a79a379b8fe2d1e, type: 2}
+  StartMenuToGameplayBlueprint: {fileID: 11400000, guid: 94763153e00682f4da92cfb34fafd64b, type: 2}
+  GameplayToWinningBlueprint: {fileID: 11400000, guid: 21d97bb66e7790b4380dfb025c707684, type: 2}
+  WinningToGameplayBlueprint: {fileID: 11400000, guid: 006650eda1550f1409e5235c276a3b27, type: 2}
+  answerAnimDuration: 0.5
+  answerAnimEase: 6
+  postAnswerAnimDelay: 0
+  guessMistakeAnimBlueprint: {fileID: 11400000, guid: 0317bc9d8ebc6e548b2faa70ddc59b9f, type: 2}
+  correctGuessAnimaDelayBetweenLetters: 0.15
+  postCorrectGuessAnimDelay: 0
+  TransluscentBlurConfig: {x: 2, y: 1}
+  TransluscentGlassConfig: {x: 3, y: 2}

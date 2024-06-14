@@ -7,7 +7,7 @@ public class AnswerManager : MonoBehaviour
 {
     [SerializeField] private List<RectTransform> PremadeAnswerContainers;
     [SerializeField] private LetterBank letterBank;
-
+    private AnimationData AnimData => AssetLocator.Instance.AnimationData;
     public void Initialize(GameData data)
     {
         string lastAnswer = data.CorrectAnswers.Count > 0 ? data.CorrectAnswers[^1] : "";
@@ -63,7 +63,7 @@ public class AnswerManager : MonoBehaviour
             answerLetter.SetUsed(true);
             answerLetter.Rect.SetParent(container);
 
-            Tween tween = answerLetter.Rect.DOAnchorPos(Vector2.zero, 1f).SetEase(Ease.OutQuad);
+            Tween tween = answerLetter.Rect.DOAnchorPos(Vector2.zero, AnimData.answerAnimDuration).SetEase(AnimData.answerAnimEase);
 
             if (i == 0)
             {

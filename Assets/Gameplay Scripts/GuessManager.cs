@@ -12,10 +12,8 @@ public class GuessManager : MonoBehaviour
     private readonly List<GuessContainer> _activeGuessContainers = new();
     
     [SerializeField] private Tweener tweener;
-    [SerializeField] private TweenBlueprint mistakeAnim;
-
-    [SerializeField] private float correctAnswerAnimDelayBetweenLetters = 0.15f;
-    [SerializeField] private LevelBank levelBank;
+    private LevelBank LevelBank => AssetLocator.Instance.LevelBank;
+    private AnimationData AnimData => AssetLocator.Instance.AnimationData;
 
     public void Initialize(GameData data)
     {
@@ -24,7 +22,7 @@ public class GuessManager : MonoBehaviour
         for (int i = 0; i < PremadeGuessContainers.Count; i++)
         {
             GuessContainer currentContainer = PremadeGuessContainers[i];
-            currentContainer.Initialize(levelBank.Value[data.Index].containerBG);
+            currentContainer.Initialize(LevelBank.Value[data.Index].containerBG);
 
             if (i < data.CurrentLetters.Length)
             {
@@ -64,10 +62,10 @@ public class GuessManager : MonoBehaviour
         foreach (var guessContainer in _activeGuessContainers)
         {
             sequence.AppendCallback(()=> guessContainer.StartCorrectAnswerAnimation());
-            sequence.AppendInterval(correctAnswerAnimDelayBetweenLetters);
+            sequence.AppendInterval(AnimData.correctGuessAnimaDelayBetweenLetters);
         }
 
-        sequence.AppendInterval(0.15f);
+        sequence.AppendInterval(AnimData.postCorrectGuessAnimDelay);
 
         yield return sequence.WaitForCompletion();
     }
@@ -81,7 +79,7 @@ public class GuessManager : MonoBehaviour
     public IEnumerator MistakeAnimation()
     {
 
-        tweener.TriggerTween(mistakeAnim);
+        tweener.TriggerTween(AnimData.guessMistakeAnimBlueprint);
 
         yield return null;
     }

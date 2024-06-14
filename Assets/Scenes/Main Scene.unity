@@ -474,6 +474,7 @@ MonoBehaviour:
   tweener: {fileID: 91248232}
   mistakeAnim: {fileID: 11400000, guid: 0317bc9d8ebc6e548b2faa70ddc59b9f, type: 2}
   correctAnswerAnimDelayBetweenLetters: 0.15
+  postDelay: 0
   levelBank: {fileID: 11400000, guid: 402b73a3af071c94d8d99c82b02e6b7e, type: 2}
 --- !u!114 &91248232
 MonoBehaviour:
@@ -1637,6 +1638,9 @@ MonoBehaviour:
   - {fileID: 1489235152}
   - {fileID: 243558091}
   letterBank: {fileID: 2090277445}
+  animDuration: 0.5
+  animEase: 6
+  postAnswerAdditionDelay: 0
 --- !u!225 &365985682
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4608,6 +4612,52 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 119
+--- !u!1 &1267744341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1267744343}
+  - component: {fileID: 1267744342}
+  m_Layer: 0
+  m_Name: AssetLocator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1267744342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267744341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb65ee95a316224d927f2179f6e6a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animData: {fileID: 11400000, guid: 57de3c0c429a1c14fb731b5fb98c7d5c, type: 2}
+  _levelBank: {fileID: 11400000, guid: 402b73a3af071c94d8d99c82b02e6b7e, type: 2}
+--- !u!4 &1267744343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267744341}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1274209155 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4637712006447556166, guid: 068f44decc9698a47a490ab73c3a81a5, type: 3}
@@ -7896,3 +7946,4 @@ SceneRoots:
   - {fileID: 955792727}
   - {fileID: 1267669918}
   - {fileID: 1054705960}
+  - {fileID: 1267744343}

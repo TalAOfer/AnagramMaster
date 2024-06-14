@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class NextLevelButton : MonoBehaviour
 {
-    [SerializeField] private LevelBank LevelBank;
+    private LevelBank LevelBank => AssetLocator.Instance.LevelBank;
+
     [SerializeField] private LevelInitializer LevelInitializer;
     [SerializeField] private ElementFader fader;
     [SerializeField] private bool fromWinning;

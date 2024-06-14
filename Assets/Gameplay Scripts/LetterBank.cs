@@ -14,7 +14,7 @@ public class LetterBank : MonoBehaviour
     [SerializeField] private List<BankLetter> PremadeLetters;
     [SerializeField] private List<Image> PremadeContainers;
     [SerializeField] private LetterBankLineManager lineManager;
-    [SerializeField] private LevelBank levelBank;
+    private LevelBank LevelBank => AssetLocator.Instance.LevelBank;
 
     private GameData data;
 
@@ -32,7 +32,7 @@ public class LetterBank : MonoBehaviour
     public void Initialize(GameData data)
     {
         this.data = data;
-        Color levelColor = levelBank.Value[data.Index].containerBG;
+        Color levelColor = LevelBank.Value[data.Index].containerBG;
 
         lineManager.Initialize(data, levelColor);
 

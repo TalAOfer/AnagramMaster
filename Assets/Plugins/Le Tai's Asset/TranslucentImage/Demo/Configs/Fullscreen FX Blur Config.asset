@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Fullscreen FX Blur Config
   m_EditorClassIdentifier: 
   radius: 4
-  iteration: 2
-  strength: 64
+  iteration: 3
+  strength: 32

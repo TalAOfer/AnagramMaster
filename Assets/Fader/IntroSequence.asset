@@ -18,7 +18,7 @@ MonoBehaviour:
     Fade: 0
     Duration: 1
     PostDelay: 0
-    TransluscentSwitch: 0
+    TransluscentSwitch: 2
     Ease: 0
   - Element: 8
     SequencingType: 0
