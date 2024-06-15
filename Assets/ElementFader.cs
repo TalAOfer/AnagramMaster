@@ -26,6 +26,12 @@ public class ElementFader : MonoBehaviour
         CreateSequence(AnimData.StartMenuToGameplayBlueprint).Play();
     }
 
+[Button]
+    public void TestWinning(){
+        Sequence sequence = CreateSequence(AnimData.GameplayToWinningBlueprint);
+        sequence.Play();
+    }
+
     public IEnumerator FadeGameplayToWinning()
     {
         Sequence sequence = CreateSequence(AnimData.GameplayToWinningBlueprint);

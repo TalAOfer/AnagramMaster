@@ -13,59 +13,84 @@ MonoBehaviour:
   m_Name: StartMenuToGameplay
   m_EditorClassIdentifier: 
   FadeSequence:
-  - Element: 8
-    SequencingType: 0
-    Fade: 1
-    Duration: 0.7
-    PostDelay: 0
-    TransluscentSwitch: 0
-    Ease: 0
-  - Element: 9
-    SequencingType: 1
-    Fade: 1
-    Duration: 0.7
-    PostDelay: 0
-    TransluscentSwitch: 0
-    Ease: 0
-  - Element: 7
-    SequencingType: 1
-    Fade: 1
-    Duration: 0.7
-    PostDelay: 0
-    TransluscentSwitch: 0
-    Ease: 0
   - Element: 1
-    SequencingType: 1
-    Fade: 0
+    SequencingType: 0
+    TransluscentSwitch: 0
+    Fade: 1
     Duration: 0.7
     PostDelay: 0
-    TransluscentSwitch: 0
     Ease: 0
-  - Element: 0
+    Animations:
+      Value: []
+  - Element: 2
+    SequencingType: 1
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.7
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 3
     SequencingType: 0
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.7
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 0
+    SequencingType: 1
+    TransluscentSwitch: 1
     Fade: 1
     Duration: 0.5
     PostDelay: 0
-    TransluscentSwitch: 1
     Ease: 0
-  - Element: 3
+    Animations:
+      Value: []
+  - Element: 8
     SequencingType: 1
-    Fade: 0
-    Duration: 0.5
-    PostDelay: 0
     TransluscentSwitch: 0
+    Fade: 0
+    Duration: 0.7
+    PostDelay: 0
     Ease: 0
+    Animations:
+      Value: []
+  - Element: 4
+    SequencingType: 0
+    TransluscentSwitch: 0
+    Fade: 0
+    Duration: 0.3
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
   - Element: 5
     SequencingType: 0
+    TransluscentSwitch: 0
     Fade: 0
     Duration: 0.3
     PostDelay: 0
-    TransluscentSwitch: 0
     Ease: 0
-  - Element: 4
-    SequencingType: 1
+    Animations:
+      Value: []
+  - Element: 6
+    SequencingType: 0
+    TransluscentSwitch: 0
     Fade: 0
     Duration: 0.3
     PostDelay: 0
-    TransluscentSwitch: 0
     Ease: 0
+    Animations:
+      Value: []
+  - Element: 7
+    SequencingType: 0
+    TransluscentSwitch: 0
+    Fade: 0
+    Duration: 0.3
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
