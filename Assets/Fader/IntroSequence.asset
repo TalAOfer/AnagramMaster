@@ -13,24 +13,28 @@ MonoBehaviour:
   m_Name: IntroSequence
   m_EditorClassIdentifier: 
   FadeSequence:
-  - Element: 0
-    SequencingType: 0
-    Fade: 0
-    Duration: 1
-    PostDelay: 0
-    TransluscentSwitch: 2
-    Ease: 0
   - Element: 8
     SequencingType: 0
+    TransluscentSwitch: 0
     Fade: 0
     Duration: 1
     PostDelay: 0
-    TransluscentSwitch: 0
     Ease: 0
+    Animations:
+      Value: []
   - Element: 9
     SequencingType: 0
+    TransluscentSwitch: 0
     Fade: 0
     Duration: 1
     PostDelay: 0
-    TransluscentSwitch: 0
     Ease: 0
+    Animations:
+      Value:
+      - AnimationType: 1
+        Ease: 6
+        sequencingType: 1
+        Duration: 1
+        Amount: 50
+        Direction: {x: 0, y: 1}
+        PostDelay: 0

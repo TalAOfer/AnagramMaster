@@ -15,8 +15,17 @@ MonoBehaviour:
   FadeSequence:
   - Element: 0
     SequencingType: 0
+    TransluscentSwitch: 0
     Fade: 1
     Duration: 0
     PostDelay: 0
-    TransluscentSwitch: 0
     Ease: 0
+    Animations:
+      Value:
+      - AnimationType: 0
+        Ease: 0
+        sequencingType: 1
+        Duration: 1
+        Amount: 0.5
+        Direction: {x: 0, y: 0}
+        PostDelay: 0
