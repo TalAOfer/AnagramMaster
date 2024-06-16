@@ -115,7 +115,8 @@ public class ElementFader : MonoBehaviour
     [FoldoutGroup("Elements")]
     [SerializeField] private TweenableElement W_Button;
 
-
+    [FoldoutGroup("Elements")]
+    [SerializeField] private TweenableElement G_BG_Secondary;
 
     #endregion
 
@@ -169,6 +170,10 @@ public class ElementFader : MonoBehaviour
                 return W_BiomeBar;
             case GameVisualElement.W_Button:
                 return W_Button;
+            case GameVisualElement.G_BG_Secondary:
+                TweenableElement secondaryBG = G_BG_Secondary;
+                (G_BG, G_BG_Secondary) = (G_BG_Secondary, G_BG);
+                return secondaryBG;
             default:
                 throw new ArgumentException("Invalid GameVisualElement");
         }
@@ -353,6 +358,9 @@ public class ElementFader : MonoBehaviour
         TweenableElement element = GetElement(blueprint.Element);
 
         Sequence sequence = DOTween.Sequence();
+
+        sequence.AppendInterval(blueprint.PreDelay);
+
         if (blueprint.Fade is Fade.In)
         {
             if (blueprint.TransluscentSwitch != TransluscentSwitch.None)

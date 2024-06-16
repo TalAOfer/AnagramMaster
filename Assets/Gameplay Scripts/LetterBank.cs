@@ -12,14 +12,14 @@ public class LetterBank : MonoBehaviour
     [SerializeField] private Image circleImage;
     [SerializeField] private RectTransform circleTransform;
     [SerializeField] private List<BankLetter> PremadeLetters;
-    [SerializeField] private List<Image> PremadeContainers;
+    [SerializeField] private List<BankLetterContainer> PremadeContainers;
     [SerializeField] private LetterBankLineManager lineManager;
     private LevelBank LevelBank => AssetLocator.Instance.LevelBank;
 
     private GameData data;
 
     [ShowInInspector]
-    private readonly List<Image> _activeContainers = new();
+    private readonly List<BankLetterContainer> _activeContainers = new();
 
     [ShowInInspector]
     private readonly List<BankLetter> _activeLetters = new();
@@ -48,7 +48,7 @@ public class LetterBank : MonoBehaviour
 
             if (withinRangeOfCurrentUse)
             {
-                Image container = ActivateContainerByIndex(i);
+                BankLetterContainer container = ActivateContainerByIndex(i);
                 ActivateLetterByIndex(i);
                 letter.SetAndSaveParentContainer(container);
                 letter.Rect.anchoredPosition = Vector2.zero;
@@ -56,7 +56,7 @@ public class LetterBank : MonoBehaviour
 
             else
             {
-                Image container = PremadeContainers[i];
+                BankLetterContainer container = PremadeContainers[i];
                 container.gameObject.SetActive(false);
                 letter.gameObject.SetActive(false);
             }
@@ -65,9 +65,9 @@ public class LetterBank : MonoBehaviour
         SnapDistributeContainers();
     }
 
-    public Image ActivateContainerByIndex(int index)
+    public BankLetterContainer ActivateContainerByIndex(int index)
     {
-        Image container = PremadeContainers[index];
+        BankLetterContainer container = PremadeContainers[index];
         container.gameObject.SetActive(true);
         _activeContainers.Add(container);
         return container;
@@ -89,7 +89,7 @@ public class LetterBank : MonoBehaviour
         temp.a = 0;
         letter.Tmp.color = temp;
 
-        Image container = ActivateContainerByIndex(nextLetterIndex);
+        BankLetterContainer container = ActivateContainerByIndex(nextLetterIndex);
         DistributeContainersOverTime();
        
         letter.SetAndSaveParentContainer(container);
@@ -121,7 +121,7 @@ public class LetterBank : MonoBehaviour
 
         for (int i = 0; i < _activeContainers.Count; i++)
         {
-            _activeContainers[i].rectTransform.anchoredPosition = containersPositions[i];
+            _activeContainers[i].Rect.anchoredPosition = containersPositions[i];
         }
     }
 
@@ -134,11 +134,11 @@ public class LetterBank : MonoBehaviour
             bool isLast = i == _activeContainers.Count - 1;
             if (isLast)
             {
-                _activeContainers[i].rectTransform.anchoredPosition = containersPositions[i];
+                _activeContainers[i].Rect.anchoredPosition = containersPositions[i];
             }
             else
             {
-                _activeContainers[i].rectTransform.DOAnchorPos(containersPositions[i], 1);
+                _activeContainers[i].Rect.DOAnchorPos(containersPositions[i], 1);
             }
         }
     }
@@ -149,7 +149,7 @@ public class LetterBank : MonoBehaviour
     {
         _activeContainers.Clear();
 
-        foreach (Image container in PremadeContainers)
+        foreach (BankLetterContainer container in PremadeContainers)
         {
             if (container.isActiveAndEnabled)
             {
@@ -161,7 +161,7 @@ public class LetterBank : MonoBehaviour
 
         for (int i = 0; i < _activeContainers.Count; i++)
         {
-            _activeContainers[i].rectTransform.anchoredPosition = containersPositions[i];
+            _activeContainers[i].Rect.anchoredPosition = containersPositions[i];
         }
     }
 

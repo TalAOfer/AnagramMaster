@@ -21,11 +21,14 @@ public class ElementAnimation
     [ShowIf("AnimationType", ElementAnimationType.SlideInto)]
     public Vector2 Direction;
     public float PostDelay = 0;
+    public float PreDelay = 0;
 
     public Sequence GetAnimationSequence(RectTransform element)
     {
         Sequence sequence = DOTween.Sequence();
         Tween tween = null;
+
+        sequence.AppendInterval(PreDelay);
 
         switch (AnimationType)
         {

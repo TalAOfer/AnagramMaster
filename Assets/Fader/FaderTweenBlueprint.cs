@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,14 +14,27 @@ public class FaderTweenBlueprint : ScriptableObject
 public class FaderTween
 {
     public GameVisualElement Element;
+    [ColoredField("GetSequencingTypeColor")]
     public SequencingType SequencingType;
-    public TransluscentSwitch TransluscentSwitch;
     public Fade Fade;
+    [FoldoutGroup("")]
+    public TransluscentSwitch TransluscentSwitch;
+    [FoldoutGroup("")]
     public float Duration = 1;
+    [FoldoutGroup("")]
     public float PostDelay = 0;
+    [FoldoutGroup("")]
+    public float PreDelay = 0f;
+    [FoldoutGroup("")]
     public Ease Ease;
+    [FoldoutGroup("")]
     public ElementAnimationBlueprint Animations;
 
+    private Color GetSequencingTypeColor()
+    {
+
+        return SequencingType == SequencingType.Append ? Color.red : Color.green;
+    }
 }
 
 public enum GameVisualElement
@@ -50,6 +64,7 @@ public enum GameVisualElement
     W_BiomeText,
     W_BiomeBar,
     W_Button,
+    G_BG_Secondary,
 }
 
 public enum Fade

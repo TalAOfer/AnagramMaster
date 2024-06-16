@@ -1,11 +1,7 @@
-using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public enum BankLetterState
 {
@@ -14,7 +10,7 @@ public enum BankLetterState
     UsedButNotFirst
 }
 
-public class BankLetter : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
+public class BankLetter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI tmp;
     public TextMeshProUGUI Tmp { get { return tmp; } private set { } }
@@ -26,7 +22,7 @@ public class BankLetter : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     [SerializeField] private GuessLetter guessLetter;
     public GuessLetter GuessLetter { get { return guessLetter; } private set { } }
     
-    private Image container;
+    private BankLetterContainer parentContainer;
     private Color activeContainerColor;
     [SerializeField] private Color ActiveTextColor;
     [SerializeField] private Color DefaultTextColor;
@@ -63,11 +59,11 @@ public class BankLetter : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         } 
     }
 
-    public void SetAndSaveParentContainer(Image container)
+    public void SetAndSaveParentContainer(BankLetterContainer container)
     {
+        container.Initialize(this);
         rect.SetParent(container.transform);
-        this.container = container;
-        container.color = activeContainerColor;
+        this.parentContainer = container;
     }
 
     public void ChangeColor(bool toActive) 
@@ -75,12 +71,16 @@ public class BankLetter : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         tmp.color = toActive ? ActiveTextColor : DefaultTextColor;
     }
 
-    public Image ToggleContainer(bool toggle)
+    public BankLetterContainer ToggleContainer(bool toggle)
     {
-        container.enabled = toggle;
+
+        Color containerColor = activeContainerColor;
+        if (!toggle) { containerColor.a = 0; }
+        parentContainer.Image.color = containerColor;
+
         if (toggle)
         {
-            lineManager.AddPoint(container.rectTransform.position);
+            lineManager.AddPoint(parentContainer.Rect.position);
         }
 
         else
@@ -88,15 +88,15 @@ public class BankLetter : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
             lineManager.RemovePoint();
         }
 
-        return container;
+        return parentContainer;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerDown()
     {
         LetterPointerDown.Raise(this, this);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerEnter()
     {
         LetterPointerEnter.Raise(this, this);
     }
