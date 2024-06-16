@@ -94,23 +94,23 @@ MonoBehaviour:
     SequencingType: 0
     TransluscentSwitch: 0
     Fade: 0
-    Duration: 0.5
+    Duration: 0.6
     PostDelay: 0
     Ease: 0
     Animations:
       Value:
       - AnimationType: 0
-        Ease: 0
+        Ease: 27
         sequencingType: 1
-        Duration: 0.5
-        Amount: 0.4
+        Duration: 0.3
+        Amount: 0.1
         Direction: {x: 0, y: 0}
         PostDelay: 0
   - Element: 16
     SequencingType: 1
     TransluscentSwitch: 0
     Fade: 0
-    Duration: 0.7
+    Duration: 0.5
     PostDelay: 0
     Ease: 11
     Animations:
@@ -123,10 +123,10 @@ MonoBehaviour:
         Direction: {x: 0, y: 0}
         PostDelay: 0
   - Element: 13
-    SequencingType: 0
+    SequencingType: 1
     TransluscentSwitch: 0
     Fade: 0
-    Duration: 0.3
+    Duration: 0.5
     PostDelay: 0
     Ease: 0
     Animations:
@@ -142,7 +142,7 @@ MonoBehaviour:
     SequencingType: 1
     TransluscentSwitch: 0
     Fade: 0
-    Duration: 0.3
+    Duration: 0.6
     PostDelay: 0
     Ease: 12
     Animations:
@@ -158,8 +158,8 @@ MonoBehaviour:
     SequencingType: 1
     TransluscentSwitch: 0
     Fade: 0
-    Duration: 0.3
-    PostDelay: 0
+    Duration: 0.6
+    PostDelay: 0.2
     Ease: 0
     Animations:
       Value:
@@ -176,7 +176,7 @@ MonoBehaviour:
     Fade: 0
     Duration: 0.1
     PostDelay: 0
-    Ease: 0
+    Ease: 5
     Animations:
       Value:
       - AnimationType: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
     Fade: 0
     Duration: 0.5
     PostDelay: 0
-    Ease: 0
+    Ease: 27
     Animations:
       Value:
       - AnimationType: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
     Fade: 0
     Duration: 0.1
     PostDelay: 0
-    Ease: 0
+    Ease: 5
     Animations:
       Value:
       - AnimationType: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
     Fade: 0
     Duration: 0.3
     PostDelay: 0
-    Ease: 0
+    Ease: 27
     Animations:
       Value:
       - AnimationType: 0

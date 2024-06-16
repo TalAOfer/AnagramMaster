@@ -13,10 +13,156 @@ MonoBehaviour:
   m_Name: WinningToGameplaySequence
   m_EditorClassIdentifier: 
   FadeSequence:
-  - Element: 0
-    SequencingType: 0
-    Fade: 0
-    Duration: 0
-    PostDelay: 0
+  - Element: 9
+    SequencingType: 1
     TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
     Ease: 0
+    Animations:
+      Value: []
+  - Element: 10
+    SequencingType: 1
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 11
+    SequencingType: 1
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 12
+    SequencingType: 1
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 13
+    SequencingType: 1
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 15
+    SequencingType: 1
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 16
+    SequencingType: 1
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 17
+    SequencingType: 1
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 18
+    SequencingType: 0
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 19
+    SequencingType: 1
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 20
+    SequencingType: 1
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 21
+    SequencingType: 1
+    TransluscentSwitch: 0
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 0
+    SequencingType: 1
+    TransluscentSwitch: 1
+    Fade: 1
+    Duration: 0.5
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 4
+    SequencingType: 0
+    TransluscentSwitch: 0
+    Fade: 0
+    Duration: 0.3
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 5
+    SequencingType: 0
+    TransluscentSwitch: 0
+    Fade: 0
+    Duration: 0.3
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 6
+    SequencingType: 0
+    TransluscentSwitch: 0
+    Fade: 0
+    Duration: 0.3
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
+  - Element: 7
+    SequencingType: 0
+    TransluscentSwitch: 0
+    Fade: 0
+    Duration: 0.3
+    PostDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
