@@ -1,41 +1,52 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 [System.Serializable]
 public class GameData
 {
-    public GameData() 
+    public bool IsInitialized;
+
+    public int OverallLevelIndex;
+
+    public int BiomeIndex;
+    public int AreaIndex;
+    public int LevelIndex;
+
+    public string CurrentLetters;
+    public List<string> NextLetters;
+    public List<string> CorrectAnswers;
+    public bool DidFinish;
+
+    public GameData()
     {
         IsInitialized = false;
-        Index = 0;
+        OverallLevelIndex = 0;
+        BiomeIndex = 0;
+        AreaIndex = 0;
+        LevelIndex = 0;
         CurrentLetters = "";
         NextLetters = new();
         CorrectAnswers = new();
     }
 
-    public GameData(int index, LevelBlueprint blueprint)
+    public GameData(LevelIndexHierarchy indices, LevelBlueprint blueprint)
     {
         IsInitialized = true;
-        Index = index;
+        BiomeIndex = indices.Biome;
+        AreaIndex = indices.Area;
+        LevelIndex = indices.Level;
         CurrentLetters = blueprint.StartingLetters;
         NextLetters = blueprint.NextLetters.ToList();
         CorrectAnswers = new();
     }
 
-    public bool IsInitialized;
-    public int Index;
-    public string CurrentLetters;
-    public List<string> NextLetters;
-    public List<string> CorrectAnswers;
 
-    public bool UpdateLevelData(string answer)
+    public void UpdateLevelData(string answer)
     {
         CorrectAnswers.Add(answer);
-        bool didFinish = NextLetters.Count <= 0;
+        DidFinish = NextLetters.Count <= 0;
 
-        if (!didFinish)
+        if (!DidFinish)
         {
             string NextLetter = NextLetters[0];
             NextLetters.RemoveAt(0);
@@ -43,9 +54,10 @@ public class GameData
         }
 
         SaveSystem.Save(this);
-
-        return didFinish;
     }
+
+    public LevelIndexHierarchy IndexHierarchy => new LevelIndexHierarchy(BiomeIndex, AreaIndex, LevelIndex);
+
 }
 
 

@@ -8,16 +8,23 @@ public class Tweener : MonoBehaviour
     // Original properties to reset before applying a new effect
     private Vector3 originalScale;
     private Vector3 originalPosition;
+    private Quaternion originalRotation;
+
     private Tween activeTween;
     [SerializeField] private bool test;
     [SerializeField] private bool resetScale = true;
     [SerializeField] private bool resetPosition = true;
+    [SerializeField] private bool resetRotation = true;
     [ShowIf("test")][SerializeField] private TweenBlueprint testBlueprint;
     private void Start()
     {
-        // Store the original scale and position
-        originalScale = transform.localScale;
-        originalPosition = transform.localPosition;
+        SaveOriginalTransform();
+    }
+
+    private void OnDisable()
+    {
+        DOTween.Kill(transform);
+        ResetToOriginalTransform();
     }
 
     private void OnDestroy()
@@ -36,6 +43,7 @@ public class Tweener : MonoBehaviour
     {
         originalScale = transform.localScale;
         originalPosition = transform.localPosition;
+        originalRotation = transform.localRotation;
     }
 
     private void ResetToOriginalTransform()
@@ -44,6 +52,8 @@ public class Tweener : MonoBehaviour
             transform.localScale = originalScale;
         if (resetPosition)
             transform.localPosition = originalPosition;
+        if (resetRotation) 
+            transform.localRotation = originalRotation;
     }
 
     public Tween TriggerTween(TweenBlueprint blueprint)
@@ -80,6 +90,12 @@ public class Tweener : MonoBehaviour
             case TweenType.ShakePosition:
                 tween = TriggerShakePosition(blueprint);
                 break;
+            case TweenType.PunchRotation:
+                tween = TriggerPunchRotation(blueprint);
+                break;
+            case TweenType.ShakeRotation:
+                tween = TriggerShakeRotation(blueprint);
+                break;
         }
 
         activeTween = tween;
@@ -100,6 +116,12 @@ public class Tweener : MonoBehaviour
             .SetUpdate(true)
             .SetEase(blueprint.ease);
     }
+    private Tween TriggerShakePosition(TweenBlueprint blueprint)
+    {
+        return transform.DOShakePosition(blueprint.Duration, blueprint.Strength, blueprint.Vibrato, blueprint.Randomness)
+            .SetUpdate(true)
+            .SetEase(blueprint.ease);
+    }
 
     private Tween TriggerPunchScale(TweenBlueprint blueprint)
     {
@@ -108,16 +130,23 @@ public class Tweener : MonoBehaviour
             .SetEase(blueprint.ease);
     }
 
-    private Tween TriggerShakePosition(TweenBlueprint blueprint)
+    private Tween TriggerShakeScale(TweenBlueprint blueprint)
     {
-        return transform.DOShakePosition(blueprint.Duration, blueprint.Strength, blueprint.Vibrato, blueprint.Randomness)
+        return transform.DOShakeScale(blueprint.Duration, blueprint.Strength, blueprint.Vibrato, blueprint.Randomness)
             .SetUpdate(true)
             .SetEase(blueprint.ease);
     }
 
-    private Tween TriggerShakeScale(TweenBlueprint blueprint)
+    private Tween TriggerPunchRotation(TweenBlueprint blueprint)
     {
-        return transform.DOShakeScale(blueprint.Duration, blueprint.Strength, blueprint.Vibrato, blueprint.Randomness)
+        return transform.DOPunchRotation(blueprint.Punch, blueprint.Duration, blueprint.Vibrato, blueprint.Elasticity)
+            .SetUpdate(true)
+            .SetEase(blueprint.ease);
+    }
+
+    private Tween TriggerShakeRotation(TweenBlueprint blueprint)
+    {
+        return transform.DOShakeRotation(blueprint.Duration, blueprint.RotationStrength, blueprint.Vibrato, blueprint.Randomness)
             .SetUpdate(true)
             .SetEase(blueprint.ease);
     }

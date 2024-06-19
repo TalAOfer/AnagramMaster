@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531fbf76ca5a0fc4bbb2b92346c3b491, type: 3}
+  m_Name: Forest
+  m_EditorClassIdentifier: 
+  FullCollectible: {fileID: 21300000, guid: 839b43aa89eb9f5488a36df8da33a5d9, type: 3}
+  EmptyCollectible: {fileID: 21300000, guid: 4bb6e587afec79142a61d99774ed35eb, type: 3}
+  Areas:
+  - Sprite: {fileID: 21300000, guid: aff73bb46e954a64a86821cc076664e7, type: 3}
+    Levels:
+    - {fileID: 11400000, guid: dd6c4417e3dab59418b278d3f94b339c, type: 2}
+    - {fileID: 11400000, guid: bee6d812639a16542b7e6b9ce95c58ef, type: 2}
+    - {fileID: 11400000, guid: b073475fa7453734c952138b4ea0004f, type: 2}
+    LetterContainerBGColor: {r: 0.3372549, g: 0.43529415, b: 0.36078432, a: 1}
+  - Sprite: {fileID: 21300000, guid: 2dc83ea061cc6d94e822b0f9895497ba, type: 3}
+    Levels:
+    - {fileID: 11400000, guid: 9258adaa319af414e896da88cb5219f6, type: 2}
+    - {fileID: 11400000, guid: a9f61e805b4d1ab42abf91ed75ea7a87, type: 2}
+    - {fileID: 11400000, guid: dda4037fa0caea046b1d798f99eda1a0, type: 2}
+    LetterContainerBGColor: {r: 0.3372549, g: 0.43529415, b: 0.36078432, a: 1}
+  - Sprite: {fileID: 21300000, guid: 1497a8310732ce44697b1154027bbe77, type: 3}
+    Levels: []
+    LetterContainerBGColor: {r: 0.3372549, g: 0.43529415, b: 0.36078432, a: 1}
+  - Sprite: {fileID: 21300000, guid: d3c8a7bcc9298ed4a9148fcd4f36f6ad, type: 3}
+    Levels: []
+    LetterContainerBGColor: {r: 0.3372549, g: 0.43529415, b: 0.36078432, a: 1}
+  - Sprite: {fileID: 21300000, guid: 8ef500592ce123242891a05b344417c9, type: 3}
+    Levels: []
+    LetterContainerBGColor: {r: 0.3372549, g: 0.43529415, b: 0.36078432, a: 1}

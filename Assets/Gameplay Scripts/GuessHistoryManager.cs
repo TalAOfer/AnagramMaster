@@ -8,27 +8,31 @@ public class GuessHistoryManager : MonoBehaviour
 {
     [SerializeField] private GameObject GuessNodePrefab;
     [SerializeField] private List<GuessHistoryNode> PremadeGuessHistoryNodes;
-    private GameData data;
 
     private readonly List<GuessHistoryNode> _activeNodes = new();
-    public void Initialize(GameData data)
-    {
-        this.data = data;
 
-        int totalNodesRequired = data.CorrectAnswers.Count + data.NextLetters.Count + 1;
+    private GameData Data => AssetProvider.Instance.Data.Value;
+    private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
+
+    public void Initialize()
+    {
+        Biome currentBiome = BiomeBank.Biomes[Data.BiomeIndex];
+
+        int totalNodesRequired = Data.CorrectAnswers.Count + Data.NextLetters.Count + 1;
 
         for (int i = 0; i < PremadeGuessHistoryNodes.Count; i++)
         {
             GuessHistoryNode currentNode = PremadeGuessHistoryNodes[i];
+            currentNode.Initialize(currentBiome);
 
             if (i < totalNodesRequired)
             {
                 currentNode.gameObject.SetActive(true);
                 _activeNodes.Add(currentNode);
 
-                if (i < data.CorrectAnswers.Count)
+                if (i < Data.CorrectAnswers.Count)
                 {
-                    currentNode.SetToAnswered(data.CorrectAnswers[i]);
+                    currentNode.SetToAnswered(Data.CorrectAnswers[i]);
                 }
             }
 
@@ -46,7 +50,7 @@ public class GuessHistoryManager : MonoBehaviour
             if (node.Answered) continue;
             else
             {
-                node.SetToAnswered(data.CorrectAnswers[^1]);
+                node.SetToAnswered(Data.CorrectAnswers[^1]);
                 break;
             }
         }

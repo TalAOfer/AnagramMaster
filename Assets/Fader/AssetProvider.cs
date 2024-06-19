@@ -1,23 +1,23 @@
 using UnityEngine;
 
-public class AssetLocator : MonoBehaviour
+public class AssetProvider : MonoBehaviour
 {
-    private static AssetLocator _instance;
+    private static AssetProvider _instance;
 
-    public static AssetLocator Instance
+    public static AssetProvider Instance
     {
         get
         {
             if (_instance == null)
             {
                 // Look for an existing instance
-                _instance = FindObjectOfType<AssetLocator>();
+                _instance = FindObjectOfType<AssetProvider>();
 
                 // If none exists, create a new one
                 if (_instance == null)
                 {
-                    GameObject singleton = new GameObject(typeof(AssetLocator).ToString());
-                    _instance = singleton.AddComponent<AssetLocator>();
+                    GameObject singleton = new GameObject(typeof(AssetProvider).ToString());
+                    _instance = singleton.AddComponent<AssetProvider>();
                     DontDestroyOnLoad(singleton);
                 }
             }
@@ -41,6 +41,8 @@ public class AssetLocator : MonoBehaviour
     [SerializeField] private AnimationData _animData;
     public AnimationData AnimationData { get { return _animData; } }
 
-    [SerializeField] private LevelBank _levelBank;
-    public LevelBank LevelBank { get { return _levelBank; } }
+    [SerializeField] private BiomeBank _biomeBank;
+    public BiomeBank BiomeBank { get { return _biomeBank; } }
+    [SerializeField] private CurrentData _data;
+    public CurrentData Data { get { return _data; } }
 }

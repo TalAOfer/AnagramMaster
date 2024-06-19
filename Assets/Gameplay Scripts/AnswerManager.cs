@@ -7,10 +7,12 @@ public class AnswerManager : MonoBehaviour
 {
     [SerializeField] private List<RectTransform> PremadeAnswerContainers;
     [SerializeField] private LetterBank letterBank;
-    private AnimationData AnimData => AssetLocator.Instance.AnimationData;
-    public void Initialize(GameData data)
+    private AnimationData AnimData => AssetProvider.Instance.AnimationData;
+    private GameData Data => AssetProvider.Instance.Data.Value;
+
+    public void Initialize()
     {
-        string lastAnswer = data.CorrectAnswers.Count > 0 ? data.CorrectAnswers[^1] : "";
+        string lastAnswer = Data.CorrectAnswers.Count > 0 ? Data.CorrectAnswers[^1] : "";
 
         for (int i = 0; i < PremadeAnswerContainers.Count; i++)
         {

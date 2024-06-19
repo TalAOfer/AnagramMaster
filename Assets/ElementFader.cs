@@ -3,49 +3,13 @@ using LeTai.Asset.TranslucentImage;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class ElementFader : MonoBehaviour
 {
-    private AnimationData AnimData => AssetLocator.Instance.AnimationData;
+    private AnimationData AnimData => AssetProvider.Instance.AnimationData;
     [SerializeField] private TranslucentImageSource TranslucentSource;
-
-
-    #region Transition Funcs 
-
-    private void Awake()
-    {
-        CreateSequence(AnimData.IntroSequence).Play();
-    }
-
-    public void FadeStartMenuToGameplay()
-    {
-        CreateSequence(AnimData.StartMenuToGameplayBlueprint).Play();
-    }
-
-[Button]
-    public void TestWinning(){
-        Sequence sequence = CreateSequence(AnimData.GameplayToWinningBlueprint);
-        sequence.Play();
-    }
-
-    public IEnumerator FadeGameplayToWinning()
-    {
-        Sequence sequence = CreateSequence(AnimData.GameplayToWinningBlueprint);
-
-        yield return sequence.WaitForCompletion();
-    }
-
-    public void WinningToGameplay()
-    {
-        CreateSequence(AnimData.WinningToGameplayBlueprint).Play();
-    }
-
-
-    #endregion
 
     #region Elements
 
@@ -63,6 +27,7 @@ public class ElementFader : MonoBehaviour
 
     [FoldoutGroup("Elements")]
     [SerializeField] private TweenableElement G_BG;
+    public Image CurrentActiveGameplayBackground { get { return G_BG.GetComponent<Image>(); } }
 
     [FoldoutGroup("Elements")]
     [SerializeField] private TweenableElement G_TopPanel;
@@ -117,6 +82,48 @@ public class ElementFader : MonoBehaviour
 
     [FoldoutGroup("Elements")]
     [SerializeField] private TweenableElement G_BG_Secondary;
+    public Image CurrentInactiveGameplayBackground { get { return G_BG_Secondary.GetComponent<Image>(); } }
+
+    #endregion
+
+    #region Transition Funcs 
+
+    private void Awake()
+    {
+        CreateSequence(AnimData.IntroSequence).Play();
+    }
+
+    public void FadeStartMenuToGameplay()
+    {
+        CreateSequence(AnimData.StartMenuToGameplayBlueprint).Play();
+    }
+
+[Button]
+    public void TestWinning(){
+        Sequence sequence = CreateSequence(AnimData.GameplayToWinningBlueprintOut);
+        sequence.Append(CreateSequence(AnimData.GameplayToWinningBlueprintIn));
+        sequence.Play();
+    }
+
+    public IEnumerator FadeOutGameplayToWinning()
+    {
+        Sequence sequence = CreateSequence(AnimData.GameplayToWinningBlueprintOut);
+
+        yield return sequence.WaitForCompletion();
+    }
+
+    public IEnumerator FadeInGameplayToWinning()
+    {
+        Sequence sequence = CreateSequence(AnimData.GameplayToWinningBlueprintIn);
+
+        yield return sequence.WaitForCompletion();
+    }
+
+    public void WinningToGameplay()
+    {
+        CreateSequence(AnimData.WinningToGameplayBlueprint).Play();
+    }
+
 
     #endregion
 

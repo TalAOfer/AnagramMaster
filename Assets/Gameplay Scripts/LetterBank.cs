@@ -3,9 +3,6 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine.UI;
-using Unity.VisualScripting.Antlr3.Runtime;
-using System;
-using System.Reflection;
 
 public class LetterBank : MonoBehaviour
 {
@@ -14,27 +11,24 @@ public class LetterBank : MonoBehaviour
     [SerializeField] private List<BankLetter> PremadeLetters;
     [SerializeField] private List<BankLetterContainer> PremadeContainers;
     [SerializeField] private LetterBankLineManager lineManager;
-    private LevelBank LevelBank => AssetLocator.Instance.LevelBank;
+    private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
 
-    private GameData data;
+    private GameData Data => AssetProvider.Instance.Data.Value;
 
     [ShowInInspector]
     private readonly List<BankLetterContainer> _activeContainers = new();
 
     [ShowInInspector]
     private readonly List<BankLetter> _activeLetters = new();
-
-    private string GetLetterStringByIndex(int index) => data.CurrentLetters[index].ToString();
     
     #region Initialization & Spawning
 
 
-    public void Initialize(GameData data)
+    public void Initialize()
     {
-        this.data = data;
-        Color levelColor = LevelBank.Value[data.Index].containerBG;
+        Color levelColor = BiomeBank.GetArea(Data.IndexHierarchy).LetterContainerBGColor;
 
-        lineManager.Initialize(data, levelColor);
+        lineManager.Initialize(Data, levelColor);
 
         _activeLetters.Clear();
         _activeContainers.Clear();
@@ -42,9 +36,9 @@ public class LetterBank : MonoBehaviour
         for (int i = 0; i < PremadeLetters.Count; i++)
         {
             BankLetter letter = PremadeLetters[i];
-            letter.Initialize(i, data, lineManager, levelColor);
+            letter.Initialize(i, Data, lineManager, levelColor);
 
-            bool withinRangeOfCurrentUse = i < data.CurrentLetters.Length;
+            bool withinRangeOfCurrentUse = i < Data.CurrentLetters.Length;
 
             if (withinRangeOfCurrentUse)
             {
@@ -83,7 +77,7 @@ public class LetterBank : MonoBehaviour
 
     public void ActivateNextLetter()
     {
-        int nextLetterIndex = data.CurrentLetters.Length - 1;
+        int nextLetterIndex = Data.CurrentLetters.Length - 1;
         BankLetter letter = ActivateLetterByIndex(nextLetterIndex);
         Color temp = letter.Tmp.color;
         temp.a = 0;

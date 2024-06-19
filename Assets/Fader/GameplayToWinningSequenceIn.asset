@@ -10,60 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0effd7e2baaf35745a3ca98e212aed14, type: 3}
-  m_Name: GameplayToWinningSequence
+  m_Name: GameplayToWinningSequenceIn
   m_EditorClassIdentifier: 
   FadeSequence:
-  - Element: 4
-    SequencingType: 0
-    TransluscentSwitch: 0
-    Fade: 1
-    Duration: 0.4
-    PostDelay: 0
-    Ease: 0
-    Animations:
-      Value: []
-  - Element: 5
-    SequencingType: 1
-    TransluscentSwitch: 0
-    Fade: 1
-    Duration: 0.4
-    PostDelay: 0
-    Ease: 0
-    Animations:
-      Value: []
-  - Element: 6
-    SequencingType: 1
-    TransluscentSwitch: 0
-    Fade: 1
-    Duration: 0.4
-    PostDelay: 0
-    Ease: 0
-    Animations:
-      Value: []
-  - Element: 7
-    SequencingType: 1
-    TransluscentSwitch: 0
-    Fade: 1
-    Duration: 0.4
-    PostDelay: 0
-    Ease: 0
-    Animations:
-      Value: []
   - Element: 0
     SequencingType: 0
-    TransluscentSwitch: 2
     Fade: 0
+    TransluscentSwitch: 2
     Duration: 1
     PostDelay: 0
+    PreDelay: 0
     Ease: 0
     Animations:
       Value: []
   - Element: 9
     SequencingType: 0
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.5
     PostDelay: 0
+    PreDelay: 0
     Ease: 14
     Animations:
       Value:
@@ -74,12 +40,14 @@ MonoBehaviour:
         Amount: 0.5
         Direction: {x: 0, y: 0}
         PostDelay: 0
+        PreDelay: 0
   - Element: 10
     SequencingType: 0
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.3
     PostDelay: 0
+    PreDelay: 0
     Ease: 15
     Animations:
       Value:
@@ -90,12 +58,14 @@ MonoBehaviour:
         Amount: 100
         Direction: {x: 0, y: 1}
         PostDelay: 0
+        PreDelay: 0
   - Element: 11
     SequencingType: 0
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.6
     PostDelay: 0
+    PreDelay: 0
     Ease: 0
     Animations:
       Value:
@@ -106,12 +76,14 @@ MonoBehaviour:
         Amount: 0.1
         Direction: {x: 0, y: 0}
         PostDelay: 0
+        PreDelay: 0
   - Element: 16
     SequencingType: 1
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.5
     PostDelay: 0
+    PreDelay: 0
     Ease: 11
     Animations:
       Value:
@@ -122,12 +94,14 @@ MonoBehaviour:
         Amount: 1.5
         Direction: {x: 0, y: 0}
         PostDelay: 0
+        PreDelay: 0
   - Element: 13
     SequencingType: 1
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.5
     PostDelay: 0
+    PreDelay: 0
     Ease: 0
     Animations:
       Value:
@@ -138,12 +112,14 @@ MonoBehaviour:
         Amount: 0.5
         Direction: {x: 0, y: 0}
         PostDelay: 0
+        PreDelay: 0
   - Element: 12
     SequencingType: 1
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.6
     PostDelay: 0
+    PreDelay: 0
     Ease: 12
     Animations:
       Value:
@@ -154,12 +130,14 @@ MonoBehaviour:
         Amount: 100
         Direction: {x: 0, y: 2}
         PostDelay: 0
+        PreDelay: 0
   - Element: 15
     SequencingType: 1
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.6
     PostDelay: 0.2
+    PreDelay: 0
     Ease: 0
     Animations:
       Value:
@@ -170,12 +148,14 @@ MonoBehaviour:
         Amount: 0.5
         Direction: {x: 0, y: 0}
         PostDelay: 0
+        PreDelay: 0
   - Element: 17
     SequencingType: 0
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.1
     PostDelay: 0
+    PreDelay: 0
     Ease: 5
     Animations:
       Value:
@@ -186,12 +166,14 @@ MonoBehaviour:
         Amount: 1.3
         Direction: {x: 0, y: 0}
         PostDelay: 0
+        PreDelay: 0
   - Element: 18
     SequencingType: 0
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.5
     PostDelay: 0
+    PreDelay: 0
     Ease: 27
     Animations:
       Value:
@@ -202,12 +184,14 @@ MonoBehaviour:
         Amount: 1.3
         Direction: {x: 0, y: 0}
         PostDelay: 0
+        PreDelay: 0
   - Element: 19
     SequencingType: 0
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.1
     PostDelay: 0
+    PreDelay: 0
     Ease: 5
     Animations:
       Value:
@@ -218,12 +202,14 @@ MonoBehaviour:
         Amount: 1.3
         Direction: {x: 0, y: 0}
         PostDelay: 0
+        PreDelay: 0
   - Element: 20
     SequencingType: 0
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.3
     PostDelay: 0
+    PreDelay: 0
     Ease: 27
     Animations:
       Value:
@@ -234,12 +220,14 @@ MonoBehaviour:
         Amount: 1.3
         Direction: {x: 0, y: 0}
         PostDelay: 0
+        PreDelay: 0
   - Element: 21
     SequencingType: 0
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 1
     PostDelay: 0
+    PreDelay: 0
     Ease: 0
     Animations:
       Value: []

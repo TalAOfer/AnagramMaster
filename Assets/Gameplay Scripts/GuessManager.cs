@@ -12,19 +12,22 @@ public class GuessManager : MonoBehaviour
     private readonly List<GuessContainer> _activeGuessContainers = new();
     
     [SerializeField] private Tweener tweener;
-    private LevelBank LevelBank => AssetLocator.Instance.LevelBank;
-    private AnimationData AnimData => AssetLocator.Instance.AnimationData;
 
-    public void Initialize(GameData data)
+    private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
+    private AnimationData AnimData => AssetProvider.Instance.AnimationData;
+    private GameData Data => AssetProvider.Instance.Data.Value;
+
+
+    public void Initialize()
     {
         _activeGuessContainers.Clear();
 
         for (int i = 0; i < PremadeGuessContainers.Count; i++)
         {
             GuessContainer currentContainer = PremadeGuessContainers[i];
-            currentContainer.Initialize(LevelBank.Value[data.Index].containerBG);
+            currentContainer.Initialize(BiomeBank.GetArea(Data.IndexHierarchy).LetterContainerBGColor);
 
-            if (i < data.CurrentLetters.Length)
+            if (i < Data.CurrentLetters.Length)
             {
                 currentContainer.gameObject.SetActive(true);
                 _activeGuessContainers.Add(currentContainer);

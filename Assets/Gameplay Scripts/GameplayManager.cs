@@ -1,9 +1,8 @@
-using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting.Antlr3.Runtime;
+using TMPro;
 using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
@@ -12,20 +11,28 @@ public class GameplayManager : MonoBehaviour
 
     private readonly List<BankLetter> usedLetters = new();
 
-    [SerializeField] private LetterBank letterBank;
-    [SerializeField] private GuessManager guessManager;
-    [SerializeField] private GuessHistoryManager guessHistoryManager;
-    [SerializeField] private AnswerManager answerManager;
+    [SerializeField] private LetterBank LetterBank;
+    [SerializeField] private GuessManager GuessManager;
+    [SerializeField] private GuessHistoryManager GuessHistoryManager;
+    [SerializeField] private AnswerManager AnswerManager;
+
     [SerializeField] private ElementFader fader;
+    [SerializeField] private WinningManager winningManager;
+    [SerializeField] private TextMeshProUGUI levelTextImage;
 
-    LevelBank LevelBank => AssetLocator.Instance.LevelBank;
+    private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
+    private GameData Data => AssetProvider.Instance.Data.Value;
 
-    private GameData data;
-
-    public void Initialize(GameData data)
+    public void Initialize()
     {
-        this.data = data;
+        usedLetters.Clear();
         _inputEnabled = true;
+        levelTextImage.text = "Level " + (Data.OverallLevelIndex + 1).ToString();
+
+        LetterBank.Initialize();
+        GuessHistoryManager.Initialize();
+        GuessManager.Initialize();
+        AnswerManager.Initialize();
     }
 
     #region Gameplay
@@ -81,7 +88,7 @@ public class GameplayManager : MonoBehaviour
         letter.ChangeColor(true);
         usedLetters.Add(letter);
         int index = usedLetters.Count - 1;
-        guessManager.AddLetter(letter.GuessLetter, index);
+        GuessManager.AddLetter(letter.GuessLetter, index);
     }
 
     public void RemoveLastUsedLetter()
@@ -119,9 +126,9 @@ public class GameplayManager : MonoBehaviour
 
         _inputEnabled = false;
 
-        bool lastWordInLevel = data.NextLetters.Count == 0;
+        bool lastWordInLevel = Data.NextLetters.Count == 0;
 
-        if (data.CurrentLetters.Length == usedLetters.Count)
+        if (Data.CurrentLetters.Length == usedLetters.Count)
         {
             if (IsFoundInDictionary(GetGuess()))
             {
@@ -131,8 +138,9 @@ public class GameplayManager : MonoBehaviour
                 {
                     //Do wave
                     yield return new WaitForSeconds(0.25f);
-                    yield return fader.FadeGameplayToWinning();
-
+                    winningManager.Initialize();
+                    yield return winningManager.WinningRoutine();
+                    yield break;
                 }
             }
 
@@ -154,28 +162,28 @@ public class GameplayManager : MonoBehaviour
 
     public IEnumerator OnCorrectGuess()
     {
-        yield return guessManager.CorrectGuessAnimation();
-        yield return answerManager.OnNewAnswer(usedLetters);
+        Data.UpdateLevelData(GetGuess());
 
-        bool isFinished = data.UpdateLevelData(GetGuess());
+        yield return GuessManager.CorrectGuessAnimation();
+        yield return AnswerManager.OnNewAnswer(usedLetters);
 
-        //guessHistoryManager.HandleNewGuessedNode();
+        GuessHistoryManager.HandleNewAnsweredNode();
 
-        if (isFinished) yield break;
+        if (Data.DidFinish) yield break;
 
-        letterBank.ActivateNextLetter();
+        LetterBank.ActivateNextLetter();
 
-        guessManager.ActivateNextContainer();
+        GuessManager.ActivateNextContainer();
     }
 
     public IEnumerator PlayMistakeAnimation()
     {
-        yield return guessManager.MistakeAnimation();
+        yield return GuessManager.MistakeAnimation();
     }
 
     private bool IsFoundInDictionary(string answer)
     {
-        string[] possibleAnswers = LevelBank.Value[data.Index].PossibleAnswers;
+        string[] possibleAnswers = BiomeBank.GetLevel(Data.IndexHierarchy).PossibleAnswers;
         return possibleAnswers.Any(a => a.Equals(answer, StringComparison.OrdinalIgnoreCase));
     }
 

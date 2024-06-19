@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroSequence: {fileID: 11400000, guid: 511854d68cf33df45a79a379b8fe2d1e, type: 2}
   StartMenuToGameplayBlueprint: {fileID: 11400000, guid: 94763153e00682f4da92cfb34fafd64b, type: 2}
-  GameplayToWinningBlueprint: {fileID: 11400000, guid: 21d97bb66e7790b4380dfb025c707684, type: 2}
+  GameplayToWinningBlueprintOut: {fileID: 11400000, guid: 21d97bb66e7790b4380dfb025c707684, type: 2}
+  GameplayToWinningBlueprintIn: {fileID: 11400000, guid: d5ad132250054734aa3645ae77846323, type: 2}
   WinningToGameplayBlueprint: {fileID: 11400000, guid: 006650eda1550f1409e5235c276a3b27, type: 2}
   answerAnimDuration: 0.5
   answerAnimEase: 6
@@ -24,3 +25,8 @@ MonoBehaviour:
   postCorrectGuessAnimDelay: 0
   TransluscentBlurConfig: {x: 2, y: 1}
   TransluscentGlassConfig: {x: 3, y: 2}
+  sliderFillDuration: 1
+  sliderFillEase: 5
+  BiomeCurrentCollectibleAmountAnimation: {fileID: 11400000, guid: 24704cad5f186bc419bfc13724ddc5eb, type: 2}
+  TotalCollectibleImageAnimation: {fileID: 11400000, guid: e02061f4fb368cd4cb39b72bca31fb1c, type: 2}
+  TotalCollectibleImageUpscaleAmount: 1.1
