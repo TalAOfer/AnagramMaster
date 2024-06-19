@@ -28,6 +28,8 @@ public class AnimationData : ScriptableObject
     public Ease answerAnimEase = Ease.OutQuad;
     [FoldoutGroup("Gameplay")]
     public float postAnswerAnimDelay = 0f;
+    [FoldoutGroup("Gameplay")]
+    public TweenBlueprint gameplayCollectibleAnimation;
 
     [FoldoutGroup("Gameplay")]
     [Title("Guess Containers")]

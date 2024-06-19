@@ -52,6 +52,7 @@ public class WinningManager : MonoBehaviour
     public void Initialize()
     {
         //Initialize Upper bar
+        slider.value = 0;
         int lastWinnedStageAmount = Data.CorrectAnswers.Count;
         Biome currentBiome = BiomeBank.Biomes[Data.BiomeIndex];
         InitializeCollectibles(lastWinnedStageAmount, currentBiome);
@@ -59,6 +60,7 @@ public class WinningManager : MonoBehaviour
         BiomeName.text = currentBiome.name;
 
         //Initialize Lower bar
+        TotalCollectibleImage.rectTransform.localScale = Vector3.one;
         biomeTotalCollectibleAmount = currentBiome.GetTotalCollectibleAmount();
         biomeCurrentCollectibleAmount = currentBiome.GetCurrentCollectibleAmount(Data.IndexHierarchy);
         UpdateCollectibleCountText();

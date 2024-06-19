@@ -4489,7 +4489,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 200, y: 200}
-  m_Spacing: {x: -80, y: 0}
+  m_Spacing: {x: -100, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
 --- !u!222 &839283116
@@ -5169,7 +5169,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -113, y: 0.00005340576}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.49999994, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1050934209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11622,8 +11622,9 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 708144186}
   - {fileID: 557015564}
-  - {fileID: 584424281}
   - {fileID: 1822476740}
+  - {fileID: 584424281}
+  - {fileID: 1054705960}
   - {fileID: 616550147}
   - {fileID: 2008007094}
   - {fileID: 973222827}
@@ -11632,5 +11633,4 @@ SceneRoots:
   - {fileID: 955792727}
   - {fileID: 1267669918}
   - {fileID: 312050857}
-  - {fileID: 1054705960}
   - {fileID: 1267744343}

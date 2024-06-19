@@ -11,7 +11,7 @@ public class GuessHistoryNode : MonoBehaviour
     public bool Answered { get; private set; } = false;
     private Sprite pendingSprite;
     private Sprite answeredSprite;
-    [SerializeField] private TweenBlueprint correctAnswerAnimation;
+    private AnimationData AnimationData => AssetProvider.Instance.AnimationData;
     [SerializeField] private Tweener tweener;
     public string Answer { get; private set; } = "";
 
@@ -19,7 +19,8 @@ public class GuessHistoryNode : MonoBehaviour
     {
         pendingSprite = biome.EmptyCollectible;
         answeredSprite = biome.FullCollectible;
-        
+        Answered = false;
+
         image.sprite = pendingSprite;
     }
 
@@ -27,7 +28,7 @@ public class GuessHistoryNode : MonoBehaviour
     {
         Answered = true;
         image.sprite = answeredSprite;
-        tweener.TriggerTween(correctAnswerAnimation);
+        tweener.TriggerTween(AnimationData.gameplayCollectibleAnimation);
         Answer = answer;
     }
 }
