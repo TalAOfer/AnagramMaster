@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fca5556f8a7ccc4db66692bf68bd5b2, type: 3}
   m_Name: Guess History Node Correct Answer
   m_EditorClassIdentifier: 
-  type: 5
-  ease: 10
-  Duration: 0.25
+  type: 1
+  ease: 12
+  Duration: 0.5
   Strength: 0.1
   RotationStrength: {x: 0, y: 0, z: 25}
-  Vibrato: 15
+  Vibrato: 0
   Randomness: 1
-  Elasticity: 15
-  Punch: {x: 0, y: 0, z: 25}
+  Elasticity: 0
+  Punch: {x: 0.3, y: 0.3, z: 0.3}

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fca5556f8a7ccc4db66692bf68bd5b2, type: 3}
   m_Name: BiomeImageTween
   m_EditorClassIdentifier: 
-  type: 5
-  ease: 0
+  type: 1
+  ease: 13
   Duration: 0.25
-  Strength: 0.1
+  Strength: 0.05
   RotationStrength: {x: 1, y: 1, z: 1}
-  Vibrato: 10
+  Vibrato: 0
   Randomness: 25
-  Elasticity: 1
-  Punch: {x: 0, y: 0, z: 25}
+  Elasticity: 0
+  Punch: {x: 0.05, y: 0.05, z: 0.05}

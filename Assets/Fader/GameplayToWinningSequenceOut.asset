@@ -13,6 +13,16 @@ MonoBehaviour:
   m_Name: GameplayToWinningSequenceOut
   m_EditorClassIdentifier: 
   FadeSequence:
+  - Element: 3
+    SequencingType: 0
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.2
+    PostDelay: 0.2
+    PreDelay: 0
+    Ease: 0
+    Animations:
+      Value: []
   - Element: 4
     SequencingType: 0
     Fade: 1

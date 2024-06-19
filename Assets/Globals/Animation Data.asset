@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f3e43523cb78d4396b513f79b6ccab, type: 3}
   m_Name: Animation Data
   m_EditorClassIdentifier: 
+  TransluscentBlurConfig: {x: 2, y: 1}
+  TransluscentGlassConfig: {x: 3, y: 2}
   IntroSequence: {fileID: 11400000, guid: 511854d68cf33df45a79a379b8fe2d1e, type: 2}
   StartMenuToGameplayBlueprint: {fileID: 11400000, guid: 94763153e00682f4da92cfb34fafd64b, type: 2}
   GameplayToWinningBlueprintOut: {fileID: 11400000, guid: 21d97bb66e7790b4380dfb025c707684, type: 2}
@@ -23,10 +25,8 @@ MonoBehaviour:
   guessMistakeAnimBlueprint: {fileID: 11400000, guid: 0317bc9d8ebc6e548b2faa70ddc59b9f, type: 2}
   correctGuessAnimaDelayBetweenLetters: 0.15
   postCorrectGuessAnimDelay: 0
-  TransluscentBlurConfig: {x: 2, y: 1}
-  TransluscentGlassConfig: {x: 3, y: 2}
-  sliderFillDuration: 1
-  sliderFillEase: 5
+  sliderFillDuration: 2.5
+  sliderFillEase: 13
   BiomeCurrentCollectibleAmountAnimation: {fileID: 11400000, guid: 24704cad5f186bc419bfc13724ddc5eb, type: 2}
   TotalCollectibleImageAnimation: {fileID: 11400000, guid: e02061f4fb368cd4cb39b72bca31fb1c, type: 2}
-  TotalCollectibleImageUpscaleAmount: 1.1
+  TotalCollectibleImageUpscaleAmount: 1
