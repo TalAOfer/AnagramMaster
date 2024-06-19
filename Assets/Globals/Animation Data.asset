@@ -30,4 +30,4 @@ MonoBehaviour:
   sliderFillEase: 13
   BiomeCurrentCollectibleAmountAnimation: {fileID: 11400000, guid: 24704cad5f186bc419bfc13724ddc5eb, type: 2}
   TotalCollectibleImageAnimation: {fileID: 11400000, guid: e02061f4fb368cd4cb39b72bca31fb1c, type: 2}
-  TotalCollectibleImageUpscaleAmount: 1
+  TotalCollectibleImageUpscaleAmount: 1.05
