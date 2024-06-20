@@ -21,6 +21,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 9
@@ -31,6 +32,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 14
+    SoundName: 
     Animations:
       Value:
       - AnimationType: 0
@@ -49,6 +51,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 15
+    SoundName: LevelComplete
     Animations:
       Value:
       - AnimationType: 1
@@ -67,6 +70,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value:
       - AnimationType: 0
@@ -85,6 +89,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 11
+    SoundName: 
     Animations:
       Value:
       - AnimationType: 0
@@ -103,6 +108,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value:
       - AnimationType: 0
@@ -121,6 +127,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 12
+    SoundName: 
     Animations:
       Value:
       - AnimationType: 1
@@ -139,6 +146,7 @@ MonoBehaviour:
     PostDelay: 0.2
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value:
       - AnimationType: 0
@@ -157,6 +165,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 5
+    SoundName: 
     Animations:
       Value:
       - AnimationType: 0
@@ -175,6 +184,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 27
+    SoundName: 
     Animations:
       Value:
       - AnimationType: 0
@@ -193,6 +203,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 5
+    SoundName: 
     Animations:
       Value:
       - AnimationType: 0
@@ -211,6 +222,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 27
+    SoundName: 
     Animations:
       Value:
       - AnimationType: 0
@@ -229,5 +241,6 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
