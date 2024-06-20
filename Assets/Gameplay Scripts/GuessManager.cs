@@ -65,6 +65,7 @@ public class GuessManager : MonoBehaviour
         foreach (var guessContainer in _activeGuessContainers)
         {
             sequence.AppendCallback(()=> guessContainer.StartCorrectAnswerAnimation());
+            sequence.AppendCallback(()=> SoundManager.PlaySound("LetterBounce", guessContainer.transform.position));
             sequence.AppendInterval(AnimData.correctGuessAnimaDelayBetweenLetters);
         }
 

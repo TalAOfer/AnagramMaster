@@ -78,6 +78,7 @@ public class AnswerManager : MonoBehaviour
             }
         }
 
+        SoundManager.PlaySound("GuessHistoryShuffle", Vector3.zero);
         yield return sequence.Play().WaitForCompletion(); ;
     }
 }

@@ -122,6 +122,7 @@ public class LetterBank : MonoBehaviour
     public void DistributeContainersOverTime()
     {
         List<Vector2> containersPositions = GetContainersPositions();
+        SoundManager.PlaySound("BankReorganize", transform.position);
 
         for (int i = 0; i < _activeContainers.Count; i++)
         {

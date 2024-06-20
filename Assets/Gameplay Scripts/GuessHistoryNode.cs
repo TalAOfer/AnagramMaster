@@ -30,5 +30,6 @@ public class GuessHistoryNode : MonoBehaviour
         image.sprite = answeredSprite;
         tweener.TriggerTween(AnimationData.gameplayCollectibleAnimation);
         Answer = answer;
+        SoundManager.PlaySound("GameplayCollectibleCollected", Vector3.zero);
     }
 }

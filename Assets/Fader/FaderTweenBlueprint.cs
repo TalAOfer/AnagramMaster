@@ -28,6 +28,8 @@ public class FaderTween
     [FoldoutGroup("")]
     public Ease Ease;
     [FoldoutGroup("")]
+    public string SoundName = "";
+    [FoldoutGroup("")]
     public ElementAnimationBlueprint Animations;
 
     private Color GetSequencingTypeColor()

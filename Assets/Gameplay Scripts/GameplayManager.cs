@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -86,6 +88,8 @@ public class GameplayManager : MonoBehaviour
 
         letter.ToggleContainer(true);
         letter.ChangeColor(true);
+        SoundManager.PlaySound("Input", letter.transform.position);
+
         usedLetters.Add(letter);
         int index = usedLetters.Count - 1;
         GuessManager.AddLetter(letter.GuessLetter, index);
@@ -98,6 +102,7 @@ public class GameplayManager : MonoBehaviour
         BankLetter lastLetter = usedLetters[^1];
         lastLetter.ToggleContainer(false);
         lastLetter.ChangeColor(false);
+        SoundManager.PlaySound("RemoveInput", lastLetter.transform.position);
         usedLetters.RemoveAt(usedLetters.Count - 1);
         lastLetter.ResetGuessLetterToBankLetterTransform();
     }
@@ -164,6 +169,7 @@ public class GameplayManager : MonoBehaviour
     {
         Data.UpdateLevelData(GetGuess());
 
+        SoundManager.PlaySound("RightAnswer", transform.position);
         yield return GuessManager.CorrectGuessAnimation();
         yield return AnswerManager.OnNewAnswer(usedLetters);
 
@@ -178,6 +184,7 @@ public class GameplayManager : MonoBehaviour
 
     public IEnumerator PlayMistakeAnimation()
     {
+        SoundManager.PlaySound("WrongAnswer", transform.position);
         yield return GuessManager.MistakeAnimation();
     }
 

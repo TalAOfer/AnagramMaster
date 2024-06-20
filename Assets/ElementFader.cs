@@ -98,8 +98,9 @@ public class ElementFader : MonoBehaviour
         CreateSequence(AnimData.StartMenuToGameplayBlueprint).Play();
     }
 
-[Button]
-    public void TestWinning(){
+    [Button]
+    public void TestWinning()
+    {
         Sequence sequence = CreateSequence(AnimData.GameplayToWinningBlueprintOut);
         sequence.Append(CreateSequence(AnimData.GameplayToWinningBlueprintIn));
         sequence.Play();
@@ -194,12 +195,12 @@ public class ElementFader : MonoBehaviour
         foreach (FaderTween tween in blueprint.FadeSequence)
         {
             Sequence childSequence = FadeGroup(tween);
-            
+
             if (tween.SequencingType is SequencingType.Append)
             {
                 sequence.Append(childSequence);
-            } 
-            
+            }
+
             else
             {
                 sequence.Join(childSequence);
@@ -367,6 +368,11 @@ public class ElementFader : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
 
         sequence.AppendInterval(blueprint.PreDelay);
+        
+        if (blueprint.SoundName != "")
+        {
+            sequence.AppendCallback(() => SoundManager.PlaySound(blueprint.SoundName, Vector3.zero));
+        }
 
         if (blueprint.Fade is Fade.In)
         {
@@ -380,16 +386,16 @@ public class ElementFader : MonoBehaviour
         }
 
         sequence.Append(element.CanvasGroup.DOFade(blueprint.Fade is Fade.In ? 1 : 0, blueprint.Duration).SetEase(blueprint.Ease));
-        
-        foreach(ElementAnimation elementAnimation in blueprint.Animations.Value)
+
+        foreach (ElementAnimation elementAnimation in blueprint.Animations.Value)
         {
             Sequence animationSequence = elementAnimation.GetAnimationSequence(element.RectTransform);
 
             if (elementAnimation.sequencingType is SequencingType.Append)
             {
                 sequence.Append(animationSequence);
-            } 
-            
+            }
+
             else
             {
                 sequence.Join(animationSequence);
@@ -399,7 +405,7 @@ public class ElementFader : MonoBehaviour
         if (blueprint.Fade is Fade.Out)
         {
             sequence.AppendCallback(() => element.gameObject.SetActive(false));
-            
+
             if (blueprint.TransluscentSwitch != TransluscentSwitch.None)
             {
                 sequence.AppendCallback(() => SwitchTransluscentType(blueprint.TransluscentSwitch));

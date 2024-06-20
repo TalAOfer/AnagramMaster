@@ -103,6 +103,7 @@ public class WinningManager : MonoBehaviour
         yield return fader.FadeInGameplayToWinning();
 
         slider.DOValue(0.96f, AnimationData.sliderFillDuration).SetEase(AnimationData.sliderFillEase);
+        SoundManager.PlaySound("WinningCollectibleBarFill", Vector3.zero);
 
         switch (nextLevelData.NextLevelType)
         {
@@ -120,6 +121,7 @@ public class WinningManager : MonoBehaviour
     public void OnCollectibleCollected()
     {
         biomeCurrentCollectibleAmount += 1;
+        SoundManager.PlaySound("WinningCollectibleCollected", Vector3.zero);
         UpdateCollectibleCountText();
         BiomeCurrentCollectibleAmountTweener.TriggerTween(AnimationData.BiomeCurrentCollectibleAmountAnimation);
 

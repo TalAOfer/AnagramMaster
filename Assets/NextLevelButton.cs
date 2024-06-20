@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NextLevelButton : MonoBehaviour
 {
+    [SerializeField] private Button button;
     [SerializeField] private ElementFader fader;
     [SerializeField] private bool fromWinning;
     [SerializeField] private TextMeshProUGUI Tmp;
@@ -16,10 +18,13 @@ public class NextLevelButton : MonoBehaviour
     public void Initialize()
     {
         Tmp.text = "Level " + (Data.OverallLevelIndex + 1).ToString();
+        button.enabled = true;
     }
 
     public void OnClick()
     {
+        button.enabled = false;
+        SoundManager.PlaySound("ButtonClick", transform.position);
         StartCoroutine(ClickSequence());
     }
 
