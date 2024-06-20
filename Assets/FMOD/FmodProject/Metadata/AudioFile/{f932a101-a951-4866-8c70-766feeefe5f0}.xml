@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f932a101-a951-4866-8c70-766feeefe5f0}">
+		<property name="assetPath">
+			<value>bb_oneshot_foley_mid_drink_brsh.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.6772335600907029</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{87d1a342-ed76-4a5f-ae6b-f73f026b8a64}</destination>
+		</relationship>
+	</object>
+</objects>

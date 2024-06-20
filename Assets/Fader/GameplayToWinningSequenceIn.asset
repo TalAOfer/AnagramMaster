@@ -32,7 +32,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 14
-    SoundName: 
+    SoundName: LevelComplete
     Animations:
       Value:
       - AnimationType: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 15
-    SoundName: LevelComplete
+    SoundName: 
     Animations:
       Value:
       - AnimationType: 1
