@@ -81,6 +81,12 @@ public class ElementFader : MonoBehaviour
     [SerializeField] private TweenableElement W_Button;
 
     [FoldoutGroup("Elements")]
+    [SerializeField] private TweenableElement W_AreaImage;
+
+    [FoldoutGroup("Elements")]
+    [SerializeField] private TweenableElement W_ExtraText;
+
+    [FoldoutGroup("Elements")]
     [SerializeField] private TweenableElement G_BG_Secondary;
     public Image CurrentInactiveGameplayBackground { get { return G_BG_Secondary.GetComponent<Image>(); } }
 
@@ -123,6 +129,34 @@ public class ElementFader : MonoBehaviour
     public void WinningToGameplay()
     {
         CreateSequence(AnimData.WinningToGameplayBlueprint).Play();
+    }
+
+    public IEnumerator PlayRegularEndOfWinningSequence()
+    {
+        Sequence sequence = CreateSequence(AnimData.WinningRegularEndingSequence);
+
+        yield return sequence.WaitForCompletion();
+    }
+
+    public IEnumerator PlayNewAreaWinningSequence()
+    {
+        Sequence sequence = CreateSequence(AnimData.WinningNewAreaSequence);
+
+        yield return sequence.WaitForCompletion();
+    }
+
+    public IEnumerator PlayNewBiomeWinningSequence()
+    {
+        Sequence sequence = CreateSequence(AnimData.WinningNewBiomeSequence);
+
+        yield return sequence.WaitForCompletion();
+    }
+
+    public IEnumerator PlayFinishedGameWinningSequence()
+    {
+        Sequence sequence = CreateSequence(AnimData.WinningFinishedGameSequence);
+
+        yield return sequence.WaitForCompletion();
     }
 
 
@@ -182,6 +216,10 @@ public class ElementFader : MonoBehaviour
                 TweenableElement secondaryBG = G_BG_Secondary;
                 (G_BG, G_BG_Secondary) = (G_BG_Secondary, G_BG);
                 return secondaryBG;
+            case GameVisualElement.W_ExtraText:
+                return W_ExtraText;
+            case GameVisualElement.W_AreaImage:
+                return W_AreaImage;
             default:
                 throw new ArgumentException("Invalid GameVisualElement");
         }

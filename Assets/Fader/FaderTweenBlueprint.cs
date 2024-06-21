@@ -67,6 +67,8 @@ public enum GameVisualElement
     W_BiomeBar,
     W_Button,
     G_BG_Secondary,
+    W_ExtraText,
+    W_AreaImage,
 }
 
 public enum Fade

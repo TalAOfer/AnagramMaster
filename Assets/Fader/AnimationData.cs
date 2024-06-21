@@ -20,6 +20,14 @@ public class AnimationData : ScriptableObject
     public FaderTweenBlueprint GameplayToWinningBlueprintIn;
     [FoldoutGroup("Transition Sequences")]
     public FaderTweenBlueprint WinningToGameplayBlueprint;
+    [FoldoutGroup("Transition Sequences")]
+    public FaderTweenBlueprint WinningRegularEndingSequence;
+    [FoldoutGroup("Transition Sequences")]
+    public FaderTweenBlueprint WinningNewAreaSequence;
+    [FoldoutGroup("Transition Sequences")]
+    public FaderTweenBlueprint WinningNewBiomeSequence;
+    [FoldoutGroup("Transition Sequences")]
+    public FaderTweenBlueprint WinningFinishedGameSequence;
 
     [FoldoutGroup("Gameplay")]
     [Title("Answer Addition")]
@@ -52,5 +60,7 @@ public class AnimationData : ScriptableObject
     public TweenBlueprint TotalCollectibleImageAnimation;
     [FoldoutGroup("Winning")]
     public float TotalCollectibleImageUpscaleAmount = 1.1f;
+    [FoldoutGroup("Winning")]
+    public float NewBiomeImageUpscale = 1.25f;
 
 }

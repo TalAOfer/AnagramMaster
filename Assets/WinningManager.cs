@@ -11,6 +11,7 @@ public class WinningManager : MonoBehaviour
     [SerializeField] private GameDataManager gameDataManager;
     [SerializeField] private ElementFader fader;
     [SerializeField] private NextLevelButton nextLevelButton;
+    [SerializeField] private TextMeshProUGUI extraText;
 
     [FoldoutGroup("Level Bar")]
     [SerializeField] private TextMeshProUGUI levelText;
@@ -38,6 +39,13 @@ public class WinningManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI BiomeCurrentCollectibleAmountText;
     [FoldoutGroup("Biome Bar")]
     [SerializeField] private Tweener BiomeCurrentCollectibleAmountTweener;
+
+    [FoldoutGroup("New Area Image")]
+    [SerializeField] private RectTransform NewAreaContainer;
+    [FoldoutGroup("New Area Image")]
+    [SerializeField] private Image NewAreaImage;
+    [FoldoutGroup("New Area Image")]
+    [SerializeField] private Image NewAreaContainerImage;
 
     private int biomeCurrentCollectibleAmount;
     private int biomeTotalCollectibleAmount;
@@ -104,16 +112,34 @@ public class WinningManager : MonoBehaviour
 
         slider.DOValue(0.96f, AnimationData.sliderFillDuration).SetEase(AnimationData.sliderFillEase);
         SoundManager.PlaySound("WinningCollectibleBarFill", Vector3.zero);
+        BiomeArea area = BiomeBank.GetArea(Data.IndexHierarchy);
+        LevelBlueprint level = BiomeBank.GetLevel(Data.IndexHierarchy);
 
         switch (nextLevelData.NextLevelType)
         {
             case NextLevelEvent.None:
+                yield return fader.PlayRegularEndOfWinningSequence();
                 break;
             case NextLevelEvent.NewArea:
+                fader.CurrentInactiveGameplayBackground.sprite = area.Sprite;
+                NewAreaContainer.localScale = Vector3.one;
+                NewAreaImage.sprite = area.Sprite;
+                NewAreaContainerImage.color = level.containerBG;
+                extraText.text = "New Area Unlocked!";
+                yield return fader.PlayNewAreaWinningSequence();
                 break;
             case NextLevelEvent.NewBiome:
+                fader.CurrentInactiveGameplayBackground.sprite = area.Sprite;
+                NewAreaContainer.localScale = Vector3.one * AnimationData.NewBiomeImageUpscale;
+                NewAreaImage.sprite = area.Sprite;
+                NewAreaContainerImage.color = level.containerBG;
+                NewAreaImage.sprite = BiomeBank.GetArea(Data.IndexHierarchy).Sprite;
+                extraText.text = "New Destination Unlocked!";
+                yield return fader.PlayNewBiomeWinningSequence();
                 break;
             case NextLevelEvent.FinishedGame:
+                extraText.text = "You finished the game, \n New levels soon!";
+                yield return fader.PlayFinishedGameWinningSequence();
                 break;
         }
     }
