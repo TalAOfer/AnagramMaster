@@ -12,4 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0effd7e2baaf35745a3ca98e212aed14, type: 3}
   m_Name: Winning Regular Ending Sequence
   m_EditorClassIdentifier: 
-  FadeSequence: []
+  FadeSequence:
+  - Element: 21
+    SequencingType: 0
+    Fade: 0
+    TransluscentSwitch: 0
+    Duration: 1
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []

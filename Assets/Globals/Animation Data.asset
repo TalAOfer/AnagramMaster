@@ -19,6 +19,10 @@ MonoBehaviour:
   GameplayToWinningBlueprintOut: {fileID: 11400000, guid: 21d97bb66e7790b4380dfb025c707684, type: 2}
   GameplayToWinningBlueprintIn: {fileID: 11400000, guid: d5ad132250054734aa3645ae77846323, type: 2}
   WinningToGameplayBlueprint: {fileID: 11400000, guid: 006650eda1550f1409e5235c276a3b27, type: 2}
+  WinningRegularEndingSequence: {fileID: 11400000, guid: e1914d9a3cbad104aa41ba7fc7e94b6d, type: 2}
+  WinningNewAreaSequence: {fileID: 11400000, guid: 9fb8a08a50627a249832634f5effb6fe, type: 2}
+  WinningNewBiomeSequence: {fileID: 11400000, guid: c711b346eba2961428c75af85fd2b797, type: 2}
+  WinningFinishedGameSequence: {fileID: 11400000, guid: f897fc90a5a12ef47955e9e410c4da75, type: 2}
   answerAnimDuration: 0.5
   answerAnimEase: 6
   postAnswerAnimDelay: 0
@@ -31,3 +35,4 @@ MonoBehaviour:
   BiomeCurrentCollectibleAmountAnimation: {fileID: 11400000, guid: 24704cad5f186bc419bfc13724ddc5eb, type: 2}
   TotalCollectibleImageAnimation: {fileID: 11400000, guid: e02061f4fb368cd4cb39b72bca31fb1c, type: 2}
   TotalCollectibleImageUpscaleAmount: 1.05
+  NewBiomeImageUpscale: 1.25

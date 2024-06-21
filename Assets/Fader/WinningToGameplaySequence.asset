@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FadeSequence:
   - Element: 9
-    SequencingType: 1
+    SequencingType: 0
     Fade: 1
     TransluscentSwitch: 0
     Duration: 0.5
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 10
@@ -31,6 +32,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 11
@@ -41,6 +43,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 12
@@ -51,6 +54,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 13
@@ -61,6 +65,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 15
@@ -71,6 +76,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 16
@@ -81,6 +87,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 17
@@ -91,16 +98,18 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 18
-    SequencingType: 0
+    SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
     Duration: 0.5
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 19
@@ -111,6 +120,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 20
@@ -121,6 +131,29 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 24
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 23
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 21
@@ -131,6 +164,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 0
@@ -141,6 +175,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 8
@@ -151,6 +186,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 22
@@ -161,6 +197,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 4
@@ -171,6 +208,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 5
@@ -181,6 +219,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 6
@@ -191,6 +230,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 7
@@ -201,5 +241,6 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []

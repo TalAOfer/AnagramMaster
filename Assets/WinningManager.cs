@@ -110,8 +110,8 @@ public class WinningManager : MonoBehaviour
 
         yield return fader.FadeInGameplayToWinning();
 
-        slider.DOValue(0.96f, AnimationData.sliderFillDuration).SetEase(AnimationData.sliderFillEase);
         SoundManager.PlaySound("WinningCollectibleBarFill", Vector3.zero);
+        yield return slider.DOValue(0.96f, AnimationData.sliderFillDuration).SetEase(AnimationData.sliderFillEase).WaitForCompletion();
         BiomeArea area = BiomeBank.GetArea(Data.IndexHierarchy);
         LevelBlueprint level = BiomeBank.GetLevel(Data.IndexHierarchy);
 

@@ -180,7 +180,7 @@ MonoBehaviour:
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0
-    Duration: 0.5
+    Duration: 0.4
     PostDelay: 0
     PreDelay: 0
     Ease: 27
@@ -233,14 +233,3 @@ MonoBehaviour:
         Direction: {x: 0, y: 0}
         PostDelay: 0
         PreDelay: 0
-  - Element: 21
-    SequencingType: 0
-    Fade: 0
-    TransluscentSwitch: 0
-    Duration: 1
-    PostDelay: 0
-    PreDelay: 0
-    Ease: 0
-    SoundName: 
-    Animations:
-      Value: []

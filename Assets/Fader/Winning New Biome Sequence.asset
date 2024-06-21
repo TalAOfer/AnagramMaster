@@ -12,4 +12,158 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0effd7e2baaf35745a3ca98e212aed14, type: 3}
   m_Name: Winning New Biome Sequence
   m_EditorClassIdentifier: 
-  FadeSequence: []
+  FadeSequence:
+  - Element: 9
+    SequencingType: 0
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 10
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 11
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 12
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 13
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 15
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 16
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 17
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 18
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 19
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 20
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 24
+    SequencingType: 0
+    Fade: 0
+    TransluscentSwitch: 0
+    Duration: 1
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 23
+    SequencingType: 0
+    Fade: 0
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 21
+    SequencingType: 0
+    Fade: 0
+    TransluscentSwitch: 0
+    Duration: 1
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []

@@ -76,10 +76,10 @@
 	</object>
 	<object class="SingleSound" id="{e1d38cf4-cfc5-4802-8dfd-48addc79dfcc}">
 		<property name="length">
-			<value>1.6719954648526074</value>
+			<value>1.6435797783809756</value>
 		</property>
 		<property name="timelockedOffset">
-			<value>0.30000000000000004</value>
+			<value>0.32841568647163288</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{5e3378f2-0328-4e07-a41d-df52183aa060}</destination>
