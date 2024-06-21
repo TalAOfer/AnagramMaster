@@ -278,6 +278,8 @@ public class ElementFader : MonoBehaviour
         ToggleElement(W_BiomeText, false);
         ToggleElement(W_BiomeBar, false);
         ToggleElement(W_Button, false);
+        ToggleElement(W_AreaImage, false);
+        ToggleElement(W_ExtraText, false);
     }
 
     [Button]
@@ -306,6 +308,8 @@ public class ElementFader : MonoBehaviour
         ToggleElement(W_BiomeText, false);
         ToggleElement(W_BiomeBar, false);
         ToggleElement(W_Button, false);
+        ToggleElement(W_AreaImage, false);
+        ToggleElement(W_ExtraText, false);
     }
 
     [Button]
@@ -334,6 +338,8 @@ public class ElementFader : MonoBehaviour
         ToggleElement(W_BiomeText, false);
         ToggleElement(W_BiomeBar, false);
         ToggleElement(W_Button, false);
+        ToggleElement(W_AreaImage, false);
+        ToggleElement(W_ExtraText, false);
     }
 
     [Button]
