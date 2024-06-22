@@ -75,10 +75,13 @@ public class WinningManager : MonoBehaviour
 
         //Check for a next-level-event (New biome? New Area?)
         nextLevelData = BiomeBank.GetNextLevelData(Data.IndexHierarchy);
+        nextLevelButton.Initialize(nextLevelData);
 
         //Load next level
-        gameDataManager.LoadNextLevel();
-        nextLevelButton.Initialize();
+        if (nextLevelData.NextLevelType is not NextLevelEvent.FinishedGame)
+        {
+            gameDataManager.LoadNextLevel();
+        }
     }
 
     private void InitializeCollectibles(int collectibleAmount, Biome currentBiome)

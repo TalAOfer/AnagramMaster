@@ -19,7 +19,9 @@ public class AnimationData : ScriptableObject
     [FoldoutGroup("Transition Sequences")]
     public FaderTweenBlueprint GameplayToWinningBlueprintIn;
     [FoldoutGroup("Transition Sequences")]
-    public FaderTweenBlueprint WinningToGameplayBlueprint;
+    public FaderTweenBlueprint WinningToGameplayNormalSequence;
+    [FoldoutGroup("Transition Sequences")]
+    public FaderTweenBlueprint WinningToGameplayNewAreaSequence;
     [FoldoutGroup("Transition Sequences")]
     public FaderTweenBlueprint WinningRegularEndingSequence;
     [FoldoutGroup("Transition Sequences")]
@@ -28,6 +30,9 @@ public class AnimationData : ScriptableObject
     public FaderTweenBlueprint WinningNewBiomeSequence;
     [FoldoutGroup("Transition Sequences")]
     public FaderTweenBlueprint WinningFinishedGameSequence;
+    [FoldoutGroup("Transition Sequences")]
+    public FaderTweenBlueprint WinningToStartMenuSequence;
+
 
     [FoldoutGroup("Gameplay")]
     [Title("Answer Addition")]

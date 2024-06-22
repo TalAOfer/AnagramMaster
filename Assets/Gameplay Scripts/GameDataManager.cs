@@ -35,7 +35,11 @@ public class GameDataManager : MonoBehaviour
 
         else if (Data.Value.DidFinish)
         {
-            LoadNextLevel();
+            NextLevelData nextLevelData = BiomeBank.GetNextLevelData(Data.Value.IndexHierarchy);
+            if (nextLevelData.NextLevelType is not NextLevelEvent.FinishedGame)
+            {
+                LoadNextLevel();
+            }
         }
 
         OnDataInitialized.Raise();

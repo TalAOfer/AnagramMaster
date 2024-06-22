@@ -19,4 +19,4 @@ MonoBehaviour:
     Levels:
     - {fileID: 11400000, guid: ca9db24b0db723641bb42de2ff7aed84, type: 2}
     - {fileID: 11400000, guid: b250f67134ffac341b3009c7101fd9e3, type: 2}
-    LetterContainerBGColor: {r: 0.252, g: 0.489, b: 0.34399152, a: 0}
+    LetterContainerBGColor: {r: 0.252, g: 0.489, b: 0.34399152, a: 1}

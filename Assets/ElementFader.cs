@@ -104,6 +104,11 @@ public class ElementFader : MonoBehaviour
         CreateSequence(AnimData.StartMenuToGameplayBlueprint).Play();
     }
 
+    public void FadeWinningNewAreaToGameplay()
+    {
+        CreateSequence(AnimData.WinningToGameplayNewAreaSequence).Play();
+    }
+
     [Button]
     public void TestWinning()
     {
@@ -128,7 +133,12 @@ public class ElementFader : MonoBehaviour
 
     public void WinningToGameplay()
     {
-        CreateSequence(AnimData.WinningToGameplayBlueprint).Play();
+        CreateSequence(AnimData.WinningToGameplayNormalSequence).Play();
+    }
+
+    public void WinningToStartMenu()
+    {
+        CreateSequence(AnimData.WinningToStartMenuSequence).Play();
     }
 
     public IEnumerator PlayRegularEndOfWinningSequence()
