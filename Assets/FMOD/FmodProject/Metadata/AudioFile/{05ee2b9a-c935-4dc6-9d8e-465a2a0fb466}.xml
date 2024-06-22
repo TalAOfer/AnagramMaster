@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{05ee2b9a-c935-4dc6-9d8e-465a2a0fb466}">
+		<property name="assetPath">
+			<value>ESM_Cloth_Towel_13_Clothing_Textile_Texture_Source_Foley_Household.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>192</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.81251562499999996</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{87d1a342-ed76-4a5f-ae6b-f73f026b8a64}</destination>
+		</relationship>
+	</object>
+</objects>

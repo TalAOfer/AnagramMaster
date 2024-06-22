@@ -65,7 +65,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
-    SoundName: 
+    SoundName: NewArea
     Animations:
       Value: []
   - Element: 23

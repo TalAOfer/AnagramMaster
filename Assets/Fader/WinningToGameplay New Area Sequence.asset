@@ -185,7 +185,7 @@ MonoBehaviour:
     Duration: 1
     PostDelay: 0
     PreDelay: 0
-    Ease: 0
+    Ease: 9
     SoundName: 
     Animations:
       Value: []
@@ -193,10 +193,10 @@ MonoBehaviour:
     SequencingType: 1
     Fade: 0
     TransluscentSwitch: 0
-    Duration: 0.8
+    Duration: 1
     PostDelay: 0
     PreDelay: 0
-    Ease: 0
+    Ease: 9
     SoundName: 
     Animations:
       Value: []

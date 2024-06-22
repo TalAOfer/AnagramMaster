@@ -17,10 +17,10 @@ MonoBehaviour:
     SequencingType: 0
     Fade: 1
     TransluscentSwitch: 0
-    Duration: 1
+    Duration: 1.5
     PostDelay: 0
     PreDelay: 0
-    Ease: 0
+    Ease: 9
     SoundName: 
     Animations:
       Value: []
@@ -28,10 +28,10 @@ MonoBehaviour:
     SequencingType: 1
     Fade: 0
     TransluscentSwitch: 0
-    Duration: 1
+    Duration: 1.5
     PostDelay: 0
     PreDelay: 0
-    Ease: 0
+    Ease: 9
     SoundName: 
     Animations:
       Value: []
@@ -164,7 +164,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
-    SoundName: 
+    SoundName: NewBiome
     Animations:
       Value: []
   - Element: 23

@@ -70,7 +70,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
-    SoundName: 
+    SoundName: UIfloomp
     Animations:
       Value:
       - AnimationType: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 0
-    SoundName: 
+    SoundName: UIflag
     Animations:
       Value:
       - AnimationType: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 12
-    SoundName: 
+    SoundName: UIarrive
     Animations:
       Value:
       - AnimationType: 1
@@ -165,7 +165,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 5
-    SoundName: 
+    SoundName: UIpop
     Animations:
       Value:
       - AnimationType: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 27
-    SoundName: 
+    SoundName: UIpop 2
     Animations:
       Value:
       - AnimationType: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 5
-    SoundName: 
+    SoundName: UIpop
     Animations:
       Value:
       - AnimationType: 0
@@ -222,7 +222,7 @@ MonoBehaviour:
     PostDelay: 0
     PreDelay: 0
     Ease: 27
-    SoundName: 
+    SoundName: UIpop 2
     Animations:
       Value:
       - AnimationType: 0
