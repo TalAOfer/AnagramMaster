@@ -13,8 +13,30 @@ MonoBehaviour:
   m_Name: Winning New Biome Sequence
   m_EditorClassIdentifier: 
   FadeSequence:
-  - Element: 9
+  - Element: 8
     SequencingType: 0
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 1
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 22
+    SequencingType: 1
+    Fade: 0
+    TransluscentSwitch: 0
+    Duration: 1
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
+  - Element: 9
+    SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
     Duration: 0.5

@@ -15,29 +15,35 @@ MonoBehaviour:
   FadeSequence:
   - Element: 0
     SequencingType: 0
-    TransluscentSwitch: 2
     Fade: 0
+    TransluscentSwitch: 2
     Duration: 0.7
     PostDelay: 0
+    PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 1
     SequencingType: 0
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.5
     PostDelay: 0
+    PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value: []
   - Element: 2
     SequencingType: 0
-    TransluscentSwitch: 0
     Fade: 0
+    TransluscentSwitch: 0
     Duration: 0.5
     PostDelay: 0
+    PreDelay: 0
     Ease: 0
+    SoundName: 
     Animations:
       Value:
       - AnimationType: 1
@@ -47,3 +53,4 @@ MonoBehaviour:
         Amount: 50
         Direction: {x: 0, y: 1}
         PostDelay: 0
+        PreDelay: 0
