@@ -16,7 +16,7 @@ public class GameDataManager : MonoBehaviour
         SaveNewData(data);
     }
 
-    public void Awake()
+    public void Start()
     {
         InitializeData();
     }
@@ -62,5 +62,20 @@ public class GameDataManager : MonoBehaviour
     {
         SaveSystem.Save(newGameData);
         Data.Value = newGameData;
+    }
+
+    [Button]
+    public void SetToLevel(int index)
+    {
+        int levelIndex = index - 1;
+        LevelIndexHierarchy indicesHierarchy = BiomeBank.GetLevelIndexHierarchyWithTotalIndex(levelIndex);
+        LevelBlueprint level = BiomeBank.GetLevel(indicesHierarchy);
+        GameData newGameData = new(indicesHierarchy, level)
+        {
+            OverallLevelIndex = levelIndex
+        };
+
+        SaveNewData(newGameData);
+        InitializeData();
     }
 }

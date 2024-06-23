@@ -29,6 +29,8 @@ MonoBehaviour:
   answerAnimEase: 6
   postAnswerAnimDelay: 0
   gameplayCollectibleAnimation: {fileID: 11400000, guid: e6c74951d81f6cd4aa073ac957dbe210, type: 2}
+  pluralWrongAnswerColor: {r: 0.735849, g: 0.15619439, b: 0.15619439, a: 1}
+  answerHistoryMistakeAnimBlueprint: {fileID: 11400000, guid: 320538f27c0566c4284ae76b43c31176, type: 2}
   guessMistakeAnimBlueprint: {fileID: 11400000, guid: 0317bc9d8ebc6e548b2faa70ddc59b9f, type: 2}
   correctGuessAnimaDelayBetweenLetters: 0.15
   postCorrectGuessAnimDelay: 0

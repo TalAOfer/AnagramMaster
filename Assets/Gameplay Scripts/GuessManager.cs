@@ -82,10 +82,7 @@ public class GuessManager : MonoBehaviour
 
     public IEnumerator MistakeAnimation()
     {
-
-        tweener.TriggerTween(AnimData.guessMistakeAnimBlueprint);
-
-        yield return null;
+        yield return tweener.TriggerTween(AnimData.guessMistakeAnimBlueprint).WaitForCompletion();
     }
 
 

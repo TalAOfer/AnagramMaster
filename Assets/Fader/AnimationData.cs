@@ -43,7 +43,10 @@ public class AnimationData : ScriptableObject
     public float postAnswerAnimDelay = 0f;
     [FoldoutGroup("Gameplay")]
     public TweenBlueprint gameplayCollectibleAnimation;
-
+    [FoldoutGroup("Gameplay")]
+    public Color pluralWrongAnswerColor;
+    [FoldoutGroup("Gameplay")]
+    public TweenBlueprint answerHistoryMistakeAnimBlueprint;
     [FoldoutGroup("Gameplay")]
     [Title("Guess Containers")]
     public TweenBlueprint guessMistakeAnimBlueprint;

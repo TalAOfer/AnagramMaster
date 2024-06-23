@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class ElementFader : MonoBehaviour
 {
-    private AnimationData AnimData => AssetProvider.Instance.AnimationData;
+    [SerializeField] private AnimationData AnimData;
     [SerializeField] private TranslucentImageSource TranslucentSource;
 
     #region Elements
@@ -94,7 +94,8 @@ public class ElementFader : MonoBehaviour
 
     #region Transition Funcs 
 
-    private void Awake()
+
+    public void StartOpeningSequence()
     {
         CreateSequence(AnimData.IntroSequence).Play();
     }
@@ -261,6 +262,16 @@ public class ElementFader : MonoBehaviour
     #endregion
 
     #region Snap Funcs
+
+    [Button]
+    public void PopulateAllElementInnerVariables()
+    {
+        TweenableElement[] elements = FindObjectsOfType<TweenableElement>(true);
+        foreach(TweenableElement element in elements)
+        {
+            element.PopulateVariables();
+        }
+    }
 
     [Button]
     public void ResetToGameStart()

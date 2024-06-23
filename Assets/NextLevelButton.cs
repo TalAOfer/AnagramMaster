@@ -15,27 +15,36 @@ public class NextLevelButton : MonoBehaviour
     [SerializeField] private TweenBlueprint buttonClickAnim;
     private NextLevelData nextLevelData;
     private GameData Data => AssetProvider.Instance.Data.Value;
+    private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
 
     public void Initialize(NextLevelData nextLevelData)
     {
-        string text;
+        string text = "";
         this.nextLevelData = nextLevelData;
 
         if (fromWinning)
         {
-            if (nextLevelData.NextLevelType is not NextLevelEvent.FinishedGame)
+            switch (nextLevelData.NextLevelType)
             {
-                text = "Level " + (Data.OverallLevelIndex + 2).ToString();
-            }
-
-            else 
-            {
-                text = "Thank You!"; 
+                case NextLevelEvent.None:
+                    text = "Level " + (Data.OverallLevelIndex + 2).ToString();
+                    break;
+                case NextLevelEvent.NewArea:
+                    text = "Level " + (Data.OverallLevelIndex + 2).ToString();
+                    break;
+                case NextLevelEvent.NewBiome:
+                    text = "To The " + (BiomeBank.Biomes[nextLevelData.LevelIndexHierarchy.Biome].name.ToString()) + "!";
+                    break;
+                case NextLevelEvent.FinishedGame:
+                    text = "Thank You!";
+                    break;
             }
         }
 
         else
         {
+            fader.CurrentActiveGameplayBackground.sprite = BiomeBank.GetArea(Data.IndexHierarchy).Sprite;
+
             bool finishedGame = nextLevelData.NextLevelType is NextLevelEvent.FinishedGame;
 
             if (finishedGame)

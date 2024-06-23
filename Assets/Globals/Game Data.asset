@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: Game Data
   m_EditorClassIdentifier: 
   Value:
-    IsInitialized: 0
-    OverallLevelIndex: 0
-    BiomeIndex: 0
+    IsInitialized: 1
+    OverallLevelIndex: 7
+    BiomeIndex: 1
     AreaIndex: 0
-    LevelIndex: 0
-    CurrentLetters: 
+    LevelIndex: 1
+    CurrentLetters: RAELYP
     NextLetters: []
-    CorrectAnswers: []
+    CorrectAnswers:
+    - ERA
+    - REAL
+    - LAYER
+    - PLAYER
+    DidFinish: 1

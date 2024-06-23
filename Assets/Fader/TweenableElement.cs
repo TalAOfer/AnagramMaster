@@ -1,20 +1,38 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
 public class TweenableElement : MonoBehaviour
 {
-    public RectTransform RectTransform {  get; private set; }
-    public CanvasGroup CanvasGroup { get; private set; }
-    private void OnValidate()
+    [SerializeField] private RectTransform rectTransform;
+    public RectTransform RectTransform { get { return GetRectTransform(); } }
+
+    [SerializeField] private CanvasGroup canvasGroup;
+    public CanvasGroup CanvasGroup { get { return GetCanvasGroup(); } }
+
+    public void PopulateVariables()
     {
-        if (RectTransform == null)
+        rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    public RectTransform GetRectTransform()
+    {
+        if (rectTransform == null)
         {
-            RectTransform = GetComponent<RectTransform>();
+            rectTransform = GetComponent<RectTransform>();
         }
 
-        if (CanvasGroup == null)
+        return rectTransform;
+    }
+
+    public CanvasGroup GetCanvasGroup()
+    {
+        if (canvasGroup == null)
         {
-            CanvasGroup = GetComponent<CanvasGroup>();
+            canvasGroup = GetComponent<CanvasGroup>();
         }
+
+        return canvasGroup;
     }
 }

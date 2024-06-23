@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -24,6 +22,7 @@ public class GameplayManager : MonoBehaviour
 
     private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
     private GameData Data => AssetProvider.Instance.Data.Value;
+    private AnimationData AnimationData => AssetProvider.Instance.AnimationData;
 
     public void Initialize()
     {
@@ -135,18 +134,49 @@ public class GameplayManager : MonoBehaviour
 
         if (Data.CurrentLetters.Length == usedLetters.Count)
         {
-            if (IsFoundInDictionary(GetGuess()))
+            string guess = GetGuess();
+            if (IsFoundInDictionary(guess))
             {
-                yield return OnCorrectGuess();
-
-                if (lastWordInLevel)
+                if (IsSameWordWithS(guess))
                 {
-                    //Do wave
-                    yield return new WaitForSeconds(0.25f);
-                    winningManager.Initialize();
-                    yield return winningManager.WinningRoutine();
-                    yield break;
+                    BankLetter firstLetter = usedLetters[0];
+                    Color guessColor = firstLetter.GuessLetter.Tmp.color;
+                    Color answerColor = firstLetter.GuessLetter.AnswerLetter.Tmp.color;
+
+                    for (int i = 0; i < usedLetters.Count; i++)
+                    {
+                        BankLetter letter = usedLetters[i];
+                        letter.GuessLetter.AnswerLetter.Tmp.color = AnimationData.pluralWrongAnswerColor;
+                        bool isLast = (i == usedLetters.Count - 1);
+                        if (!isLast) letter.GuessLetter.Tmp.color = AnimationData.pluralWrongAnswerColor;
+                    }
+                    
+                    StartCoroutine(AnswerManager.PlayMistakeAnimation());
+                    yield return PlayMistakeAnimation();
+                    
+                    for (int i = 0; i < usedLetters.Count; i++)
+                    {
+                        BankLetter letter = usedLetters[i];
+                        letter.GuessLetter.AnswerLetter.Tmp.color = answerColor;
+                        bool isLast = (i == usedLetters.Count - 1);
+                        if (!isLast) letter.GuessLetter.Tmp.color =  guessColor;
+                    }
+
                 }
+                else
+                {
+                    yield return OnCorrectGuess();
+
+                    if (lastWordInLevel)
+                    {
+                        //Do wave
+                        yield return new WaitForSeconds(0.25f);
+                        winningManager.Initialize();
+                        yield return winningManager.WinningRoutine();
+                        yield break;
+                    }
+                }
+
             }
 
             else
@@ -163,6 +193,22 @@ public class GameplayManager : MonoBehaviour
         usedLetters.Clear();
 
         _inputEnabled = true;
+    }
+
+    private bool IsSameWordWithS(string guess)
+    {
+        if (Data.CorrectAnswers.Count <= 0) return false;
+
+        string lastAnswer = Data.CorrectAnswers[^1];
+        if (lastAnswer.EndsWith("s")) return false;
+
+        string lastAnswerWithS = lastAnswer + "s";
+        if (guess.ToUpper() == lastAnswerWithS.ToUpper())
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public IEnumerator OnCorrectGuess()

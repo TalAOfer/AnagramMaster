@@ -7,6 +7,7 @@ public class AnswerManager : MonoBehaviour
 {
     [SerializeField] private List<RectTransform> PremadeAnswerContainers;
     [SerializeField] private LetterBank letterBank;
+    [SerializeField] private Tweener tweener;
     private AnimationData AnimData => AssetProvider.Instance.AnimationData;
     private GameData Data => AssetProvider.Instance.Data.Value;
 
@@ -26,8 +27,8 @@ public class AnswerManager : MonoBehaviour
                 answerLetter.SetUsed(true);
                 answerLetter.Rect.SetParent(container);
                 answerLetter.ResetTransformToZero();
-            } 
-            
+            }
+
             else
             {
                 container.gameObject.SetActive(false);
@@ -80,5 +81,10 @@ public class AnswerManager : MonoBehaviour
 
         SoundManager.PlaySound("GuessHistoryShuffle", Vector3.zero);
         yield return sequence.Play().WaitForCompletion(); ;
+    }
+
+    public IEnumerator PlayMistakeAnimation()
+    {
+        yield return tweener.TriggerTween(AnimData.answerHistoryMistakeAnimBlueprint).WaitForCompletion();
     }
 }

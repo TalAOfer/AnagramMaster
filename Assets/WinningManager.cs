@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class WinningManager : MonoBehaviour
 {
     [SerializeField] private GameDataManager gameDataManager;
+    [SerializeField] private StartMenuManager startMenuManager;
     [SerializeField] private ElementFader fader;
     [SerializeField] private NextLevelButton nextLevelButton;
     [SerializeField] private TextMeshProUGUI extraText;
@@ -116,7 +117,6 @@ public class WinningManager : MonoBehaviour
         SoundManager.PlaySound("WinningCollectibleBarFill", Vector3.zero);
         yield return slider.DOValue(0.96f, AnimationData.sliderFillDuration).SetEase(AnimationData.sliderFillEase).WaitForCompletion();
         BiomeArea area = BiomeBank.GetArea(Data.IndexHierarchy);
-        LevelBlueprint level = BiomeBank.GetLevel(Data.IndexHierarchy);
 
         switch (nextLevelData.NextLevelType)
         {
@@ -127,21 +127,25 @@ public class WinningManager : MonoBehaviour
                 fader.CurrentInactiveGameplayBackground.sprite = area.Sprite;
                 NewAreaContainer.localScale = Vector3.one;
                 NewAreaImage.sprite = area.Sprite;
-                NewAreaContainerImage.color = level.containerBG;
+                NewAreaContainerImage.color = area.LetterContainerBGColor;
                 extraText.text = "New Area Unlocked!";
+                extraText.color = area.LetterContainerBGColor;
                 yield return fader.PlayNewAreaWinningSequence();
                 break;
             case NextLevelEvent.NewBiome:
                 fader.CurrentInactiveGameplayBackground.sprite = area.Sprite;
                 NewAreaContainer.localScale = Vector3.one * AnimationData.NewBiomeImageUpscale;
                 NewAreaImage.sprite = area.Sprite;
-                NewAreaContainerImage.color = level.containerBG;
+                NewAreaContainerImage.color = area.LetterContainerBGColor;
                 NewAreaImage.sprite = BiomeBank.GetArea(Data.IndexHierarchy).Sprite;
-                extraText.text = "New Destination Unlocked!";
+                extraText.text = "New Destination Unlocked";
+                extraText.color = Color.white;
                 yield return fader.PlayNewBiomeWinningSequence();
                 break;
             case NextLevelEvent.FinishedGame:
+                startMenuManager.Initialize();
                 extraText.text = "You finished the game, \n New levels soon!";
+                extraText.color = Color.white;
                 yield return fader.PlayFinishedGameWinningSequence();
                 break;
         }
