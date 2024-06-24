@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class ElementFader : MonoBehaviour
 {
-    [SerializeField] private AnimationData AnimData;
+    private AnimationData AnimData => AssetProvider.Instance.AnimationData;
     [SerializeField] private TranslucentImageSource TranslucentSource;
 
     #region Elements
