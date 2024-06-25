@@ -10,6 +10,7 @@ public class ElementFader : MonoBehaviour
 {
     private AnimationData AnimData => AssetProvider.Instance.AnimationData;
     [SerializeField] private TranslucentImageSource TranslucentSource;
+    [SerializeField] private GameplayManager GameplayManager;
 
     #region Elements
 
@@ -20,7 +21,13 @@ public class ElementFader : MonoBehaviour
     [SerializeField] private TweenableElement S_BG;
 
     [FoldoutGroup("Elements")]
-    [SerializeField] private TweenableElement S_Logo;
+    [SerializeField] private TweenableElement S_Logo_Word;
+
+    [FoldoutGroup("Elements")]
+    [SerializeField] private TweenableElement S_Logo_Journey;
+
+    [FoldoutGroup("Elements")]
+    [SerializeField] private TweenableElement S_Logo_Backpacker;
 
     [FoldoutGroup("Elements")]
     [SerializeField] private TweenableElement S_Button;
@@ -102,7 +109,14 @@ public class ElementFader : MonoBehaviour
 
     public void FadeStartMenuToGameplay()
     {
-        CreateSequence(AnimData.StartMenuToGameplayBlueprint).Play();
+        StartCoroutine(StartMenuToGameplayRoutine());
+    }
+
+    public IEnumerator StartMenuToGameplayRoutine()
+    {
+        Sequence sequence = CreateSequence(AnimData.StartMenuToGameplayBlueprint).Play();
+        yield return sequence.WaitForCompletion();
+        StartCoroutine(GameplayManager.OnFadeInFinished());
     }
 
     public void FadeWinningNewAreaToGameplay()
@@ -183,8 +197,8 @@ public class ElementFader : MonoBehaviour
                 return TranslucentOverlay;
             case GameVisualElement.S_BG:
                 return S_BG;
-            case GameVisualElement.S_Logo:
-                return S_Logo;
+            case GameVisualElement.S_Logo_Word:
+                return S_Logo_Word;
             case GameVisualElement.S_Button:
                 return S_Button;
             case GameVisualElement.G_BG:
@@ -231,6 +245,10 @@ public class ElementFader : MonoBehaviour
                 return W_ExtraText;
             case GameVisualElement.W_AreaImage:
                 return W_AreaImage;
+            case GameVisualElement.S_Logo_Journey:
+                return S_Logo_Journey;
+            case GameVisualElement.S_Logo_Backpacker:
+                return S_Logo_Backpacker;
             default:
                 throw new ArgumentException("Invalid GameVisualElement");
         }
@@ -267,7 +285,7 @@ public class ElementFader : MonoBehaviour
     public void PopulateAllElementInnerVariables()
     {
         TweenableElement[] elements = FindObjectsOfType<TweenableElement>(true);
-        foreach(TweenableElement element in elements)
+        foreach (TweenableElement element in elements)
         {
             element.PopulateVariables();
         }
@@ -277,7 +295,9 @@ public class ElementFader : MonoBehaviour
     public void ResetToGameStart()
     {
         ToggleElement(S_BG, true);
-        ToggleElement(S_Logo, false);
+        ToggleElement(S_Logo_Word, false);
+        ToggleElement(S_Logo_Journey, false);
+        ToggleElement(S_Logo_Backpacker, false);
         ToggleElement(S_Button, false);
         ToggleElement(TranslucentOverlay, false);
 
@@ -307,7 +327,9 @@ public class ElementFader : MonoBehaviour
     public void ResetToStartMenu()
     {
         ToggleElement(S_BG, true);
-        ToggleElement(S_Logo, true);
+        ToggleElement(S_Logo_Word, true);
+        ToggleElement(S_Logo_Journey, true);
+        ToggleElement(S_Logo_Backpacker, true);
         ToggleElement(S_Button, true);
         ToggleElement(TranslucentOverlay, true);
 
@@ -344,7 +366,9 @@ public class ElementFader : MonoBehaviour
 
         ToggleElement(TranslucentOverlay, false);
         ToggleElement(S_BG, false);
-        ToggleElement(S_Logo, false);
+        ToggleElement(S_Logo_Word, false);
+        ToggleElement(S_Logo_Journey, false);
+        ToggleElement(S_Logo_Backpacker, false);
         ToggleElement(S_Button, false);
         ToggleElement(W_MainPanel, false);
         ToggleElement(W_Banner, false);
@@ -382,7 +406,9 @@ public class ElementFader : MonoBehaviour
 
         ToggleElement(TranslucentOverlay, false);
         ToggleElement(S_BG, false);
-        ToggleElement(S_Logo, false);
+        ToggleElement(S_Logo_Word, false);
+        ToggleElement(S_Logo_Journey, false);
+        ToggleElement(S_Logo_Backpacker, false);
         ToggleElement(S_Button, false);
         ToggleElement(G_BG, true);
         ToggleElement(G_TopPanel, false);
@@ -433,7 +459,7 @@ public class ElementFader : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
 
         sequence.AppendInterval(blueprint.PreDelay);
-        
+
         if (blueprint.SoundName != "")
         {
             sequence.AppendCallback(() => SoundManager.PlaySound(blueprint.SoundName, Vector3.zero));

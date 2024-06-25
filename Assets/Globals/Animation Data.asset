@@ -34,6 +34,10 @@ MonoBehaviour:
   guessMistakeAnimBlueprint: {fileID: 11400000, guid: 0317bc9d8ebc6e548b2faa70ddc59b9f, type: 2}
   correctGuessAnimaDelayBetweenLetters: 0.15
   postCorrectGuessAnimDelay: 0
+  swipeHandSwipeDuration: 0.5
+  swipeHandSwipeEase: 11
+  swipeHandFadeDuration: 0.4
+  swipeHandEndDelayDuration: 0.25
   sliderFillDuration: 2.5
   sliderFillEase: 13
   BiomeCurrentCollectibleAmountAnimation: {fileID: 11400000, guid: 24704cad5f186bc419bfc13724ddc5eb, type: 2}

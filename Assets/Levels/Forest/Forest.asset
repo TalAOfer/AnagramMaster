@@ -27,21 +27,15 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a9f61e805b4d1ab42abf91ed75ea7a87, type: 2}
     - {fileID: 11400000, guid: dda4037fa0caea046b1d798f99eda1a0, type: 2}
     LetterContainerBGColor: {r: 0.3372549, g: 0.43529415, b: 0.36078432, a: 1}
-  - Sprite: {fileID: 21300000, guid: 1497a8310732ce44697b1154027bbe77, type: 3}
+  - Sprite: {fileID: 21300000, guid: d3c8a7bcc9298ed4a9148fcd4f36f6ad, type: 3}
     Levels:
     - {fileID: 11400000, guid: ca9db24b0db723641bb42de2ff7aed84, type: 2}
     - {fileID: 11400000, guid: b250f67134ffac341b3009c7101fd9e3, type: 2}
     - {fileID: 11400000, guid: 2aa9dba1c90b3a345a3d1515b5797740, type: 2}
     LetterContainerBGColor: {r: 0.3372549, g: 0.43529415, b: 0.36078432, a: 1}
-  - Sprite: {fileID: 21300000, guid: d3c8a7bcc9298ed4a9148fcd4f36f6ad, type: 3}
+  - Sprite: {fileID: 21300000, guid: 8ef500592ce123242891a05b344417c9, type: 3}
     Levels:
     - {fileID: 11400000, guid: 19fd5ff371afc0745a9c17208e2a2a84, type: 2}
     - {fileID: 11400000, guid: 1f0aac1d3431ce04eb883b93c589c5a2, type: 2}
     - {fileID: 11400000, guid: 5cb3fd86e3f0db5479df559003fe0f92, type: 2}
-    LetterContainerBGColor: {r: 0.3372549, g: 0.43529415, b: 0.36078432, a: 1}
-  - Sprite: {fileID: 21300000, guid: 8ef500592ce123242891a05b344417c9, type: 3}
-    Levels:
-    - {fileID: 11400000, guid: a8c4bd05fcdea9743aaa70ac754a8955, type: 2}
-    - {fileID: 11400000, guid: c98be11b90c016f4ba280c1b8159d5bc, type: 2}
-    - {fileID: 11400000, guid: cbf3da60667574e4d83be9f391e48392, type: 2}
     LetterContainerBGColor: {r: 0.3372549, g: 0.43529415, b: 0.36078432, a: 1}

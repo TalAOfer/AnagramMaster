@@ -54,6 +54,14 @@ public class AnimationData : ScriptableObject
     public float correctGuessAnimaDelayBetweenLetters = 0.15f;
     [FoldoutGroup("Gameplay")]
     public float postCorrectGuessAnimDelay = 0f;
+    [FoldoutGroup("Gameplay")]
+    public float swipeHandSwipeDuration;
+    [FoldoutGroup("Gameplay")]
+    public Ease swipeHandSwipeEase;
+    [FoldoutGroup("Gameplay")]
+    public float swipeHandFadeDuration;
+    [FoldoutGroup("Gameplay")]
+    public float swipeHandEndDelayDuration;
 
     [FoldoutGroup("Winning")]
     [Title("Level Bar")]

@@ -16,7 +16,7 @@ public class LetterBank : MonoBehaviour
     private GameData Data => AssetProvider.Instance.Data.Value;
 
     [ShowInInspector]
-    private readonly List<BankLetterContainer> _activeContainers = new();
+    public List<BankLetterContainer> ActiveContainers { get; private set; } = new();
 
     [ShowInInspector]
     private readonly List<BankLetter> _activeLetters = new();
@@ -31,7 +31,7 @@ public class LetterBank : MonoBehaviour
         lineManager.Initialize(Data, levelColor);
 
         _activeLetters.Clear();
-        _activeContainers.Clear();
+        ActiveContainers.Clear();
 
         for (int i = 0; i < PremadeLetters.Count; i++)
         {
@@ -63,7 +63,7 @@ public class LetterBank : MonoBehaviour
     {
         BankLetterContainer container = PremadeContainers[index];
         container.gameObject.SetActive(true);
-        _activeContainers.Add(container);
+        ActiveContainers.Add(container);
         return container;
     }
 
@@ -94,13 +94,13 @@ public class LetterBank : MonoBehaviour
 
     private List<Vector2> GetContainersPositions()
     {
-        int containerCount = _activeContainers.Count;
+        int containerCount = ActiveContainers.Count;
         float angleStep = 360f / containerCount;
         float radius = circleTransform.sizeDelta.x / 3;
 
         List<Vector2> positions = new();
 
-        for (int i = 0; i < _activeContainers.Count; i++)
+        for (int i = 0; i < ActiveContainers.Count; i++)
         {
             float angle = (i * angleStep - 90) * Mathf.Deg2Rad; // Start at the top (270 degrees)
             Vector3 position = new(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0);
@@ -113,9 +113,9 @@ public class LetterBank : MonoBehaviour
     {
         List<Vector2> containersPositions = GetContainersPositions();
 
-        for (int i = 0; i < _activeContainers.Count; i++)
+        for (int i = 0; i < ActiveContainers.Count; i++)
         {
-            _activeContainers[i].Rect.anchoredPosition = containersPositions[i];
+            ActiveContainers[i].Rect.anchoredPosition = containersPositions[i];
         }
     }
 
@@ -124,16 +124,16 @@ public class LetterBank : MonoBehaviour
         List<Vector2> containersPositions = GetContainersPositions();
         SoundManager.PlaySound("BankReorganize", transform.position);
 
-        for (int i = 0; i < _activeContainers.Count; i++)
+        for (int i = 0; i < ActiveContainers.Count; i++)
         {
-            bool isLast = i == _activeContainers.Count - 1;
+            bool isLast = i == ActiveContainers.Count - 1;
             if (isLast)
             {
-                _activeContainers[i].Rect.anchoredPosition = containersPositions[i];
+                ActiveContainers[i].Rect.anchoredPosition = containersPositions[i];
             }
             else
             {
-                _activeContainers[i].Rect.DOAnchorPos(containersPositions[i], 1);
+                ActiveContainers[i].Rect.DOAnchorPos(containersPositions[i], 1);
             }
         }
     }
@@ -142,21 +142,21 @@ public class LetterBank : MonoBehaviour
     [Button]
     public void SnapDistributeContainersManually()
     {
-        _activeContainers.Clear();
+        ActiveContainers.Clear();
 
         foreach (BankLetterContainer container in PremadeContainers)
         {
             if (container.isActiveAndEnabled)
             {
-                _activeContainers.Add(container);
+                ActiveContainers.Add(container);
             }
         }
 
         List<Vector2> containersPositions = GetContainersPositions();
 
-        for (int i = 0; i < _activeContainers.Count; i++)
+        for (int i = 0; i < ActiveContainers.Count; i++)
         {
-            _activeContainers[i].Rect.anchoredPosition = containersPositions[i];
+            ActiveContainers[i].Rect.anchoredPosition = containersPositions[i];
         }
     }
 

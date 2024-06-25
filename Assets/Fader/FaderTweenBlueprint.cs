@@ -43,7 +43,7 @@ public enum GameVisualElement
 {
     TranslucentOverlay,
     
-    S_Logo,
+    S_Logo_Word,
     S_Button,
     S_BG,
 
@@ -69,6 +69,8 @@ public enum GameVisualElement
     G_BG_Secondary,
     W_ExtraText,
     W_AreaImage,
+    S_Logo_Journey,
+    S_Logo_Backpacker,
 }
 
 public enum Fade

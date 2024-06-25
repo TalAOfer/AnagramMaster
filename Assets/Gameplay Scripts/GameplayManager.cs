@@ -19,6 +19,8 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private ElementFader fader;
     [SerializeField] private WinningManager winningManager;
     [SerializeField] private TextMeshProUGUI levelTextImage;
+    [SerializeField] private SwipeHand swipeHand;
+    [SerializeField] private float swipeHandDelay;
 
     private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
     private GameData Data => AssetProvider.Instance.Data.Value;
@@ -34,6 +36,18 @@ public class GameplayManager : MonoBehaviour
         GuessHistoryManager.Initialize();
         GuessManager.Initialize();
         AnswerManager.Initialize();
+    }
+
+    public IEnumerator OnFadeInFinished()
+    {
+        if (Data.LevelIndex == 0)
+        {
+            yield return new WaitForSeconds(swipeHandDelay);
+            if (Data.LevelIndex == 0 && Data.CorrectAnswers.Count <= 0 && usedLetters.Count <= 1)
+            {
+                swipeHand.PlaySequence();
+            }
+        }
     }
 
     #region Gameplay
@@ -150,16 +164,16 @@ public class GameplayManager : MonoBehaviour
                         bool isLast = (i == usedLetters.Count - 1);
                         if (!isLast) letter.GuessLetter.Tmp.color = AnimationData.pluralWrongAnswerColor;
                     }
-                    
+
                     StartCoroutine(AnswerManager.PlayMistakeAnimation());
                     yield return PlayMistakeAnimation();
-                    
+
                     for (int i = 0; i < usedLetters.Count; i++)
                     {
                         BankLetter letter = usedLetters[i];
                         letter.GuessLetter.AnswerLetter.Tmp.color = answerColor;
                         bool isLast = (i == usedLetters.Count - 1);
-                        if (!isLast) letter.GuessLetter.Tmp.color =  guessColor;
+                        if (!isLast) letter.GuessLetter.Tmp.color = guessColor;
                     }
 
                 }
