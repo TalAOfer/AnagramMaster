@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531fbf76ca5a0fc4bbb2b92346c3b491, type: 3}
   m_Name: Forest
   m_EditorClassIdentifier: 
-  FullCollectible: {fileID: 21300000, guid: 839b43aa89eb9f5488a36df8da33a5d9, type: 3}
-  EmptyCollectible: {fileID: 21300000, guid: 4bb6e587afec79142a61d99774ed35eb, type: 3}
+  FullCollectible: {fileID: 21300000, guid: d6edf88c7b5bad14695d8c8f13555db6, type: 3}
+  EmptyCollectible: {fileID: 21300000, guid: 61fb2ecc0538ce046868e8028d6564b9, type: 3}
   Areas:
   - Sprite: {fileID: 21300000, guid: ffc3afccafb01104890f06515e53498c, type: 3}
     Levels:

@@ -28,20 +28,66 @@ MonoBehaviour:
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0
-    Duration: 0.5
+    Duration: 0.7
     PostDelay: 0
     PreDelay: 0
     Ease: 0
     SoundName: 
     Animations:
-      Value: []
-  - Element: 2
+      Value:
+      - AnimationType: 1
+        Ease: 18
+        sequencingType: 1
+        Duration: 0.6
+        Amount: 1
+        Direction: {x: 0, y: 75}
+        PostDelay: 0
+        PreDelay: 0
+  - Element: 25
+    SequencingType: 1
+    Fade: 0
+    TransluscentSwitch: 0
+    Duration: 0.6
+    PostDelay: 0
+    PreDelay: 0.1
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value:
+      - AnimationType: 1
+        Ease: 9
+        sequencingType: 1
+        Duration: 0.5
+        Amount: 1
+        Direction: {x: 0, y: -75}
+        PostDelay: 0
+        PreDelay: 0
+  - Element: 26
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0
-    Duration: 0.5
+    Duration: 1.5
     PostDelay: 0
     PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value:
+      - AnimationType: 1
+        Ease: 12
+        sequencingType: 1
+        Duration: 1.2
+        Amount: 50
+        Direction: {x: -1, y: 0}
+        PostDelay: 0
+        PreDelay: 0
+  - Element: 2
+    SequencingType: 1
+    Fade: 0
+    TransluscentSwitch: 0
+    Duration: 0.4
+    PostDelay: 0
+    PreDelay: 0.2
     Ease: 0
     SoundName: 
     Animations:
@@ -51,6 +97,6 @@ MonoBehaviour:
         sequencingType: 1
         Duration: 1
         Amount: 50
-        Direction: {x: 0, y: 1}
+        Direction: {x: 0, y: -1}
         PostDelay: 0
         PreDelay: 0
