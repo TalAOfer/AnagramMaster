@@ -34,6 +34,9 @@ public class ElementFader : MonoBehaviour
 
     [FoldoutGroup("Elements")]
     [SerializeField] private TweenableElement G_BG;
+    
+    [FoldoutGroup("Elements")]
+    [SerializeField] private TweenableElement G_BG_Secondary;
     public Image CurrentActiveGameplayBackground { get { return G_BG.GetComponent<Image>(); } }
 
     [FoldoutGroup("Elements")]
@@ -94,7 +97,9 @@ public class ElementFader : MonoBehaviour
     [SerializeField] private TweenableElement W_ExtraText;
 
     [FoldoutGroup("Elements")]
-    [SerializeField] private TweenableElement G_BG_Secondary;
+    [SerializeField] private TweenableElement W_MidBar;
+
+
     public Image CurrentInactiveGameplayBackground { get { return G_BG_Secondary.GetComponent<Image>(); } }
 
     #endregion
@@ -249,6 +254,8 @@ public class ElementFader : MonoBehaviour
                 return S_Logo_Journey;
             case GameVisualElement.S_Logo_Backpacker:
                 return S_Logo_Backpacker;
+            case GameVisualElement.W_MidBar:
+                return W_MidBar;
             default:
                 throw new ArgumentException("Invalid GameVisualElement");
         }
@@ -321,6 +328,7 @@ public class ElementFader : MonoBehaviour
         ToggleElement(W_Button, false);
         ToggleElement(W_AreaImage, false);
         ToggleElement(W_ExtraText, false);
+        ToggleElement(W_MidBar, false);
     }
 
     [Button]
@@ -353,6 +361,7 @@ public class ElementFader : MonoBehaviour
         ToggleElement(W_Button, false);
         ToggleElement(W_AreaImage, false);
         ToggleElement(W_ExtraText, false);
+        ToggleElement(W_MidBar, false);
     }
 
     [Button]
@@ -385,6 +394,8 @@ public class ElementFader : MonoBehaviour
         ToggleElement(W_Button, false);
         ToggleElement(W_AreaImage, false);
         ToggleElement(W_ExtraText, false);
+        ToggleElement(W_MidBar, false);
+
     }
 
     [Button]
@@ -403,6 +414,7 @@ public class ElementFader : MonoBehaviour
         ToggleElement(W_BiomeText, true);
         ToggleElement(W_BiomeBar, true);
         ToggleElement(W_Button, true);
+        ToggleElement(W_MidBar, true);
 
         ToggleElement(TranslucentOverlay, false);
         ToggleElement(S_BG, false);

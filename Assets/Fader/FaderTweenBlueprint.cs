@@ -71,6 +71,7 @@ public enum GameVisualElement
     W_AreaImage,
     S_Logo_Journey,
     S_Logo_Backpacker,
+    W_MidBar
 }
 
 public enum Fade

@@ -57,6 +57,17 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
+  - Element: 27
+    SequencingType: 1
+    Fade: 1
+    TransluscentSwitch: 0
+    Duration: 1
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []
   - Element: 24
     SequencingType: 0
     Fade: 0

@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   ease: 16
-  Duration: 1
+  Duration: 0.75
   Strength: 15
+  RotationStrength: {x: 1, y: 1, z: 1}
   Vibrato: 8
   Randomness: 5
   Elasticity: 5

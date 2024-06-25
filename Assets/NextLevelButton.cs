@@ -36,7 +36,7 @@ public class NextLevelButton : MonoBehaviour
                     text = "To The " + (BiomeBank.Biomes[nextLevelData.LevelIndexHierarchy.Biome].name.ToString()) + "!";
                     break;
                 case NextLevelEvent.FinishedGame:
-                    text = "Thank You!";
+                    text = "Give Feedback";
                     break;
             }
         }
@@ -88,7 +88,7 @@ public class NextLevelButton : MonoBehaviour
                     fader.WinningToGameplay();
                     break;
                 case NextLevelEvent.FinishedGame:
-                    fader.WinningToStartMenu();
+                    Application.OpenURL("https://forms.gle/9UZ7fBMKHPMUEE148");
                     break;
             }
         }

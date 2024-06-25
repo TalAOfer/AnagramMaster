@@ -13,6 +13,7 @@ public class WinningManager : MonoBehaviour
     [SerializeField] private ElementFader fader;
     [SerializeField] private NextLevelButton nextLevelButton;
     [SerializeField] private TextMeshProUGUI extraText;
+    [SerializeField] private Color nativePanelTextColor;
 
     [FoldoutGroup("Level Bar")]
     [SerializeField] private TextMeshProUGUI levelText;
@@ -38,6 +39,8 @@ public class WinningManager : MonoBehaviour
     [FoldoutGroup("Biome Bar")]
     [Title("Biome Current Amount Text")]
     [SerializeField] private TextMeshProUGUI BiomeCurrentCollectibleAmountText;
+    [FoldoutGroup("Biome Bar")]
+    [SerializeField] private Image BiomeCurrentCollectibleAmountImage;
     [FoldoutGroup("Biome Bar")]
     [SerializeField] private Tweener BiomeCurrentCollectibleAmountTweener;
 
@@ -69,6 +72,7 @@ public class WinningManager : MonoBehaviour
         BiomeName.text = currentBiome.name;
 
         //Initialize Lower bar
+        BiomeCurrentCollectibleAmountImage.sprite = currentBiome.FullCollectible;
         TotalCollectibleImage.rectTransform.localScale = Vector3.one;
         biomeTotalCollectibleAmount = currentBiome.GetTotalCollectibleAmount();
         biomeCurrentCollectibleAmount = currentBiome.GetCurrentCollectibleAmount(Data.IndexHierarchy);
@@ -144,8 +148,8 @@ public class WinningManager : MonoBehaviour
                 break;
             case NextLevelEvent.FinishedGame:
                 startMenuManager.Initialize();
-                extraText.text = "You finished the game, \n New levels soon!";
-                extraText.color = Color.white;
+                extraText.text = "Thank you for playing!";
+                extraText.color = nativePanelTextColor;
                 yield return fader.PlayFinishedGameWinningSequence();
                 break;
         }

@@ -43,6 +43,17 @@ MonoBehaviour:
         Direction: {x: 0, y: 0}
         PostDelay: 0
         PreDelay: 0
+  - Element: 27
+    SequencingType: 1
+    Fade: 0
+    TransluscentSwitch: 0
+    Duration: 0.3
+    PostDelay: 0
+    PreDelay: 0.2
+    Ease: 14
+    SoundName: 
+    Animations:
+      Value: []
   - Element: 10
     SequencingType: 0
     Fade: 0
