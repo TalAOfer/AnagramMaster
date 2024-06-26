@@ -53,7 +53,15 @@ MonoBehaviour:
     Ease: 14
     SoundName: 
     Animations:
-      Value: []
+      Value:
+      - AnimationType: 0
+        Ease: 0
+        sequencingType: 1
+        Duration: 0.5
+        Amount: 0.5
+        Direction: {x: 0, y: 0}
+        PostDelay: 0
+        PreDelay: 0
   - Element: 10
     SequencingType: 0
     Fade: 0

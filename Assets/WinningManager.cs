@@ -131,9 +131,9 @@ public class WinningManager : MonoBehaviour
                 fader.CurrentInactiveGameplayBackground.sprite = area.Sprite;
                 NewAreaContainer.localScale = Vector3.one;
                 NewAreaImage.sprite = area.Sprite;
-                NewAreaContainerImage.color = area.LetterContainerBGColor;
+                NewAreaContainerImage.color = nativePanelTextColor;
                 extraText.text = "New Area Unlocked!";
-                extraText.color = area.LetterContainerBGColor;
+                extraText.color = nativePanelTextColor;
                 yield return fader.PlayNewAreaWinningSequence();
                 break;
             case NextLevelEvent.NewBiome:

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,7 +21,8 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private WinningManager winningManager;
     [SerializeField] private TextMeshProUGUI levelTextImage;
     [SerializeField] private SwipeHand swipeHand;
-    [SerializeField] private float swipeHandDelay;
+    [SerializeField] private float tutorialPreDelay = 3f;
+    [SerializeField] private float tutorialAnimationIntervals = 2f;
 
     private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
     private GameData Data => AssetProvider.Instance.Data.Value;
@@ -42,13 +44,30 @@ public class GameplayManager : MonoBehaviour
     {
         if (Data.LevelIndex == 0)
         {
-            yield return new WaitForSeconds(swipeHandDelay);
-            if (Data.LevelIndex == 0 && Data.CorrectAnswers.Count <= 0 && usedLetters.Count <= 1)
+            yield return new WaitForSeconds(tutorialPreDelay);
+
+            if (!DidSwipe)
             {
-                swipeHand.PlaySequence();
+                swipeHand.ActivateObject();
+                swipeHand.FadeInText();
+
+
+                while (!DidSwipe)
+                {
+                    yield return swipeHand.PlayHandSequence().WaitForCompletion();
+
+                    if (DidSwipe) break;
+
+                    yield return new WaitForSeconds(tutorialAnimationIntervals);
+                }
+
+                swipeHand.FadeOutEverything();
             }
         }
     }
+
+    private bool DidSwipe => Data.CorrectAnswers.Count > 0 || usedLetters.Count > 1;
+
 
     #region Gameplay
 

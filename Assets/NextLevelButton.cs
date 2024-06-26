@@ -88,7 +88,7 @@ public class NextLevelButton : MonoBehaviour
                     fader.WinningToGameplay();
                     break;
                 case NextLevelEvent.FinishedGame:
-                    Application.OpenURL("https://forms.gle/9UZ7fBMKHPMUEE148");
+                    Application.OpenURL("https://forms.gle/pJEPRzfHPLv17fu5A");
                     break;
             }
         }
