@@ -27,7 +27,9 @@ public class BankLetter : MonoBehaviour
     [SerializeField] private Color ActiveTextColor;
     [SerializeField] private Color DefaultTextColor;
     private LetterBankLineManager lineManager;
-    public void Initialize(int index, GameData data, LetterBankLineManager lineManager, Color activeContainerColor)
+    private LevelData LevelData => AssetProvider.Instance.Data.Value.Level;
+
+    public void Initialize(int index, LetterBankLineManager lineManager, Color activeContainerColor)
     {
         this.lineManager = lineManager;
         this.activeContainerColor = activeContainerColor;
@@ -35,23 +37,23 @@ public class BankLetter : MonoBehaviour
         ResetAllNestedLetters();
         ChangeColor(false);
 
-        bool withinRangeOfUseForLevel = index < data.CurrentLetters.Length + data.NextLetters.Count;
+        bool withinRangeOfUseForLevel = index < LevelData.CurrentLetters.Length + LevelData.NextLetters.Count;
         if (withinRangeOfUseForLevel)
         {
             int indexInList;
             string letterText;
 
-            bool withinRangeOfCurrentUse = index < data.CurrentLetters.Length;
+            bool withinRangeOfCurrentUse = index < LevelData.CurrentLetters.Length;
             if (withinRangeOfCurrentUse)
             {
                 indexInList = index;
-                letterText = data.CurrentLetters[indexInList].ToString().ToUpper();
+                letterText = LevelData.CurrentLetters[indexInList].ToString().ToUpper();
             } 
             
             else
             {
-                indexInList = index - data.CurrentLetters.Length;
-                letterText = data.NextLetters[indexInList].ToString().ToUpper();
+                indexInList = index - LevelData.CurrentLetters.Length;
+                letterText = LevelData.NextLetters[indexInList].ToString().ToUpper();
             }
 
             Tmp.text = letterText;

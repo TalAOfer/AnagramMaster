@@ -12,12 +12,14 @@ public class GameplayManager : MonoBehaviour
 
     private readonly List<BankLetter> usedLetters = new();
 
+    [SerializeField] private GameDataManager gameDataManager;
     [SerializeField] private LetterBank LetterBank;
-    [SerializeField] private GuessManager GuessManager;
-    [SerializeField] private GuessHistoryManager GuessHistoryManager;
     [SerializeField] private AnswerManager AnswerManager;
+    [SerializeField] private GuessManager GuessManager;
+    [SerializeField] private HintManager HintManager;
+    [SerializeField] private GuessHistoryManager GuessHistoryManager;
 
-    [SerializeField] private ElementFader fader;
+    [SerializeField] private ElementController fader;
     [SerializeField] private WinningManager winningManager;
     [SerializeField] private TextMeshProUGUI levelTextImage;
     [SerializeField] private SwipeHand swipeHand;
@@ -38,11 +40,13 @@ public class GameplayManager : MonoBehaviour
         GuessHistoryManager.Initialize();
         GuessManager.Initialize();
         AnswerManager.Initialize();
+        HintManager.Initialize();
     }
 
     public IEnumerator OnFadeInFinished()
     {
-        if (Data.LevelIndex == 0)
+        bool isFirstLevel = Data.IndexHierarchy.Level == 0;
+        if (isFirstLevel)
         {
             yield return new WaitForSeconds(tutorialPreDelay);
 
@@ -66,7 +70,7 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
-    private bool DidSwipe => Data.CorrectAnswers.Count > 0 || usedLetters.Count > 1;
+    private bool DidSwipe => Data.Level.CorrectAnswers.Count > 0 || usedLetters.Count > 1;
 
 
     #region Gameplay
@@ -151,88 +155,128 @@ public class GameplayManager : MonoBehaviour
         return guess;
     }
 
+    #region Answering
+
     public IEnumerator OnPointerUp()
     {
         if (usedLetters.Count == 0) yield break;
 
-        foreach (BankLetter letter in usedLetters)
-        {
-            letter.ToggleContainer(false);
-            letter.ChangeColor(false);
-        }
+        ResetUsedLetters();
 
         _inputEnabled = false;
 
-        bool lastWordInLevel = Data.NextLetters.Count == 0;
-
-        if (Data.CurrentLetters.Length == usedLetters.Count)
+        if (Data.Level.CurrentLetters.Length == usedLetters.Count)
         {
             string guess = GetGuess();
             if (IsFoundInDictionary(guess))
             {
                 if (IsSameWordWithS(guess))
                 {
-                    BankLetter firstLetter = usedLetters[0];
-                    Color guessColor = firstLetter.GuessLetter.Tmp.color;
-                    Color answerColor = firstLetter.GuessLetter.AnswerLetter.Tmp.color;
-
-                    for (int i = 0; i < usedLetters.Count; i++)
-                    {
-                        BankLetter letter = usedLetters[i];
-                        letter.GuessLetter.AnswerLetter.Tmp.color = AnimationData.pluralWrongAnswerColor;
-                        bool isLast = (i == usedLetters.Count - 1);
-                        if (!isLast) letter.GuessLetter.Tmp.color = AnimationData.pluralWrongAnswerColor;
-                    }
-
-                    StartCoroutine(AnswerManager.PlayMistakeAnimation());
-                    yield return PlayMistakeAnimation();
-
-                    for (int i = 0; i < usedLetters.Count; i++)
-                    {
-                        BankLetter letter = usedLetters[i];
-                        letter.GuessLetter.AnswerLetter.Tmp.color = answerColor;
-                        bool isLast = (i == usedLetters.Count - 1);
-                        if (!isLast) letter.GuessLetter.Tmp.color = guessColor;
-                    }
-
+                    yield return HandlePluralMistake();
                 }
                 else
                 {
-                    yield return OnCorrectGuess();
-
-                    if (lastWordInLevel)
-                    {
-                        //Do wave
-                        yield return new WaitForSeconds(0.25f);
-                        winningManager.Initialize();
-                        yield return winningManager.WinningRoutine();
-                        yield break;
-                    }
+                    yield return HandleCorrectGuess(guess);
                 }
-
             }
-
             else
             {
                 yield return PlayMistakeAnimation();
             }
         }
 
+        ResetLetterState();
+
+        _inputEnabled = true;
+    }
+
+    private void ResetUsedLetters()
+    {
+        foreach (BankLetter letter in usedLetters)
+        {
+            letter.ToggleContainer(false);
+            letter.ChangeColor(false);
+        }
+    }
+
+    private IEnumerator HandlePluralMistake()
+    {
+        BankLetter firstLetter = usedLetters[0];
+        Color guessColor = firstLetter.GuessLetter.Tmp.color;
+        Color answerColor = firstLetter.GuessLetter.AnswerLetter.Tmp.color;
+
+        ChangeLetterColors(AnimationData.pluralWrongAnswerColor, guessColor);
+
+        StartCoroutine(AnswerManager.PlayMistakeAnimation());
+        yield return PlayMistakeAnimation();
+
+        RestoreLetterColors(answerColor, guessColor);
+    }
+
+    private void ChangeLetterColors(Color pluralWrongAnswerColor, Color guessColor)
+    {
+        for (int i = 0; i < usedLetters.Count; i++)
+        {
+            BankLetter letter = usedLetters[i];
+            letter.GuessLetter.AnswerLetter.Tmp.color = pluralWrongAnswerColor;
+            bool isLast = (i == usedLetters.Count - 1);
+            if (!isLast) letter.GuessLetter.Tmp.color = pluralWrongAnswerColor;
+        }
+    }
+
+    private void RestoreLetterColors(Color answerColor, Color guessColor)
+    {
+        for (int i = 0; i < usedLetters.Count; i++)
+        {
+            BankLetter letter = usedLetters[i];
+            letter.GuessLetter.AnswerLetter.Tmp.color = answerColor;
+            bool isLast = (i == usedLetters.Count - 1);
+            if (!isLast) letter.GuessLetter.Tmp.color = guessColor;
+        }
+    }
+
+    private IEnumerator HandleCorrectGuess(string guess)
+    {
+        Data.OnCorrectAnswer(guess);
+
+        //Animate
+        SoundManager.PlaySound("RightAnswer", transform.position);
+        yield return GuessManager.CorrectGuessAnimation();
+        yield return AnswerManager.OnNewAnswer(usedLetters);
+        GuessHistoryManager.HandleNewAnsweredNode();
+
+        if (!Data.Level.DidFinish)
+        {
+            LetterBank.ActivateNextLetter();
+            GuessManager.ActivateNextContainer();
+            HintManager.OnNewWord();
+        }
+
+        else
+        {
+            GameData currentGameData = Data.Clone();
+            winningManager.Initialize(currentGameData);
+            gameDataManager.LoadNextLevel();
+            yield return new WaitForSeconds(0.25f);
+            yield return winningManager.WinningRoutine();
+        }
+    }
+
+    private void ResetLetterState()
+    {
         foreach (BankLetter letter in usedLetters)
         {
             letter.ResetGuessLetterToBankLetterTransform();
         }
 
         usedLetters.Clear();
-
-        _inputEnabled = true;
     }
 
     private bool IsSameWordWithS(string guess)
     {
-        if (Data.CorrectAnswers.Count <= 0) return false;
+        if (Data.Level.CorrectAnswers.Count <= 0) return false;
 
-        string lastAnswer = Data.CorrectAnswers[^1];
+        string lastAnswer = Data.Level.CorrectAnswers[^1];
         if (lastAnswer.EndsWith("s")) return false;
 
         string lastAnswerWithS = lastAnswer + "s";
@@ -244,22 +288,7 @@ public class GameplayManager : MonoBehaviour
         return false;
     }
 
-    public IEnumerator OnCorrectGuess()
-    {
-        Data.UpdateLevelData(GetGuess());
-
-        SoundManager.PlaySound("RightAnswer", transform.position);
-        yield return GuessManager.CorrectGuessAnimation();
-        yield return AnswerManager.OnNewAnswer(usedLetters);
-
-        GuessHistoryManager.HandleNewAnsweredNode();
-
-        if (Data.DidFinish) yield break;
-
-        LetterBank.ActivateNextLetter();
-
-        GuessManager.ActivateNextContainer();
-    }
+    #endregion
 
     public IEnumerator PlayMistakeAnimation()
     {

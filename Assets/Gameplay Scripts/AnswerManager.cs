@@ -9,11 +9,11 @@ public class AnswerManager : MonoBehaviour
     [SerializeField] private LetterBank letterBank;
     [SerializeField] private Tweener tweener;
     private AnimationData AnimData => AssetProvider.Instance.AnimationData;
-    private GameData Data => AssetProvider.Instance.Data.Value;
+    private LevelData LevelData => AssetProvider.Instance.Data.Value.Level;
 
     public void Initialize()
     {
-        string lastAnswer = Data.CorrectAnswers.Count > 0 ? Data.CorrectAnswers[^1] : "";
+        string lastAnswer = LevelData.CorrectAnswers.Count > 0 ? LevelData.CorrectAnswers[^1] : "";
 
         for (int i = 0; i < PremadeAnswerContainers.Count; i++)
         {

@@ -8,26 +8,28 @@ using UnityEngine;
 
 public class GuessManager : MonoBehaviour
 {
-    [SerializeField] private List<GuessContainer> PremadeGuessContainers;
+    [SerializeField] private List<GuessContainer> premadeGuessContainers;
     private readonly List<GuessContainer> _activeGuessContainers = new();
-    
-    [SerializeField] private Tweener tweener;
+    public List<GuessContainer> ActiveGuessContainers { get { return _activeGuessContainers; } }
 
+    [SerializeField] private Tweener tweener;
     private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
     private AnimationData AnimData => AssetProvider.Instance.AnimationData;
     private GameData Data => AssetProvider.Instance.Data.Value;
-
 
     public void Initialize()
     {
         _activeGuessContainers.Clear();
 
-        for (int i = 0; i < PremadeGuessContainers.Count; i++)
-        {
-            GuessContainer currentContainer = PremadeGuessContainers[i];
-            currentContainer.Initialize(BiomeBank.GetArea(Data.IndexHierarchy).LetterContainerBGColor);
+        Color areaColor = BiomeBank.GetArea(Data.IndexHierarchy).LetterContainerBGColor;
 
-            if (i < Data.CurrentLetters.Length)
+        for (int i = 0; i < premadeGuessContainers.Count; i++)
+        {
+            GuessContainer currentContainer = premadeGuessContainers[i];
+
+            currentContainer.Initialize(areaColor);
+
+            if (i < Data.Level.CurrentLetters.Length)
             {
                 currentContainer.gameObject.SetActive(true);
                 _activeGuessContainers.Add(currentContainer);
@@ -39,9 +41,10 @@ public class GuessManager : MonoBehaviour
             }
         }
     }
+
     public void ActivateNextContainer()
     {
-        GuessContainer nextGuessContainer = PremadeGuessContainers[_activeGuessContainers.Count];
+        GuessContainer nextGuessContainer = premadeGuessContainers[_activeGuessContainers.Count];
         nextGuessContainer.gameObject.SetActive(true);
         _activeGuessContainers.Add(nextGuessContainer);
     }
@@ -52,7 +55,7 @@ public class GuessManager : MonoBehaviour
         letter.MoveToGuessContainer(guessContainer);
     }
 
-    [Button] 
+    [Button]
     public void TestCorrectGuessAnimation()
     {
         StartCoroutine(CorrectGuessAnimation());
@@ -64,8 +67,8 @@ public class GuessManager : MonoBehaviour
 
         foreach (var guessContainer in _activeGuessContainers)
         {
-            sequence.AppendCallback(()=> guessContainer.StartCorrectAnswerAnimation());
-            sequence.AppendCallback(()=> SoundManager.PlaySound("LetterBounce", guessContainer.transform.position));
+            sequence.AppendCallback(() => guessContainer.StartCorrectAnswerAnimation());
+            sequence.AppendCallback(() => SoundManager.PlaySound("LetterBounce", guessContainer.transform.position));
             sequence.AppendInterval(AnimData.correctGuessAnimaDelayBetweenLetters);
         }
 

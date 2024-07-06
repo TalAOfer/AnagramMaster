@@ -28,7 +28,7 @@ public class LetterBank : MonoBehaviour
     {
         Color levelColor = BiomeBank.GetArea(Data.IndexHierarchy).LetterContainerBGColor;
 
-        lineManager.Initialize(Data, levelColor);
+        lineManager.Initialize(levelColor);
 
         _activeLetters.Clear();
         ActiveContainers.Clear();
@@ -36,9 +36,9 @@ public class LetterBank : MonoBehaviour
         for (int i = 0; i < PremadeLetters.Count; i++)
         {
             BankLetter letter = PremadeLetters[i];
-            letter.Initialize(i, Data, lineManager, levelColor);
+            letter.Initialize(i, lineManager, levelColor);
 
-            bool withinRangeOfCurrentUse = i < Data.CurrentLetters.Length;
+            bool withinRangeOfCurrentUse = i < Data.Level.CurrentLetters.Length;
 
             if (withinRangeOfCurrentUse)
             {
@@ -77,7 +77,7 @@ public class LetterBank : MonoBehaviour
 
     public void ActivateNextLetter()
     {
-        int nextLetterIndex = Data.CurrentLetters.Length - 1;
+        int nextLetterIndex = Data.Level.CurrentLetters.Length - 1;
         BankLetter letter = ActivateLetterByIndex(nextLetterIndex);
         Color temp = letter.Tmp.color;
         temp.a = 0;

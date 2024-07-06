@@ -16,9 +16,9 @@ public class GuessHistoryManager : MonoBehaviour
 
     public void Initialize()
     {
-        Biome currentBiome = BiomeBank.Biomes[Data.BiomeIndex];
+        Biome currentBiome = BiomeBank.Biomes[Data.IndexHierarchy.Level];
 
-        int totalNodesRequired = Data.CorrectAnswers.Count + Data.NextLetters.Count + 1;
+        int totalNodesRequired = Data.Level.CorrectAnswers.Count + Data.Level.NextLetters.Count + 1;
 
         for (int i = 0; i < PremadeGuessHistoryNodes.Count; i++)
         {
@@ -30,9 +30,9 @@ public class GuessHistoryManager : MonoBehaviour
                 currentNode.gameObject.SetActive(true);
                 _activeNodes.Add(currentNode);
 
-                if (i < Data.CorrectAnswers.Count)
+                if (i < Data.Level.CorrectAnswers.Count)
                 {
-                    currentNode.SetToAnswered(Data.CorrectAnswers[i]);
+                    currentNode.SetToAnswered(Data.Level.CorrectAnswers[i]);
                 }
             }
 
@@ -50,7 +50,7 @@ public class GuessHistoryManager : MonoBehaviour
             if (node.Answered) continue;
             else
             {
-                node.SetToAnswered(Data.CorrectAnswers[^1]);
+                node.SetToAnswered(Data.Level.CorrectAnswers[^1]);
                 break;
             }
         }

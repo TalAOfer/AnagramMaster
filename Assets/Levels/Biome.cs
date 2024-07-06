@@ -9,7 +9,7 @@ public class Biome : ScriptableObject
     public Sprite FullCollectible;
     public Sprite EmptyCollectible;
 
-    public List<BiomeArea> Areas;
+    public List<Area> Areas;
 
     public int LastAreaIndex => Areas.Count - 1;
 
@@ -31,7 +31,7 @@ public class Biome : ScriptableObject
 
         for (int areaIndex = 0; areaIndex <= indices.Area; areaIndex++)
         {
-            BiomeArea area = Areas[areaIndex];
+            Area area = Areas[areaIndex];
 
             // If this is the specified area, only sum levels up to and including the specified level
             if (areaIndex == indices.Area)
@@ -59,7 +59,7 @@ public class Biome : ScriptableObject
     {
         int collectibleAmount = 0;
 
-        foreach (BiomeArea area in Areas)
+        foreach (Area area in Areas)
         {
             foreach (LevelBlueprint level in area.Levels)
             {
@@ -72,9 +72,10 @@ public class Biome : ScriptableObject
 }
 
 [Serializable]
-public class BiomeArea
+public class Area
 {
     public Sprite Sprite;
+    public Animal Animal;
     public List<LevelBlueprint> Levels;
     public Color LetterContainerBGColor;
     public int LastLevelIndex => Levels.Count - 1;

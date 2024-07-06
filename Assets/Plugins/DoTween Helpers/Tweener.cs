@@ -23,6 +23,7 @@ public class Tweener : MonoBehaviour
 
     private void OnDisable()
     {
+        activeTween.Complete();
         DOTween.Kill(transform);
         ResetToOriginalTransform();
     }

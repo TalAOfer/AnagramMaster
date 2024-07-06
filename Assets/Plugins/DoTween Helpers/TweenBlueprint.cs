@@ -21,7 +21,7 @@ public class TweenBlueprint : ScriptableObject
     public Ease ease;
 
     public float Duration = 0.25f;
-    [HideIf("@ShowRotationVariables()")]
+    [HideIf("@ShowPunchVariables()")]
     public float Strength = 0.1f;
     [ShowIf("type", TweenType.ShakeRotation)]
     public Vector3 RotationStrength = Vector3.one;
@@ -32,6 +32,7 @@ public class TweenBlueprint : ScriptableObject
     public float Elasticity = 1f;
     [ShowIf("@ShowPunchVariables()")]
     public Vector3 Punch = Vector3.up;
+
 
     private bool ShowRotationVariables()
     {

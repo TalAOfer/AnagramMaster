@@ -12,8 +12,8 @@ public class GameDataManager : MonoBehaviour
     [Button]
     public void ResetData()
     {
-        GameData data = new();
-        SaveNewData(data);
+        Data.Value = new GameData();
+        SaveNewData();
     }
 
     public void Start()
@@ -28,15 +28,13 @@ public class GameDataManager : MonoBehaviour
         bool isFirstStage = !Data.Value.IsInitialized;
         if (isFirstStage)
         {
-            LevelIndexHierarchy indexHierarchy = new LevelIndexHierarchy(0, 0, 0);
-            Data.Value = new GameData(indexHierarchy, BiomeBank.GetLevel(indexHierarchy));
-            SaveNewData(Data.Value);
+            InitializeFirstLevel();
         }
 
-        else if (Data.Value.DidFinish)
+        else if (Data.Value.Level.DidFinish)
         {
-            NextLevelData nextLevelData = BiomeBank.GetNextLevelData(Data.Value.IndexHierarchy);
-            if (nextLevelData.NextLevelType is not NextLevelEvent.FinishedGame)
+            NextLevelData nextLevelData = new(Data.Value.IndexHierarchy, BiomeBank);
+            if (nextLevelData.NextLevelEvent is not NextLevelEvent.FinishedGame)
             {
                 LoadNextLevel();
             }
@@ -45,23 +43,31 @@ public class GameDataManager : MonoBehaviour
         OnDataInitialized.Raise();
     }
 
-    public void LoadNextLevel()
+    private void InitializeFirstLevel()
     {
-        int currentOverallLevel = Data.Value.OverallLevelIndex;
-        NextLevelData nextLevelData = BiomeBank.GetNextLevelData(Data.Value.IndexHierarchy);
-        LevelBlueprint nextLevelBlueprint = BiomeBank.GetLevel(nextLevelData.LevelIndexHierarchy);
-        GameData newGameData = new(nextLevelData.LevelIndexHierarchy, nextLevelBlueprint)
-        {
-            OverallLevelIndex = currentOverallLevel + 1
-        };
-
-        SaveNewData(newGameData);
+        LevelIndexHierarchy indexHierarchy = new LevelIndexHierarchy(0, 0, 0);
+        LevelBlueprint levelBlueprint = BiomeBank.GetLevel(indexHierarchy);
+        Data.Value = new GameData(indexHierarchy);
+        Data.Value.InitializeNewLevel(levelBlueprint);
+        Data.Value.IsInitialized = true;
+        SaveNewData();
     }
 
-    public void SaveNewData(GameData newGameData)
+    public void LoadNextLevel()
     {
-        SaveSystem.Save(newGameData);
-        Data.Value = newGameData;
+        Data.Value.IncrementProgression();
+        NextLevelData nextLevelData = new(Data.Value.IndexHierarchy, BiomeBank);
+        if (nextLevelData.NextLevelEvent is not NextLevelEvent.FinishedGame)
+        {
+            LevelBlueprint nextLevelBlueprint = BiomeBank.GetLevel(nextLevelData.IndexHierarchy);
+            Data.Value.InitializeNewLevel(nextLevelBlueprint);
+            SaveNewData();
+        }
+    }
+
+    public void SaveNewData()
+    {
+        SaveSystem.Save(Data.Value);
     }
 
     [Button]
@@ -69,13 +75,9 @@ public class GameDataManager : MonoBehaviour
     {
         int levelIndex = index - 1;
         LevelIndexHierarchy indicesHierarchy = BiomeBank.GetLevelIndexHierarchyWithTotalIndex(levelIndex);
-        LevelBlueprint level = BiomeBank.GetLevel(indicesHierarchy);
-        GameData newGameData = new(indicesHierarchy, level)
-        {
-            OverallLevelIndex = levelIndex
-        };
-
-        SaveNewData(newGameData);
-        InitializeData();
+        LevelBlueprint levelBlueprint = BiomeBank.GetLevel(indicesHierarchy);
+        Data.Value = new GameData(indicesHierarchy);
+        Data.Value.InitializeNewLevel(levelBlueprint);
+        SaveNewData();
     }
 }
