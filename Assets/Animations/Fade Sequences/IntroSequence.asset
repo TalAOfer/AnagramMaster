@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IntroSequence
   m_EditorClassIdentifier: 
   FadeSequence:
-  - Element: 0
+  - Element: {fileID: 11400000, guid: 2fb8123b50c87264b838fe9283410d62, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 2
@@ -24,7 +24,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 1
+  - Element: {fileID: 11400000, guid: ace7ecaa00f959c4f90e0d01330effb0, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
         Direction: {x: 0, y: 75}
         PostDelay: 0
         PreDelay: 0
-  - Element: 25
+  - Element: {fileID: 11400000, guid: 7e89db28fd6b45e4e93a317ffd9b3842, type: 2}
     SequencingType: 1
     Fade: 0
     TransluscentSwitch: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
         Direction: {x: 0, y: -75}
         PostDelay: 0
         PreDelay: 0
-  - Element: 26
+  - Element: {fileID: 11400000, guid: 557fd0a1711cb6d4f8c8b9929b2134af, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
         Direction: {x: -1, y: 0}
         PostDelay: 0
         PreDelay: 0
-  - Element: 2
+  - Element: {fileID: 11400000, guid: 4ed0e11c523bd9749affd22dec22960a, type: 2}
     SequencingType: 1
     Fade: 0
     TransluscentSwitch: 0

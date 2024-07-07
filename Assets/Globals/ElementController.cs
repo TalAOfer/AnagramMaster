@@ -120,28 +120,26 @@ public class ElementController : SerializedMonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(correctElementChart), ElementSuperState, null);
         }
 
-        // Log the correct element chart for debugging
-        Debug.Log($"Current ElementSuperState: {ElementSuperState}, Correct ElementVisibilityChart: {correctElementChart}");
-
         foreach (var entry in tweenableElementDict)
         {
             TweenableElementData data = entry.Key;
             TweenableElement element = entry.Value;
 
-            // Log the current data element visibility chart for debugging
-            Debug.Log($"Processing element: {element.name}, ElementVisibilityChart: {data.ElementVisibilityChart}");
 
             bool shouldEnable = data.ElementVisibilityChart.HasFlag(correctElementChart);
             ToggleElement(element, shouldEnable);
-
-            // Log the result of the flag check and element activation
-            Debug.Log($"Element: {element.name}, ShouldEnable: {shouldEnable}");
         }
         
     }
 
     public TweenableElement GetElement(TweenableElementData elementSO)
     {
+        if (elementSO == null) 
+        {
+            Debug.Log("Element wasn't assigned in the animation sequence asset");
+            return null;
+        }
+
         if (tweenableElementDict.TryGetValue(elementSO, out var element) && element != null)
         {
             return element;
