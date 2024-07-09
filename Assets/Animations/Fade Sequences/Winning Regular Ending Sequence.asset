@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Winning Regular Ending Sequence
   m_EditorClassIdentifier: 
   FadeSequence:
-  - Element: 21
+  - Element: {fileID: 11400000, guid: 2644ecab499c9aa4a9ffcd2f781e3086, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0

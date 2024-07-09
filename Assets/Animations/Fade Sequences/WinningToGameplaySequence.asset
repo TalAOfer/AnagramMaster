@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WinningToGameplaySequence
   m_EditorClassIdentifier: 
   FadeSequence:
-  - Element: 9
+  - Element: {fileID: 11400000, guid: 908494bf9c995ad46a0d87e9d12ad216, type: 2}
     SequencingType: 0
     Fade: 1
     TransluscentSwitch: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 27
+  - Element: {fileID: 11400000, guid: 3a6ce7db3f6a8a6428a285f2b00b34ca, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 10
+  - Element: {fileID: 11400000, guid: fc5026f9334f64b43a0a817a458d9116, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 11
+  - Element: {fileID: 11400000, guid: e3e6d6fa98a416042980c6e843318806, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 12
+  - Element: {fileID: 11400000, guid: f2f752aeb41147642aed115768461eb5, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 13
+  - Element: {fileID: 11400000, guid: 0f71d8a213ce3a745aebcadd02aaaa4f, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 15
+  - Element: {fileID: 11400000, guid: 427f9c4457286c140bbedc1e0eb80d0f, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 16
+  - Element: {fileID: 11400000, guid: 6e71c4efb1c001441be90de0f5c21c4a, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 17
+  - Element: {fileID: 11400000, guid: 178df6e34818d664d9a2e90b543bc4f1, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 18
+  - Element: {fileID: 11400000, guid: ff333deb669ebd140b66ef578e5cb41d, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 19
+  - Element: {fileID: 11400000, guid: 4ae7ad371cee1b440a2ada6e00e6757f, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 20
+  - Element: {fileID: 11400000, guid: cebc12119df602644b14de3ba9397406, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 24
+  - Element: {fileID: 11400000, guid: faa10893587ade74cacc9018ea617e08, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 23
+  - Element: {fileID: 11400000, guid: 2644ecab499c9aa4a9ffcd2f781e3086, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -167,18 +167,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 21
-    SequencingType: 1
-    Fade: 1
-    TransluscentSwitch: 0
-    Duration: 0.5
-    PostDelay: 0
-    PreDelay: 0
-    Ease: 0
-    SoundName: 
-    Animations:
-      Value: []
-  - Element: 0
+  - Element: {fileID: 11400000, guid: 2fb8123b50c87264b838fe9283410d62, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 1
@@ -189,7 +178,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 4
+  - Element: {fileID: 11400000, guid: 1da7a2fa9feb365428884321e2f7f783, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0
@@ -208,7 +197,7 @@ MonoBehaviour:
         Direction: {x: 0, y: 1}
         PostDelay: 0
         PreDelay: 0
-  - Element: 5
+  - Element: {fileID: 11400000, guid: b9ab61e1c51272849bc7fa6c1f2c37e2, type: 2}
     SequencingType: 1
     Fade: 0
     TransluscentSwitch: 0
@@ -227,7 +216,7 @@ MonoBehaviour:
         Direction: {x: 0, y: 1}
         PostDelay: 0
         PreDelay: 0
-  - Element: 6
+  - Element: {fileID: 11400000, guid: d162481318f76b142b221774bf4eaffd, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0
@@ -246,7 +235,7 @@ MonoBehaviour:
         Direction: {x: 0, y: 1}
         PostDelay: 0
         PreDelay: 0
-  - Element: 7
+  - Element: {fileID: 11400000, guid: abe848ca153fd0b4a898fff9a517c0cb, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0
@@ -265,7 +254,7 @@ MonoBehaviour:
         Direction: {x: 0, y: 1}
         PostDelay: 0
         PreDelay: 0
-  - Element: 28
+  - Element: {fileID: 11400000, guid: b2ba3101749c91941a09c0c6c77e5a1e, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0

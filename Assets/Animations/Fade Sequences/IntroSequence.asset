@@ -24,7 +24,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: {fileID: 11400000, guid: ace7ecaa00f959c4f90e0d01330effb0, type: 2}
+  - Element: {fileID: 11400000, guid: 557fd0a1711cb6d4f8c8b9929b2134af, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
         Direction: {x: 0, y: -75}
         PostDelay: 0
         PreDelay: 0
-  - Element: {fileID: 11400000, guid: 557fd0a1711cb6d4f8c8b9929b2134af, type: 2}
+  - Element: {fileID: 11400000, guid: ace7ecaa00f959c4f90e0d01330effb0, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0

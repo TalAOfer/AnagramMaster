@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StartMenuToGameplay
   m_EditorClassIdentifier: 
   FadeSequence:
-  - Element: 1
+  - Element: {fileID: 11400000, guid: 557fd0a1711cb6d4f8c8b9929b2134af, type: 2}
     SequencingType: 0
     Fade: 1
     TransluscentSwitch: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 25
+  - Element: {fileID: 11400000, guid: 7e89db28fd6b45e4e93a317ffd9b3842, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 26
+  - Element: {fileID: 11400000, guid: ace7ecaa00f959c4f90e0d01330effb0, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 2
+  - Element: {fileID: 11400000, guid: 4ed0e11c523bd9749affd22dec22960a, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 3
+  - Element: {fileID: 11400000, guid: bb4bec08a09861d4192a9633b064d5e8, type: 2}
     SequencingType: 0
     Fade: 1
     TransluscentSwitch: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 0
+  - Element: {fileID: 11400000, guid: 2fb8123b50c87264b838fe9283410d62, type: 2}
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 1
@@ -79,7 +79,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 8
+  - Element: {fileID: 11400000, guid: 38879a9d01c33c94cab929e99b3e094f, type: 2}
     SequencingType: 1
     Fade: 0
     TransluscentSwitch: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value: []
-  - Element: 4
+  - Element: {fileID: 11400000, guid: 1da7a2fa9feb365428884321e2f7f783, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
         Direction: {x: 0, y: 1}
         PostDelay: 0
         PreDelay: 0
-  - Element: 5
+  - Element: {fileID: 11400000, guid: b9ab61e1c51272849bc7fa6c1f2c37e2, type: 2}
     SequencingType: 1
     Fade: 0
     TransluscentSwitch: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
         Direction: {x: 0, y: 1}
         PostDelay: 0
         PreDelay: 0
-  - Element: 6
+  - Element: {fileID: 11400000, guid: d162481318f76b142b221774bf4eaffd, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
         Direction: {x: 0, y: 1}
         PostDelay: 0
         PreDelay: 0
-  - Element: 7
+  - Element: {fileID: 11400000, guid: abe848ca153fd0b4a898fff9a517c0cb, type: 2}
     SequencingType: 0
     Fade: 0
     TransluscentSwitch: 0
@@ -166,14 +166,14 @@ MonoBehaviour:
         Direction: {x: 0, y: 1}
         PostDelay: 0
         PreDelay: 0
-  - Element: 28
-    SequencingType: 0
+  - Element: {fileID: 11400000, guid: b2ba3101749c91941a09c0c6c77e5a1e, type: 2}
+    SequencingType: 1
     Fade: 0
     TransluscentSwitch: 0
     Duration: 0.3
     PostDelay: 0
-    PreDelay: 0
-    Ease: 0
+    PreDelay: 0.3
+    Ease: 3
     SoundName: 
     Animations:
       Value:
