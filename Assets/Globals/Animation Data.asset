@@ -46,3 +46,43 @@ MonoBehaviour:
   TotalCollectibleImageAnimation: {fileID: 11400000, guid: e02061f4fb368cd4cb39b72bca31fb1c, type: 2}
   TotalCollectibleImageUpscaleAmount: 1.05
   NewBiomeImageUpscale: 1.25
+  giftParentDistanceFromCenter: -100
+  giftAppearanceDuration: 1
+  giftAppearanceEase: 0
+  GiftPreparationAnimation:
+    Value:
+    - SequencingType: 1
+      AnimationType: 5
+      Subtype: 0
+      AnimationDirection: 0
+      Ease: 0
+      PreDelay: 0
+      PostDelay: 0
+      Duration: 1.5
+      Amount: 0
+      Position: {x: 0, y: 0}
+      Vibrato: 10
+      Randomness: 25
+      Elasticity: 5
+      Punch: {x: 0, y: 0, z: 25}
+  GiftOpeningAnimation:
+    Value:
+    - SequencingType: 1
+      AnimationType: 3
+      Subtype: 0
+      AnimationDirection: 1
+      Ease: 3
+      PreDelay: 0
+      PostDelay: 0
+      Duration: 1
+      Amount: 400
+      Position: {x: -400, y: -200}
+      Vibrato: 10
+      Randomness: 25
+      Elasticity: 1
+      Punch: {x: 0, y: 1, z: 0}
+  giftItemAppearanceDuration: 0.5
+  giftItemAppearanceEase: 0
+  defaultGiftItemHeight: 300
+  giftItemHeightSpacing: 50
+  giftItemDelaySpacing: 0.25

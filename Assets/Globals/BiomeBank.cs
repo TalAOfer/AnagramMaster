@@ -46,9 +46,9 @@ public class BiomeBank : ScriptableObject
 [System.Serializable]
 public struct LevelIndexHierarchy
 {
-    public int Biome { get; set; }
-    public int Area { get; set; }
-    public int Level { get; set; }
+    public int Biome;
+    public int Area;
+    public int Level;
 
     public LevelIndexHierarchy(int biome, int area, int level)
     {

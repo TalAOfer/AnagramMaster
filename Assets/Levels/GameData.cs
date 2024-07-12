@@ -12,8 +12,11 @@ public class GameData
 
     public int HintAmount;
 
+    public Gift Gift;
     public int GiftProgressionAmount;
+    public int GiftTypeIndex;
     public int GiftTargetAmount { get; private set; } = 3;
+
 
     public GameData()
     {
@@ -31,9 +34,10 @@ public class GameData
     }
 
 
-    public void InitializeNewLevel(LevelBlueprint blueprint)
+    public void InitializeNewLevel(LevelBlueprint blueprint, LevelIndexHierarchy newLevelHierarchy)
     {
         Level = new LevelData(blueprint);
+        IndexHierarchy = newLevelHierarchy;
     }
 
     public void ChangeHintAmount(int increment)
@@ -52,23 +56,29 @@ public class GameData
         SaveSystem.Save(this);
     }
 
-    public void IncrementProgression()
+    public void IncrementProgression(GiftBlueprint newGiftBlueprint)
     {
+        OverallLevelIndex++;
+
         GiftProgressionAmount += 1;
         if (GiftProgressionAmount >= GiftTargetAmount)
         {
-            GetGift(Level.Gift);
+            GetGift(Gift);
+            Gift = new (newGiftBlueprint);
             GiftProgressionAmount = 0;
         }
     }
     
     private void GetGift(Gift gift)
     {
-        switch (gift.GiftType)
+        foreach (var item in gift.Items)
         {
-            case GiftType.Hint:
-                ChangeHintAmount(gift.GiftAmount);
-                break;
+            switch (item.GiftType)
+            {
+                case GiftType.Hint:
+                    ChangeHintAmount(item.GiftAmount);
+                    break;
+            }
         }
     }
 
@@ -79,6 +89,7 @@ public class GameData
             IsInitialized = this.IsInitialized,
             OverallLevelIndex = this.OverallLevelIndex,
             Level = this.Level?.Clone(),
+            Gift = this.Gift?.Clone(),
             IndexHierarchy = this.IndexHierarchy, // Assuming LevelIndexHierarchy is a struct or an immutable class
             HintAmount = this.HintAmount,
             GiftProgressionAmount = this.GiftProgressionAmount
@@ -94,14 +105,12 @@ public class LevelData
     public List<string> NextLetters;
     public List<string> CorrectAnswers;
     public bool DidFinish;
-    public Gift Gift;
     public LevelData(LevelBlueprint blueprint)
     {
         DidFinish = false;
         CurrentLetters = blueprint.StartingLetters;
         NextLetters = blueprint.NextLetters.ToList();
         CorrectAnswers = new();
-        Gift = new();
         HintState = new bool[CurrentLetters.Length];
     }
 
@@ -130,7 +139,6 @@ public class LevelData
             NextLetters = new List<string>(this.NextLetters),
             CorrectAnswers = new List<string>(this.CorrectAnswers),
             DidFinish = this.DidFinish,
-            Gift = this.Gift.Clone()
         };
     }
 

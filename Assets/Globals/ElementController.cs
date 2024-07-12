@@ -254,7 +254,7 @@ public class ElementController : SerializedMonoBehaviour
         {
             Sequence animationSequence = elementAnimation.GetAnimationSequence(element.RectTransform);
 
-            if (elementAnimation.sequencingType is SequencingType.Append)
+            if (elementAnimation.SequencingType is SequencingType.Append)
             {
                 sequence.Append(animationSequence);
             }

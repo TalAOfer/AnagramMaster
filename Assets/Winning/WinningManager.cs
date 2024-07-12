@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class WinningManager : MonoBehaviour
 {
+    [SerializeField] private GiftUI GiftUI; 
     [SerializeField] private StartMenuManager startMenuManager;
     [SerializeField] private ElementController fader;
     [SerializeField] private WinningButton nextLevelButton;
@@ -25,14 +26,10 @@ public class WinningManager : MonoBehaviour
     [FoldoutGroup("Animal Bar")]
     [SerializeField] private Slider animalSlider;
     private Vector2Int AnimalCount;
-
-    private NextLevelData nextLevelData;
-
     private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
     private AnimationData AnimationData => AssetProvider.Instance.AnimationData;
     private GameData Data => AssetProvider.Instance.Data.Value;
     private GameData _dataClone;
-
     private float GetAnimalSliderFill() => (float)AnimalCount.x / AnimalCount.y;
     private float GetGiftSliderFill() => (float)GiftCount.x / GiftCount.y;
     private string GetGiftAmountString() => GiftCount.x.ToString() + "/" + GiftCount.y.ToString();
@@ -47,7 +44,7 @@ public class WinningManager : MonoBehaviour
         //Initialize Upper bar
         InitializeGiftBar();
         InitializeAnimalBar();
-        
+
         //Check for a next-level-event (New biome? New Area?)
         NextLevelData nextLevelData = new(Data.IndexHierarchy, BiomeBank);
         nextLevelButton.Initialize(nextLevelData);
@@ -69,29 +66,24 @@ public class WinningManager : MonoBehaviour
     {
         GiftCount.x += 1;
         SoundManager.PlaySound("WinningCollectibleBarFill", Vector3.zero);
-        Tween tween = giftSlider.DOValue(GetAnimalSliderFill(), AnimationData.sliderFillDuration).SetEase(AnimationData.sliderFillEase);
-
-        tween.OnUpdate(() =>
-        {
-            if (giftSlider.value >= 0.48f)
-            {
-                giftProgressionText.text = GetGiftAmountString();
-                tween.OnUpdate(null);
-            }
-        });
+        Tween tween = giftSlider.DOValue(GetGiftSliderFill(), AnimationData.sliderFillDuration).SetEase(AnimationData.sliderFillEase);
+        StartCoroutine(CoroutineRunner.Instance.RunFunctionDelayed
+            (AnimationData.sliderFillDuration / 2f, 
+            () => giftProgressionText.text = GetGiftAmountString()
+        ));
 
         yield return tween.WaitForCompletion();
 
-        if (GiftCount.x == GiftCount.y)
-        {
+        //if (GiftCount.x == GiftCount.y)
+        //{
             yield return OpenGift();
-        }
+        //}
     }
 
     private IEnumerator OpenGift()
     {
-        Debug.Log("You got the gift!");
-        yield return null;
+        GiftUI.Initialize(_dataClone.Gift);
+        yield return GiftUI.OpenGiftAnimation();
     }
 
     #endregion
@@ -113,20 +105,16 @@ public class WinningManager : MonoBehaviour
         SoundManager.PlaySound("WinningCollectibleBarFill", Vector3.zero);
         Tween tween = animalSlider.DOValue(GetAnimalSliderFill(), AnimationData.sliderFillDuration).SetEase(AnimationData.sliderFillEase);
 
-        tween.OnUpdate(() =>
-        {
-            if (animalSlider.value >= 0.48f)
-            {
-                animalProgressionText.text = GetAnimalAmountString();
-                tween.OnUpdate(null);
-            }
-        });
+        StartCoroutine(CoroutineRunner.Instance.RunFunctionDelayed
+            (AnimationData.sliderFillDuration / 2f,
+            () => animalProgressionText.text = GetAnimalAmountString()
+        ));
 
         yield return tween.WaitForCompletion();
 
         if (AnimalCount.x == AnimalCount.y)
         {
-            yield return OpenGift();
+            yield return ShowAnimal();
         }
     }
 
@@ -185,8 +173,8 @@ public class WinningManager : MonoBehaviour
         //}
     }
 
-    
 
 
-    
+
+
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameDataManager : MonoBehaviour
 {
     [SerializeField] private GameEvent OnDataInitialized;
-
+    private GiftBank GiftBank => AssetProvider.Instance.GiftBank;
     private CurrentData Data => AssetProvider.Instance.Data;
     private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
 
@@ -48,19 +48,28 @@ public class GameDataManager : MonoBehaviour
         LevelIndexHierarchy indexHierarchy = new LevelIndexHierarchy(0, 0, 0);
         LevelBlueprint levelBlueprint = BiomeBank.GetLevel(indexHierarchy);
         Data.Value = new GameData(indexHierarchy);
-        Data.Value.InitializeNewLevel(levelBlueprint);
+        Data.Value.InitializeNewLevel(levelBlueprint, indexHierarchy);
         Data.Value.IsInitialized = true;
+        Data.Value.Gift = new Gift(GiftBank.Blueprints[0]);
         SaveNewData();
     }
 
     public void LoadNextLevel()
     {
-        Data.Value.IncrementProgression();
         NextLevelData nextLevelData = new(Data.Value.IndexHierarchy, BiomeBank);
+        
+
+        if (Data.Value.GiftTypeIndex > GiftBank.Blueprints.Count)
+        {
+            Data.Value.GiftTypeIndex = 0;
+        }
+
+        Data.Value.IncrementProgression(GiftBank.Blueprints[Data.Value.GiftTypeIndex]);
+
         if (nextLevelData.NextLevelEvent is not NextLevelEvent.FinishedGame)
         {
             LevelBlueprint nextLevelBlueprint = BiomeBank.GetLevel(nextLevelData.IndexHierarchy);
-            Data.Value.InitializeNewLevel(nextLevelBlueprint);
+            Data.Value.InitializeNewLevel(nextLevelBlueprint, nextLevelData.IndexHierarchy);
             SaveNewData();
         }
     }
@@ -77,7 +86,7 @@ public class GameDataManager : MonoBehaviour
         LevelIndexHierarchy indicesHierarchy = BiomeBank.GetLevelIndexHierarchyWithTotalIndex(levelIndex);
         LevelBlueprint levelBlueprint = BiomeBank.GetLevel(indicesHierarchy);
         Data.Value = new GameData(indicesHierarchy);
-        Data.Value.InitializeNewLevel(levelBlueprint);
+        Data.Value.InitializeNewLevel(levelBlueprint, indicesHierarchy);
         SaveNewData();
     }
 }

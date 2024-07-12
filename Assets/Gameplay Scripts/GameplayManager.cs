@@ -48,7 +48,7 @@ public class GameplayManager : MonoBehaviour
         bool isFirstLevel = Data.IndexHierarchy.Level == 0;
         if (isFirstLevel)
         {
-            yield return new WaitForSeconds(tutorialPreDelay);
+            yield return Tools.GetWaitRealtime(tutorialPreDelay);
 
             if (!DidSwipe)
             {
@@ -62,7 +62,7 @@ public class GameplayManager : MonoBehaviour
 
                     if (DidSwipe) break;
 
-                    yield return new WaitForSeconds(tutorialAnimationIntervals);
+                    yield return Tools.GetWaitRealtime(tutorialAnimationIntervals);
                 }
 
                 swipeHand.FadeOutEverything();
@@ -257,7 +257,7 @@ public class GameplayManager : MonoBehaviour
             GameData currentGameData = Data.Clone();
             winningManager.Initialize(currentGameData);
             gameDataManager.LoadNextLevel();
-            yield return new WaitForSeconds(0.25f);
+            yield return Tools.GetWaitRealtime(0.25f);
             yield return winningManager.WinningRoutine();
         }
     }

@@ -40,7 +40,7 @@ public class BackgroundMover : MonoBehaviour
         {
             // Tween mainBG
             mainBG.rectTransform.DOAnchorPosX(finalXPos, movementSpeed).SetEase(Ease.Linear).SetSpeedBased();
-            yield return new WaitForSeconds(fadeStartTime);
+            yield return Tools.GetWaitRealtime(fadeStartTime);
 
             // Start crossfade and prepare the next cycle
             backupBG.rectTransform.anchoredPosition = startingAcnhorPos;
@@ -49,7 +49,7 @@ public class BackgroundMover : MonoBehaviour
             mainBG.DOFade(0, fadeDuration);
             backupBG.DOFade(1, fadeDuration);
 
-            yield return new WaitForSeconds(fadeDuration);
+            yield return Tools.GetWaitRealtime(fadeDuration);
 
             // Swap references
             var temp = mainBG;
@@ -60,7 +60,7 @@ public class BackgroundMover : MonoBehaviour
             backupBG.sprite = AssignNextSprite();
             backupBG.color = new Color(backupBG.color.r, backupBG.color.g, backupBG.color.b, 0); // Reset alpha
 
-            yield return new WaitForSeconds(fadeStartTime);
+            yield return Tools.GetWaitRealtime(fadeStartTime);
         }
     }
 

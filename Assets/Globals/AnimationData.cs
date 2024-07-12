@@ -50,9 +50,9 @@ public class AnimationData : ScriptableObject
     [FoldoutGroup("Gameplay")]
     [Title("Guess Containers")]
     public TweenBlueprint guessCorrectAnimBlueprint;
-    [Title("Guess Containers")]
+    [FoldoutGroup("Gameplay")]
     public TweenBlueprint guessHintAnimBlueprint;
-    [Title("Guess Containers")]
+    [FoldoutGroup("Gameplay")]
     public TweenBlueprint guessMistakeAnimBlueprint;
     [FoldoutGroup("Gameplay")]
     public float correctGuessAnimaDelayBetweenLetters = 0.15f;
@@ -82,5 +82,31 @@ public class AnimationData : ScriptableObject
     public float TotalCollectibleImageUpscaleAmount = 1.1f;
     [FoldoutGroup("Winning")]
     public float NewBiomeImageUpscale = 1.25f;
+
+
+
+    [FoldoutGroup("Gift")]
+    [Title("Parent")]
+    public float giftParentDistanceFromCenter;
+    [FoldoutGroup("Gift")]
+    public float giftAppearanceDuration;
+    [FoldoutGroup("Gift")]
+    public Ease giftAppearanceEase;
+    [Title ("Opening Animation")]
+    [FoldoutGroup("Gift")]
+    public ElementAnimationBlueprint GiftPreparationAnimation;
+    [FoldoutGroup("Gift")]
+    public ElementAnimationBlueprint GiftOpeningAnimation;
+    [FoldoutGroup("Gift")]
+    [Title("Items")]
+    public float giftItemAppearanceDuration;
+    [FoldoutGroup("Gift")]
+    public Ease giftItemAppearanceEase;
+    [FoldoutGroup("Gift")]
+    public float defaultGiftItemHeight;
+    [FoldoutGroup("Gift")]
+    public float giftItemHeightSpacing;
+    [FoldoutGroup("Gift")]
+    public float giftItemDelaySpacing;
 
 }

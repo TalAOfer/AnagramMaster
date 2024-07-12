@@ -16,7 +16,7 @@ public class GuessHistoryManager : MonoBehaviour
 
     public void Initialize()
     {
-        Biome currentBiome = BiomeBank.Biomes[Data.IndexHierarchy.Level];
+        Biome currentBiome = BiomeBank.Biomes[Data.IndexHierarchy.Biome];
 
         int totalNodesRequired = Data.Level.CorrectAnswers.Count + Data.Level.NextLetters.Count + 1;
 

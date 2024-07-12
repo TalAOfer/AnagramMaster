@@ -14,15 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value:
     IsInitialized: 1
-    OverallLevelIndex: 7
-    BiomeIndex: 1
-    AreaIndex: 0
-    LevelIndex: 1
-    CurrentLetters: RAELYP
-    NextLetters: []
-    CorrectAnswers:
-    - ERA
-    - REAL
-    - LAYER
-    - PLAYER
-    DidFinish: 1
+    OverallLevelIndex: 1
+    Level:
+      CurrentLetters: TPA
+      HintState: 000000
+      NextLetters:
+      - S
+      - E
+      CorrectAnswers: []
+      DidFinish: 0
+    IndexHierarchy:
+      Biome: 0
+      Area: 0
+      Level: 1
+    HintAmount: 3
+    Gift:
+      Items:
+      - GiftType: 0
+        GiftAmount: 3
+    GiftProgressionAmount: 1
+    GiftTypeIndex: 0

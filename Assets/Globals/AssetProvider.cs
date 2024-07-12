@@ -48,4 +48,7 @@ public class AssetProvider : MonoBehaviour
     [SerializeField] private EventRegistry _events;
     public EventRegistry Events { get { return _events; } }
 
+    [SerializeField] private GiftBank _giftBank;
+    public GiftBank GiftBank {  get { return _giftBank; } }
+
 }
