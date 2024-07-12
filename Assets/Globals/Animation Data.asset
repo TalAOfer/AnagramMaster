@@ -47,34 +47,48 @@ MonoBehaviour:
   TotalCollectibleImageUpscaleAmount: 1.05
   NewBiomeImageUpscale: 1.25
   giftParentDistanceFromCenter: -100
-  giftAppearanceDuration: 1
-  giftAppearanceEase: 0
+  giftAppearanceDuration: 0.8
+  giftAppearanceEase: 6
   GiftPreparationAnimation:
     Value:
     - SequencingType: 1
       AnimationType: 5
       Subtype: 0
       AnimationDirection: 0
-      Ease: 0
+      Ease: 5
       PreDelay: 0
       PostDelay: 0
-      Duration: 1.5
+      Duration: 0.4
       Amount: 0
       Position: {x: 0, y: 0}
-      Vibrato: 10
+      Vibrato: 14
       Randomness: 25
-      Elasticity: 5
-      Punch: {x: 0, y: 0, z: 25}
+      Elasticity: 6
+      Punch: {x: 0, y: 0, z: 15}
+    - SequencingType: 1
+      AnimationType: 5
+      Subtype: 1
+      AnimationDirection: 0
+      Ease: 13
+      PreDelay: 0.2
+      PostDelay: 0
+      Duration: 0.3
+      Amount: 0
+      Position: {x: 0, y: 0}
+      Vibrato: 2
+      Randomness: 25
+      Elasticity: 1
+      Punch: {x: -0.2, y: -0.2, z: 0}
   GiftOpeningAnimation:
     Value:
     - SequencingType: 1
       AnimationType: 3
       Subtype: 0
       AnimationDirection: 1
-      Ease: 3
-      PreDelay: 0
+      Ease: 6
+      PreDelay: 0.005
       PostDelay: 0
-      Duration: 1
+      Duration: 0.8
       Amount: 400
       Position: {x: -400, y: -200}
       Vibrato: 10
