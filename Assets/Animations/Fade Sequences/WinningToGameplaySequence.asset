@@ -189,14 +189,20 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value:
-      - AnimationType: 1
+      - SequencingType: 1
+        AnimationType: 1
+        Subtype: 0
+        AnimationDirection: 0
         Ease: 6
-        sequencingType: 1
+        PreDelay: 0
+        PostDelay: 0
         Duration: 0.3
         Amount: 50
-        Direction: {x: 0, y: 1}
-        PostDelay: 0
-        PreDelay: 0
+        Position: {x: 0, y: 100}
+        Vibrato: 10
+        Randomness: 25
+        Elasticity: 1
+        Punch: {x: 0, y: 1, z: 0}
   - Element: {fileID: 11400000, guid: b9ab61e1c51272849bc7fa6c1f2c37e2, type: 2}
     SequencingType: 1
     Fade: 0
@@ -208,14 +214,20 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value:
-      - AnimationType: 1
+      - SequencingType: 1
+        AnimationType: 1
+        Subtype: 0
+        AnimationDirection: 0
         Ease: 6
-        sequencingType: 1
+        PreDelay: 0
+        PostDelay: 0
         Duration: 0.3
         Amount: 50
-        Direction: {x: 0, y: 1}
-        PostDelay: 0
-        PreDelay: 0
+        Position: {x: 0, y: 50}
+        Vibrato: 10
+        Randomness: 25
+        Elasticity: 1
+        Punch: {x: 0, y: 1, z: 0}
   - Element: {fileID: 11400000, guid: d162481318f76b142b221774bf4eaffd, type: 2}
     SequencingType: 0
     Fade: 0
@@ -227,14 +239,20 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value:
-      - AnimationType: 1
+      - SequencingType: 1
+        AnimationType: 1
+        Subtype: 0
+        AnimationDirection: 0
         Ease: 6
-        sequencingType: 1
+        PreDelay: 0
+        PostDelay: 0
         Duration: 0.3
         Amount: 50
-        Direction: {x: 0, y: 1}
-        PostDelay: 0
-        PreDelay: 0
+        Position: {x: 0, y: 50}
+        Vibrato: 10
+        Randomness: 25
+        Elasticity: 1
+        Punch: {x: 0, y: 1, z: 0}
   - Element: {fileID: 11400000, guid: abe848ca153fd0b4a898fff9a517c0cb, type: 2}
     SequencingType: 0
     Fade: 0
@@ -246,14 +264,20 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value:
-      - AnimationType: 1
+      - SequencingType: 1
+        AnimationType: 1
+        Subtype: 0
+        AnimationDirection: 0
         Ease: 6
-        sequencingType: 1
+        PreDelay: 0
+        PostDelay: 0
         Duration: 0.3
         Amount: 50
-        Direction: {x: 0, y: 1}
-        PostDelay: 0
-        PreDelay: 0
+        Position: {x: 0, y: 50}
+        Vibrato: 10
+        Randomness: 25
+        Elasticity: 1
+        Punch: {x: 0, y: 1, z: 0}
   - Element: {fileID: 11400000, guid: b2ba3101749c91941a09c0c6c77e5a1e, type: 2}
     SequencingType: 0
     Fade: 0
@@ -265,11 +289,17 @@ MonoBehaviour:
     SoundName: 
     Animations:
       Value:
-      - AnimationType: 1
+      - SequencingType: 1
+        AnimationType: 1
+        Subtype: 0
+        AnimationDirection: 0
         Ease: 6
-        sequencingType: 1
+        PreDelay: 0
+        PostDelay: 0
         Duration: 0.3
         Amount: 50
-        Direction: {x: 0, y: 1}
-        PostDelay: 0
-        PreDelay: 0
+        Position: {x: 0, y: 50}
+        Vibrato: 10
+        Randomness: 25
+        Elasticity: 1
+        Punch: {x: 0, y: 1, z: 0}

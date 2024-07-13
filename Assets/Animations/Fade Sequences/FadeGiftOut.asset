@@ -28,10 +28,10 @@ MonoBehaviour:
     SequencingType: 1
     Fade: 1
     TransluscentSwitch: 0
-    Duration: 0.5
+    Duration: 1
     PostDelay: 0
     PreDelay: 0
-    Ease: 0
+    Ease: 3
     SoundName: 
     Animations:
       Value: []

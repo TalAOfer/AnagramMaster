@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99432e1cd32ec0a41836c3ced97b92da, type: 3}
   m_Name: Gift Overlay Text
   m_EditorClassIdentifier: 
-  ElementVisibilityChart: 16
+  ElementVisibilityChart: 0
