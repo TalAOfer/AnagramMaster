@@ -7,12 +7,14 @@ using UnityEngine.UI;
 
 public class GiftUI : MonoBehaviour
 {
-    [SerializeField] private RectTransform GiftParent;
-    [SerializeField] private RectTransform GiftTop;
+    [SerializeField] private RectTransform giftParent;
+    [SerializeField] private RectTransform giftTop;
     [SerializeField] private HorizontalLayoutGroup horizontalGroup;
     [SerializeField] private PositionUIOutsideScreen positionUIOutsideScreen;
-    [SerializeField] List<GiftItemUI> PremadeItems = new();
+    [SerializeField] private List<GiftItemUI> premadeItems = new();
+    [SerializeField] private ElementController elementController;
     readonly List<GiftItemUI> _activeItems = new();
+    private bool _didTap;
     private AnimationData AnimationData => AssetProvider.Instance.AnimationData;
 
 
@@ -22,8 +24,6 @@ public class GiftUI : MonoBehaviour
     [Button]
     public void Test()
     {
-        GiftTop.anchoredPosition = Vector3.zero;
-        positionUIOutsideScreen.PositionOutsideScreen(Sirenix.Utilities.Direction.Top);
         Initialize(testGift);
         StartCoroutine(OpenGiftAnimation());
     }
@@ -31,19 +31,22 @@ public class GiftUI : MonoBehaviour
     [SerializeField] private Sprite hintSprite;
     public void Initialize(Gift gift)
     {
+        positionUIOutsideScreen.PositionOutsideScreen(Sirenix.Utilities.Direction.Top);
+        giftTop.anchoredPosition = Vector3.zero;
+
         _activeItems.Clear();
 
-        for (int i = 0; i < PremadeItems.Count; i++)
+        for (int i = 0; i < premadeItems.Count; i++)
         {
             if (i < gift.Items.Count)
             {
-                _activeItems.Add(PremadeItems[i]);
-                PremadeItems[i].gameObject.SetActive(true);
+                _activeItems.Add(premadeItems[i]);
+                premadeItems[i].gameObject.SetActive(true);
             }
 
             else
             {
-                PremadeItems[i].gameObject.SetActive(false);
+                premadeItems[i].gameObject.SetActive(false);
             }
         }
 
@@ -59,26 +62,46 @@ public class GiftUI : MonoBehaviour
 
     public IEnumerator OpenGiftAnimation()
     {
+        yield return elementController.FadeGiftIn();
+
         yield return BringGiftToCenter();
 
-        yield return AnimationData.GiftPreparationAnimation.GetSequence(GiftParent).Play().WaitForCompletion();
-        
+        yield return AnimationData.GiftPreparationAnimation.GetSequence(giftParent).Play().WaitForCompletion();
+
         yield return OpenTop();
 
         yield return GetItemsOut();
+
+        yield return AwaitBlackScreenInput();
+
+        yield return elementController.FadeGiftOut();
     }
 
+    public void OnBlackScreenTap() => _didTap = true;
+
+    public IEnumerator AwaitBlackScreenInput()
+    {
+        StartCoroutine(elementController.FadeGiftTextIn());
+        
+        _didTap = false;
+
+        while (!_didTap)
+        {
+            yield return null;
+        }
+    }
+    
     private IEnumerator BringGiftToCenter()
     {
         Vector2 giftCenterPoint = new(0, AnimationData.giftParentDistanceFromCenter);
-        yield return GiftParent.DOAnchorPos(giftCenterPoint, AnimationData.giftAppearanceDuration)
+        yield return giftParent.DOAnchorPos(giftCenterPoint, AnimationData.giftAppearanceDuration)
             .SetEase(AnimationData.giftAppearanceEase)
             .WaitForCompletion();
     }
 
     private IEnumerator OpenTop()
     {
-        yield return AnimationData.GiftOpeningAnimation.GetSequence(GiftTop).Play();
+        yield return AnimationData.GiftOpeningAnimation.GetSequence(giftTop).Play();
     }
 
     private IEnumerator GetItemsOut()

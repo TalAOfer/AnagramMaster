@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0effd7e2baaf35745a3ca98e212aed14, type: 3}
+  m_Name: Fade Gift Text In
+  m_EditorClassIdentifier: 
+  FadeSequence:
+  - Element: {fileID: 11400000, guid: 6320723325429ca40918f67d87c6dac6, type: 2}
+    SequencingType: 0
+    Fade: 0
+    TransluscentSwitch: 0
+    Duration: 0.5
+    PostDelay: 0
+    PreDelay: 0
+    Ease: 0
+    SoundName: 
+    Animations:
+      Value: []

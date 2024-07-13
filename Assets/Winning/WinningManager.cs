@@ -10,7 +10,7 @@ public class WinningManager : MonoBehaviour
 {
     [SerializeField] private GiftUI GiftUI; 
     [SerializeField] private StartMenuManager startMenuManager;
-    [SerializeField] private ElementController fader;
+    [SerializeField] private ElementController elementController;
     [SerializeField] private WinningButton nextLevelButton;
     [SerializeField] private TextMeshProUGUI extraText;
     [SerializeField] private Color nativePanelTextColor;
@@ -74,10 +74,10 @@ public class WinningManager : MonoBehaviour
 
         yield return tween.WaitForCompletion();
 
-        //if (GiftCount.x == GiftCount.y)
-        //{
+        if (GiftCount.x == GiftCount.y)
+        {
             yield return OpenGift();
-        //}
+        }
     }
 
     private IEnumerator OpenGift()
@@ -130,47 +130,15 @@ public class WinningManager : MonoBehaviour
 
     public IEnumerator WinningRoutine()
     {
-        yield return fader.FadeOutGameplayToWinning();
+        yield return elementController.FadeOutGameplayToWinning();
 
-        yield return fader.FadeInGameplayToWinning();
+        yield return elementController.FadeInGameplayToWinning();
 
         yield return GiftRoutine();
 
         yield return AnimalRoutine();
 
-        //Area area = BiomeBank.GetArea(Data.IndexHierarchy);
-
-        //switch (nextLevelData.NextLevelEvent)
-        //{
-        //    case NextLevelEvent.None:
-        //        yield return fader.PlayRegularEndOfWinningSequence();
-        //        break;
-        //    case NextLevelEvent.NewArea:
-        //        //fader.CurrentInactiveGameplayBackground.sprite = area.Sprite;
-        //        NewAreaContainer.localScale = Vector3.one;
-        //        NewAreaImage.sprite = area.Sprite;
-        //        NewAreaContainerImage.color = nativePanelTextColor;
-        //        extraText.text = "New Area Unlocked!";
-        //        extraText.color = nativePanelTextColor;
-        //        yield return fader.PlayNewAreaWinningSequence();
-        //        break;
-        //    case NextLevelEvent.NewBiome:
-        //        //fader.CurrentInactiveGameplayBackground.sprite = area.Sprite;
-        //        NewAreaContainer.localScale = Vector3.one * AnimationData.NewBiomeImageUpscale;
-        //        NewAreaImage.sprite = area.Sprite;
-        //        NewAreaContainerImage.color = area.LetterContainerBGColor;
-        //        NewAreaImage.sprite = BiomeBank.GetArea(Data.IndexHierarchy).Sprite;
-        //        extraText.text = "New Destination Unlocked";
-        //        extraText.color = Color.white;
-        //        yield return fader.PlayNewBiomeWinningSequence();
-        //        break;
-        //    case NextLevelEvent.FinishedGame:
-        //        startMenuManager.Initialize();
-        //        extraText.text = "Thank you for playing!";
-        //        extraText.color = nativePanelTextColor;
-        //        yield return fader.PlayFinishedGameWinningSequence();
-        //        break;
-        //}
+        yield return elementController.PlayRegularEndOfWinningSequence();
     }
 
 

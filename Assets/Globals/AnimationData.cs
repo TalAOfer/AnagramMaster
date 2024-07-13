@@ -32,7 +32,12 @@ public class AnimationData : ScriptableObject
     public FaderTweenBlueprint WinningFinishedGameSequence;
     [FoldoutGroup("Transition Sequences")]
     public FaderTweenBlueprint WinningToStartMenuSequence;
-
+    [FoldoutGroup("Transition Sequences")]
+    public FaderTweenBlueprint FadeGiftIn;
+    [FoldoutGroup("Transition Sequences")]
+    public FaderTweenBlueprint FadeInGiftText;
+    [FoldoutGroup("Transition Sequences")]
+    public FaderTweenBlueprint FadeGiftOut;
 
     [FoldoutGroup("Gameplay")]
     [Title("Answer Addition")]

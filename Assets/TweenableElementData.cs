@@ -14,5 +14,6 @@ public enum ElementVisibilityChart
     StartMenu = 2,
     Gameplay = 4,
     Winning = 8,
+    Gift = 16,
 }
 

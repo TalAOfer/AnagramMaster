@@ -34,21 +34,22 @@ public class WinningButton : UIButton
     protected override void DoAction()
     {
         Events.OnStartButtonPressed.Raise();
+        elementController.WinningToGameplay();
 
-        switch (nextLevelData.NextLevelEvent)
-        {
-            case NextLevelEvent.None:
-                elementController.WinningToGameplay();
-                break;
-            case NextLevelEvent.NewArea:
-                elementController.FadeWinningNewAreaToGameplay();
-                break;
-            case NextLevelEvent.NewBiome:
-                elementController.WinningToGameplay();
-                break;
-            case NextLevelEvent.FinishedGame:
-                Application.OpenURL("https://forms.gle/pJEPRzfHPLv17fu5A");
-                break;
-        }
+        //switch (nextLevelData.NextLevelEvent)
+        //{
+        //    case NextLevelEvent.None:
+        //        elementController.WinningToGameplay();
+        //        break;
+        //    case NextLevelEvent.NewArea:
+        //        elementController.FadeWinningNewAreaToGameplay();
+        //        break;
+        //    case NextLevelEvent.NewBiome:
+        //        elementController.WinningToGameplay();
+        //        break;
+        //    case NextLevelEvent.FinishedGame:
+        //        Application.OpenURL("https://forms.gle/pJEPRzfHPLv17fu5A");
+        //        break;
+        //}
     }
 }

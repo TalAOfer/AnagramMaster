@@ -25,6 +25,9 @@ MonoBehaviour:
   WinningNewBiomeSequence: {fileID: 11400000, guid: c711b346eba2961428c75af85fd2b797, type: 2}
   WinningFinishedGameSequence: {fileID: 11400000, guid: f897fc90a5a12ef47955e9e410c4da75, type: 2}
   WinningToStartMenuSequence: {fileID: 11400000, guid: 6a5976a26e5b72c4a9bd71fbe3fc5b78, type: 2}
+  FadeGiftIn: {fileID: 11400000, guid: 8ad16ad83e9e2044ca17cd5548b1d6e9, type: 2}
+  FadeInGiftText: {fileID: 11400000, guid: a427d2d47fc070f4095ca173978f4c11, type: 2}
+  FadeGiftOut: {fileID: 11400000, guid: 1624e2cbb21a8ed4fa2bf8f62f2c270d, type: 2}
   answerAnimDuration: 0.5
   answerAnimEase: 6
   postAnswerAnimDelay: 0

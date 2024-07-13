@@ -93,6 +93,27 @@ public class ElementController : SerializedMonoBehaviour
         yield return sequence.WaitForCompletion();
     }
 
+    public IEnumerator FadeGiftIn()
+    {
+        Sequence sequence = CreateSequence(AnimData.FadeGiftIn);
+
+        yield return sequence.WaitForCompletion();
+    }
+
+    public IEnumerator FadeGiftOut()
+    {
+        Sequence sequence = CreateSequence(AnimData.FadeGiftOut);
+
+        yield return sequence.WaitForCompletion();
+    }
+
+    public IEnumerator FadeGiftTextIn()
+    {
+        Sequence sequence = CreateSequence(AnimData.FadeInGiftText);
+
+        yield return sequence.WaitForCompletion();
+    }
+
 
     #endregion
 
@@ -115,6 +136,9 @@ public class ElementController : SerializedMonoBehaviour
                 break;
             case ElementSuperStates.Winning:
                 correctElementChart = ElementVisibilityChart.Winning;
+                break;
+            case ElementSuperStates.Gift:
+                correctElementChart = ElementVisibilityChart.Gift;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(correctElementChart), ElementSuperState, null);
@@ -293,6 +317,7 @@ public class ElementController : SerializedMonoBehaviour
         GameStart = 1,
         StartMenu = 2,
         Gameplay = 4,
-        Winning = 8
+        Winning = 8,
+        Gift = 16,
     }
 }
