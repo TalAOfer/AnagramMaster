@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{25ecf611-1027-46ba-9fc5-e1e0afc59c8f}">
+		<property name="assetPath">
+			<value>ESM_Builder_Game_Item_Click_2_Organic_Ring_Tonal_Raw.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.11644791666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{87d1a342-ed76-4a5f-ae6b-f73f026b8a64}</destination>
+		</relationship>
+	</object>
+</objects>
