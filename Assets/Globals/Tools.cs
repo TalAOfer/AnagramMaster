@@ -5,7 +5,6 @@ public static class Tools
 {
     private static readonly Dictionary<float, WaitForSeconds> WaitDictionary = new Dictionary<float, WaitForSeconds>();
     private static readonly Dictionary<float, WaitForSecondsRealtime> WaitRealtimeDictionary = new Dictionary<float, WaitForSecondsRealtime>();
-
     public static WaitForSeconds GetWait(float time)
     {
         if (WaitDictionary.TryGetValue(time, out var wait)) return wait;
@@ -18,5 +17,12 @@ public static class Tools
         if (WaitRealtimeDictionary.TryGetValue(time, out var wait)) return wait;
         WaitRealtimeDictionary[time] = new WaitForSecondsRealtime(time);
         return WaitRealtimeDictionary[time];
+    }
+
+    public static Color Transparent()
+    {
+        Color color = Color.white;
+        color.a = 0f;
+        return color;
     }
 }

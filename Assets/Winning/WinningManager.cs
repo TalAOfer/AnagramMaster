@@ -41,11 +41,9 @@ public class WinningManager : MonoBehaviour
     {
         _dataClone = dataClone;
 
-        //Initialize Upper bar
         InitializeGiftBar();
         InitializeAnimalBar();
 
-        //Check for a next-level-event (New biome? New Area?)
         NextLevelData nextLevelData = new(Data.IndexHierarchy, BiomeBank);
         nextLevelButton.Initialize(nextLevelData);
     }
@@ -65,7 +63,7 @@ public class WinningManager : MonoBehaviour
     private IEnumerator GiftRoutine()
     {
         GiftCount.x += 1;
-        SoundManager.PlaySound("WinningCollectibleBarFill", Vector3.zero);
+        SoundManager.PlaySound("GiftBarFill", Vector3.zero);
         Tween tween = giftSlider.DOValue(GetGiftSliderFill(), AnimationData.sliderFillDuration).SetEase(AnimationData.sliderFillEase);
         StartCoroutine(CoroutineRunner.Instance.RunFunctionDelayed
             (AnimationData.sliderFillDuration / 2f, 
@@ -102,7 +100,7 @@ public class WinningManager : MonoBehaviour
     private IEnumerator AnimalRoutine()
     {
         AnimalCount.x += 1;
-        SoundManager.PlaySound("WinningCollectibleBarFill", Vector3.zero);
+        SoundManager.PlaySound("AnimalBarFill", Vector3.zero);
         Tween tween = animalSlider.DOValue(GetAnimalSliderFill(), AnimationData.sliderFillDuration).SetEase(AnimationData.sliderFillEase);
 
         StartCoroutine(CoroutineRunner.Instance.RunFunctionDelayed
