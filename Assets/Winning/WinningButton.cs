@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,6 @@ using UnityEngine;
 public class WinningButton : UIButton
 {
     private EventRegistry Events => AssetProvider.Instance.Events;
-
     public override void Initialize(NextLevelData nextLevelData)
     {
         string text = "";
@@ -34,7 +34,13 @@ public class WinningButton : UIButton
     protected override void DoAction()
     {
         Events.OnStartButtonPressed.Raise();
-        elementController.WinningToGameplay();
+        
+        Sequence fadeOut = AnimationData.W_Fade_Out.GetSequenceChain();
+        Sequence fadeIn = AnimationData.G_Fade_In.GetSequenceChain();
+        Sequence combined = DOTween.Sequence();
+        combined.Append(fadeOut);
+        combined.Append(fadeIn);
+        combined.Play();
 
         //switch (nextLevelData.NextLevelEvent)
         //{
@@ -52,4 +58,5 @@ public class WinningButton : UIButton
         //        break;
         //}
     }
+
 }

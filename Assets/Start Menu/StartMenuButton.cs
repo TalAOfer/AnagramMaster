@@ -1,17 +1,19 @@
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StartMenuButton : UIButton
 {
-    [SerializeField] private TweenableElementData G_BG;
+    [SerializeField] private TweenableElementPointer Main_BG;
+    [SerializeField] private ElementController elementController;
     private EventRegistry Events => AssetProvider.Instance.Events;
     public override void Initialize(NextLevelData nextLevelData)
     {
         string text;
         this.nextLevelData = nextLevelData;
 
-        elementController.GetElement(G_BG).GetComponent<Image>().sprite = BiomeBank.GetArea(Data.IndexHierarchy).Sprite;
+        elementController.GetElement(Main_BG).GetComponent<Image>().sprite = BiomeBank.GetArea(Data.IndexHierarchy).Sprite;
 
         bool finishedGame = nextLevelData.NextLevelEvent is NextLevelEvent.FinishedGame;
 
@@ -33,6 +35,8 @@ public class StartMenuButton : UIButton
     protected override void DoAction()
     {
         Events.OnStartButtonPressed.Raise();
-        elementController.FadeStartMenuToGameplay();
+
+        AnimationData.S_Fade_Out.Play();
+        AnimationData.G_Fade_In.Play();
     }
 }

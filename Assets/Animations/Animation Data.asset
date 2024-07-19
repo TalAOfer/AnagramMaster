@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f3e43523cb78d4396b513f79b6ccab, type: 3}
+  m_Name: Animation Data
+  m_EditorClassIdentifier: 
+  TransluscentBlurConfig: {x: 2, y: 1}
+  TransluscentGlassConfig: {x: 3, y: 2}
+  S_Fade_In: {fileID: 11400000, guid: 5c9076429871c8048a4cda7059ea2fce, type: 2}
+  S_Fade_Out: {fileID: 11400000, guid: 17d1e7688ce1faa4194d86ff91c82496, type: 2}
+  G_Fade_In: {fileID: 11400000, guid: 2b01106f2e17e644888f6ac298e413df, type: 2}
+  G_Fade_Out: {fileID: 11400000, guid: f101a27670b5f2d4283119729747335e, type: 2}
+  W_Fade_In: {fileID: 11400000, guid: bcf27b0bd62cc414f819a8603d96167c, type: 2}
+  W_Fade_Out: {fileID: 11400000, guid: 2f249ca380b6d324391558e7676e6053, type: 2}
+  Gift_Fade_In: {fileID: 11400000, guid: b753ffe4eb8490848bd96f97bfcbb01d, type: 2}
+  Gift_Text_Fade_In: {fileID: 11400000, guid: 908fc655b7e623e4fbf8ca64f49e71d6, type: 2}
+  Gift_Fade_Out: {fileID: 11400000, guid: 9f1dcb3dd73e4394086c22d03855809a, type: 2}
+  ButtonClickAnimation:
+    UseAsset: 1
+    Asset: {fileID: 11400000, guid: 76d4dc3ef058ff241afc407a50f2625e, type: 2}
+    Value:
+      PreDelay: 0
+      PostDelay: 0
+      SequenceBlueprint: []
+  GuessLetterBounce:
+    UseAsset: 1
+    Asset: {fileID: 11400000, guid: facf09bdcffeab840bbcd08a655526d0, type: 2}
+    Value:
+      PreDelay: 0
+      PostDelay: 0
+      SequenceBlueprint: []
+  CorrectGuessAnimDelayBetweenLetters: 0.15
+  PostCorrectGuessAnimDelay: 0
+  answerAnimDuration: 0.5
+  answerAnimEase: 6
+  postAnswerAnimDelay: 0
+  pluralWrongAnswerColor: {r: 0.735849, g: 0.15619439, b: 0.15619439, a: 1}
+  AnswerHistoryMistakeAnimation:
+    UseAsset: 1
+    Asset: {fileID: 11400000, guid: 5ad592584a20f8240810b6fb1e3670ae, type: 2}
+    Value:
+      PreDelay: 0
+      PostDelay: 0
+      SequenceBlueprint: []
+  HintGuessContainerAnimation:
+    UseAsset: 1
+    Asset: {fileID: 11400000, guid: 589e3fdbbf4fb8d4e84e54aebc32292c, type: 2}
+    Value:
+      PreDelay: 0
+      PostDelay: 0
+      SequenceBlueprint: []
+  GuessMistakeAnimBlueprint:
+    UseAsset: 1
+    Asset: {fileID: 11400000, guid: 2f948d2dbaaf504488bc92fd1799ad4a, type: 2}
+    Value:
+      PreDelay: 0
+      PostDelay: 0
+      SequenceBlueprint: []
+  ProgressionFruitAnimation:
+    UseAsset: 1
+    Asset: {fileID: 11400000, guid: 8fdb1481e3c3c5d4e9e584afe0293536, type: 2}
+    Value:
+      PreDelay: 0
+      PostDelay: 0
+      SequenceBlueprint: []
+  swipeHandSwipeDuration: 0.8
+  swipeHandSwipeEase: 9
+  swipeHandFadeDuration: 0.4
+  swipeHandEndDelayDuration: 0.25
+  sliderFillDuration: 2.5
+  sliderFillEase: 13
+  giftItemAppearanceDuration: 0.5
+  giftItemAppearanceEase: 0
+  defaultGiftItemHeight: 300
+  giftItemHeightSpacing: 50
+  giftItemDelaySpacing: 0.25

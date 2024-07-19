@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5652340725125217458}
   - component: {fileID: 6459709142455069805}
   - component: {fileID: 2763977606438531518}
-  - component: {fileID: 6438160268131190683}
+  - component: {fileID: 901099386914745213}
+  - component: {fileID: 3242360417029480862}
   m_Layer: 5
   m_Name: Guess Node
   m_TagString: Untagged
@@ -60,8 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 2763977606438531518}
-  correctAnswerAnimation: {fileID: 11400000, guid: e6c74951d81f6cd4aa073ac957dbe210, type: 2}
-  tweener: {fileID: 6438160268131190683}
+  element: {fileID: 3242360417029480862}
 --- !u!114 &2763977606438531518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,7 +92,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6438160268131190683
+--- !u!225 &901099386914745213
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8736357304979179091}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &3242360417029480862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,11 +113,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8736357304979179091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 595fe97ad113e1645b068a581a25f5c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 53d1954ab60c0a44da649fe6eebdef86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: 0
-  resetScale: 1
-  resetPosition: 1
-  resetRotation: 1
-  testBlueprint: {fileID: 0}
+  rectTransform: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  canvas: {fileID: 0}

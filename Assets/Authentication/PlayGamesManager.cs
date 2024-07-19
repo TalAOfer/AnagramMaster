@@ -7,17 +7,24 @@ using System;
 public class PlayGamesManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI detailsText;
+
     private void Start()
     {
+#if UNITY_ANDROID
         SignIn();
+#endif
     }
+
     public void SignIn()
     {
+#if UNITY_ANDROID
         PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+#endif
     }
 
     internal void ProcessAuthentication(SignInStatus status)
     {
+#if UNITY_ANDROID
         if (status == SignInStatus.Success)
         {
             try
@@ -39,8 +46,8 @@ public class PlayGamesManager : MonoBehaviour
             detailsText.text = $"Sign-in failed with status: {status}";
             // Disable your integration with Play Games Services or show a login button
             // to ask users to sign-in. Clicking it should call
-            //PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication);
+            // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication);
         }
+#endif
     }
-
 }

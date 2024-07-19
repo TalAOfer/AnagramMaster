@@ -7,18 +7,18 @@ using UnityEngine.UI;
 public class UIButton : MonoBehaviour
 {
     [SerializeField] protected Button button;
-    [SerializeField] protected ElementController elementController;
     [SerializeField] protected TextMeshProUGUI Tmp;
-    [SerializeField] private Tweener tweener;
-    [SerializeField] private TweenBlueprint buttonClickAnim;
+    [SerializeField] private bool animateOnClick = true;
+    [SerializeField] protected TweenableElement element;
 
     protected NextLevelData nextLevelData;
     protected GameData Data => AssetProvider.Instance.Data.Value;
     protected BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
+    protected AnimationData AnimationData => AssetProvider.Instance.AnimationData;
 
     public virtual void Initialize(NextLevelData nextLevelData = null)
     {
-        
+
     }
 
 
@@ -31,8 +31,21 @@ public class UIButton : MonoBehaviour
 
     public IEnumerator ClickSequence()
     {
-        yield return tweener.TriggerTween(buttonClickAnim).WaitForCompletion();
+        yield return PlayAnimation();
         DoAction();
+    }
+
+    public virtual IEnumerator PlayAnimation()
+    {
+        if (animateOnClick)
+        {
+            yield return AnimationData.ButtonClickAnimation.PlayAndWait(element);
+        }
+        else 
+        {
+            yield break;
+        }
+
     }
 
     protected virtual void DoAction() { }

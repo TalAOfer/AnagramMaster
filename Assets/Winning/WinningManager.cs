@@ -10,7 +10,6 @@ public class WinningManager : MonoBehaviour
 {
     [SerializeField] private GiftUI GiftUI; 
     [SerializeField] private StartMenuManager startMenuManager;
-    [SerializeField] private ElementController elementController;
     [SerializeField] private WinningButton nextLevelButton;
     [SerializeField] private TextMeshProUGUI extraText;
     [SerializeField] private Color nativePanelTextColor;
@@ -26,6 +25,10 @@ public class WinningManager : MonoBehaviour
     [FoldoutGroup("Animal Bar")]
     [SerializeField] private Slider animalSlider;
     private Vector2Int AnimalCount;
+
+    [SerializeField] private BiomeAnimalGuide BiomeAnimalGuide;
+    [SerializeField] private SoloAnimalUI SoloAnimalUI;
+
     private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
     private AnimationData AnimationData => AssetProvider.Instance.AnimationData;
     private GameData Data => AssetProvider.Instance.Data.Value;
@@ -43,6 +46,9 @@ public class WinningManager : MonoBehaviour
 
         InitializeGiftBar();
         InitializeAnimalBar();
+
+        SoloAnimalUI.Initialize(BiomeBank.GetArea(dataClone.IndexHierarchy).Animal);
+        BiomeAnimalGuide.Initialize(BiomeBank.Biomes[dataClone.IndexHierarchy.Biome]);
 
         NextLevelData nextLevelData = new(Data.IndexHierarchy, BiomeBank);
         nextLevelButton.Initialize(nextLevelData);
@@ -113,6 +119,11 @@ public class WinningManager : MonoBehaviour
         if (AnimalCount.x == AnimalCount.y)
         {
             yield return ShowAnimal();
+        } 
+        
+        else
+        {
+            //yield return AnimationData.WinningRegularEndingSequence.PlayAndWait();
         }
     }
 
@@ -128,15 +139,16 @@ public class WinningManager : MonoBehaviour
 
     public IEnumerator WinningRoutine()
     {
-        yield return elementController.FadeOutGameplayToWinning();
+        yield return AnimationData.G_Fade_Out.PlayAndWait();
 
-        yield return elementController.FadeInGameplayToWinning();
+        Debug.Log("Ended");
+
+        yield return AnimationData.W_Fade_In.PlayAndWait();
 
         yield return GiftRoutine();
 
         yield return AnimalRoutine();
 
-        yield return elementController.PlayRegularEndOfWinningSequence();
     }
 
 

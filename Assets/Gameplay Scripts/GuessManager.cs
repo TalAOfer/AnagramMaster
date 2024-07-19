@@ -1,9 +1,7 @@
 using DG.Tweening;
 using Sirenix.OdinInspector;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class GuessManager : MonoBehaviour
@@ -12,7 +10,7 @@ public class GuessManager : MonoBehaviour
     private readonly List<GuessContainer> _activeGuessContainers = new();
     public List<GuessContainer> ActiveGuessContainers { get { return _activeGuessContainers; } }
 
-    [SerializeField] private Tweener tweener;
+    [SerializeField] private TweenableElement element;
     private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
     private AnimationData AnimData => AssetProvider.Instance.AnimationData;
     private GameData Data => AssetProvider.Instance.Data.Value;
@@ -69,10 +67,10 @@ public class GuessManager : MonoBehaviour
         {
             sequence.AppendCallback(() => guessContainer.StartCorrectAnswerAnimation());
             sequence.AppendCallback(() => SoundManager.PlaySound("LetterBounce", guessContainer.transform.position));
-            sequence.AppendInterval(AnimData.correctGuessAnimaDelayBetweenLetters);
+            sequence.AppendInterval(AnimData.CorrectGuessAnimDelayBetweenLetters);
         }
 
-        sequence.AppendInterval(AnimData.postCorrectGuessAnimDelay);
+        sequence.AppendInterval(AnimData.PostCorrectGuessAnimDelay);
 
         yield return sequence.WaitForCompletion();
     }
@@ -85,7 +83,7 @@ public class GuessManager : MonoBehaviour
 
     public IEnumerator MistakeAnimation()
     {
-        yield return tweener.TriggerTween(AnimData.guessMistakeAnimBlueprint).WaitForCompletion();
+        yield return AnimData.ProgressionFruitAnimation.PlayAndWait(element);
     }
 
 

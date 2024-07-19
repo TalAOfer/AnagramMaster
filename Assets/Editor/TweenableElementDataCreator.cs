@@ -15,7 +15,7 @@ public class TweenableElementDataCreator
         {
             // Check if a TweenableElementData already exists for this element
             bool dataExists = AssetDatabase.FindAssets("t:TweenableElementData")
-                                            .Select(guid => AssetDatabase.LoadAssetAtPath<TweenableElementData>(AssetDatabase.GUIDToAssetPath(guid)))
+                                            .Select(guid => AssetDatabase.LoadAssetAtPath<TweenableElementPointer>(AssetDatabase.GUIDToAssetPath(guid)))
                                             .Any(data => data.name == element.name);
 
             if (dataExists)
@@ -25,7 +25,7 @@ public class TweenableElementDataCreator
             }
 
             // Create a new TweenableElementData instance
-            TweenableElementData data = ScriptableObject.CreateInstance<TweenableElementData>();
+            TweenableElementPointer data = ScriptableObject.CreateInstance<TweenableElementPointer>();
 
             // Save the ScriptableObject asset
             string assetPath = $"Assets/Animations/Tweenable Elements/{element.gameObject.name}.asset";

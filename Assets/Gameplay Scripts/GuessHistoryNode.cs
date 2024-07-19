@@ -12,7 +12,7 @@ public class GuessHistoryNode : MonoBehaviour
     private Sprite pendingSprite;
     private Sprite answeredSprite;
     private AnimationData AnimationData => AssetProvider.Instance.AnimationData;
-    [SerializeField] private Tweener tweener;
+    [SerializeField] private TweenableElement element;
     public string Answer { get; private set; } = "";
 
     public void Initialize(Biome biome)
@@ -28,7 +28,7 @@ public class GuessHistoryNode : MonoBehaviour
     {
         Answered = true;
         image.sprite = answeredSprite;
-        tweener.TriggerTween(AnimationData.gameplayCollectibleAnimation);
+        AnimationData.ProgressionFruitAnimation.Play(element);
         Answer = answer;
         SoundManager.PlaySound("GameplayCollectibleCollected", Vector3.zero);
     }

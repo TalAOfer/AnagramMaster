@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,8 +11,7 @@ public class GuessContainer : MonoBehaviour
     public RectTransform Rect {  get { return rect; } }
     [SerializeField] private Image defaultImage;
     [SerializeField] private Image colorBlockImage;
-    [SerializeField] private Tweener tweener;
-    public Tweener Tweener { get {  return tweener; } }
+    [SerializeField] private TweenableElement element;
 
     [SerializeField] private TextMeshProUGUI hintLetter;
     public bool HintApplied { get; private set; }
@@ -45,11 +45,11 @@ public class GuessContainer : MonoBehaviour
 
     public void StartCorrectAnswerAnimation()
     {
-        tweener.TriggerTween(AnimData.guessCorrectAnimBlueprint);
+        AnimData.GuessLetterBounce.Play(element);
     }
     public void PlayHintAnimation()
     {
-        tweener.TriggerTween(AnimData.guessHintAnimBlueprint);
+        AnimData.HintGuessContainerAnimation.Play(element);
     }
 
 }

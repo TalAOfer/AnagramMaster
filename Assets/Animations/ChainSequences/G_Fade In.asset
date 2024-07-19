@@ -1,0 +1,705 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e06b9c110f0833429a2202c8c7ea9fd, type: 3}
+  m_Name: G_Fade In
+  m_EditorClassIdentifier: 
+  Value:
+  - ElementPointer: {fileID: 11400000, guid: 297a0e2f447b37e428419bc29e459de3, type: 2}
+    SequencingType: 1
+    AnimationSequenceRef:
+      UseAsset: 0
+      Asset: {fileID: 0}
+      Value:
+        PreDelay: 0
+        PostDelay: 0
+        SequenceBlueprint:
+        - SequencingType: 1
+          ActionType: 6
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 0.7
+          playSoundData:
+            Sound: 
+        - SequencingType: 0
+          ActionType: 7
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 11400000, guid: 90e61c2e41e759d48b7313e0c3fa778e, type: 2}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: 
+  - ElementPointer: {fileID: 11400000, guid: 18de01fbf90a9eb46adf7632a3f17067, type: 2}
+    SequencingType: 0
+    AnimationSequenceRef:
+      UseAsset: 0
+      Asset: {fileID: 0}
+      Value:
+        PreDelay: 0
+        PostDelay: 0
+        SequenceBlueprint:
+        - SequencingType: 1
+          ActionType: 6
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 0.3
+          playSoundData:
+            Sound: 
+        - SequencingType: 1
+          ActionType: 1
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 6
+            Duration: 0.3
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 100}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: 
+  - ElementPointer: {fileID: 11400000, guid: 846290a0787aff443a4cf57ab84af5be, type: 2}
+    SequencingType: 1
+    AnimationSequenceRef:
+      UseAsset: 0
+      Asset: {fileID: 0}
+      Value:
+        PreDelay: 0
+        PostDelay: 0
+        SequenceBlueprint:
+        - SequencingType: 1
+          ActionType: 6
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 0.4
+          playSoundData:
+            Sound: 
+        - SequencingType: 1
+          ActionType: 1
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 6
+            Duration: 0.3
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 50}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: 
+  - ElementPointer: {fileID: 11400000, guid: 49b93c5144377074e86e148c31c4e3d8, type: 2}
+    SequencingType: 0
+    AnimationSequenceRef:
+      UseAsset: 0
+      Asset: {fileID: 0}
+      Value:
+        PreDelay: 0
+        PostDelay: 0
+        SequenceBlueprint:
+        - SequencingType: 1
+          ActionType: 6
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 0.3
+          playSoundData:
+            Sound: 
+        - SequencingType: 1
+          ActionType: 1
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 6
+            Duration: 0.3
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 50}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: 
+  - ElementPointer: {fileID: 11400000, guid: e814ce5120308c94da55cc9710e07efd, type: 2}
+    SequencingType: 0
+    AnimationSequenceRef:
+      UseAsset: 0
+      Asset: {fileID: 0}
+      Value:
+        PreDelay: 0
+        PostDelay: 0
+        SequenceBlueprint:
+        - SequencingType: 1
+          ActionType: 6
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 0.3
+          playSoundData:
+            Sound: 
+        - SequencingType: 1
+          ActionType: 1
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 6
+            Duration: 0.3
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 50}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: 
+  - ElementPointer: {fileID: 11400000, guid: a415bf551aadc7e4ba052d6c5c4821ab, type: 2}
+    SequencingType: 1
+    AnimationSequenceRef:
+      UseAsset: 0
+      Asset: {fileID: 0}
+      Value:
+        PreDelay: 0.2
+        PostDelay: 0
+        SequenceBlueprint:
+        - SequencingType: 1
+          ActionType: 6
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 0.3
+          playSoundData:
+            Sound: 
+        - SequencingType: 1
+          ActionType: 1
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 6
+            Duration: 0.3
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 50}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: 

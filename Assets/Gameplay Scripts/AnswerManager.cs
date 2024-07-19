@@ -7,7 +7,7 @@ public class AnswerManager : MonoBehaviour
 {
     [SerializeField] private List<RectTransform> PremadeAnswerContainers;
     [SerializeField] private LetterBank letterBank;
-    [SerializeField] private Tweener tweener;
+    [SerializeField] private TweenableElement element;
     private AnimationData AnimData => AssetProvider.Instance.AnimationData;
     private LevelData LevelData => AssetProvider.Instance.Data.Value.Level;
 
@@ -85,6 +85,6 @@ public class AnswerManager : MonoBehaviour
 
     public IEnumerator PlayMistakeAnimation()
     {
-        yield return tweener.TriggerTween(AnimData.answerHistoryMistakeAnimBlueprint).WaitForCompletion();
+        yield return AnimData.AnswerHistoryMistakeAnimation.PlayAndWait(element);
     }
 }

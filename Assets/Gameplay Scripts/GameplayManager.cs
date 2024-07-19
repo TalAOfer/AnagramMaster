@@ -205,7 +205,7 @@ public class GameplayManager : MonoBehaviour
         Color guessColor = firstLetter.GuessLetter.Tmp.color;
         Color answerColor = firstLetter.GuessLetter.AnswerLetter.Tmp.color;
 
-        ChangeLetterColors(AnimationData.pluralWrongAnswerColor, guessColor);
+        ChangeLetterColors(AnimationData.pluralWrongAnswerColor);
 
         StartCoroutine(AnswerManager.PlayMistakeAnimation());
         yield return PlayMistakeAnimation();
@@ -213,7 +213,7 @@ public class GameplayManager : MonoBehaviour
         RestoreLetterColors(answerColor, guessColor);
     }
 
-    private void ChangeLetterColors(Color pluralWrongAnswerColor, Color guessColor)
+    private void ChangeLetterColors(Color pluralWrongAnswerColor)
     {
         for (int i = 0; i < usedLetters.Count; i++)
         {
