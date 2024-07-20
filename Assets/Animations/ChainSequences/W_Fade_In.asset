@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e06b9c110f0833429a2202c8c7ea9fd, type: 3}
   m_Name: W_Fade_In
   m_EditorClassIdentifier: 
-  PreDelay: 0
+  PreDelay: 0.2
   PostDelay: 0
   Value:
   - ElementPointer: {fileID: 11400000, guid: d0bff5ca03426b044a219721f84bd420, type: 2}
@@ -1272,6 +1272,59 @@ MonoBehaviour:
         PostDelay: 0
         SequenceBlueprint:
         - SequencingType: 1
+          ActionType: 6
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 5
+            Duration: 0.15
+          playSoundData:
+            Sound: 
+        - SequencingType: 1
           ActionType: 8
           PreDelay: 0
           PostDelay: 0
@@ -1324,59 +1377,6 @@ MonoBehaviour:
             Duration: 1
           playSoundData:
             Sound: UIpop
-        - SequencingType: 1
-          ActionType: 6
-          PreDelay: 0
-          PostDelay: 0
-          zoomData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            ScaleAddition: {x: 0, y: 0}
-          slideData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            OutOfScreen: 0
-            Direction: 0
-            AddedValue: {x: 0, y: 0}
-          jumpData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            OutOfScreen: 0
-            Direction: 0
-            Power: 0
-            AddedValue: {x: 0, y: 0}
-          spinData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            AddedValue: 0
-          shakeData:
-            Subtype: 0
-            Ease: 0
-            Duration: 1
-            Strength: {x: 0, y: 0}
-            SpinStrength: 0
-            Vibrato: 10
-            Randomness: 25
-          punchData:
-            Subtype: 0
-            Ease: 0
-            Duration: 1
-            Punch: {x: 0, y: 0}
-            Vibrato: 10
-            Elasticity: 1
-          callEventData:
-            GameEvent: {fileID: 0}
-          fadeData:
-            SetActiveAccordingToFade: 1
-            Fade: 0
-            Ease: 5
-            Duration: 0.1
-          playSoundData:
-            Sound: 
         - SequencingType: 1
           ActionType: 0
           PreDelay: 0
@@ -1440,59 +1440,6 @@ MonoBehaviour:
         PostDelay: 0
         SequenceBlueprint:
         - SequencingType: 1
-          ActionType: 8
-          PreDelay: 0
-          PostDelay: 0
-          zoomData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            ScaleAddition: {x: 0, y: 0}
-          slideData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            OutOfScreen: 0
-            Direction: 0
-            AddedValue: {x: 0, y: 0}
-          jumpData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            OutOfScreen: 0
-            Direction: 0
-            Power: 0
-            AddedValue: {x: 0, y: 0}
-          spinData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            AddedValue: 0
-          shakeData:
-            Subtype: 0
-            Ease: 0
-            Duration: 1
-            Strength: {x: 0, y: 0}
-            SpinStrength: 0
-            Vibrato: 10
-            Randomness: 25
-          punchData:
-            Subtype: 0
-            Ease: 0
-            Duration: 1
-            Punch: {x: 0, y: 0}
-            Vibrato: 10
-            Elasticity: 1
-          callEventData:
-            GameEvent: {fileID: 0}
-          fadeData:
-            SetActiveAccordingToFade: 1
-            Fade: 0
-            Ease: 0
-            Duration: 1
-          playSoundData:
-            Sound: UIpop 2
-        - SequencingType: 1
           ActionType: 6
           PreDelay: 0
           PostDelay: 0
@@ -1546,13 +1493,66 @@ MonoBehaviour:
           playSoundData:
             Sound: 
         - SequencingType: 1
-          ActionType: 0
+          ActionType: 8
           PreDelay: 0
           PostDelay: 0
           zoomData:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: UIpop 2
+        - SequencingType: 1
+          ActionType: 0
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 15
+            Duration: 0.4
             ScaleAddition: {x: -0.7, y: -0.7}
           slideData:
             AnimationDirection: 0
@@ -1608,6 +1608,59 @@ MonoBehaviour:
         PostDelay: 0
         SequenceBlueprint:
         - SequencingType: 1
+          ActionType: 6
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 5
+            Duration: 0.15
+          playSoundData:
+            Sound: 
+        - SequencingType: 1
           ActionType: 8
           PreDelay: 0
           PostDelay: 0
@@ -1660,59 +1713,6 @@ MonoBehaviour:
             Duration: 1
           playSoundData:
             Sound: UIpop
-        - SequencingType: 1
-          ActionType: 6
-          PreDelay: 0
-          PostDelay: 0
-          zoomData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            ScaleAddition: {x: 0, y: 0}
-          slideData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            OutOfScreen: 0
-            Direction: 0
-            AddedValue: {x: 0, y: 0}
-          jumpData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            OutOfScreen: 0
-            Direction: 0
-            Power: 0
-            AddedValue: {x: 0, y: 0}
-          spinData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            AddedValue: 0
-          shakeData:
-            Subtype: 0
-            Ease: 0
-            Duration: 1
-            Strength: {x: 0, y: 0}
-            SpinStrength: 0
-            Vibrato: 10
-            Randomness: 25
-          punchData:
-            Subtype: 0
-            Ease: 0
-            Duration: 1
-            Punch: {x: 0, y: 0}
-            Vibrato: 10
-            Elasticity: 1
-          callEventData:
-            GameEvent: {fileID: 0}
-          fadeData:
-            SetActiveAccordingToFade: 1
-            Fade: 0
-            Ease: 5
-            Duration: 0.1
-          playSoundData:
-            Sound: 
         - SequencingType: 1
           ActionType: 0
           PreDelay: 0
@@ -1776,59 +1776,6 @@ MonoBehaviour:
         PostDelay: 0
         SequenceBlueprint:
         - SequencingType: 1
-          ActionType: 8
-          PreDelay: 0
-          PostDelay: 0
-          zoomData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            ScaleAddition: {x: 0, y: 0}
-          slideData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            OutOfScreen: 0
-            Direction: 0
-            AddedValue: {x: 0, y: 0}
-          jumpData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            OutOfScreen: 0
-            Direction: 0
-            Power: 0
-            AddedValue: {x: 0, y: 0}
-          spinData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            AddedValue: 0
-          shakeData:
-            Subtype: 0
-            Ease: 0
-            Duration: 1
-            Strength: {x: 0, y: 0}
-            SpinStrength: 0
-            Vibrato: 10
-            Randomness: 25
-          punchData:
-            Subtype: 0
-            Ease: 0
-            Duration: 1
-            Punch: {x: 0, y: 0}
-            Vibrato: 10
-            Elasticity: 1
-          callEventData:
-            GameEvent: {fileID: 0}
-          fadeData:
-            SetActiveAccordingToFade: 1
-            Fade: 0
-            Ease: 0
-            Duration: 1
-          playSoundData:
-            Sound: UIpop 2
-        - SequencingType: 1
           ActionType: 6
           PreDelay: 0
           PostDelay: 0
@@ -1882,13 +1829,66 @@ MonoBehaviour:
           playSoundData:
             Sound: 
         - SequencingType: 1
-          ActionType: 0
+          ActionType: 8
           PreDelay: 0
           PostDelay: 0
           zoomData:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: UIpop 2
+        - SequencingType: 1
+          ActionType: 0
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 15
+            Duration: 0.4
             ScaleAddition: {x: -0.7, y: -0.7}
           slideData:
             AnimationDirection: 0
