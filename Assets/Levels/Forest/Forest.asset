@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531fbf76ca5a0fc4bbb2b92346c3b491, type: 3}
   m_Name: Forest
   m_EditorClassIdentifier: 
-  FullCollectible: {fileID: 21300000, guid: d6edf88c7b5bad14695d8c8f13555db6, type: 3}
-  EmptyCollectible: {fileID: 21300000, guid: 61fb2ecc0538ce046868e8028d6564b9, type: 3}
+  FullCollectible: {fileID: 21300000, guid: 0c7f10592e8b1a74fa6034720a6924e6, type: 3}
+  EmptyCollectible: {fileID: 21300000, guid: 149efe468bcfb7b47a62285680f8ffaf, type: 3}
   Areas:
   - Sprite: {fileID: 21300000, guid: ffc3afccafb01104890f06515e53498c, type: 3}
     Animal:
@@ -21,7 +21,8 @@ MonoBehaviour:
       description: This deer is wow indeed
       ImageAnchor: {x: 66, y: -107}
       QuestionMarkAnchor: {x: 28, y: -6}
-      SpriteWithBG: {fileID: 0}
+      SoloSpriteWithBG: {fileID: 21300000, guid: 2ab4a3c241c2add4aa4ae12a9be9432a, type: 3}
+      SoloSprite: {fileID: 21300000, guid: c12bdc2bffc33334480e3926d70ef10f, type: 3}
       IsolatedSprite: {fileID: 21300000, guid: 9f1135188b78f9d4a8062ba7e45a6dc4, type: 3}
     Levels:
     - {fileID: 11400000, guid: dd6c4417e3dab59418b278d3f94b339c, type: 2}
@@ -34,7 +35,8 @@ MonoBehaviour:
       description: He is cunning and such
       ImageAnchor: {x: 424, y: -123.7}
       QuestionMarkAnchor: {x: 27.4, y: 3.1}
-      SpriteWithBG: {fileID: 21300000, guid: a5b9e1b31379fb043869cce30c79d30f, type: 3}
+      SoloSpriteWithBG: {fileID: 21300000, guid: a5b9e1b31379fb043869cce30c79d30f, type: 3}
+      SoloSprite: {fileID: 21300000, guid: 37e4345fbae793046aa7144bfcd5ae75, type: 3}
       IsolatedSprite: {fileID: 21300000, guid: 14f2dc09a246c544096e4e14b73d5de1, type: 3}
     Levels:
     - {fileID: 11400000, guid: dd68f594a2851b04ead74928029552de, type: 2}
@@ -47,7 +49,8 @@ MonoBehaviour:
       description: Hippity hoppity
       ImageAnchor: {x: -211.1, y: -200}
       QuestionMarkAnchor: {x: 5.2, y: -8}
-      SpriteWithBG: {fileID: 21300000, guid: a7a49bdf6e812b44e99063db61b16c4a, type: 3}
+      SoloSpriteWithBG: {fileID: 21300000, guid: a7a49bdf6e812b44e99063db61b16c4a, type: 3}
+      SoloSprite: {fileID: 21300000, guid: fde99c82b94ed204cbc6544c9c87f170, type: 3}
       IsolatedSprite: {fileID: 21300000, guid: d37d8d530e2cf244ca75e4548ac396dd, type: 3}
     Levels:
     - {fileID: 11400000, guid: dda4037fa0caea046b1d798f99eda1a0, type: 2}
@@ -60,7 +63,8 @@ MonoBehaviour:
       description: He's strong and wow
       ImageAnchor: {x: -371, y: -50.5}
       QuestionMarkAnchor: {x: -9, y: 14}
-      SpriteWithBG: {fileID: 21300000, guid: 2df499bb6ea08ff4782ebb64ce94e401, type: 3}
+      SoloSpriteWithBG: {fileID: 21300000, guid: 2df499bb6ea08ff4782ebb64ce94e401, type: 3}
+      SoloSprite: {fileID: 21300000, guid: 02073c86defa7b84489a3788d73e7a21, type: 3}
       IsolatedSprite: {fileID: 21300000, guid: 2e456471f96e5a141a78b3bafd1d327a, type: 3}
     Levels:
     - {fileID: 11400000, guid: 1f0aac1d3431ce04eb883b93c589c5a2, type: 2}

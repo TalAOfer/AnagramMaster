@@ -11,7 +11,6 @@ public class WinningManager : MonoBehaviour
     [SerializeField] private GiftUI GiftUI; 
     [SerializeField] private StartMenuManager startMenuManager;
     [SerializeField] private WinningButton nextLevelButton;
-    [SerializeField] private TextMeshProUGUI extraText;
     [SerializeField] private Color nativePanelTextColor;
 
     [FoldoutGroup("Gift Bar")]
@@ -47,13 +46,26 @@ public class WinningManager : MonoBehaviour
         InitializeGiftBar();
         InitializeAnimalBar();
 
-        SoloAnimalUI.Initialize(BiomeBank.GetArea(dataClone.IndexHierarchy).Animal);
-        BiomeAnimalGuide.Initialize(BiomeBank.Biomes[dataClone.IndexHierarchy.Biome]);
+        Animal animal = BiomeBank.GetArea(dataClone.IndexHierarchy).Animal;
+        SoloAnimalUI.Initialize(animal, false);
+        //BiomeAnimalGuide.Initialize(BiomeBank.Biomes[dataClone.IndexHierarchy.Biome]);
 
         NextLevelData nextLevelData = new(Data.IndexHierarchy, BiomeBank);
         nextLevelButton.Initialize(nextLevelData);
     }
 
+    public IEnumerator WinningRoutine()
+    {
+        yield return AnimationData.G_Fade_Out.PlayAndWait();
+
+        yield return AnimationData.W_Fade_In.PlayAndWait();
+
+        yield return GiftRoutine();
+
+        yield return AnimalRoutine();
+
+        AnimationData.W_Button_Fade_In.Play();
+    }
 
     #endregion
 
@@ -96,9 +108,9 @@ public class WinningManager : MonoBehaviour
 
     private void InitializeAnimalBar()
     {
-        int currentAreaIndex = _dataClone.IndexHierarchy.Area;
-        int currentBiomeAreaAmount = BiomeBank.Biomes[_dataClone.IndexHierarchy.Biome].Areas.Count;
-        AnimalCount = new(currentAreaIndex, currentBiomeAreaAmount);
+        int currentLevelIndex = _dataClone.IndexHierarchy.Level;
+        int currentAreaLevelAmount = BiomeBank.GetArea(_dataClone.IndexHierarchy).Levels.Count;
+        AnimalCount = new(currentLevelIndex, currentAreaLevelAmount);
         animalProgressionText.text = GetAnimalAmountString();
         animalSlider.value = (float)AnimalCount.x / AnimalCount.y;
     }
@@ -119,40 +131,22 @@ public class WinningManager : MonoBehaviour
         if (AnimalCount.x == AnimalCount.y)
         {
             yield return ShowAnimal();
-        } 
-        
-        else
-        {
-            //yield return AnimationData.WinningRegularEndingSequence.PlayAndWait();
         }
     }
 
     private IEnumerator ShowAnimal()
     {
-        Debug.Log("Wow, Animal!");
-        yield break;
+
+        yield return AnimationData.W_Fade_Out.PlayAndWait();
+        
+        yield return AnimationData.Animal_Fade_In.PlayAndWait();
+
+        yield return SoloAnimalUI.FadeAnimal();
+
+        //yield return BiomeAnimalGuide.FadeInAnimal(_dataClone.IndexHierarchy.Area);
+
+        //yield return AnimationData.Animal_Fade_Out.PlayAndWait();
     }
 
     #endregion
-
-
-
-    public IEnumerator WinningRoutine()
-    {
-        yield return AnimationData.G_Fade_Out.PlayAndWait();
-
-        Debug.Log("Ended");
-
-        yield return AnimationData.W_Fade_In.PlayAndWait();
-
-        yield return GiftRoutine();
-
-        yield return AnimalRoutine();
-
-    }
-
-
-
-
-
 }

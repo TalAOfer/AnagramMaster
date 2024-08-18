@@ -83,10 +83,16 @@ public class GameDataManager : MonoBehaviour
     public void SetToLevel(int index)
     {
         int levelIndex = index - 1;
-        LevelIndexHierarchy indicesHierarchy = BiomeBank.GetLevelIndexHierarchyWithTotalIndex(levelIndex);
-        LevelBlueprint levelBlueprint = BiomeBank.GetLevel(indicesHierarchy);
-        Data.Value = new GameData(indicesHierarchy);
-        Data.Value.InitializeNewLevel(levelBlueprint, indicesHierarchy);
+        LevelIndexHierarchy indexHierarchy = BiomeBank.GetLevelIndexHierarchyWithTotalIndex(levelIndex);
+        Data.Value = new GameData(indexHierarchy)
+        {
+            IsInitialized = true,
+            OverallLevelIndex = levelIndex,
+            Gift = new Gift(GiftBank.Blueprints[0])
+    };
+
+        LevelBlueprint levelBlueprint = BiomeBank.GetLevel(indexHierarchy);
+        Data.Value.InitializeNewLevel(levelBlueprint, indexHierarchy);
         SaveNewData();
     }
 }

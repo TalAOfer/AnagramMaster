@@ -64,6 +64,9 @@ public class Animal
     public string description;
     public Vector2 ImageAnchor;
     public Vector2 QuestionMarkAnchor;
-    public Sprite SpriteWithBG;
+    
+    public Sprite SoloSpriteWithBG;
+    public Sprite SoloSprite;
+
     public Sprite IsolatedSprite;
 }

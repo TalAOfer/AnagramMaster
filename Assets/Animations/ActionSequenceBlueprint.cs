@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [Serializable]
-public class ActionSequenceBlueprint : ActionData
+public class ActionSequenceBlueprint
 {
     [HorizontalGroup("Delay", Width = 110), LabelWidth(65)]
     public float PreDelay = 0;
@@ -14,7 +14,7 @@ public class ActionSequenceBlueprint : ActionData
 
     public List<ActionBlueprint> SequenceBlueprint;
 
-    public override string GetDescription()
+    public string GetDescription()
     {
         string desc = string.Empty;
         bool isFirst = true;

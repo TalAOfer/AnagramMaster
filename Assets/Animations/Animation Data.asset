@@ -16,13 +16,17 @@ MonoBehaviour:
   TransluscentGlassConfig: {x: 3, y: 2}
   S_Fade_In: {fileID: 11400000, guid: 5c9076429871c8048a4cda7059ea2fce, type: 2}
   S_Fade_Out: {fileID: 11400000, guid: 17d1e7688ce1faa4194d86ff91c82496, type: 2}
+  G_BG_Fade_In: {fileID: 11400000, guid: 2e5753f9d2df6904e9c3a9ae7e22a8e3, type: 2}
   G_Fade_In: {fileID: 11400000, guid: 2b01106f2e17e644888f6ac298e413df, type: 2}
   G_Fade_Out: {fileID: 11400000, guid: f101a27670b5f2d4283119729747335e, type: 2}
   W_Fade_In: {fileID: 11400000, guid: bcf27b0bd62cc414f819a8603d96167c, type: 2}
   W_Fade_Out: {fileID: 11400000, guid: 2f249ca380b6d324391558e7676e6053, type: 2}
+  W_Button_Fade_In: {fileID: 11400000, guid: 9b954688b83de894a89b713fd8369836, type: 2}
   Gift_Fade_In: {fileID: 11400000, guid: b753ffe4eb8490848bd96f97bfcbb01d, type: 2}
   Gift_Text_Fade_In: {fileID: 11400000, guid: 908fc655b7e623e4fbf8ca64f49e71d6, type: 2}
   Gift_Fade_Out: {fileID: 11400000, guid: 9f1dcb3dd73e4394086c22d03855809a, type: 2}
+  Animal_Fade_In: {fileID: 11400000, guid: b75cafb58db6ab94c957f97851ada5d3, type: 2}
+  Animal_Fade_Out: {fileID: 11400000, guid: a8a594664dac38e49a07790dbadb2342, type: 2}
   ButtonClickAnimation:
     UseAsset: 1
     Asset: {fileID: 11400000, guid: 76d4dc3ef058ff241afc407a50f2625e, type: 2}
@@ -82,3 +86,8 @@ MonoBehaviour:
   defaultGiftItemHeight: 300
   giftItemHeightSpacing: 50
   giftItemDelaySpacing: 0.25
+  SoloAnimalShadowFade:
+    SetActiveAccordingToFade: 0
+    Fade: 1
+    Ease: 6
+    Duration: 0.75

@@ -77,206 +77,27 @@ public class ActionBlueprint
 
     public Sequence GetSequence(TweenableElement element)
     {
-        Sequence sequence = DOTween.Sequence();
-        RectTransform elementTransform = element.RectTransform;
-        CanvasGroup canvasGroup = element.CanvasGroup;
-        Tween tween = null;
-
-        sequence.AppendInterval(PreDelay);
-
-        switch (ActionType)
+        Sequence sequence = ActionType switch
         {
-            case ElementAction.Zoom:
-                Vector3 targetScale;
-                if (zoomData.AnimationDirection is ElementAnimationDirection.FromValueToOriginal)
-                {
-                    targetScale = elementTransform.localScale;
-                    sequence.AppendCallback(() => elementTransform.localScale += (Vector3)zoomData.ScaleAddition);
-                }
+            ElementAction.Zoom => zoomData.GetActionSequence(element),
+            ElementAction.Slide => slideData.GetActionSequence(element),
+            ElementAction.Spin => spinData.GetActionSequence(element),
+            ElementAction.Jump => jumpData.GetActionSequence(element),
+            ElementAction.Shake => shakeData.GetActionSequence(element),
+            ElementAction.Punch => punchData.GetActionSequence(element),
+            ElementAction.Fade => fadeData.GetActionSequence(element),
+            ElementAction.CallEvent => callEventData.GetActionSequence(element),
+            ElementAction.PlaySound => playSoundData.GetActionSequence(element),
+            _ => null,
+        };
 
-                else
-                {
-                    targetScale = elementTransform.localScale += (Vector3)zoomData.ScaleAddition;
-                }
-
-                tween = elementTransform.DOScale(targetScale, zoomData.Duration).SetEase(zoomData.Ease);
-                AddToSeuqence(tween, sequence, SequencingType);
-
-                break;
-
-            case ElementAction.Slide:
-                Vector2 targetPosition;
-
-                if (slideData.AnimationDirection is ElementAnimationDirection.FromValueToOriginal)
-                {
-                    targetPosition = elementTransform.anchoredPosition;
-
-                    Vector2 startingPosition = elementTransform.anchoredPosition;
-
-                    if (slideData.OutOfScreen)
-                    {
-                        startingPosition = Tools.GetPositionOutsideScreen(element, slideData.Direction);
-                    }
-
-                    startingPosition += slideData.AddedValue;
-
-                    sequence.AppendCallback(() => elementTransform.anchoredPosition = startingPosition);
-                }
-
-                else
-                {
-                    targetPosition = elementTransform.anchoredPosition;
-
-                    if (slideData.OutOfScreen)
-                    {
-                        targetPosition = Tools.GetPositionOutsideScreen(element, slideData.Direction);
-                    }
-
-                    targetPosition += slideData.AddedValue;
-                }
-
-                tween = elementTransform.DOAnchorPos(targetPosition, slideData.Duration).SetEase(slideData.Ease);
-                AddToSeuqence(tween, sequence, SequencingType);
-                break;
-
-            case ElementAction.Spin:
-                Vector3 targetRotation;
-
-                if (spinData.AnimationDirection is ElementAnimationDirection.FromValueToOriginal)
-                {
-                    targetRotation = elementTransform.localEulerAngles;
-                    Vector3 startingRotation = targetRotation + new Vector3(0, 0, spinData.AddedValue);
-
-                    sequence.AppendCallback(() => elementTransform.localEulerAngles = startingRotation);
-                }
-                else
-                {
-                    targetRotation = elementTransform.localEulerAngles + new Vector3(0, 0, spinData.AddedValue);
-                }
-
-                tween = elementTransform.DORotate(targetRotation, spinData.Duration).SetEase(spinData.Ease);
-                AddToSeuqence(tween, sequence, SequencingType);
-                break;
-            case ElementAction.Jump:
-                Vector2 jumpTargetPosition;
-
-                if (jumpData.AnimationDirection is ElementAnimationDirection.FromValueToOriginal)
-                {
-                    jumpTargetPosition = elementTransform.anchoredPosition;
-
-                    Vector2 startingPosition = elementTransform.anchoredPosition;
-
-                    if (jumpData.OutOfScreen)
-                    {
-                        startingPosition = Tools.GetPositionOutsideScreen(element, jumpData.Direction);
-                    }
-
-                    startingPosition += jumpData.AddedValue;
-
-                    sequence.AppendCallback(() => elementTransform.anchoredPosition = startingPosition);
-                }
-
-                else
-                {
-                    jumpTargetPosition = elementTransform.anchoredPosition;
-
-                    if (jumpData.OutOfScreen)
-                    {
-                        jumpTargetPosition = Tools.GetPositionOutsideScreen(element, jumpData.Direction);
-                    }
-
-                    jumpTargetPosition += jumpData.AddedValue;
-                }
-
-                tween = elementTransform.DOJumpAnchorPos(jumpTargetPosition, jumpData.Power, 1, jumpData.Duration).SetEase(jumpData.Ease);
-                AddToSeuqence(tween, sequence, SequencingType);
-                break;
-            case ElementAction.Shake:
-                switch (shakeData.Subtype)
-                {
-                    case ElementAnimationSubType.Rotation:
-                        tween = elementTransform.DOShakeRotation(shakeData.Duration, Vector3.forward * shakeData.SpinStrength, shakeData.Vibrato, shakeData.Randomness).SetEase(shakeData.Ease);
-                        break;
-                    case ElementAnimationSubType.Scale:
-                        tween = elementTransform.DOShakeScale(shakeData.Duration, shakeData.Strength, shakeData.Vibrato, shakeData.Randomness).SetEase(shakeData.Ease);
-                        break;
-                    case ElementAnimationSubType.Position:
-                        tween = elementTransform.DOShakePosition(shakeData.Duration, shakeData.Strength, shakeData.Vibrato, shakeData.Randomness).SetEase(shakeData.Ease);
-                        break;
-                }
-
-                AddToSeuqence(tween, sequence, SequencingType);
-                break;
-
-            case ElementAction.Punch:
-                {
-                    switch (punchData.Subtype)
-                    {
-                        case ElementAnimationSubType.Rotation:
-                            tween = elementTransform.DOPunchRotation(punchData.Punch, punchData.Duration, punchData.Vibrato, punchData.Elasticity)
-                                .SetEase(punchData.Ease);
-                            break;
-                        case ElementAnimationSubType.Scale:
-                            tween = elementTransform.DOPunchScale(punchData.Punch, punchData.Duration, punchData.Vibrato, punchData.Elasticity)
-                                .SetEase(punchData.Ease);
-                            break;
-                        case ElementAnimationSubType.Position:
-                            tween = elementTransform.DOPunchAnchorPos(punchData.Punch, punchData.Duration, punchData.Vibrato, punchData.Elasticity)
-                                .SetEase(punchData.Ease);
-                            break;
-                    }
-
-                    AddToSeuqence(tween, sequence, SequencingType);
-                    break;
-                }
-
-            case ElementAction.Fade:
-                if (fadeData.SetActiveAccordingToFade && fadeData.Fade is Fade.In)
-                {
-                    sequence.AppendCallback(() => element.gameObject.SetActive(true));
-                }
-
-                float fadeValue = fadeData.Fade is Fade.In ? 1 : 0;
-                tween = canvasGroup.DOFade(fadeValue, fadeData.Duration).SetEase(fadeData.Ease);
-                AddToSeuqence(tween, sequence, SequencingType);
-                if (fadeData.SetActiveAccordingToFade && fadeData.Fade is Fade.Out)
-                {
-                    sequence.AppendCallback(() => element.gameObject.SetActive(false));
-                }
-                break;
-            case ElementAction.CallEvent:
-                sequence.AppendCallback(() => callEventData.GameEvent.Raise(element, element));
-                break;
-            case ElementAction.PlaySound:
-                sequence.AppendCallback(() => SoundManager.PlaySound(playSoundData.Sound, Vector3.zero));
-                break;
-        }
-
+        sequence.PrependInterval(PreDelay);
         sequence.AppendInterval(PostDelay);
 
         return sequence;
     }
 
     private Color GetSequencingTypeColor() => SequencingType == SequencingType.Append ? Color.red : Color.green;
-
-    private void AddToSeuqence(Tween tween, Sequence sequence, SequencingType sequencingType)
-    {
-        if (tween == null || sequence == null)
-        {
-            Debug.Log("Tween/Sequence is null");
-            return;
-        }
-
-        if (sequencingType is SequencingType.Append)
-        {
-            sequence.Append(tween);
-        }
-
-        else
-        {
-            sequence.Join(tween);
-        }
-    }
 }
 
 public enum ElementAction
@@ -310,6 +131,8 @@ public abstract class ActionData
 {
     [ReadOnly, ShowInInspector, HideLabel, MultiLineProperty(2)]
     private string description => GetDescription();
+
+    public abstract Sequence GetActionSequence(TweenableElement element);
     public abstract string GetDescription();
 }
 
@@ -324,6 +147,27 @@ public class ZoomActionData : ActionData
     [Title("Value")]
     public Vector2 ScaleAddition;
 
+    public override Sequence GetActionSequence(TweenableElement element)
+    {
+        RectTransform elementTransform = element.RectTransform;
+        Sequence sequence = DOTween.Sequence();
+
+        Vector3 targetScale;
+        if (AnimationDirection is ElementAnimationDirection.FromValueToOriginal)
+        {
+            targetScale = elementTransform.localScale;
+            sequence.AppendCallback(() => elementTransform.localScale += (Vector3)ScaleAddition);
+        }
+
+        else
+        {
+            targetScale = elementTransform.localScale += (Vector3)ScaleAddition;
+        }
+
+        sequence.Append(elementTransform.DOScale(targetScale, Duration).SetEase(Ease));
+
+        return sequence;
+    }
     public override string GetDescription()
     {
         string desc = "";
@@ -368,6 +212,46 @@ public class SlideActionData : ActionData
     [HorizontalGroup("Screen"), ShowIf("OutOfScreen"), Title("")]
     public Direction Direction;
     public Vector2 AddedValue;
+
+    public override Sequence GetActionSequence(TweenableElement element)
+    {
+        RectTransform elementTransform = element.RectTransform;
+        Sequence sequence = DOTween.Sequence();
+
+        Vector2 targetPosition;
+
+        if (AnimationDirection is ElementAnimationDirection.FromValueToOriginal)
+        {
+            targetPosition = elementTransform.anchoredPosition;
+
+            Vector2 startingPosition = elementTransform.anchoredPosition;
+
+            if (OutOfScreen)
+            {
+                startingPosition = Tools.GetPositionOutsideScreen(element, Direction);
+            }
+            startingPosition += AddedValue;
+
+            sequence.AppendCallback(() => elementTransform.anchoredPosition = startingPosition);
+        }
+
+        else
+        {
+            targetPosition = elementTransform.anchoredPosition;
+
+            if (OutOfScreen)
+            {
+                targetPosition = Tools.GetPositionOutsideScreen(element, Direction);
+            }
+
+            targetPosition += AddedValue;
+        }
+
+        sequence.Append(elementTransform.DOAnchorPos(targetPosition, Duration).SetEase(Ease));
+
+        return sequence;
+    }
+
     public override string GetDescription()
     {
         string desc = "";
@@ -432,6 +316,42 @@ public class JumpActionData : ActionData
     public float Power;
     public Vector2 AddedValue;
 
+    public override Sequence GetActionSequence(TweenableElement element)
+    {
+        RectTransform elementTransform = element.RectTransform;
+        Sequence sequence = DOTween.Sequence();
+        Vector2 jumpTargetPosition;
+
+        if (AnimationDirection is ElementAnimationDirection.FromValueToOriginal)
+        {
+            jumpTargetPosition = elementTransform.anchoredPosition;
+
+            Vector2 startingPosition = elementTransform.anchoredPosition;
+
+            if (OutOfScreen)
+            {
+                startingPosition = Tools.GetPositionOutsideScreen(element, Direction);
+            }
+            startingPosition += AddedValue;
+
+            sequence.AppendCallback(() => elementTransform.anchoredPosition = startingPosition);
+        }
+
+        else
+        {
+            jumpTargetPosition = elementTransform.anchoredPosition;
+
+            if (OutOfScreen)
+            {
+                jumpTargetPosition = Tools.GetPositionOutsideScreen(element, Direction);
+            }
+
+            jumpTargetPosition += AddedValue;
+        }
+
+        sequence.Append(elementTransform.DOJumpAnchorPos(jumpTargetPosition, Power, 1, Duration).SetEase(Ease));
+        return sequence;
+    }
     public override string GetDescription()
     {
         string desc = "";
@@ -492,6 +412,28 @@ public class SpinActionData : ActionData
     public float Duration = 1;
     [Title("Value")]
     public float AddedValue;
+    public override Sequence GetActionSequence(TweenableElement element)
+    {
+        RectTransform elementTransform = element.RectTransform;
+        Sequence sequence = DOTween.Sequence();
+        Vector3 targetRotation;
+
+        if (AnimationDirection is ElementAnimationDirection.FromValueToOriginal)
+        {
+            targetRotation = elementTransform.localEulerAngles;
+            Vector3 startingRotation = targetRotation + new Vector3(0, 0, AddedValue);
+
+            sequence.AppendCallback(() => elementTransform.localEulerAngles = startingRotation);
+        }
+        else
+        {
+            targetRotation = elementTransform.localEulerAngles + new Vector3(0, 0, AddedValue);
+        }
+
+        sequence.Append(elementTransform.DORotate(targetRotation, Duration).SetEase(Ease));
+
+        return sequence;
+    }
 
     public override string GetDescription()
     {
@@ -540,12 +482,34 @@ public class ShakeActionData : ActionData
     public int Vibrato = 10;
     public float Randomness = 25f;
 
+    public override Sequence GetActionSequence(TweenableElement element)
+    {
+        RectTransform elementTransform = element.RectTransform;
+        Sequence sequence = DOTween.Sequence();
+        Tween tween = null;
+
+        switch (Subtype)
+        {
+            case ElementAnimationSubType.Rotation:
+                tween = elementTransform.DOShakeRotation(Duration, Vector3.forward * SpinStrength, Vibrato, Randomness).SetEase(Ease);
+                break;
+            case ElementAnimationSubType.Scale:
+                tween = elementTransform.DOShakeScale(Duration, Strength, Vibrato, Randomness).SetEase(Ease);
+                break;
+            case ElementAnimationSubType.Position:
+                tween = elementTransform.DOShakePosition(Duration, Strength, Vibrato, Randomness).SetEase(Ease);
+                break;
+        }
+
+        sequence.Append(tween);
+
+        return sequence;
+    }
     public override string GetDescription()
     {
         return "Shake element's " + Subtype.ToString();
     }
 }
-
 [Serializable]
 public class PunchActionData : ActionData
 {
@@ -553,13 +517,38 @@ public class PunchActionData : ActionData
     public ElementAnimationSubType Subtype;
     [HorizontalGroup("Animation Archetype", 100), HideLabel]
     public Ease Ease;
-
     public float Duration = 1;
     [Title("Values")]
     public Vector2 Punch;
     public int Vibrato = 10;
     public float Elasticity = 1;
 
+    public override Sequence GetActionSequence(TweenableElement element)
+    {
+        RectTransform elementTransform = element.RectTransform;
+        Sequence sequence = DOTween.Sequence();
+        Tween tween = null;
+
+        switch (Subtype)
+        {
+            case ElementAnimationSubType.Rotation:
+                tween = elementTransform.DOPunchRotation(Punch, Duration, Vibrato, Elasticity)
+                    .SetEase(Ease);
+                break;
+            case ElementAnimationSubType.Scale:
+                tween = elementTransform.DOPunchScale(Punch, Duration, Vibrato, Elasticity)
+                    .SetEase(Ease);
+                break;
+            case ElementAnimationSubType.Position:
+                tween = elementTransform.DOPunchAnchorPos(Punch, Duration, Vibrato, Elasticity)
+                    .SetEase(Ease);
+                break;
+        }
+
+        sequence.Append(tween);
+
+        return sequence;
+    }
     public override string GetDescription()
     {
         return "Punch element's " + Subtype.ToString();
@@ -577,6 +566,30 @@ public class FadeActionData : ActionData
     public Ease Ease;
 
     public float Duration = 1;
+
+    public override Sequence GetActionSequence(TweenableElement element)
+    {
+        CanvasGroup elementCanvasGroup = element.CanvasGroup;
+        Sequence sequence = DOTween.Sequence();
+
+        float fadeValue = Fade is Fade.In ? 1 : 0;
+        sequence.Append(elementCanvasGroup.DOFade(fadeValue, Duration).SetEase(Ease));
+
+        if (SetActiveAccordingToFade)
+        {
+            if (Fade is Fade.In)
+            {
+                sequence.PrependCallback(() => element.gameObject.SetActive(true));
+            }
+
+            else
+            {
+                sequence.AppendCallback(() => element.gameObject.SetActive(false));
+            }
+        }
+
+        return sequence;
+    }
 
     public override string GetDescription()
     {
@@ -616,6 +629,13 @@ public class CallEventActionData : ActionData
 {
     public GameEvent GameEvent;
 
+    public override Sequence GetActionSequence(TweenableElement element)
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.AppendCallback(() => GameEvent.Raise(element, element));
+        return sequence;
+    }
+
     public override string GetDescription()
     {
         string eventString = "-EnterGameEvent-";
@@ -631,6 +651,13 @@ public class CallEventActionData : ActionData
 public class PlaySoundActionData : ActionData
 {
     public string Sound;
+
+    public override Sequence GetActionSequence(TweenableElement element)
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.AppendCallback(() => SoundManager.PlaySound(Sound, Vector3.zero));
+        return sequence;
+    }
 
     public override string GetDescription()
     {

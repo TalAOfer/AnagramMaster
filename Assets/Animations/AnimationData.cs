@@ -15,6 +15,9 @@ public class AnimationData : ScriptableObject
     [FoldoutGroup("Transition Sequences")]
     public SequenceChainBlueprint S_Fade_Out;
 
+
+    [FoldoutGroup("Transition Sequences")]
+    public SequenceChainBlueprint G_BG_Fade_In;
     [FoldoutGroup("Transition Sequences")]
     public SequenceChainBlueprint G_Fade_In;
     [FoldoutGroup("Transition Sequences")]
@@ -24,13 +27,21 @@ public class AnimationData : ScriptableObject
     public SequenceChainBlueprint W_Fade_In;
     [FoldoutGroup("Transition Sequences")]
     public SequenceChainBlueprint W_Fade_Out;
-    
+    [FoldoutGroup("Transition Sequences")]
+    public SequenceChainBlueprint W_Button_Fade_In;
+
     [FoldoutGroup("Transition Sequences")]
     public SequenceChainBlueprint Gift_Fade_In;
     [FoldoutGroup("Transition Sequences")]
     public SequenceChainBlueprint Gift_Text_Fade_In;
     [FoldoutGroup("Transition Sequences")]
     public SequenceChainBlueprint Gift_Fade_Out;
+
+    [FoldoutGroup("Transition Sequences")]
+    public SequenceChainBlueprint Animal_Fade_In;
+
+    [FoldoutGroup("Transition Sequences")]
+    public SequenceChainBlueprint Animal_Fade_Out;
 
     [FoldoutGroup("Button")]
     public ActionSequenceBlueprintRef ButtonClickAnimation;
@@ -88,4 +99,6 @@ public class AnimationData : ScriptableObject
     [FoldoutGroup("Gift")]
     public float giftItemDelaySpacing;
 
+    [FoldoutGroup("Animals")]
+    public FadeActionData SoloAnimalShadowFade;
 }

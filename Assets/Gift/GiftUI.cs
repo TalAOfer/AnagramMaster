@@ -31,7 +31,6 @@ public class GiftUI : MonoBehaviour
     [SerializeField] private Sprite hintSprite;
     public void Initialize(Gift gift)
     {
-        //positionUIOutsideScreen.PositionOutsideScreen(Sirenix.Utilities.Direction.Top);
         giftTop.RectTransform.anchoredPosition = Vector3.zero;
 
         _activeItems.Clear();
