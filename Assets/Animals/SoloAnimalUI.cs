@@ -6,38 +6,49 @@ using UnityEngine.UI;
 
 public class SoloAnimalUI : MonoBehaviour
 {
-    [SerializeField] private Sprite youFoundIt;
-    [SerializeField] private Sprite findTheAnimal;
-
     [SerializeField] private TextMeshProUGUI animalName;
-    [SerializeField] private TextMeshProUGUI animalDescription;
+    [SerializeField] private Image image;
+    [SerializeField] private Image overlay;
 
-    [SerializeField] private Image title;
-    [SerializeField] private Image wholeImage;
-    [SerializeField] private Image animalShadow;
-    AnimationData AnimationData => AssetProvider.Instance.AnimationData;
-    GameData Data => AssetProvider.Instance.Data.Value;
-    BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
-    public void InitializeFindTheAnimal()
+    private TweenableElement _overlayElement;
+    private TweenableElement OverlayElement
     {
-        Animal animal = BiomeBank.GetArea(Data.IndexHierarchy).Animal;
-        Initialize(animal, true);
-    }
-    public void Initialize(Animal animal, bool isPreLevel)
-    {
-        wholeImage.sprite = animal.SoloSpriteWithBG;
-        
-        animalShadow.sprite = animal.SoloSprite;
-        animalShadow.gameObject.SetActive(isPreLevel);
-
-        animalName.text = isPreLevel ? "?????" : animal.name;
-        animalDescription.text = animal.description;
+        get
+        {
+            if (_overlayElement == null)
+            {
+                _overlayElement = overlay.GetComponent<TweenableElement>();
+            }
+            return _overlayElement;
+        }
     }
 
-    public IEnumerator FadeAnimal()
+    private Animal _animal;
+    private AnimationData AnimationData => AssetProvider.Instance.AnimationData;
+
+    public void Initialize(Animal animal)
     {
-        yield return AnimationData.SoloAnimalShadowFade.
-            GetActionSequence(animalShadow.GetComponent<TweenableElement>()).
+        _animal = animal;
+        image.sprite = _animal.HiddenSprite;
+        animalName.text = "?????";
+        overlay.color = Tools.Transparent();
+    }
+
+    public IEnumerator FlashAndReveal()
+    {
+        overlay.gameObject.SetActive(true);
+        overlay.color = Color.white;
+
+        SetExplicitAnimalData();
+
+        yield return AnimationData.SoloAnimalFlashFade.
+            GetActionSequence(OverlayElement).
             Play().WaitForCompletion();
+    }
+
+    public void SetExplicitAnimalData()
+    {
+        image.sprite = _animal.ShownSprite;
+        animalName.text = _animal.name;
     }
 }

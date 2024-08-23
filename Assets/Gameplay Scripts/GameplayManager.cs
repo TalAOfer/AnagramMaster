@@ -19,8 +19,9 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private HintManager HintManager;
     [SerializeField] private GuessHistoryManager GuessHistoryManager;
 
-    [SerializeField] private ElementController fader;
+    [SerializeField] private ElementController ElementController;
     [SerializeField] private WinningManager winningManager;
+    [SerializeField] private SoloAnimalUI SoloAnimalUI;
     [SerializeField] private TextMeshProUGUI levelTextImage;
     [SerializeField] private SwipeHand swipeHand;
     [SerializeField] private float tutorialPreDelay = 3f;
@@ -36,6 +37,7 @@ public class GameplayManager : MonoBehaviour
         _inputEnabled = true;
         levelTextImage.text = "Level " + (Data.OverallLevelIndex + 1).ToString();
 
+        SoloAnimalUI.Initialize(BiomeBank.GetAnimal(Data.IndexHierarchy));
         LetterBank.Initialize();
         GuessHistoryManager.Initialize();
         GuessManager.Initialize();

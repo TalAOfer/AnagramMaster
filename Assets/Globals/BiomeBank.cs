@@ -7,6 +7,8 @@ public class BiomeBank : ScriptableObject
 {
     public List<Biome> Biomes;
 
+    public Animal GetAnimal(LevelIndexHierarchy indexHierarchy) => GetArea(indexHierarchy).Animal;
+
     public Area GetArea(LevelIndexHierarchy indexHierarchy) =>
         Biomes[indexHierarchy.Biome].Areas[indexHierarchy.Area];
 

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class GiftUI : MonoBehaviour
 {
+
     [SerializeField] private TweenableElement giftParent;
     [SerializeField] private TweenableElement giftTop;
     [SerializeField] private HorizontalLayoutGroup horizontalGroup;

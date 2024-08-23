@@ -99,6 +99,17 @@ public class AnimationData : ScriptableObject
     [FoldoutGroup("Gift")]
     public float giftItemDelaySpacing;
 
+
     [FoldoutGroup("Animals")]
-    public FadeActionData SoloAnimalShadowFade;
+    public FadeActionData SoloAnimalFlashFade;
+    [FoldoutGroup("Animals")]
+    public FadeActionData AnimalAlbumPhotoFadeIn;
+    [FoldoutGroup("Animals")]
+    public SequenceChainBlueprint W_Animal_Album_In;
+    [FoldoutGroup("Animals")]
+    public Sprite YouFoundItSprite;
+    [FoldoutGroup("Animals")]
+    public Sprite FindTheAnimalSprite;
+
+
 }
