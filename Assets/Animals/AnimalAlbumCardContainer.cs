@@ -14,4 +14,6 @@ public class AnimalAlbumCardContainer : MonoBehaviour
             return _childUI;
         }
     }
+
+    private AnimationData AnimData => AssetProvider.Instance.AnimationData;
 }

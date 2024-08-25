@@ -15,5 +15,6 @@ public enum ElementVisibilityChart
     Gameplay = 4,
     Winning = 8,
     Gift = 16,
+    Animal = 32,
 }
 

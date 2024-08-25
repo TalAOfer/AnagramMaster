@@ -139,9 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalName: {fileID: 7981305847506232383}
-  title: {fileID: 0}
   image: {fileID: 6459514941537244062}
   overlay: {fileID: 3972353254973450874}
+  element: {fileID: 7826025172273963022}
 --- !u!225 &820400968459807335
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 20.05
   m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e06b9c110f0833429a2202c8c7ea9fd, type: 3}
-  m_Name: Animal_Album_In
+  m_Name: Animal_Album_Out
   m_EditorClassIdentifier: 
   PreDelay: 0
   PostDelay: 0
   Value:
   - ElementPointer: {fileID: 11400000, guid: ff9f1d322f57e7d46b3af8a4b4a2d9d0, type: 2}
-    SequencingType: 0
+    SequencingType: 1
     AnimationSequenceRef:
       UseAsset: 0
       Asset: {fileID: 0}
@@ -25,6 +25,59 @@ MonoBehaviour:
         PostDelay: 0
         SequenceBlueprint:
         - SequencingType: 1
+          ActionType: 1
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 1
+            Ease: 0
+            Duration: 1
+            ScreenSnap: 2
+            Direction: 3
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 1
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: 
+        - SequencingType: 0
           ActionType: 6
           PreDelay: 0
           PostDelay: 0
@@ -75,58 +128,5 @@ MonoBehaviour:
             Fade: 0
             Ease: 0
             Duration: 0.1
-          playSoundData:
-            Sound: 
-        - SequencingType: 1
-          ActionType: 1
-          PreDelay: 0
-          PostDelay: 0
-          zoomData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            ScaleAddition: {x: 0, y: 0}
-          slideData:
-            AnimationDirection: 1
-            Ease: 0
-            Duration: 1
-            ScreenSnap: 1
-            Direction: 3
-            AddedValue: {x: 0, y: 0}
-          jumpData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            OutOfScreen: 0
-            Direction: 0
-            Power: 0
-            AddedValue: {x: 0, y: 0}
-          spinData:
-            AnimationDirection: 0
-            Ease: 0
-            Duration: 1
-            AddedValue: 0
-          shakeData:
-            Subtype: 0
-            Ease: 0
-            Duration: 1
-            Strength: {x: 0, y: 0}
-            SpinStrength: 0
-            Vibrato: 10
-            Randomness: 25
-          punchData:
-            Subtype: 0
-            Ease: 0
-            Duration: 1
-            Punch: {x: 0, y: 0}
-            Vibrato: 10
-            Elasticity: 1
-          callEventData:
-            GameEvent: {fileID: 0}
-          fadeData:
-            SetActiveAccordingToFade: 1
-            Fade: 1
-            Ease: 0
-            Duration: 1
           playSoundData:
             Sound: 

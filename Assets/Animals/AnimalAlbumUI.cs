@@ -3,12 +3,14 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AnimalAlbumUI : MonoBehaviour
 {
-    [SerializeField] List<AnimalAlbumCardContainer> containers = new();
+    [SerializeField] private List<AnimalAlbumCardContainer> containers = new();
+    [SerializeField] private TweenableElement textElement;
     private AnimationData AnimationData => AssetProvider.Instance.AnimationData;
 
     [Button]
@@ -24,6 +26,7 @@ public class AnimalAlbumUI : MonoBehaviour
                 currentContainer.ChildUI.Initialize(biome.Areas[animalIndex].Animal);
                 currentContainer.ChildUI.SetExplicitAnimalData();
                 currentContainer.ChildUI.gameObject.SetActive(true);
+                currentContainer.ChildUI.GetComponent<CanvasGroup>().alpha = 1f;
             }
 
             else
@@ -38,27 +41,22 @@ public class AnimalAlbumUI : MonoBehaviour
         SoloAnimalUI animalUI = containers[index].ChildUI;
         if (animalUI.gameObject.TryGetComponent<TweenableElement>(out var animalUIElement))
         {
-            yield return AnimationData.AnimalAlbumPhotoFadeIn.GetActionSequence(animalUIElement).Play().WaitForCompletion();
+            yield return AnimationData.AnimalAlbumPhotoFadeIn.PlayAndWait(animalUIElement);
         }
 
         else yield break;
     }
 
-    //public void UpdateToData(GameData data)
-    //{
-    //    for (int animalIndex = 0; animalIndex < activeAnimalImage.Count; animalIndex++)
-    //    {
-    //        BiomeAnimalUI animalUI = premadeAnimalImages[animalIndex];
+    public IEnumerator AnimateFinishedAlbum()
+    {
+        List<TweenableElement> containerElements = containers
+       .Select(container => container.ChildUI.Element)
+       .ToList();
 
-    //        bool isBiomeFinished = data.IndexHierarchy.Biome < index;
-    //        bool isAreaFinished = (data.IndexHierarchy.Biome == index && animalIndex < data.IndexHierarchy.Area);
-    //        bool didAlreadyFind = isBiomeFinished || isAreaFinished;
-
-    //        //animalUI.SnapToState(didAlreadyFind);
-    //    }
-    //}
-
-
+        yield return AnimationData.CorrectGuessAnim.PlayAndWait(containerElements);
+        yield return AnimationData.Animal_Album_Text_In.PlayAndWait(textElement);
+        yield return AnimationData.Animal_Album_Text_Out.PlayAndWait(textElement);
+    }
 }
 
 [Serializable]

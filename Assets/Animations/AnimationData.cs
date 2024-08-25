@@ -39,19 +39,24 @@ public class AnimationData : ScriptableObject
 
     [FoldoutGroup("Transition Sequences")]
     public SequenceChainBlueprint Animal_Fade_In;
-
     [FoldoutGroup("Transition Sequences")]
     public SequenceChainBlueprint Animal_Fade_Out;
+    [FoldoutGroup("Transition Sequences")]
+    public SequenceChainBlueprint Animal_Album_In;
+    [FoldoutGroup("Transition Sequences")]
+    public SequenceChainBlueprint Animal_Album_Out;
+
+
+    [FoldoutGroup("Transition Sequences")]
+    public SequenceChainBlueprint Black_Overlay_In;
+    [FoldoutGroup("Transition Sequences")]
+    public SequenceChainBlueprint Black_Overlay_Out;
 
     [FoldoutGroup("Button")]
     public ActionSequenceBlueprintRef ButtonClickAnimation;
 
-    [FoldoutGroup("Gameplay/Guess Letter Bounce")]
-    public ActionSequenceBlueprintRef GuessLetterBounce;
-    [FoldoutGroup("Gameplay/Guess Letter Bounce")]
-    public float CorrectGuessAnimDelayBetweenLetters = 0.15f;
-    [FoldoutGroup("Gameplay/Guess Letter Bounce")]
-    public float PostCorrectGuessAnimDelay = 0f;
+    [FoldoutGroup("Gameplay")]
+    public LoopingActionSequenceBlueprint CorrectGuessAnim;
 
     [FoldoutGroup("Gameplay/Correct Answer")]
     public float answerAnimDuration = 0.5f;
@@ -101,15 +106,19 @@ public class AnimationData : ScriptableObject
 
 
     [FoldoutGroup("Animals")]
-    public FadeActionData SoloAnimalFlashFade;
+    public ActionSequenceBlueprint SoloAnimalFlashFade;
     [FoldoutGroup("Animals")]
-    public FadeActionData AnimalAlbumPhotoFadeIn;
-    [FoldoutGroup("Animals")]
-    public SequenceChainBlueprint W_Animal_Album_In;
+    public ActionSequenceBlueprint AnimalAlbumPhotoFadeIn;
     [FoldoutGroup("Animals")]
     public Sprite YouFoundItSprite;
     [FoldoutGroup("Animals")]
     public Sprite FindTheAnimalSprite;
+    [FoldoutGroup("Animals")]
+    public LoopingActionSequenceBlueprint FinishedAlbumAnim;
+    [FoldoutGroup("Animals")]
+    public ActionSequenceBlueprint Animal_Album_Text_In;
+    [FoldoutGroup("Animals")]
+    public ActionSequenceBlueprint Animal_Album_Text_Out;
 
 
 }

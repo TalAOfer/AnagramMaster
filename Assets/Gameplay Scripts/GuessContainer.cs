@@ -12,6 +12,7 @@ public class GuessContainer : MonoBehaviour
     [SerializeField] private Image defaultImage;
     [SerializeField] private Image colorBlockImage;
     [SerializeField] private TweenableElement element;
+    public TweenableElement Element { get {  return element; } }
 
     [SerializeField] private TextMeshProUGUI hintLetter;
     public bool HintApplied { get; private set; }
@@ -43,10 +44,6 @@ public class GuessContainer : MonoBehaviour
         colorBlockImage.gameObject.SetActive(true);
     }
 
-    public void StartCorrectAnswerAnimation()
-    {
-        AnimData.GuessLetterBounce.Play(element);
-    }
     public void PlayHintAnimation()
     {
         AnimData.HintGuessContainerAnimation.Play(element);

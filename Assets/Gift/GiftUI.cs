@@ -10,12 +10,12 @@ public class GiftUI : MonoBehaviour
 
     [SerializeField] private TweenableElement giftParent;
     [SerializeField] private TweenableElement giftTop;
+    [SerializeField] private BlackOverlay blackOverlay;
     [SerializeField] private HorizontalLayoutGroup horizontalGroup;
     [SerializeField] private PositionUIOutsideScreen positionUIOutsideScreen;
     [SerializeField] private List<GiftItemUI> premadeItems = new();
 
     readonly List<GiftItemUI> _activeItems = new();
-    private bool _didTap;
     private AnimationData AnimationData => AssetProvider.Instance.AnimationData;
 
 
@@ -66,23 +66,11 @@ public class GiftUI : MonoBehaviour
 
         yield return GetItemsOut();
 
-        yield return AwaitBlackScreenInput();
+        yield return AnimationData.Gift_Text_Fade_In.Play();
+
+        yield return blackOverlay.AwaitBlackScreenInput();
 
         yield return AnimationData.Gift_Fade_Out.PlayAndWait();
-    }
-
-    public void OnBlackScreenTap() => _didTap = true;
-
-    public IEnumerator AwaitBlackScreenInput()
-    {
-        AnimationData.Gift_Text_Fade_In.Play();
-        
-        _didTap = false;
-
-        while (!_didTap)
-        {
-            yield return null;
-        }
     }
 
     private IEnumerator GetItemsOut()

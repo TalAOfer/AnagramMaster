@@ -37,7 +37,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -99,7 +99,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -152,7 +152,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 6
             Duration: 0.8
-            OutOfScreen: 1
+            ScreenSnap: 2
             Direction: 2
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -205,7 +205,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -258,7 +258,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -320,7 +320,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:

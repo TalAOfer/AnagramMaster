@@ -17,14 +17,19 @@ public class ActionSequenceBlueprintRef
     public ActionSequenceBlueprint Value;
     public ActionSequenceBlueprint Blueprint => UseAsset ? Asset.Value : Value;
 
+    public Sequence GetSequence(TweenableElement element)
+    {
+        return Blueprint.GetSequence(element);
+    }
+
     public Sequence Play(TweenableElement element)
     {
-        return Blueprint.GetSequence(element).Play();
+        return Blueprint.Play(element);
     }
 
     public IEnumerator PlayAndWait(TweenableElement element)
     {
-        yield return Play(element).WaitForCompletion();
+        yield return Blueprint.PlayAndWait(element);
     }
 }
 

@@ -2,6 +2,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GuessManager : MonoBehaviour
@@ -61,18 +62,11 @@ public class GuessManager : MonoBehaviour
 
     public IEnumerator CorrectGuessAnimation()
     {
-        Sequence sequence = DOTween.Sequence();
+        List<TweenableElement> containerElements = _activeGuessContainers
+        .Select(guessContainer => guessContainer.Element)
+        .ToList();
 
-        foreach (var guessContainer in _activeGuessContainers)
-        {
-            sequence.AppendCallback(() => guessContainer.StartCorrectAnswerAnimation());
-            sequence.AppendCallback(() => SoundManager.PlaySound("LetterBounce", guessContainer.transform.position));
-            sequence.AppendInterval(AnimData.CorrectGuessAnimDelayBetweenLetters);
-        }
-
-        sequence.AppendInterval(AnimData.PostCorrectGuessAnimDelay);
-
-        yield return sequence.WaitForCompletion();
+        yield return AnimData.CorrectGuessAnim.PlayAndWait(containerElements);
     }
 
     [Button]

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bd5206a43884fa4db18e5cb9e2fb963, type: 3}
-  m_Name: Guess LetterBounce
+  m_Name: Finished Album Bounce
   m_EditorClassIdentifier: 
   Value:
     PreDelay: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
         AnimationDirection: 0
         Ease: 0
         Duration: 1
-        OutOfScreen: 0
+        ScreenSnap: 0
         Direction: 0
         AddedValue: {x: 0, y: 0}
       jumpData:
@@ -57,7 +57,7 @@ MonoBehaviour:
         Subtype: 2
         Ease: 25
         Duration: 0.25
-        Punch: {x: 0, y: 100}
+        Punch: {x: 0, y: 200}
         Vibrato: 0
         Elasticity: 5
       callEventData:
@@ -69,3 +69,56 @@ MonoBehaviour:
         Duration: 1
       playSoundData:
         Sound: 
+    - SequencingType: 1
+      ActionType: 8
+      PreDelay: 0
+      PostDelay: 0
+      zoomData:
+        AnimationDirection: 0
+        Ease: 0
+        Duration: 1
+        ScaleAddition: {x: 0, y: 0}
+      slideData:
+        AnimationDirection: 0
+        Ease: 0
+        Duration: 1
+        ScreenSnap: 0
+        Direction: 0
+        AddedValue: {x: 0, y: 0}
+      jumpData:
+        AnimationDirection: 0
+        Ease: 0
+        Duration: 1
+        OutOfScreen: 0
+        Direction: 0
+        Power: 0
+        AddedValue: {x: 0, y: 0}
+      spinData:
+        AnimationDirection: 0
+        Ease: 0
+        Duration: 1
+        AddedValue: 0
+      shakeData:
+        Subtype: 0
+        Ease: 0
+        Duration: 1
+        Strength: {x: 0, y: 0}
+        SpinStrength: 0
+        Vibrato: 10
+        Randomness: 25
+      punchData:
+        Subtype: 0
+        Ease: 0
+        Duration: 1
+        Punch: {x: 0, y: 0}
+        Vibrato: 10
+        Elasticity: 1
+      callEventData:
+        GameEvent: {fileID: 0}
+      fadeData:
+        SetActiveAccordingToFade: 1
+        Fade: 0
+        Ease: 0
+        Duration: 1
+      playSoundData:
+        Sound: LetterBounce

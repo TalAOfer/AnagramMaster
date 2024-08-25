@@ -46,13 +46,8 @@ public class GiftUIController : MonoBehaviour
 
         if (GiftCount.x == GiftCount.y)
         {
-            yield return OpenGift();
+            GiftUI.Initialize(_data.Gift);
+            yield return GiftUI.OpenGiftAnimation();
         }
-    }
-
-    private IEnumerator OpenGift()
-    {
-        GiftUI.Initialize(_data.Gift);
-        yield return GiftUI.OpenGiftAnimation();
     }
 }

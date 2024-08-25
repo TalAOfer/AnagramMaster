@@ -2,6 +2,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -63,19 +64,28 @@ public class AnimalUIController : MonoBehaviour
     private IEnumerator ShowAnimal()
     {
 
-        yield return AnimationData.W_Fade_Out.PlayAndWait();
+        yield return AnimationData.Black_Overlay_In.PlayAndWait();
 
         yield return AnimationData.Animal_Fade_In.PlayAndWait();
 
         yield return SoloAnimalUI.FlashAndReveal();
 
-        yield return AnimationData.W_Animal_Album_In.PlayAndWait();
+        yield return AnimationData.Animal_Album_In.PlayAndWait();
 
         yield return AnimationData.Animal_Fade_Out.PlayAndWait();
 
         yield return AnimalAlbumUI.FadeInAnimal(_data.IndexHierarchy.Area);
 
-        //yield return AnimationData.Animal_Fade_Out.PlayAndWait();
+        bool isLastArea = _data.IndexHierarchy.Area == 3;
+
+        if (isLastArea)
+        {
+            yield return AnimalAlbumUI.AnimateFinishedAlbum();
+        }
+
+        yield return AnimationData.Animal_Album_Out.PlayAndWait();
+
+        yield return AnimationData.Black_Overlay_Out.PlayAndWait();
     }
 
 }

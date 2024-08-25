@@ -57,6 +57,9 @@ public class ElementController : SerializedMonoBehaviour
             case ElementSuperStates.Gift:
                 correctElementChart = ElementVisibilityChart.Gift;
                 break;
+            case ElementSuperStates.Animal:
+                correctElementChart= ElementVisibilityChart.Animal;
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(correctElementChart), ElementSuperState, null);
         }
@@ -139,5 +142,6 @@ public class ElementController : SerializedMonoBehaviour
         Gameplay = 4,
         Winning = 8,
         Gift = 16,
+        Animal = 32,
     }
 }

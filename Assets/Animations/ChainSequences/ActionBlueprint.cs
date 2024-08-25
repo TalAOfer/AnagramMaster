@@ -123,7 +123,8 @@ public enum ElementAnimationSubType
 public enum ElementAnimationDirection
 {
     FromValueToOriginal,
-    FromOriginalToValue
+    FromOriginalToValue,
+    FromValueToValueCURRENTLYNOTINUSE
 }
 
 [Serializable]
@@ -208,10 +209,12 @@ public class SlideActionData : ActionData
     public Ease Ease;
     public float Duration = 1;
     [HorizontalGroup("Screen", LabelWidth = 100), Title("Value")]
-    public bool OutOfScreen;
-    [HorizontalGroup("Screen"), ShowIf("OutOfScreen"), Title("")]
+    public ScreenSnapOrientation ScreenSnap;
+    [HorizontalGroup("Screen"), ShowIf("ShouldShowDirection"), Title("")]
     public Direction Direction;
     public Vector2 AddedValue;
+
+    private bool ShouldShowDirection => ScreenSnap is ScreenSnapOrientation.In or ScreenSnapOrientation.Out;
 
     public override Sequence GetActionSequence(TweenableElement element)
     {
@@ -226,10 +229,21 @@ public class SlideActionData : ActionData
 
             Vector2 startingPosition = elementTransform.anchoredPosition;
 
-            if (OutOfScreen)
+            switch (ScreenSnap)
             {
-                startingPosition = Tools.GetPositionOutsideScreen(element, Direction);
+                case ScreenSnapOrientation.None:
+                    break;
+                case ScreenSnapOrientation.In:
+                    startingPosition = Tools.GetPositionInsideScreen(element, Direction);
+                    break;
+                case ScreenSnapOrientation.Out:
+                    startingPosition = Tools.GetPositionOutsideScreen(element, Direction);
+                    break;
+                case ScreenSnapOrientation.Mid:
+                    startingPosition = Vector3.zero;
+                    break;
             }
+
             startingPosition += AddedValue;
 
             sequence.AppendCallback(() => elementTransform.anchoredPosition = startingPosition);
@@ -239,9 +253,19 @@ public class SlideActionData : ActionData
         {
             targetPosition = elementTransform.anchoredPosition;
 
-            if (OutOfScreen)
+            switch (ScreenSnap)
             {
-                targetPosition = Tools.GetPositionOutsideScreen(element, Direction);
+                case ScreenSnapOrientation.None:
+                    break;
+                case ScreenSnapOrientation.In:
+                    targetPosition = Tools.GetPositionInsideScreen(element, Direction);
+                    break;
+                case ScreenSnapOrientation.Out:
+                    targetPosition = Tools.GetPositionOutsideScreen(element, Direction);
+                    break;
+                case ScreenSnapOrientation.Mid:
+                    targetPosition = Vector3.zero;
+                    break;
             }
 
             targetPosition += AddedValue;
@@ -261,14 +285,20 @@ public class SlideActionData : ActionData
         {
             desc += "original position to ";
 
-            if (OutOfScreen)
+            switch (ScreenSnap)
             {
-                desc += Direction.ToString() + " of screen";
-            }
-
-            else
-            {
-                desc += "original position";
+                case ScreenSnapOrientation.None:
+                    desc += "original position";
+                    break;
+                case ScreenSnapOrientation.In:
+                    desc += Direction.ToString() + " inside-bound of the screen";
+                    break;
+                case ScreenSnapOrientation.Out:
+                    desc += Direction.ToString() + " outside-bound of the screen";
+                    break;
+                case ScreenSnapOrientation.Mid:
+                    desc += "center of the screen";
+                    break;
             }
 
             if (AddedValue != Vector2.zero)
@@ -279,14 +309,20 @@ public class SlideActionData : ActionData
 
         if (AnimationDirection is ElementAnimationDirection.FromValueToOriginal)
         {
-            if (OutOfScreen)
+            switch (ScreenSnap)
             {
-                desc += Direction.ToString() + " of screen";
-            }
-
-            else
-            {
-                desc += "original position";
+                case ScreenSnapOrientation.None:
+                    desc += "original position";
+                    break;
+                case ScreenSnapOrientation.In:
+                    desc += Direction.ToString() + " inside-bound of the screen";
+                    break;
+                case ScreenSnapOrientation.Out:
+                    desc += Direction.ToString() + " outside-bound of the screen";
+                    break;
+                case ScreenSnapOrientation.Mid:
+                    desc += "center of the screen";
+                    break;
             }
 
             if (AddedValue != Vector2.zero)
@@ -676,3 +712,9 @@ public enum SequencingType
     Append,
     Join
 }
+
+public enum ScreenSnapOrientation
+{
+    None, In, Out, Mid
+}
+

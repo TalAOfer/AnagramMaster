@@ -9,6 +9,8 @@ public class SoloAnimalUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI animalName;
     [SerializeField] private Image image;
     [SerializeField] private Image overlay;
+    [SerializeField] private TweenableElement element;
+    public TweenableElement Element => element;
 
     private TweenableElement _overlayElement;
     private TweenableElement OverlayElement
@@ -41,9 +43,7 @@ public class SoloAnimalUI : MonoBehaviour
 
         SetExplicitAnimalData();
 
-        yield return AnimationData.SoloAnimalFlashFade.
-            GetActionSequence(OverlayElement).
-            Play().WaitForCompletion();
+        yield return AnimationData.SoloAnimalFlashFade.PlayAndWait(OverlayElement);
     }
 
     public void SetExplicitAnimalData()
