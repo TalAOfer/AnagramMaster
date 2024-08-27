@@ -19,6 +19,8 @@ public class AnimationData : ScriptableObject
     [FoldoutGroup("Transition Sequences")]
     public SequenceChainBlueprint G_BG_Fade_In;
     [FoldoutGroup("Transition Sequences")]
+    public SequenceChainBlueprint G_BG_Switch;
+    [FoldoutGroup("Transition Sequences")]
     public SequenceChainBlueprint G_Fade_In;
     [FoldoutGroup("Transition Sequences")]
     public SequenceChainBlueprint G_Fade_Out;

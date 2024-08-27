@@ -21,10 +21,11 @@ public class AnimalAlbumUI : MonoBehaviour
             AnimalAlbumCardContainer currentContainer = containers[animalIndex];
             bool doesAlreadyHaveAnimal = (animalIndex < currentAreaIndex);
 
+            currentContainer.ChildUI.Initialize(biome.Areas[animalIndex].Animal);
+            currentContainer.ChildUI.SetExplicitAnimalData();
+
             if (doesAlreadyHaveAnimal)
             {
-                currentContainer.ChildUI.Initialize(biome.Areas[animalIndex].Animal);
-                currentContainer.ChildUI.SetExplicitAnimalData();
                 currentContainer.ChildUI.gameObject.SetActive(true);
                 currentContainer.ChildUI.GetComponent<CanvasGroup>().alpha = 1f;
             }

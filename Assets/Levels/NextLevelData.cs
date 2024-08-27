@@ -2,9 +2,6 @@ public class NextLevelData
 {
     public LevelIndexHierarchy IndexHierarchy { get; private set; }
     public NextLevelEvent NextLevelEvent { get; private set; }
-
-    public bool ShouldGetGift {  get; private set; }
-
     public NextLevelData(LevelIndexHierarchy indexHierarchy, BiomeBank BiomeBank)
     {
         Area currentArea = BiomeBank.GetArea(indexHierarchy);

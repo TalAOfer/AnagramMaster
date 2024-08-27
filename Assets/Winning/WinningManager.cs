@@ -25,6 +25,11 @@ public class WinningManager : MonoBehaviour
 
         NextLevelData nextLevelData = new(Data.IndexHierarchy, BiomeBank);
         nextLevelButton.Initialize(nextLevelData);
+        
+        if (nextLevelData.NextLevelEvent is NextLevelEvent.NewArea or NextLevelEvent.NewBiome)
+        {
+
+        }
     }
 
     public IEnumerator WinningRoutine()

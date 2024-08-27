@@ -97,8 +97,7 @@ public class ElementController : SerializedMonoBehaviour
 
     public void SwitchBackgroudPointers()
     {
-        // Check if the dictionary contains the keys MainBG and SecondaryBG
-        if (tweenableElementDict.ContainsKey(MainBG))
+        if (!tweenableElementDict.ContainsKey(MainBG))
         {
             Debug.LogWarning("MainBG not found in the dictionary.");
             return;

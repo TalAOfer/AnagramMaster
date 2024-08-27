@@ -17,6 +17,7 @@ MonoBehaviour:
   S_Fade_In: {fileID: 11400000, guid: 5c9076429871c8048a4cda7059ea2fce, type: 2}
   S_Fade_Out: {fileID: 11400000, guid: 17d1e7688ce1faa4194d86ff91c82496, type: 2}
   G_BG_Fade_In: {fileID: 11400000, guid: 2e5753f9d2df6904e9c3a9ae7e22a8e3, type: 2}
+  G_BG_Switch: {fileID: 11400000, guid: eb03d158daf5cea4592703b9c58501a6, type: 2}
   G_Fade_In: {fileID: 11400000, guid: 2b01106f2e17e644888f6ac298e413df, type: 2}
   G_Fade_Out: {fileID: 11400000, guid: f101a27670b5f2d4283119729747335e, type: 2}
   W_Fade_In: {fileID: 11400000, guid: bcf27b0bd62cc414f819a8603d96167c, type: 2}

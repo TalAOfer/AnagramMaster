@@ -40,6 +40,7 @@ public class SoloAnimalUI : MonoBehaviour
     {
         overlay.gameObject.SetActive(true);
         overlay.color = Color.white;
+        overlay.GetComponent<CanvasGroup>().alpha = 1.0f;
 
         SetExplicitAnimalData();
 

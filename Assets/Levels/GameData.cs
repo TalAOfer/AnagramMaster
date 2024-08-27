@@ -17,6 +17,8 @@ public class GameData
     public int GiftTypeIndex;
     public int GiftTargetAmount { get; private set; } = 3;
 
+    public bool IsFirstInArea => IndexHierarchy.Level == 0;
+    public bool IsFirstInBiome => IndexHierarchy.Level == 0 && IndexHierarchy.Area == 0;
 
     public GameData()
     {

@@ -30,8 +30,8 @@ MonoBehaviour:
     Animal:
       name: Fox
       description: He is cunning and such
-      ShownSprite: {fileID: 0}
-      HiddenSprite: {fileID: 0}
+      ShownSprite: {fileID: 21300000, guid: 18319317d759d634da93e43f32bc8e48, type: 3}
+      HiddenSprite: {fileID: 21300000, guid: 09ad8b109ac6d9e48911f273bcec7579, type: 3}
     Levels:
     - {fileID: 11400000, guid: dd68f594a2851b04ead74928029552de, type: 2}
     - {fileID: 11400000, guid: b073475fa7453734c952138b4ea0004f, type: 2}
@@ -41,8 +41,8 @@ MonoBehaviour:
     Animal:
       name: Rabbit
       description: Hippity hoppity
-      ShownSprite: {fileID: 0}
-      HiddenSprite: {fileID: 0}
+      ShownSprite: {fileID: 21300000, guid: f17f32dfe98c1e6448b0c4a23cddb7f5, type: 3}
+      HiddenSprite: {fileID: 21300000, guid: 297a7fa3b0617064caffc1e2b72e0c92, type: 3}
     Levels:
     - {fileID: 11400000, guid: dda4037fa0caea046b1d798f99eda1a0, type: 2}
     - {fileID: 11400000, guid: ca9db24b0db723641bb42de2ff7aed84, type: 2}
@@ -52,8 +52,8 @@ MonoBehaviour:
     Animal:
       name: Bear
       description: He's strong and wow
-      ShownSprite: {fileID: 0}
-      HiddenSprite: {fileID: 0}
+      ShownSprite: {fileID: 21300000, guid: d1242fd80e8f3ff428e08b82455c7f67, type: 3}
+      HiddenSprite: {fileID: 21300000, guid: 9886a4b9e0bbfc94eac7efd91a813cf6, type: 3}
     Levels:
     - {fileID: 11400000, guid: 1f0aac1d3431ce04eb883b93c589c5a2, type: 2}
     - {fileID: 11400000, guid: b250f67134ffac341b3009c7101fd9e3, type: 2}

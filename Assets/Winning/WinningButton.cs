@@ -2,10 +2,13 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WinningButton : UIButton
 {
     private EventRegistry Events => AssetProvider.Instance.Events;
+    [SerializeField] private TweenableElementPointer Secondary_BG;
+    [SerializeField] private ElementController elementController;
     public override void Initialize(NextLevelData nextLevelData)
     {
         string text = "";
@@ -35,28 +38,20 @@ public class WinningButton : UIButton
     {
         Events.OnStartButtonPressed.Raise();
         
-        Sequence fadeOut = AnimationData.W_Fade_Out.GetSequenceChain();
-        Sequence fadeIn = AnimationData.G_Fade_In.GetSequenceChain();
-        Sequence combined = DOTween.Sequence();
-        combined.Append(fadeOut);
-        combined.Append(fadeIn);
-        combined.Play();
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(AnimationData.W_Fade_Out.GetSequenceChain());
+        
+        if (nextLevelData.NextLevelEvent is NextLevelEvent.NewArea or NextLevelEvent.NewBiome)
+        {
+            elementController.GetElement(Secondary_BG).GetComponent<Image>().sprite = BiomeBank.GetArea(Data.IndexHierarchy).Sprite;
+            sequence.Append(AnimationData.G_BG_Switch.GetSequenceChain());    
+            sequence.Append(AnimationData.Animal_Fade_In.GetSequenceChain());
+            sequence.Append(AnimationData.Animal_Fade_Out.GetSequenceChain());
+        }
 
-        //switch (nextLevelData.NextLevelEvent)
-        //{
-        //    case NextLevelEvent.None:
-        //        elementController.WinningToGameplay();
-        //        break;
-        //    case NextLevelEvent.NewArea:
-        //        elementController.FadeWinningNewAreaToGameplay();
-        //        break;
-        //    case NextLevelEvent.NewBiome:
-        //        elementController.WinningToGameplay();
-        //        break;
-        //    case NextLevelEvent.FinishedGame:
-        //        Application.OpenURL("https://forms.gle/pJEPRzfHPLv17fu5A");
-        //        break;
-        //}
+        sequence.Append(AnimationData.G_Fade_In.GetSequenceChain());
+
+        sequence.Play();
     }
 
 }
