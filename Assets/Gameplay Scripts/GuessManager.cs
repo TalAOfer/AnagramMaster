@@ -77,7 +77,7 @@ public class GuessManager : MonoBehaviour
 
     public IEnumerator MistakeAnimation()
     {
-        yield return AnimData.ProgressionFruitAnimation.PlayAndWait(element);
+        yield return AnimData.GuessMistakeAnimBlueprint.PlayAndWait(element);
     }
 
 

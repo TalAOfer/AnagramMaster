@@ -37,7 +37,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -90,7 +90,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 6
             Duration: 0.3
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 100}
           jumpData:
@@ -152,7 +152,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -205,7 +205,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 6
             Duration: 0.3
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 50}
           jumpData:
@@ -267,7 +267,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -320,7 +320,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 6
             Duration: 0.3
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 50}
           jumpData:
@@ -382,7 +382,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -435,7 +435,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 6
             Duration: 0.3
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 50}
           jumpData:
@@ -497,7 +497,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -550,7 +550,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 6
             Duration: 0.3
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 50}
           jumpData:
@@ -583,6 +583,59 @@ MonoBehaviour:
             Elasticity: 1
           callEventData:
             GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: 
+        - SequencingType: 0
+          ActionType: 7
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScreenSnap: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 11400000, guid: ee76a8b2dbab2154c83aeb70a8023bd3, type: 2}
           fadeData:
             SetActiveAccordingToFade: 1
             Fade: 0

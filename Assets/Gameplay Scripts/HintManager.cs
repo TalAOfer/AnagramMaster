@@ -1,25 +1,38 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HintManager : MonoBehaviour
 {
     [SerializeField] private GuessManager guessManager;
-    private GameData Data => AssetProvider.Instance.Data.Value;
-    private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
-    [SerializeField] private HintButton hintButton;
+    [SerializeField] private Button hintButtonButton;
+    [SerializeField] private TextMeshProUGUI hintAmountTMP;
     private string currentHintWord;
     List<GuessContainer> ActiveGuessContainers => guessManager.ActiveGuessContainers;
+    private GameData Data => AssetProvider.Instance.Data.Value;
+    private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
+    private EventRegistry Events => AssetProvider.Instance.Events;
 
     public void Initialize()
     {
-        hintButton.UpdateHintText();
+        UpdateHintText();
         OnNewWord();
-        ChangeHintAmount(3);
+    }
+
+    public void UpdateHintText()
+    {
+        hintAmountTMP.text = Data.HintAmount.ToString();
+    }
+
+    public void SetHintInteractability(bool enable)
+    {
+        hintButtonButton.interactable = enable;
     }
 
     public void OnNewWord()
     {
-        currentHintWord = BiomeBank.GetLevel(Data.IndexHierarchy).GetHintWord(Data.Level.CurrentLetters.Length);
+        currentHintWord = BiomeBank.GetHintWord(Data);
         for (int i = 0; i < ActiveGuessContainers.Count; i++)
         {
             GuessContainer container = ActiveGuessContainers[i];
@@ -32,12 +45,16 @@ public class HintManager : MonoBehaviour
     {
         if (TryUseHint())
         {
-            hintButton.UpdateHintText();
+            UpdateHintText();
         }
     }
     public bool TryUseHint()
     {
-        if (Data.HintAmount <= 0) return false;
+        if (Data.HintAmount <= 0)
+        {
+            Events.Ad_ShowRewarded.Raise();
+            return false;
+        }
 
         List<GuessContainer> containersAvailableForHint = new();
         foreach (var container in ActiveGuessContainers)
@@ -59,9 +76,14 @@ public class HintManager : MonoBehaviour
         return true;
     }
 
+    public void Get2Hints()
+    {
+        ChangeHintAmount(2);
+    }
+
     public void ChangeHintAmount(int amount)
     {
         Data.ChangeHintAmount(amount);
-        hintButton.UpdateHintText();
+        UpdateHintText();
     }
 }

@@ -223,12 +223,12 @@ MonoBehaviour:
             AddedValue: 0
           shakeData:
             Subtype: 0
-            Ease: 5
+            Ease: 2
             Duration: 1
             Strength: {x: 0, y: 0}
-            SpinStrength: 30
+            SpinStrength: 15
             Vibrato: 10
-            Randomness: 25
+            Randomness: 1
           punchData:
             Subtype: 0
             Ease: 5

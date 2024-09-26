@@ -73,8 +73,8 @@ public static class Tools
         float screenWidth = screenSize.x;
 
         // Get the rectTransform size
-        float rectHeight = element.RectTransform.rect.height;
-        float rectWidth = element.RectTransform.rect.width;
+        float rectHeight = element.RectTransform.rect.height * element.RectTransform.localScale.y;
+        float rectWidth = element.RectTransform.rect.width * element.RectTransform.localScale.x;
 
         Vector2 rectPivot = element.RectTransform.pivot;
 

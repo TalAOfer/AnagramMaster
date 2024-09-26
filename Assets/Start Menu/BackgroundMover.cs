@@ -8,20 +8,22 @@ public class BackgroundMover : MonoBehaviour
 {
     [SerializeField] private Image mainBG;
     [SerializeField] private Image backupBG;
+    [SerializeField] private TweenableElement mainBgElement;
     [SerializeField] private float movementSpeed = 0.5f; // movement speed for tweening
     [SerializeField] private float fadeStartTime = 5f; // time to start fading
     [SerializeField] private float fadeDuration = 1f; // duration of the fade
     [SerializeField] private List<Sprite> bgSprites = new List<Sprite>();
-    private Vector2 startingAcnhorPos = new(-800, 0);
-
+    
+    private Vector2 startingAcnhorPos;
     private float finalXPos;
+
     private int currentImageIndex = 0;
 
     private void Awake()
     {
-        float screenWidth = Screen.width;
-        float uiElementWidth = mainBG.rectTransform.rect.width * mainBG.rectTransform.localScale.x;
-        finalXPos = -(uiElementWidth - screenWidth);
+        finalXPos = Tools.GetPositionInsideScreen(mainBgElement, Sirenix.Utilities.Direction.Right).x;
+        startingAcnhorPos = Tools.GetPositionInsideScreen(mainBgElement, Sirenix.Utilities.Direction.Left);
+
         mainBG.rectTransform.anchoredPosition = startingAcnhorPos;
         backupBG.rectTransform.anchoredPosition = startingAcnhorPos;
         mainBG.sprite = AssignNextSprite();
@@ -31,37 +33,30 @@ public class BackgroundMover : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(StartImageScroll());
+        StartImageScroll();
     }
 
-    private IEnumerator StartImageScroll()
+    private void StartImageScroll()
     {
-        while (true)
-        {
-            // Tween mainBG
-            mainBG.rectTransform.DOAnchorPosX(finalXPos, movementSpeed).SetEase(Ease.Linear).SetSpeedBased();
-            yield return Tools.GetWaitRealtime(fadeStartTime);
+        mainBG.rectTransform.DOAnchorPosX(finalXPos, movementSpeed).SetEase(Ease.Linear).SetSpeedBased();
+        StartCoroutine(Crossfade());
+    }
 
-            // Start crossfade and prepare the next cycle
-            backupBG.rectTransform.anchoredPosition = startingAcnhorPos;
-            backupBG.rectTransform.DOAnchorPosX(finalXPos, movementSpeed).SetEase(Ease.Linear).SetSpeedBased();
+    private IEnumerator Crossfade()
+    {
+        yield return Tools.GetWaitRealtime(fadeStartTime);
+        (backupBG, mainBG) = (mainBG, backupBG);
+        mainBG.rectTransform.DOAnchorPosX(finalXPos, movementSpeed).SetEase(Ease.Linear);
+        
+        StartCoroutine(Crossfade());
+        
+        mainBG.DOFade(1, fadeDuration);
+        Tween tween = backupBG.DOFade(0, fadeDuration);
 
-            mainBG.DOFade(0, fadeDuration);
-            backupBG.DOFade(1, fadeDuration);
-
-            yield return Tools.GetWaitRealtime(fadeDuration);
-
-            // Swap references
-            var temp = mainBG;
-            mainBG = backupBG;
-            backupBG = temp;
-
-            // Reset the faded-out image
-            backupBG.sprite = AssignNextSprite();
-            backupBG.color = new Color(backupBG.color.r, backupBG.color.g, backupBG.color.b, 0); // Reset alpha
-
-            yield return Tools.GetWaitRealtime(fadeStartTime);
-        }
+        yield return tween.WaitForCompletion();
+        backupBG.rectTransform.DOKill();
+        backupBG.rectTransform.anchoredPosition = startingAcnhorPos;
+        backupBG.sprite = AssignNextSprite();
     }
 
     private Sprite AssignNextSprite()

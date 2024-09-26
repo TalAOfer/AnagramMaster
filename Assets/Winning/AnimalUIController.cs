@@ -14,6 +14,7 @@ public class AnimalUIController : MonoBehaviour
 
     [SerializeField] private AnimalAlbumUI AnimalAlbumUI;
     [SerializeField] private SoloAnimalUI SoloAnimalUI;
+    [SerializeField] private Image Title;
     private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
     private AnimationData AnimationData => AssetProvider.Instance.AnimationData;
 
@@ -31,6 +32,7 @@ public class AnimalUIController : MonoBehaviour
         SoloAnimalUI.Initialize(animal);
         Biome biome = BiomeBank.Biomes[data.IndexHierarchy.Biome];
         AnimalAlbumUI.Initialize(biome, data.IndexHierarchy.Area);
+        Title.sprite = AnimationData.YouFoundItSprite;
     }
 
     private void InitializeAnimalBar()
@@ -73,6 +75,8 @@ public class AnimalUIController : MonoBehaviour
         yield return AnimationData.Animal_Album_In.PlayAndWait();
 
         yield return AnimationData.Animal_Fade_Out.PlayAndWait();
+
+        Title.sprite = AnimationData.FindTheAnimalSprite;
 
         yield return AnimalAlbumUI.FadeInAnimal(_data.IndexHierarchy.Area);
 

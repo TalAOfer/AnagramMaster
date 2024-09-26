@@ -515,7 +515,9 @@ public class ShakeActionData : ActionData
     public Vector2 Strength;
     [ShowIf("Subtype", ElementAnimationSubType.Rotation)]
     public float SpinStrength;
+    [HideIf("Subtype", ElementAnimationSubType.Rotation)]
     public int Vibrato = 10;
+    [HideIf("Subtype", ElementAnimationSubType.Rotation)]
     public float Randomness = 25f;
 
     public override Sequence GetActionSequence(TweenableElement element)
@@ -527,7 +529,7 @@ public class ShakeActionData : ActionData
         switch (Subtype)
         {
             case ElementAnimationSubType.Rotation:
-                tween = elementTransform.DOShakeRotation(Duration, Vector3.forward * SpinStrength, Vibrato, Randomness).SetEase(Ease);
+                tween = elementTransform.DOPunchRotation(Vector3.forward * SpinStrength, Duration).SetEase(Ease);
                 break;
             case ElementAnimationSubType.Scale:
                 tween = elementTransform.DOShakeScale(Duration, Strength, Vibrato, Randomness).SetEase(Ease);

@@ -77,7 +77,7 @@ public class AnimationData : ScriptableObject
     [FoldoutGroup("Gameplay")]
     public ActionSequenceBlueprintRef GuessMistakeAnimBlueprint;
     [FoldoutGroup("Gameplay")]
-    public ActionSequenceBlueprintRef ProgressionFruitAnimation;
+    public ActionSequenceBlueprintRef ProgressionIconAnimation;
    
     [FoldoutGroup("Tutorial")]
     public float swipeHandSwipeDuration;

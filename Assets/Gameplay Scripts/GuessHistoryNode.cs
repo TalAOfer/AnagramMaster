@@ -1,6 +1,4 @@
-using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,12 +22,17 @@ public class GuessHistoryNode : MonoBehaviour
         image.sprite = pendingSprite;
     }
 
+    [Button]
+    public void TestAnimation()
+    {
+        AnimationData.ProgressionIconAnimation.Play(element);
+    }
+
     public void SetToAnswered(string answer)
     {
         Answered = true;
         image.sprite = answeredSprite;
-        AnimationData.ProgressionFruitAnimation.Play(element);
+        AnimationData.ProgressionIconAnimation.Play(element);
         Answer = answer;
-        SoundManager.PlaySound("GameplayCollectibleCollected", Vector3.zero);
     }
 }

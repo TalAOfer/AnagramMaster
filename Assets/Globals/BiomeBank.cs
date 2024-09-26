@@ -43,6 +43,11 @@ public class BiomeBank : ScriptableObject
         Debug.Log("Index is higher than highest index available");
         return new LevelIndexHierarchy(-1, -1, -1); // Return an invalid index hierarchy if not found
     }
+
+    public string GetHintWord(GameData data)
+    {
+        return GetLevel(data.IndexHierarchy).GetHintWord(data.Level.CurrentLetters.Length);
+    }
 }
 
 [System.Serializable]

@@ -65,18 +65,124 @@ MonoBehaviour:
       PreDelay: 0
       PostDelay: 0
       SequenceBlueprint: []
-  ProgressionFruitAnimation:
-    UseAsset: 1
-    Asset: {fileID: 11400000, guid: 8fdb1481e3c3c5d4e9e584afe0293536, type: 2}
+  ProgressionIconAnimation:
+    UseAsset: 0
+    Asset: {fileID: 0}
     Value:
       PreDelay: 0
       PostDelay: 0
-      SequenceBlueprint: []
+      SequenceBlueprint:
+      - SequencingType: 1
+        ActionType: 5
+        PreDelay: 0
+        PostDelay: 0
+        zoomData:
+          AnimationDirection: 0
+          Ease: 0
+          Duration: 1
+          ScaleAddition: {x: 0, y: 0}
+        slideData:
+          AnimationDirection: 0
+          Ease: 0
+          Duration: 1
+          ScreenSnap: 0
+          Direction: 0
+          AddedValue: {x: 0, y: 0}
+        jumpData:
+          AnimationDirection: 0
+          Ease: 0
+          Duration: 1
+          OutOfScreen: 0
+          Direction: 0
+          Power: 0
+          AddedValue: {x: 0, y: 0}
+        spinData:
+          AnimationDirection: 0
+          Ease: 0
+          Duration: 1
+          AddedValue: 0
+        shakeData:
+          Subtype: 0
+          Ease: 0
+          Duration: 1
+          Strength: {x: 0, y: 0}
+          SpinStrength: 0
+          Vibrato: 10
+          Randomness: 25
+        punchData:
+          Subtype: 1
+          Ease: 8
+          Duration: 0.5
+          Punch: {x: 0.5, y: 0.5}
+          Vibrato: 0
+          Elasticity: 1
+        callEventData:
+          GameEvent: {fileID: 0}
+        fadeData:
+          SetActiveAccordingToFade: 1
+          Fade: 0
+          Ease: 0
+          Duration: 1
+        playSoundData:
+          Sound: 
+      - SequencingType: 1
+        ActionType: 8
+        PreDelay: 0
+        PostDelay: 0
+        zoomData:
+          AnimationDirection: 0
+          Ease: 0
+          Duration: 1
+          ScaleAddition: {x: 0, y: 0}
+        slideData:
+          AnimationDirection: 0
+          Ease: 0
+          Duration: 1
+          ScreenSnap: 0
+          Direction: 0
+          AddedValue: {x: 0, y: 0}
+        jumpData:
+          AnimationDirection: 0
+          Ease: 0
+          Duration: 1
+          OutOfScreen: 0
+          Direction: 0
+          Power: 0
+          AddedValue: {x: 0, y: 0}
+        spinData:
+          AnimationDirection: 0
+          Ease: 0
+          Duration: 1
+          AddedValue: 0
+        shakeData:
+          Subtype: 0
+          Ease: 0
+          Duration: 1
+          Strength: {x: 0, y: 0}
+          SpinStrength: 0
+          Vibrato: 10
+          Randomness: 25
+        punchData:
+          Subtype: 0
+          Ease: 0
+          Duration: 1
+          Punch: {x: 0, y: 0}
+          Vibrato: 10
+          Elasticity: 1
+        callEventData:
+          GameEvent: {fileID: 0}
+        fadeData:
+          SetActiveAccordingToFade: 1
+          Fade: 0
+          Ease: 0
+          Duration: 1
+        playSoundData:
+          Sound: GameplayCollectibleCollected
   swipeHandSwipeDuration: 0.8
   swipeHandSwipeEase: 9
   swipeHandFadeDuration: 0.4
   swipeHandEndDelayDuration: 0.25
-  sliderFillDuration: 2.5
+  sliderFillDuration: 0.75
   sliderFillEase: 13
   giftItemAppearanceDuration: 0.5
   giftItemAppearanceEase: 0

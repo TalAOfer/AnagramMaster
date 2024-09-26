@@ -13,5 +13,12 @@ MonoBehaviour:
   m_Name: Event Registry
   m_EditorClassIdentifier: 
   OnStartButtonPressed: {fileID: 11400000, guid: 040cf20893255e64c84cb93738bb0c35, type: 2}
-  OnInputPressed: {fileID: 0}
-  OnInputReleased: {fileID: 0}
+  Ad_LoadInterstitial: {fileID: 11400000, guid: 3854ecc846a418944b6f3320a7774610, type: 2}
+  Ad_ShowInterstitial: {fileID: 11400000, guid: ec8e80c0d81bb9e4185339423876f40e, type: 2}
+  Ad_UserClosedInterstitial: {fileID: 11400000, guid: bc6ce8e14cdfcf04d986a2af31009b9a, type: 2}
+  Ad_LoadBanner: {fileID: 11400000, guid: 724880505f80719468711ce47a2875fb, type: 2}
+  Ad_DisplayBanner: {fileID: 11400000, guid: b5ff23a1bd6a2ad4eb83f325bed8688c, type: 2}
+  Ad_HideBanner: {fileID: 11400000, guid: ba624b0c7dada864098f7cdb65a381f0, type: 2}
+  Ad_LoadRewarded: {fileID: 11400000, guid: 882fe3d3da020364f89472ff2a9349d3, type: 2}
+  Ad_ShowRewarded: {fileID: 11400000, guid: 5892dba6fb9d8c140a3484e75a467310, type: 2}
+  Ad_RewardSucceeded: {fileID: 11400000, guid: bd9a9f5e63b9a8d44b3e53ae63a6cb6d, type: 2}

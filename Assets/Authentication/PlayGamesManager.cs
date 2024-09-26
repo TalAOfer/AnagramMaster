@@ -11,6 +11,7 @@ public class PlayGamesManager : MonoBehaviour
     private void Start()
     {
 #if UNITY_ANDROID
+        PlayGamesPlatform.DebugLogEnabled = true;
         SignIn();
 #endif
     }

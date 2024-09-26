@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -9,16 +10,11 @@ public class GameDataManager : MonoBehaviour
     private CurrentData Data => AssetProvider.Instance.Data;
     private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
 
-    [Button]
-    public void ResetData()
-    {
-        Data.Value = new GameData();
-        SaveNewData();
-    }
 
     public void Start()
     {
         InitializeData();
+        DOTween.SetTweensCapacity(200, 125);
     }
 
     public void InitializeData()
@@ -28,50 +24,19 @@ public class GameDataManager : MonoBehaviour
         bool isFirstStage = !Data.Value.IsInitialized;
         if (isFirstStage)
         {
-            InitializeFirstLevel();
+            InitializeNewGameData(new LevelIndexHierarchy(0, 0, 0), 0);
+            Data.Value.IsInitialized = true;
         }
 
         else if (Data.Value.Level.DidFinish)
         {
             NextLevelData nextLevelData = new(Data.Value.IndexHierarchy, BiomeBank);
-            if (nextLevelData.NextLevelEvent is not NextLevelEvent.FinishedGame)
-            {
-                LoadNextLevel();
-            }
+            if (nextLevelData.NextLevelEvent is NextLevelEvent.FinishedGame) return;
+
+            LoadNextLevel();
         }
 
         OnDataInitialized.Raise();
-    }
-
-    private void InitializeFirstLevel()
-    {
-        LevelIndexHierarchy indexHierarchy = new LevelIndexHierarchy(0, 0, 0);
-        LevelBlueprint levelBlueprint = BiomeBank.GetLevel(indexHierarchy);
-        Data.Value = new GameData(indexHierarchy);
-        Data.Value.InitializeNewLevel(levelBlueprint, indexHierarchy);
-        Data.Value.IsInitialized = true;
-        Data.Value.Gift = new Gift(GiftBank.Blueprints[0]);
-        SaveNewData();
-    }
-
-    public void LoadNextLevel()
-    {
-        NextLevelData nextLevelData = new(Data.Value.IndexHierarchy, BiomeBank);
-        
-
-        if (Data.Value.GiftTypeIndex > GiftBank.Blueprints.Count)
-        {
-            Data.Value.GiftTypeIndex = 0;
-        }
-
-        Data.Value.IncrementProgression(GiftBank.Blueprints[Data.Value.GiftTypeIndex]);
-
-        if (nextLevelData.NextLevelEvent is not NextLevelEvent.FinishedGame)
-        {
-            LevelBlueprint nextLevelBlueprint = BiomeBank.GetLevel(nextLevelData.IndexHierarchy);
-            Data.Value.InitializeNewLevel(nextLevelBlueprint, nextLevelData.IndexHierarchy);
-            SaveNewData();
-        }
     }
 
     public void SaveNewData()
@@ -79,20 +44,57 @@ public class GameDataManager : MonoBehaviour
         SaveSystem.Save(Data.Value);
     }
 
+    private void InitializeNewGameData(LevelIndexHierarchy indexHierarchy, int levelIndex)
+    {
+        Data.Value = new GameData(indexHierarchy)
+        {
+            OverallLevelIndex = levelIndex,
+            Gift = new Gift(GiftBank.Blueprints[0])
+        };
+
+        LevelBlueprint levelBlueprint = BiomeBank.GetLevel(indexHierarchy);
+        InitializeLevel(indexHierarchy, levelBlueprint);
+    }
+
+    public void LoadNextLevel()
+    {
+        NextLevelData nextLevelData = new(Data.Value.IndexHierarchy, BiomeBank);
+
+        if (Data.Value.GiftTypeIndex >= GiftBank.Blueprints.Count)
+        {
+            Data.Value.GiftTypeIndex = 0;
+        }
+
+        Data.Value.IncrementProgression(GiftBank.Blueprints[Data.Value.GiftTypeIndex]);
+
+        if (nextLevelData.NextLevelEvent is NextLevelEvent.FinishedGame) return;
+
+        LevelBlueprint nextLevelBlueprint = BiomeBank.GetLevel(nextLevelData.IndexHierarchy);
+        InitializeLevel(nextLevelData.IndexHierarchy, nextLevelBlueprint);
+    }
+
+    private void InitializeLevel(LevelIndexHierarchy indexHierarchy, LevelBlueprint blueprint)
+    {
+        Data.Value.InitializeNewLevel(blueprint, indexHierarchy);
+        SaveNewData();
+    }
+
+    #region Helpers
+
+    [Button]
+    public void ResetData()
+    {
+        InitializeNewGameData(new LevelIndexHierarchy(0, 0, 0), 0);
+    }
+
     [Button]
     public void SetToLevel(int index)
     {
         int levelIndex = index - 1;
         LevelIndexHierarchy indexHierarchy = BiomeBank.GetLevelIndexHierarchyWithTotalIndex(levelIndex);
-        Data.Value = new GameData(indexHierarchy)
-        {
-            IsInitialized = true,
-            OverallLevelIndex = levelIndex,
-            Gift = new Gift(GiftBank.Blueprints[0])
-    };
-
-        LevelBlueprint levelBlueprint = BiomeBank.GetLevel(indexHierarchy);
-        Data.Value.InitializeNewLevel(levelBlueprint, indexHierarchy);
-        SaveNewData();
+        InitializeNewGameData(indexHierarchy, levelIndex);
     }
+
+    #endregion
+
 }

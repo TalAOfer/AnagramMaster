@@ -1,9 +1,11 @@
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
@@ -30,6 +32,7 @@ public class GameplayManager : MonoBehaviour
     private BiomeBank BiomeBank => AssetProvider.Instance.BiomeBank;
     private GameData Data => AssetProvider.Instance.Data.Value;
     private AnimationData AnimationData => AssetProvider.Instance.AnimationData;
+    private EventRegistry Events => AssetProvider.Instance.Events;
 
     public void Initialize()
     {
@@ -43,9 +46,20 @@ public class GameplayManager : MonoBehaviour
         GuessManager.Initialize();
         AnswerManager.Initialize();
         HintManager.Initialize();
+        
+        Events.Ad_LoadInterstitial.Raise();
+
+        if (Data.OverallLevelIndex > 6)
+        {
+            Events.Ad_DisplayBanner.Raise();
+        }
     }
 
-    public IEnumerator OnFadeInFinished()
+    public void InitializeHandSwipe()
+    {
+        StartCoroutine(HandSwipeRoutine());
+    }
+    public IEnumerator HandSwipeRoutine()
     {
         bool isFirstLevel = Data.IndexHierarchy.Level == 0;
         if (isFirstLevel)
@@ -166,6 +180,7 @@ public class GameplayManager : MonoBehaviour
         ResetUsedLetters();
 
         _inputEnabled = false;
+        HintManager.SetHintInteractability(false);
 
         if (Data.Level.CurrentLetters.Length == usedLetters.Count)
         {
@@ -190,6 +205,7 @@ public class GameplayManager : MonoBehaviour
         ResetLetterState();
 
         _inputEnabled = true;
+        HintManager.SetHintInteractability(true);
     }
 
     private void ResetUsedLetters()
@@ -246,6 +262,7 @@ public class GameplayManager : MonoBehaviour
         yield return GuessManager.CorrectGuessAnimation();
         yield return AnswerManager.OnNewAnswer(usedLetters);
         GuessHistoryManager.HandleNewAnsweredNode();
+        //
 
         if (!Data.Level.DidFinish)
         {
@@ -261,6 +278,31 @@ public class GameplayManager : MonoBehaviour
             gameDataManager.LoadNextLevel();
             yield return Tools.GetWaitRealtime(0.25f);
             yield return winningManager.WinningRoutine();
+        }
+    }
+
+    [Button]
+    public void SkipLevel()
+    {
+        string guess = BiomeBank.GetHintWord(Data);
+        Data.OnCorrectAnswer(guess);
+
+        AnswerManager.OnNewAnswerImmediate(usedLetters);
+        GuessHistoryManager.HandleNewAnsweredNode();
+
+        if (!Data.Level.DidFinish)
+        {
+            LetterBank.ActivateNextLetter();
+            GuessManager.ActivateNextContainer();
+            HintManager.OnNewWord();
+        }
+
+        else
+        {
+            GameData currentGameData = Data.Clone();
+            winningManager.Initialize(currentGameData);
+            gameDataManager.LoadNextLevel();
+            StartCoroutine(winningManager.WinningRoutine());
         }
     }
 

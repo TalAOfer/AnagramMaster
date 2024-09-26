@@ -17,7 +17,7 @@ MonoBehaviour:
     PostDelay: 0
     SequenceBlueprint:
     - SequencingType: 1
-      ActionType: 5
+      ActionType: 4
       PreDelay: 0
       PostDelay: 0
       zoomData:
@@ -29,7 +29,7 @@ MonoBehaviour:
         AnimationDirection: 0
         Ease: 0
         Duration: 1
-        OutOfScreen: 0
+        ScreenSnap: 0
         Direction: 0
         AddedValue: {x: 0, y: 0}
       jumpData:
@@ -46,15 +46,15 @@ MonoBehaviour:
         Duration: 1
         AddedValue: 0
       shakeData:
-        Subtype: 0
+        Subtype: 2
         Ease: 0
-        Duration: 1
-        Strength: {x: 0, y: 0}
+        Duration: 0.5
+        Strength: {x: 25, y: 0}
         SpinStrength: 0
         Vibrato: 10
-        Randomness: 25
+        Randomness: 0
       punchData:
-        Subtype: 2
+        Subtype: 0
         Ease: 16
         Duration: 0.35
         Punch: {x: 20, y: 0}

@@ -102,16 +102,17 @@ public class GameData
 [System.Serializable]
 public class LevelData
 {
+    private int _answerAmountNeeded;
     public string CurrentLetters;
     public bool[] HintState;
     public List<string> NextLetters;
     public List<string> CorrectAnswers;
-    public bool DidFinish;
+    public bool DidFinish => CorrectAnswers.Count == _answerAmountNeeded;
     public LevelData(LevelBlueprint blueprint)
     {
-        DidFinish = false;
         CurrentLetters = blueprint.StartingLetters;
         NextLetters = blueprint.NextLetters.ToList();
+        _answerAmountNeeded = NextLetters.Count + 1;
         CorrectAnswers = new();
         HintState = new bool[CurrentLetters.Length];
     }
@@ -119,7 +120,6 @@ public class LevelData
     public bool UpdateLevelState(string answer)
     {
         CorrectAnswers.Add(answer);
-        DidFinish = NextLetters.Count <= 0;
 
         if (!DidFinish)
         {
@@ -140,7 +140,6 @@ public class LevelData
             HintState = (bool[])this.HintState.Clone(),
             NextLetters = new List<string>(this.NextLetters),
             CorrectAnswers = new List<string>(this.CorrectAnswers),
-            DidFinish = this.DidFinish,
         };
     }
 

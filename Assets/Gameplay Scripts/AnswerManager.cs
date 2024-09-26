@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AnswerManager : MonoBehaviour
 {
@@ -79,8 +80,36 @@ public class AnswerManager : MonoBehaviour
             }
         }
 
-        SoundManager.PlaySound("GuessHistoryShuffle", Vector3.zero);
         yield return sequence.Play().WaitForCompletion(); ;
+    }
+
+    public void OnNewAnswerImmediate(List<BankLetter> bankLetters)
+    {
+        for (int i = 0; i < bankLetters.Count; i++)
+        {
+            BankLetter bankLetter = bankLetters[i];
+            AnswerLetter answerLetter = bankLetter.GuessLetter.AnswerLetter;
+            answerLetter.Rect.SetParent(this.transform);
+        }
+
+        for (int i = 0; i < bankLetters.Count; i++)
+        {
+            RectTransform container = PremadeAnswerContainers[i];
+            container.gameObject.SetActive(true);
+        }
+
+        for (int i = 0; i < bankLetters.Count; i++)
+        {
+            RectTransform container = PremadeAnswerContainers[i];
+            BankLetter bankLetter = bankLetters[i];
+            AnswerLetter answerLetter = bankLetter.GuessLetter.AnswerLetter;
+
+            answerLetter.SetUsed(true);
+            answerLetter.Rect.SetParent(container);
+
+            answerLetter.Rect.anchoredPosition = Vector2.zero;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(container);
+        }
     }
 
     public IEnumerator PlayMistakeAnimation()
