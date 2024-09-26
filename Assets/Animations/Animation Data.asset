@@ -182,7 +182,7 @@ MonoBehaviour:
   swipeHandSwipeEase: 9
   swipeHandFadeDuration: 0.4
   swipeHandEndDelayDuration: 0.25
-  sliderFillDuration: 0.75
+  sliderFillDuration: 1
   sliderFillEase: 13
   giftItemAppearanceDuration: 0.5
   giftItemAppearanceEase: 0
