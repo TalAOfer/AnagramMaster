@@ -81,6 +81,9 @@
 		<property name="length">
 			<value>12.25</value>
 		</property>
+		<property name="pitch">
+			<value>4.5</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{b235c5c3-c111-4b78-bf56-9769a5398f36}</destination>
 		</relationship>
@@ -94,12 +97,24 @@
 	<object class="MixerBusEffectChain" id="{e191ddaa-c605-453f-a3b9-ce008bc50d61}">
 		<relationship name="effects">
 			<destination>{cf57d08b-f263-417c-bcfa-456e9cdfbe2c}</destination>
+			<destination>{08ea41c3-5e28-4ccf-935c-aa8aeab77496}</destination>
 			<destination>{5565f733-cf18-4ba5-a3c3-1579c5be8de9}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{fd634a71-df06-4d8a-a625-283cff8425b0}" />
 	<object class="MixerBusFader" id="{fd6acc1c-6e25-498e-890c-fdf663b787cb}" />
 	<object class="MixerBusFader" id="{cf57d08b-f263-417c-bcfa-456e9cdfbe2c}" />
+	<object class="MultibandEqEffect" id="{08ea41c3-5e28-4ccf-935c-aa8aeab77496}">
+		<property name="filterTypeA">
+			<value>9</value>
+		</property>
+		<property name="frequencyA">
+			<value>963.149963</value>
+		</property>
+		<property name="gainA">
+			<value>-7.24137878</value>
+		</property>
+	</object>
 	<object class="CompressorEffect" id="{5565f733-cf18-4ba5-a3c3-1579c5be8de9}">
 		<property name="threshold">
 			<value>-4.5</value>

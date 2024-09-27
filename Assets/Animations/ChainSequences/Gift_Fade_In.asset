@@ -224,7 +224,7 @@ MonoBehaviour:
           shakeData:
             Subtype: 0
             Ease: 2
-            Duration: 1
+            Duration: 0.8
             Strength: {x: 0, y: 0}
             SpinStrength: 15
             Vibrato: 10
@@ -299,12 +299,12 @@ MonoBehaviour:
           playSoundData:
             Sound: 
   - ElementPointer: {fileID: 11400000, guid: 30f7d845433fe994c825d77c85962b65, type: 2}
-    SequencingType: 0
+    SequencingType: 1
     AnimationSequenceRef:
       UseAsset: 0
       Asset: {fileID: 0}
       Value:
-        PreDelay: 0
+        PreDelay: 1.4
         PostDelay: 0
         SequenceBlueprint:
         - SequencingType: 1

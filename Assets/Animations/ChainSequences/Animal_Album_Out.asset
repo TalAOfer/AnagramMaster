@@ -36,7 +36,7 @@ MonoBehaviour:
           slideData:
             AnimationDirection: 1
             Ease: 0
-            Duration: 1
+            Duration: 0.8
             ScreenSnap: 2
             Direction: 3
             AddedValue: {x: 0, y: 0}
