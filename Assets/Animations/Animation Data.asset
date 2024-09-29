@@ -353,7 +353,7 @@ MonoBehaviour:
         SetActiveAccordingToFade: 1
         Fade: 0
         Ease: 0
-        Duration: 1
+        Duration: 0.8
       playSoundData:
         Sound: 
   YouFoundItSprite: {fileID: 21300000, guid: 309b93b3e3834fb4da85a3e355d64271, type: 3}
@@ -416,8 +416,8 @@ MonoBehaviour:
         Duration: 0.5
       playSoundData:
         Sound: 
-    - SequencingType: 1
-      ActionType: 0
+    - SequencingType: 0
+      ActionType: 5
       PreDelay: 0
       PostDelay: 0
       zoomData:
@@ -425,6 +425,59 @@ MonoBehaviour:
         Ease: 5
         Duration: 1
         ScaleAddition: {x: 0.25, y: 0.25}
+      slideData:
+        AnimationDirection: 0
+        Ease: 0
+        Duration: 1
+        ScreenSnap: 0
+        Direction: 0
+        AddedValue: {x: 0, y: 0}
+      jumpData:
+        AnimationDirection: 0
+        Ease: 0
+        Duration: 1
+        OutOfScreen: 0
+        Direction: 0
+        Power: 0
+        AddedValue: {x: 0, y: 0}
+      spinData:
+        AnimationDirection: 0
+        Ease: 0
+        Duration: 1
+        AddedValue: 0
+      shakeData:
+        Subtype: 1
+        Ease: 2
+        Duration: 1
+        Strength: {x: 1.2, y: 1.2}
+        SpinStrength: 25
+        Vibrato: 0
+        Randomness: 0
+      punchData:
+        Subtype: 1
+        Ease: 1
+        Duration: 1
+        Punch: {x: 0.25, y: 0.25}
+        Vibrato: 0
+        Elasticity: 1
+      callEventData:
+        GameEvent: {fileID: 0}
+      fadeData:
+        SetActiveAccordingToFade: 1
+        Fade: 0
+        Ease: 0
+        Duration: 1
+      playSoundData:
+        Sound: 
+    - SequencingType: 1
+      ActionType: 5
+      PreDelay: 0
+      PostDelay: 0
+      zoomData:
+        AnimationDirection: 0
+        Ease: 0
+        Duration: 1
+        ScaleAddition: {x: 0, y: 0}
       slideData:
         AnimationDirection: 0
         Ease: 0
@@ -454,11 +507,11 @@ MonoBehaviour:
         Vibrato: 10
         Randomness: 25
       punchData:
-        Subtype: 0
-        Ease: 0
+        Subtype: 2
+        Ease: 1
         Duration: 1
-        Punch: {x: 0, y: 0}
-        Vibrato: 10
+        Punch: {x: 0, y: 10}
+        Vibrato: 0
         Elasticity: 1
       callEventData:
         GameEvent: {fileID: 0}

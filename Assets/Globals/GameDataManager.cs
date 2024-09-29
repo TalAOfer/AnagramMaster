@@ -93,6 +93,8 @@ public class GameDataManager : MonoBehaviour
         int levelIndex = index - 1;
         LevelIndexHierarchy indexHierarchy = BiomeBank.GetLevelIndexHierarchyWithTotalIndex(levelIndex);
         InitializeNewGameData(indexHierarchy, levelIndex);
+        Data.Value.IsInitialized = true; 
+        SaveNewData();
     }
 
     #endregion

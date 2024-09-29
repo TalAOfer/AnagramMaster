@@ -9,10 +9,13 @@ public class WinningButton : UIButton
     private EventRegistry Events => AssetProvider.Instance.Events;
     [SerializeField] private TweenableElementPointer Secondary_BG;
     [SerializeField] private ElementController elementController;
+
+    private bool giveFeedback;
     public override void Initialize(NextLevelData nextLevelData)
     {
         string text = "";
         this.nextLevelData = nextLevelData;
+        giveFeedback = false;
 
         switch (nextLevelData.NextLevelEvent)
         {
@@ -27,6 +30,7 @@ public class WinningButton : UIButton
                 break;
             case NextLevelEvent.FinishedGame:
                 text = "Give Feedback";
+                giveFeedback = true;
                 break;
         }
 
@@ -36,6 +40,11 @@ public class WinningButton : UIButton
 
     protected override void DoAction()
     {
+        if (giveFeedback)
+        {
+            return;
+        }
+
         Events.OnStartButtonPressed.Raise();
         
         Sequence sequence = DOTween.Sequence();

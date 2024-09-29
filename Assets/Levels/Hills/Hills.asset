@@ -12,28 +12,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531fbf76ca5a0fc4bbb2b92346c3b491, type: 3}
   m_Name: Hills
   m_EditorClassIdentifier: 
-  FullCollectible: {fileID: 21300000, guid: 839b43aa89eb9f5488a36df8da33a5d9, type: 3}
-  EmptyCollectible: {fileID: 21300000, guid: 4bb6e587afec79142a61d99774ed35eb, type: 3}
+  FullCollectible: {fileID: 21300000, guid: 0c7f10592e8b1a74fa6034720a6924e6, type: 3}
+  EmptyCollectible: {fileID: 21300000, guid: 149efe468bcfb7b47a62285680f8ffaf, type: 3}
   Areas:
   - Sprite: {fileID: 21300000, guid: 718d8b15efca7f244aceb78f7d9aab2c, type: 3}
+    Animal:
+      name: Cow
+      description: 
+      ShownSprite: {fileID: 21300000, guid: e2b94b775f82607499b9fb2b7f87b5f6, type: 3}
+      HiddenSprite: {fileID: 21300000, guid: 5c431737e0de38d43a66381fcf84c2dd, type: 3}
     Levels:
     - {fileID: 11400000, guid: a8c4bd05fcdea9743aaa70ac754a8955, type: 2}
     - {fileID: 11400000, guid: c98be11b90c016f4ba280c1b8159d5bc, type: 2}
     - {fileID: 11400000, guid: 8f33d77ec2722ae4cb2783db94bdd460, type: 2}
     LetterContainerBGColor: {r: 0.252, g: 0.489, b: 0.34399152, a: 1}
   - Sprite: {fileID: 21300000, guid: aff73bb46e954a64a86821cc076664e7, type: 3}
+    Animal:
+      name: Raccoon
+      description: 
+      ShownSprite: {fileID: 21300000, guid: 79749a76574b3354ebe8af5008f429b6, type: 3}
+      HiddenSprite: {fileID: 21300000, guid: d70932829bcb09f40b315a04367b17ed, type: 3}
     Levels:
     - {fileID: 11400000, guid: ad20c45f599040140b6305a978161c72, type: 2}
     - {fileID: 11400000, guid: 0fbd10e57ebc1e249b377ce4fe56f2ca, type: 2}
     - {fileID: 11400000, guid: 9258adaa319af414e896da88cb5219f6, type: 2}
     LetterContainerBGColor: {r: 0.252, g: 0.489, b: 0.34399152, a: 1}
   - Sprite: {fileID: 21300000, guid: 8d294566c99b36647b4651b3999c2f90, type: 3}
+    Animal:
+      name: Sheep
+      description: 
+      ShownSprite: {fileID: 21300000, guid: dfedee5428d528d44a960f683a8aa8e6, type: 3}
+      HiddenSprite: {fileID: 21300000, guid: 44a744780ff3670439eead0675d0cbaa, type: 3}
     Levels:
     - {fileID: 11400000, guid: e81ba578f2b2cac43ae9f2dc11b3312f, type: 2}
     - {fileID: 11400000, guid: 0a87dd02b0d08d84d9e11c1d1937bc49, type: 2}
     - {fileID: 11400000, guid: 1a66d55e004a81743a6613f78343b050, type: 2}
     LetterContainerBGColor: {r: 0.252, g: 0.489, b: 0.34399152, a: 1}
   - Sprite: {fileID: 21300000, guid: b84900de2207bd841929ea70a29deaa6, type: 3}
+    Animal:
+      name: Wolf
+      description: 
+      ShownSprite: {fileID: 21300000, guid: da8e9326c56c9fc40a6775919e8073d2, type: 3}
+      HiddenSprite: {fileID: 21300000, guid: ed74aec29fbbb644789b01438d13b50a, type: 3}
     Levels:
     - {fileID: 11400000, guid: 0de57970b62bfcd4e9b20f08734b78ba, type: 2}
     - {fileID: 11400000, guid: cbf3da60667574e4d83be9f391e48392, type: 2}

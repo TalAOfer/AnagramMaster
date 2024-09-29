@@ -21,7 +21,7 @@ MonoBehaviour:
       UseAsset: 0
       Asset: {fileID: 0}
       Value:
-        PreDelay: 1
+        PreDelay: 0.25
         PostDelay: 0
         SequenceBlueprint:
         - SequencingType: 1

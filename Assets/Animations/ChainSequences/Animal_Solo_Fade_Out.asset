@@ -21,7 +21,7 @@ MonoBehaviour:
       UseAsset: 0
       Asset: {fileID: 0}
       Value:
-        PreDelay: 1
+        PreDelay: 0.5
         PostDelay: 0
         SequenceBlueprint:
         - SequencingType: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -99,7 +99,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
