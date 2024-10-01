@@ -68,7 +68,7 @@ public class AnimalUIController : MonoBehaviour
 
         yield return AnimationData.Black_Overlay_In.PlayAndWait();
 
-        yield return AnimationData.Animal_Fade_In.PlayAndWait();
+        yield return AnimationData.Animal_Reveal_Fade_In.PlayAndWait();
 
         yield return SoloAnimalUI.FlashAndReveal();
 

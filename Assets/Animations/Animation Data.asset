@@ -26,7 +26,8 @@ MonoBehaviour:
   Gift_Fade_In: {fileID: 11400000, guid: b753ffe4eb8490848bd96f97bfcbb01d, type: 2}
   Gift_Text_Fade_In: {fileID: 11400000, guid: 908fc655b7e623e4fbf8ca64f49e71d6, type: 2}
   Gift_Fade_Out: {fileID: 11400000, guid: 9f1dcb3dd73e4394086c22d03855809a, type: 2}
-  Animal_Fade_In: {fileID: 11400000, guid: b75cafb58db6ab94c957f97851ada5d3, type: 2}
+  Animal_Reveal_Fade_In: {fileID: 11400000, guid: b75cafb58db6ab94c957f97851ada5d3, type: 2}
+  Animal_Hidden_Fade_In: {fileID: 11400000, guid: 63ba5b1a385e94047b2f2d6b17ece48a, type: 2}
   Animal_Fade_Out: {fileID: 11400000, guid: a8a594664dac38e49a07790dbadb2342, type: 2}
   Animal_Album_In: {fileID: 11400000, guid: a824e7ef7fcf0434fa13119135a09c8d, type: 2}
   Animal_Album_Out: {fileID: 11400000, guid: 0c53f7b80f528f7479b0d2c650f21e65, type: 2}

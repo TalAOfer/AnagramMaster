@@ -40,7 +40,9 @@ public class AnimationData : ScriptableObject
     public SequenceChainBlueprint Gift_Fade_Out;
 
     [FoldoutGroup("Transition Sequences")]
-    public SequenceChainBlueprint Animal_Fade_In;
+    public SequenceChainBlueprint Animal_Reveal_Fade_In;
+    [FoldoutGroup("Transition Sequences")]
+    public SequenceChainBlueprint Animal_Hidden_Fade_In;
     [FoldoutGroup("Transition Sequences")]
     public SequenceChainBlueprint Animal_Fade_Out;
     [FoldoutGroup("Transition Sequences")]

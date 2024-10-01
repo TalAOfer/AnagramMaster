@@ -33,6 +33,7 @@ public class AnimalAlbumUI : MonoBehaviour
             else
             {
                 currentContainer.ChildUI.gameObject.SetActive(false);
+                currentContainer.ChildUI.GetComponent<CanvasGroup>().alpha = 0f;
             }
         }
     }
