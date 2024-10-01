@@ -192,7 +192,7 @@ MonoBehaviour:
   giftItemDelaySpacing: 0.25
   SoloAnimalFlashFade:
     PreDelay: 0
-    PostDelay: 0.8
+    PostDelay: 0.5
     SequenceBlueprint:
     - SequencingType: 1
       ActionType: 6
@@ -243,8 +243,8 @@ MonoBehaviour:
       fadeData:
         SetActiveAccordingToFade: 1
         Fade: 1
-        Ease: 0
-        Duration: 1
+        Ease: 6
+        Duration: 0.5
       playSoundData:
         Sound: 
     - SequencingType: 1
@@ -353,8 +353,8 @@ MonoBehaviour:
       fadeData:
         SetActiveAccordingToFade: 1
         Fade: 0
-        Ease: 0
-        Duration: 0.8
+        Ease: 6
+        Duration: 0.5
       playSoundData:
         Sound: 
   YouFoundItSprite: {fileID: 21300000, guid: 309b93b3e3834fb4da85a3e355d64271, type: 3}

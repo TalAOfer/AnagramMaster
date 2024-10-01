@@ -35,8 +35,8 @@ MonoBehaviour:
             ScaleAddition: {x: 0, y: 0}
           slideData:
             AnimationDirection: 1
-            Ease: 0
-            Duration: 0.8
+            Ease: 6
+            Duration: 0.5
             ScreenSnap: 2
             Direction: 3
             AddedValue: {x: 0, y: 0}
@@ -127,6 +127,6 @@ MonoBehaviour:
             SetActiveAccordingToFade: 1
             Fade: 0
             Ease: 0
-            Duration: 0.1
+            Duration: 0.2
           playSoundData:
             Sound: 

@@ -88,8 +88,8 @@ MonoBehaviour:
             ScaleAddition: {x: 0, y: 0}
           slideData:
             AnimationDirection: 1
-            Ease: 0
-            Duration: 0.8
+            Ease: 6
+            Duration: 0.5
             ScreenSnap: 1
             Direction: 3
             AddedValue: {x: 0, y: 0}
