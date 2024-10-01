@@ -130,6 +130,59 @@ MonoBehaviour:
             Duration: 1
           playSoundData:
             Sound: 
+        - SequencingType: 1
+          ActionType: 8
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScreenSnap: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: Bells SFX 3
   - ElementPointer: {fileID: 11400000, guid: 846290a0787aff443a4cf57ab84af5be, type: 2}
     SequencingType: 1
     AnimationSequenceRef:
@@ -245,6 +298,59 @@ MonoBehaviour:
             Duration: 1
           playSoundData:
             Sound: 
+        - SequencingType: 1
+          ActionType: 8
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScreenSnap: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: UILevelPop 2
   - ElementPointer: {fileID: 11400000, guid: 49b93c5144377074e86e148c31c4e3d8, type: 2}
     SequencingType: 0
     AnimationSequenceRef:
@@ -360,6 +466,59 @@ MonoBehaviour:
             Duration: 1
           playSoundData:
             Sound: 
+        - SequencingType: 1
+          ActionType: 8
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScreenSnap: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: UILevelBank
   - ElementPointer: {fileID: 11400000, guid: e814ce5120308c94da55cc9710e07efd, type: 2}
     SequencingType: 0
     AnimationSequenceRef:
@@ -475,6 +634,59 @@ MonoBehaviour:
             Duration: 1
           playSoundData:
             Sound: 
+        - SequencingType: 1
+          ActionType: 8
+          PreDelay: 0
+          PostDelay: 0
+          zoomData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScaleAddition: {x: 0, y: 0}
+          slideData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            ScreenSnap: 0
+            Direction: 0
+            AddedValue: {x: 0, y: 0}
+          jumpData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            OutOfScreen: 0
+            Direction: 0
+            Power: 0
+            AddedValue: {x: 0, y: 0}
+          spinData:
+            AnimationDirection: 0
+            Ease: 0
+            Duration: 1
+            AddedValue: 0
+          shakeData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Strength: {x: 0, y: 0}
+            SpinStrength: 0
+            Vibrato: 10
+            Randomness: 25
+          punchData:
+            Subtype: 0
+            Ease: 0
+            Duration: 1
+            Punch: {x: 0, y: 0}
+            Vibrato: 10
+            Elasticity: 1
+          callEventData:
+            GameEvent: {fileID: 0}
+          fadeData:
+            SetActiveAccordingToFade: 1
+            Fade: 0
+            Ease: 0
+            Duration: 1
+          playSoundData:
+            Sound: UILevelPop 4
   - ElementPointer: {fileID: 11400000, guid: a415bf551aadc7e4ba052d6c5c4821ab, type: 2}
     SequencingType: 1
     AnimationSequenceRef:

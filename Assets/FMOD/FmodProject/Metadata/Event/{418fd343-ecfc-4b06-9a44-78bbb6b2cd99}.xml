@@ -145,7 +145,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{c9a03dbb-dea3-4923-b155-b8f6ffb1eff2}">
 		<property name="volume">
-			<value>-5</value>
+			<value>-14</value>
 		</property>
 		<property name="name">
 			<value>Audio 2</value>
@@ -163,6 +163,7 @@
 	<object class="MixerBusEffectChain" id="{c0715d18-ed11-4b6e-a136-18eac13db2e6}">
 		<relationship name="effects">
 			<destination>{f2cad1c5-b52d-4a6b-9c23-291cc98ac835}</destination>
+			<destination>{58316e27-a98f-4762-8c66-e8b5e173f70f}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f2982219-720b-49ca-827c-c124f7be0bb1}" />
@@ -184,10 +185,22 @@
 	<object class="MixerBusEffectChain" id="{71c3c6b6-f408-4313-9d2a-768a3229ba34}">
 		<relationship name="effects">
 			<destination>{d8a9ce0a-92f2-4141-86c8-d6e0a91408d7}</destination>
+			<destination>{21690b4b-b1c0-4d1c-9660-ea3d6c6f7f6f}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{5599db88-0677-4e20-8401-609d42390d6d}" />
 	<object class="MixerBusFader" id="{f2cad1c5-b52d-4a6b-9c23-291cc98ac835}" />
+	<object class="MultibandEqEffect" id="{58316e27-a98f-4762-8c66-e8b5e173f70f}">
+		<property name="filterTypeA">
+			<value>9</value>
+		</property>
+		<property name="frequencyA">
+			<value>321.210083</value>
+		</property>
+		<property name="gainA">
+			<value>-6.20689583</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{00fd886e-6932-488a-8560-72a0a7313c0a}" />
 	<object class="AutomationPoint" id="{539678da-c4e6-4f4e-b4b8-0c8c6044ae1d}">
 		<property name="position">
@@ -209,4 +222,15 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{d8a9ce0a-92f2-4141-86c8-d6e0a91408d7}" />
+	<object class="MultibandEqEffect" id="{21690b4b-b1c0-4d1c-9660-ea3d6c6f7f6f}">
+		<property name="filterTypeA">
+			<value>9</value>
+		</property>
+		<property name="frequencyA">
+			<value>2713.96362</value>
+		</property>
+		<property name="gainA">
+			<value>-5.6896553</value>
+		</property>
+	</object>
 </objects>

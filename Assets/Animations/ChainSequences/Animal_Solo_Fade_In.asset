@@ -129,7 +129,7 @@ MonoBehaviour:
             Ease: 0
             Duration: 1
           playSoundData:
-            Sound: NewBiome
+            Sound: Bells SFX 1
   - ElementPointer: {fileID: 11400000, guid: 3fb0b329ecf54d547b6a290e1b33f139, type: 2}
     SequencingType: 1
     AnimationSequenceRef:
