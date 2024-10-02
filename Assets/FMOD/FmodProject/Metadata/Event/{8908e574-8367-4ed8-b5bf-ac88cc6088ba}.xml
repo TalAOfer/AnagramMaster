@@ -76,9 +76,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{16e8e32d-e348-4c4f-a046-109947570db4}">
-		<property name="volume">
-			<value>2.5</value>
-		</property>
 		<relationship name="effectChain">
 			<destination>{aaae478c-d31e-44de-b3d0-6441fe0b3439}</destination>
 		</relationship>
@@ -154,10 +151,10 @@
 			<value>9</value>
 		</property>
 		<property name="frequencyA">
-			<value>2396.7063</value>
+			<value>212.238968</value>
 		</property>
 		<property name="gainA">
-			<value>-3.62068939</value>
+			<value>-9.3103447</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{8d7408d1-db42-462e-96b7-03f1450cb600}" />

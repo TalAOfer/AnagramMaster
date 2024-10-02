@@ -76,9 +76,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{f06cd016-ac96-4980-ba78-0c08b9e287e9}">
-		<property name="volume">
-			<value>1.5</value>
-		</property>
 		<relationship name="effectChain">
 			<destination>{a1898e4d-91d8-4ed3-99ab-dc1cb95df7f6}</destination>
 		</relationship>
@@ -168,10 +165,10 @@
 			<value>9</value>
 		</property>
 		<property name="frequencyA">
-			<value>1869.11658</value>
+			<value>176.133224</value>
 		</property>
 		<property name="gainA">
-			<value>-4.65517235</value>
+			<value>-9.82758713</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{a5522750-9f51-4256-bd83-80758cfd0cde}">
