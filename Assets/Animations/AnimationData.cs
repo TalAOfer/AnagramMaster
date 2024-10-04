@@ -104,9 +104,13 @@ public class AnimationData : ScriptableObject
     [FoldoutGroup("Animals")]
     public SequenceChainBlueprint Animal_Reveal_Fade_In;
     [FoldoutGroup("Animals")]
+    public SequenceChainBlueprint Animal_Reveal_Fade_Out;
+    [FoldoutGroup("Animals")]
     public SequenceChainBlueprint Animal_Hidden_Fade_In;
     [FoldoutGroup("Animals")]
-    public SequenceChainBlueprint Animal_Fade_Out;
+    public SequenceChainBlueprint Animal_Hidden_Fade_Out;
+
+
 
     [FoldoutGroup("Animals")]
     [Title("Album")]

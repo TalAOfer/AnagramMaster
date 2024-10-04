@@ -55,7 +55,7 @@ public class WinningButton : UIButton
             elementController.GetElement(Secondary_BG).GetComponent<Image>().sprite = BiomeBank.GetArea(Data.IndexHierarchy).Sprite;
             sequence.Append(AnimationData.G_BG_Switch.GetSequenceChain());    
             sequence.Append(AnimationData.Animal_Hidden_Fade_In.GetSequenceChain());
-            sequence.Append(AnimationData.Animal_Fade_Out.GetSequenceChain());
+            sequence.Append(AnimationData.Animal_Hidden_Fade_Out.GetSequenceChain());
         }
 
         sequence.Append(AnimationData.G_Fade_In.GetSequenceChain());

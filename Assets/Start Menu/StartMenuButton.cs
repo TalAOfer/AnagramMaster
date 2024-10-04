@@ -47,7 +47,7 @@ public class StartMenuButton : UIButton
         if (Data.IndexHierarchy.Level == 0)
         {
             sequence.Append(AnimationData.Animal_Hidden_Fade_In.GetSequenceChain());
-            sequence.Append(AnimationData.Animal_Fade_Out.GetSequenceChain());
+            sequence.Append(AnimationData.Animal_Hidden_Fade_Out.GetSequenceChain());
         }
 
         sequence.Append(AnimationData.G_Fade_In.GetSequenceChain());

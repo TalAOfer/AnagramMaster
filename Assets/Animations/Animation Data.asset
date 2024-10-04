@@ -16,23 +16,6 @@ MonoBehaviour:
   TransluscentGlassConfig: {x: 3, y: 2}
   S_Fade_In: {fileID: 11400000, guid: 5c9076429871c8048a4cda7059ea2fce, type: 2}
   S_Fade_Out: {fileID: 11400000, guid: 17d1e7688ce1faa4194d86ff91c82496, type: 2}
-  G_BG_Fade_In: {fileID: 11400000, guid: 2e5753f9d2df6904e9c3a9ae7e22a8e3, type: 2}
-  G_BG_Switch: {fileID: 11400000, guid: eb03d158daf5cea4592703b9c58501a6, type: 2}
-  G_Fade_In: {fileID: 11400000, guid: 2b01106f2e17e644888f6ac298e413df, type: 2}
-  G_Fade_Out: {fileID: 11400000, guid: f101a27670b5f2d4283119729747335e, type: 2}
-  W_Fade_In: {fileID: 11400000, guid: bcf27b0bd62cc414f819a8603d96167c, type: 2}
-  W_Fade_Out: {fileID: 11400000, guid: 2f249ca380b6d324391558e7676e6053, type: 2}
-  W_Button_Fade_In: {fileID: 11400000, guid: 9b954688b83de894a89b713fd8369836, type: 2}
-  Gift_Fade_In: {fileID: 11400000, guid: b753ffe4eb8490848bd96f97bfcbb01d, type: 2}
-  Gift_Text_Fade_In: {fileID: 11400000, guid: 908fc655b7e623e4fbf8ca64f49e71d6, type: 2}
-  Gift_Fade_Out: {fileID: 11400000, guid: 9f1dcb3dd73e4394086c22d03855809a, type: 2}
-  Animal_Reveal_Fade_In: {fileID: 11400000, guid: b75cafb58db6ab94c957f97851ada5d3, type: 2}
-  Animal_Hidden_Fade_In: {fileID: 11400000, guid: 63ba5b1a385e94047b2f2d6b17ece48a, type: 2}
-  Animal_Fade_Out: {fileID: 11400000, guid: a8a594664dac38e49a07790dbadb2342, type: 2}
-  Animal_Album_In: {fileID: 11400000, guid: a824e7ef7fcf0434fa13119135a09c8d, type: 2}
-  Animal_Album_Out: {fileID: 11400000, guid: 0c53f7b80f528f7479b0d2c650f21e65, type: 2}
-  Black_Overlay_In: {fileID: 11400000, guid: a353bab72ed0eeb4f91ee3ffdb79d80d, type: 2}
-  Black_Overlay_Out: {fileID: 11400000, guid: 81a57c7623092c4459ed76449b3cf586, type: 2}
   ButtonClickAnimation:
     UseAsset: 1
     Asset: {fileID: 11400000, guid: 76d4dc3ef058ff241afc407a50f2625e, type: 2}
@@ -40,6 +23,10 @@ MonoBehaviour:
       PreDelay: 0
       PostDelay: 0
       SequenceBlueprint: []
+  G_BG_Fade_In: {fileID: 11400000, guid: 2e5753f9d2df6904e9c3a9ae7e22a8e3, type: 2}
+  G_BG_Switch: {fileID: 11400000, guid: eb03d158daf5cea4592703b9c58501a6, type: 2}
+  G_Fade_In: {fileID: 11400000, guid: 2b01106f2e17e644888f6ac298e413df, type: 2}
+  G_Fade_Out: {fileID: 11400000, guid: f101a27670b5f2d4283119729747335e, type: 2}
   CorrectGuessAnim: {fileID: 11400000, guid: 3566f283f5c8be34ba551048e6dd1be5, type: 2}
   answerAnimDuration: 0.5
   answerAnimEase: 6
@@ -183,8 +170,16 @@ MonoBehaviour:
   swipeHandSwipeEase: 9
   swipeHandFadeDuration: 0.4
   swipeHandEndDelayDuration: 0.25
+  W_Fade_In: {fileID: 11400000, guid: bcf27b0bd62cc414f819a8603d96167c, type: 2}
+  W_Fade_Out: {fileID: 11400000, guid: 2f249ca380b6d324391558e7676e6053, type: 2}
+  W_Button_Fade_In: {fileID: 11400000, guid: 9b954688b83de894a89b713fd8369836, type: 2}
   sliderFillDuration: 1
   sliderFillEase: 13
+  Black_Overlay_In: {fileID: 11400000, guid: a353bab72ed0eeb4f91ee3ffdb79d80d, type: 2}
+  Black_Overlay_Out: {fileID: 11400000, guid: 81a57c7623092c4459ed76449b3cf586, type: 2}
+  Gift_Fade_In: {fileID: 11400000, guid: b753ffe4eb8490848bd96f97bfcbb01d, type: 2}
+  Gift_Text_Fade_In: {fileID: 11400000, guid: 908fc655b7e623e4fbf8ca64f49e71d6, type: 2}
+  Gift_Fade_Out: {fileID: 11400000, guid: 9f1dcb3dd73e4394086c22d03855809a, type: 2}
   giftItemAppearanceDuration: 0.5
   giftItemAppearanceEase: 0
   defaultGiftItemHeight: 300
@@ -192,7 +187,7 @@ MonoBehaviour:
   giftItemDelaySpacing: 0.25
   SoloAnimalFlashFade:
     PreDelay: 0
-    PostDelay: 0.5
+    PostDelay: 0.7
     SequenceBlueprint:
     - SequencingType: 1
       ActionType: 6
@@ -300,6 +295,14 @@ MonoBehaviour:
         Duration: 1
       playSoundData:
         Sound: Camera
+  YouFoundItSprite: {fileID: 21300000, guid: 309b93b3e3834fb4da85a3e355d64271, type: 3}
+  FindTheAnimalSprite: {fileID: 21300000, guid: c333e982064f407478f36e36f74a232f, type: 3}
+  Animal_Reveal_Fade_In: {fileID: 11400000, guid: b75cafb58db6ab94c957f97851ada5d3, type: 2}
+  Animal_Reveal_Fade_Out: {fileID: 11400000, guid: a8a594664dac38e49a07790dbadb2342, type: 2}
+  Animal_Hidden_Fade_In: {fileID: 11400000, guid: 63ba5b1a385e94047b2f2d6b17ece48a, type: 2}
+  Animal_Hidden_Fade_Out: {fileID: 11400000, guid: 58f713723d6b3c64abcec4d40091fb09, type: 2}
+  Animal_Album_In: {fileID: 11400000, guid: a824e7ef7fcf0434fa13119135a09c8d, type: 2}
+  Animal_Album_Out: {fileID: 11400000, guid: 0c53f7b80f528f7479b0d2c650f21e65, type: 2}
   AnimalAlbumPhotoFadeIn:
     PreDelay: 0
     PostDelay: 0
@@ -307,7 +310,7 @@ MonoBehaviour:
     - SequencingType: 1
       ActionType: 6
       PreDelay: 0
-      PostDelay: 0
+      PostDelay: 0.3
       zoomData:
         AnimationDirection: 0
         Ease: 0
@@ -357,8 +360,6 @@ MonoBehaviour:
         Duration: 0.5
       playSoundData:
         Sound: 
-  YouFoundItSprite: {fileID: 21300000, guid: 309b93b3e3834fb4da85a3e355d64271, type: 3}
-  FindTheAnimalSprite: {fileID: 21300000, guid: c333e982064f407478f36e36f74a232f, type: 3}
   FinishedAlbumAnim: {fileID: 11400000, guid: a15ae93339354264fa372e76e185a74b, type: 2}
   Animal_Album_Text_In:
     PreDelay: 0

@@ -74,7 +74,7 @@ public class AnimalUIController : MonoBehaviour
 
         yield return AnimationData.Animal_Album_In.PlayAndWait();
 
-        yield return AnimationData.Animal_Fade_Out.PlayAndWait();
+        yield return AnimationData.Animal_Reveal_Fade_Out.PlayAndWait();
 
         Title.sprite = AnimationData.FindTheAnimalSprite;
 
