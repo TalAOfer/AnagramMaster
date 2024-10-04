@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class HintManager : MonoBehaviour
 {
+    [SerializeField] private Sprite HintSprite, AdSprite;
+    [SerializeField] private Image HintImage;
     [SerializeField] private GuessManager guessManager;
     [SerializeField] private Button hintButtonButton;
     [SerializeField] private TextMeshProUGUI hintAmountTMP;
@@ -22,7 +24,19 @@ public class HintManager : MonoBehaviour
 
     public void UpdateHintText()
     {
-        hintAmountTMP.text = Data.HintAmount.ToString();
+        bool noHintsLeft = Data.HintAmount == 0;
+
+        if (noHintsLeft)
+        {
+            HintImage.sprite = AdSprite;
+            hintAmountTMP.text = "+3";
+        }
+
+        else
+        {
+            HintImage.sprite = HintSprite;
+            hintAmountTMP.text = Data.HintAmount.ToString();
+        }
     }
 
     public void SetHintInteractability(bool enable)

@@ -10,7 +10,7 @@ public class GameData
     public LevelData Level;
     public LevelIndexHierarchy IndexHierarchy;
 
-    public int HintAmount;
+    public int HintAmount = 3;
 
     public Gift Gift;
     public int GiftProgressionAmount;
@@ -27,7 +27,7 @@ public class GameData
 
         OverallLevelIndex = 0;
         GiftProgressionAmount = 0;
-        HintAmount = 0;
+        HintAmount = 3;
     }
 
     public GameData(LevelIndexHierarchy indices) 
