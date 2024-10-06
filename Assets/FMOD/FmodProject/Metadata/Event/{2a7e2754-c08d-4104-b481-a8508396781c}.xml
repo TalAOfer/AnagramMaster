@@ -28,6 +28,9 @@
 		<relationship name="timeline">
 			<destination>{0bf7c547-d156-4039-b9e9-75082f217bf1}</destination>
 		</relationship>
+		<relationship name="parameters">
+			<destination>{2207c858-ace8-41b5-ace7-6d8afb672c31}</destination>
+		</relationship>
 		<relationship name="banks">
 			<destination>{45495ccf-88e5-46a3-a808-0c86e1a451dc}</destination>
 		</relationship>
@@ -53,7 +56,7 @@
 			<destination>{d88b1491-ca95-450c-a4f0-f62843313a35}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{70e6756e-95db-4dc9-a5ec-fa1ba62883ab}</destination>
+			<destination>{e2e96356-557b-4d80-9a10-996e26f34dcb}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{22738248-5ac4-49f1-9391-a3e353b16c8d}" />
@@ -61,6 +64,11 @@
 	<object class="Timeline" id="{0bf7c547-d156-4039-b9e9-75082f217bf1}">
 		<relationship name="modules">
 			<destination>{199145d5-a3e8-4a5f-bb03-9c35e8fd3222}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterProxy" id="{2207c858-ace8-41b5-ace7-6d8afb672c31}">
+		<relationship name="preset">
+			<destination>{5441a9c1-efe5-4863-b16c-25df5ea9f0b0}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{dbaf783e-8293-41d8-a7ff-7cd7e1973f7d}">
@@ -108,16 +116,37 @@
 		<property name="filterTypeA">
 			<value>9</value>
 		</property>
+		<property name="filterTypeB">
+			<value>9</value>
+		</property>
 		<property name="frequencyA">
 			<value>963.149963</value>
 		</property>
+		<property name="frequencyB">
+			<value>3073.21704</value>
+		</property>
+		<property name="qualityB">
+			<value>1.45000005</value>
+		</property>
 		<property name="gainA">
-			<value>-7.24137878</value>
+			<value>-4.13793182</value>
+		</property>
+		<property name="gainB">
+			<value>-4.13793182</value>
 		</property>
 	</object>
 	<object class="CompressorEffect" id="{5565f733-cf18-4ba5-a3c3-1579c5be8de9}">
 		<property name="threshold">
-			<value>-4.5</value>
+			<value>-28</value>
+		</property>
+		<property name="ratio">
+			<value>1.64999998</value>
+		</property>
+		<property name="attackTime">
+			<value>30</value>
+		</property>
+		<property name="gain">
+			<value>1</value>
 		</property>
 	</object>
 </objects>

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e06b9c110f0833429a2202c8c7ea9fd, type: 3}
   m_Name: G_BG_Switch
   m_EditorClassIdentifier: 
-  PreDelay: 0
+  PreDelay: 0.3
   PostDelay: 0
   Value:
   - ElementPointer: {fileID: 11400000, guid: 297a0e2f447b37e428419bc29e459de3, type: 2}
@@ -74,7 +74,7 @@ MonoBehaviour:
             SetActiveAccordingToFade: 1
             Fade: 1
             Ease: 0
-            Duration: 0.7
+            Duration: 0.8
           playSoundData:
             Sound: 
   - ElementPointer: {fileID: 11400000, guid: f15794b8c8995fc4ca07cc22fedb5aae, type: 2}
@@ -136,7 +136,7 @@ MonoBehaviour:
             SetActiveAccordingToFade: 1
             Fade: 0
             Ease: 0
-            Duration: 0.7
+            Duration: 0.8
           playSoundData:
             Sound: 
         - SequencingType: 0

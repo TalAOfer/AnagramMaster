@@ -32,6 +32,9 @@
 		<relationship name="timeline">
 			<destination>{511b03a7-6a1b-4246-bdae-120b82b93640}</destination>
 		</relationship>
+		<relationship name="parameters">
+			<destination>{51d91e83-f460-4b05-9439-8b28ac34679c}</destination>
+		</relationship>
 		<relationship name="banks">
 			<destination>{45495ccf-88e5-46a3-a808-0c86e1a451dc}</destination>
 		</relationship>
@@ -54,7 +57,7 @@
 			<destination>{bb3da132-274e-4ba4-bf1a-828a9bf84fad}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{70e6756e-95db-4dc9-a5ec-fa1ba62883ab}</destination>
+			<destination>{e2e96356-557b-4d80-9a10-996e26f34dcb}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{6b0733ed-721f-47e6-80a9-c064c6a9ed43}" />
@@ -79,6 +82,11 @@
 		<relationship name="modules">
 			<destination>{22279e6e-7f62-4b26-a2c7-e12dbe8ded42}</destination>
 			<destination>{82939bad-75f2-44db-9364-d48bf6259917}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterProxy" id="{51d91e83-f460-4b05-9439-8b28ac34679c}">
+		<relationship name="preset">
+			<destination>{5441a9c1-efe5-4863-b16c-25df5ea9f0b0}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{9f96c3b4-dc52-4fba-b4ca-8450282af36d}">
@@ -125,7 +133,7 @@
 	</object>
 	<object class="SingleSound" id="{82939bad-75f2-44db-9364-d48bf6259917}">
 		<property name="start">
-			<value>0.080000000000000002</value>
+			<value>0.089999999999999997</value>
 		</property>
 		<property name="length">
 			<value>0.5423346067491035</value>
@@ -201,7 +209,7 @@
 	<object class="MixerBusFader" id="{00fd886e-6932-488a-8560-72a0a7313c0a}" />
 	<object class="AutomationPoint" id="{539678da-c4e6-4f4e-b4b8-0c8c6044ae1d}">
 		<property name="position">
-			<value>0.080000000000000002</value>
+			<value>0.089999999999999997</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -212,7 +220,7 @@
 	</object>
 	<object class="AutomationPoint" id="{22f47851-8e2c-4059-b094-73363f6ec4d8}">
 		<property name="position">
-			<value>0.10000000000000001</value>
+			<value>0.11</value>
 		</property>
 		<property name="value">
 			<value>1</value>
