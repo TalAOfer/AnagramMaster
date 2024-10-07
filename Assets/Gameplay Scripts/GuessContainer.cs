@@ -11,6 +11,7 @@ public class GuessContainer : MonoBehaviour
     public RectTransform Rect {  get { return rect; } }
     [SerializeField] private Image defaultImage;
     [SerializeField] private Image colorBlockImage;
+    private Color defaultImageColor;
     [SerializeField] private TweenableElement element;
     public TweenableElement Element { get {  return element; } }
 
@@ -20,6 +21,7 @@ public class GuessContainer : MonoBehaviour
 
     public void Initialize(Color color)
     {
+        defaultImageColor = defaultImage.color;
         colorBlockImage.color = color;
     }
 
@@ -36,11 +38,13 @@ public class GuessContainer : MonoBehaviour
     }
     public void SetVisualToDefault()
     {
+        defaultImage.color = defaultImageColor;
         colorBlockImage.gameObject.SetActive(false);
     }
 
     public void SetVisualToFull()
     {
+        defaultImage.color = Tools.Transparent();
         colorBlockImage.gameObject.SetActive(true);
     }
 

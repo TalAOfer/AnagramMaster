@@ -10,6 +10,7 @@ public class StartMenuButton : UIButton
     [SerializeField] private ElementController elementController;
     private EventRegistry Events => AssetProvider.Instance.Events;
     [SerializeField] private GameEvent A_InitializeFindTheAnimal;
+    [SerializeField] private Sprite NormalSprite, HardSprite, VeryHardSprite;
 
     public override void Initialize(NextLevelData nextLevelData)
     {
@@ -31,6 +32,19 @@ public class StartMenuButton : UIButton
             text = "Level " + (Data.OverallLevelIndex + 1).ToString();
         }
 
+        switch (BiomeBank.GetLevel(Data.IndexHierarchy).Difficulty)
+        {
+            case LevelDifficulty.Normal:
+                button.image.sprite = NormalSprite;
+                break;
+            case LevelDifficulty.Hard:
+                button.image.sprite = HardSprite;
+                break;
+            case LevelDifficulty.VeryHard:
+                button.image.sprite = VeryHardSprite;
+                break;
+        }
+
         Tmp.text = text;
         button.enabled = true;
     }
@@ -44,11 +58,8 @@ public class StartMenuButton : UIButton
         sequence.Append(AnimationData.S_Fade_Out.GetSequenceChain());
         sequence.Join(AnimationData.G_BG_Fade_In.GetSequenceChain());
 
-        if (Data.IndexHierarchy.Level == 0)
-        {
-            sequence.Append(AnimationData.Animal_Hidden_Fade_In.GetSequenceChain());
-            sequence.Append(AnimationData.Animal_Hidden_Fade_Out.GetSequenceChain());
-        }
+        sequence.Append(AnimationData.Animal_Hidden_Fade_In.GetSequenceChain());
+        sequence.Append(AnimationData.Animal_Hidden_Fade_Out.GetSequenceChain());
 
         sequence.Append(AnimationData.G_Fade_In.GetSequenceChain());
 

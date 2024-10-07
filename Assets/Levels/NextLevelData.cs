@@ -2,6 +2,7 @@ public class NextLevelData
 {
     public LevelIndexHierarchy IndexHierarchy { get; private set; }
     public NextLevelEvent NextLevelEvent { get; private set; }
+    public LevelDifficulty LevelDifficulty { get; private set; }
     public NextLevelData(LevelIndexHierarchy indexHierarchy, BiomeBank BiomeBank)
     {
         Area currentArea = BiomeBank.GetArea(indexHierarchy);
@@ -31,6 +32,9 @@ public class NextLevelData
         }
 
         IndexHierarchy = nextLevelIndices;
+
+        LevelBlueprint nextLevelBlueprint = BiomeBank.GetLevel(nextLevelIndices);
+        LevelDifficulty = nextLevelBlueprint.Difficulty;
     }
 }
 

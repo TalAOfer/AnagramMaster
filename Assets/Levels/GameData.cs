@@ -10,12 +10,12 @@ public class GameData
     public LevelData Level;
     public LevelIndexHierarchy IndexHierarchy;
 
-    public int HintAmount = 3;
+    public int HintAmount = 1;
 
     public Gift Gift;
     public int GiftProgressionAmount;
     public int GiftTypeIndex;
-    public int GiftTargetAmount { get; private set; } = 3;
+    public int GiftTargetAmount { get; private set; } = 4;
 
     public bool IsFirstInArea => IndexHierarchy.Level == 0;
     public bool IsFirstInBiome => IndexHierarchy.Level == 0 && IndexHierarchy.Area == 0;
@@ -27,7 +27,7 @@ public class GameData
 
         OverallLevelIndex = 0;
         GiftProgressionAmount = 0;
-        HintAmount = 3;
+        HintAmount = 1;
     }
 
     public GameData(LevelIndexHierarchy indices) 

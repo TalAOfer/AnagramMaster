@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e06b9c110f0833429a2202c8c7ea9fd, type: 3}
   m_Name: S_Fade In
   m_EditorClassIdentifier: 
-  PreDelay: 0
+  PreDelay: 0.5
   PostDelay: 0
   Value:
   - ElementPointer: {fileID: 11400000, guid: d0bff5ca03426b044a219721f84bd420, type: 2}
@@ -37,7 +37,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -90,7 +90,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -137,7 +137,7 @@ MonoBehaviour:
       Asset: {fileID: 0}
       Value:
         PreDelay: 0
-        PostDelay: 0
+        PostDelay: 0.5
         SequenceBlueprint:
         - SequencingType: 1
           ActionType: 6
@@ -152,7 +152,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -205,7 +205,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 18
             Duration: 0.6
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 100}
           jumpData:
@@ -251,8 +251,8 @@ MonoBehaviour:
       UseAsset: 0
       Asset: {fileID: 0}
       Value:
-        PreDelay: 0.1
-        PostDelay: 0
+        PreDelay: 0
+        PostDelay: 0.1
         SequenceBlueprint:
         - SequencingType: 0
           ActionType: 6
@@ -267,7 +267,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -320,7 +320,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 9
             Duration: 0.5
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: -100}
           jumpData:
@@ -366,7 +366,7 @@ MonoBehaviour:
       UseAsset: 0
       Asset: {fileID: 0}
       Value:
-        PreDelay: 0.5
+        PreDelay: 0
         PostDelay: 0
         SequenceBlueprint:
         - SequencingType: 0
@@ -382,7 +382,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -435,7 +435,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 0.7
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: -100, y: 0}
           jumpData:
@@ -497,7 +497,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 0
             Duration: 1
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: 0}
           jumpData:
@@ -550,7 +550,7 @@ MonoBehaviour:
             AnimationDirection: 0
             Ease: 6
             Duration: 0.9
-            OutOfScreen: 0
+            ScreenSnap: 0
             Direction: 0
             AddedValue: {x: 0, y: -100}
           jumpData:

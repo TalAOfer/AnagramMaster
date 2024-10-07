@@ -46,7 +46,7 @@ public class GameplayManager : MonoBehaviour
         GuessManager.Initialize();
         AnswerManager.Initialize();
         HintManager.Initialize();
-        
+
         Events.Ad_LoadInterstitial.Raise();
 
         if (Data.OverallLevelIndex > 6)
@@ -61,28 +61,27 @@ public class GameplayManager : MonoBehaviour
     }
     public IEnumerator HandSwipeRoutine()
     {
-        bool isFirstLevel = Data.IndexHierarchy.Level == 0;
-        if (isFirstLevel)
+        bool isFirstLevel = Data.OverallLevelIndex == 0;
+        if (!isFirstLevel) yield break;
+
+        yield return Tools.GetWaitRealtime(tutorialPreDelay);
+
+        if (!DidSwipe)
         {
-            yield return Tools.GetWaitRealtime(tutorialPreDelay);
+            swipeHand.ActivateObject();
+            swipeHand.FadeInText();
 
-            if (!DidSwipe)
+
+            while (!DidSwipe)
             {
-                swipeHand.ActivateObject();
-                swipeHand.FadeInText();
+                yield return swipeHand.PlayHandSequence().WaitForCompletion();
 
+                if (DidSwipe) break;
 
-                while (!DidSwipe)
-                {
-                    yield return swipeHand.PlayHandSequence().WaitForCompletion();
-
-                    if (DidSwipe) break;
-
-                    yield return Tools.GetWaitRealtime(tutorialAnimationIntervals);
-                }
-
-                swipeHand.FadeOutEverything();
+                yield return Tools.GetWaitRealtime(tutorialAnimationIntervals);
             }
+
+            swipeHand.FadeOutEverything();
         }
     }
 

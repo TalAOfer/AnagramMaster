@@ -9,7 +9,7 @@ public class LevelBlueprint : ScriptableObject
     public string StartingLetters;
     public string[] NextLetters;
     public string[] PossibleAnswers;
-
+    public LevelDifficulty Difficulty;
     public int StageAmount => NextLetters.Length + 1;
 
     public string GetHintWord(int letterAmount)
@@ -27,3 +27,9 @@ public class LevelBlueprint : ScriptableObject
     }
 }
 
+public enum LevelDifficulty
+{
+    Normal,
+    Hard,
+    VeryHard
+}

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using FMOD.Studio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class WinningButton : UIButton
     private EventRegistry Events => AssetProvider.Instance.Events;
     [SerializeField] private TweenableElementPointer Secondary_BG;
     [SerializeField] private ElementController elementController;
+    [SerializeField] private Sprite NormalSprite, HardSprite, VeryHardSprite;
 
     private bool giveFeedback;
     public override void Initialize(NextLevelData nextLevelData)
@@ -31,6 +33,19 @@ public class WinningButton : UIButton
             case NextLevelEvent.FinishedGame:
                 text = "Give Feedback";
                 giveFeedback = true;
+                break;
+        }
+
+        switch (nextLevelData.LevelDifficulty)
+        {
+            case LevelDifficulty.Normal:
+                button.image.sprite = NormalSprite;
+                break;
+            case LevelDifficulty.Hard:
+                button.image.sprite = HardSprite;
+                break;
+            case LevelDifficulty.VeryHard:
+                button.image.sprite = VeryHardSprite;
                 break;
         }
 
