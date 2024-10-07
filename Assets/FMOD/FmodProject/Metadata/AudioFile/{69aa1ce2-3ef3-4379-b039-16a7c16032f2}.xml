@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{69aa1ce2-3ef3-4379-b039-16a7c16032f2}">
+		<property name="assetPath">
+			<value>ESM_GT_cinematic_fx_paper_book_open_close_02_foley.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.51469791666666664</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{87d1a342-ed76-4a5f-ae6b-f73f026b8a64}</destination>
+		</relationship>
+	</object>
+</objects>

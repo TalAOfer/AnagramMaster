@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{370c4507-070a-430d-9767-8394a6fef110}">
+		<property name="assetPath">
+			<value>ESM_Pill_Bottle_Lid_Open_5_Organic_Element_Sound_Source_Lid_Plastic_Container.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.23800453514739228</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{87d1a342-ed76-4a5f-ae6b-f73f026b8a64}</destination>
+		</relationship>
+	</object>
+</objects>
