@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fb8a6d119f4f2d448d07e216d5e3da5, type: 3}
-  m_Name: Level 23 - Knight
+  m_Name: L21H - Garden
   m_EditorClassIdentifier: 
-  StartingLetters: TNI
+  StartingLetters: RAG
   NextLetters:
-  - H
-  - G
-  - K
+  - D
+  - E
+  - N
   PossibleAnswers:
-  - Nit
-  - Tin
-  - Hint
-  - Thin
-  - Night
-  - Thing
-  - Knight
+  - Rag
+  - Drag
+  - Grad
+  - Grade
+  - Raged
+  - Garden
+  - Danger
+  - Ranged
+  Difficulty: 1
