@@ -267,7 +267,7 @@ public class GameplayManager : MonoBehaviour
         {
             LetterBank.ActivateNextLetter();
             GuessManager.ActivateNextContainer();
-            HintManager.OnNewWord();
+            HintManager.ResetState();
         }
 
         else
@@ -293,7 +293,7 @@ public class GameplayManager : MonoBehaviour
         {
             LetterBank.ActivateNextLetter();
             GuessManager.ActivateNextContainer();
-            HintManager.OnNewWord();
+            HintManager.ResetState();
         }
 
         else

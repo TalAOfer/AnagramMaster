@@ -84,6 +84,8 @@ public class GiftUI : MonoBehaviour
             giftItem.Rect.DOAnchorPosY(currentHeight + itemHeight, AnimationData.giftItemAppearanceDuration)
                 .SetEase(AnimationData.giftItemAppearanceEase);
 
+            SoundManager.PlaySound(AnimationData.giftItemSoundName, giftItem.transform.position);
+
             itemHeight += AnimationData.giftItemHeightSpacing;
             yield return Tools.GetWaitRealtime(AnimationData.giftItemDelaySpacing);
         }

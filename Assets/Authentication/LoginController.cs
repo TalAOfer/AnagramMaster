@@ -14,6 +14,7 @@ public class LoginController : MonoBehaviour
     {
         await UnityServices.InitializeAsync();
         PlayerAccountService.Instance.SignedIn += SignedIn;
+        Debug.Log("happened1");
     }
 
     private async void SignedIn()

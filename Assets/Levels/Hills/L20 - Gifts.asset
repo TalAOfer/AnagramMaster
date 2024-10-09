@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartingLetters: fit
   NextLetters:
-  - fist
-  - gifts
+  - s
+  - g
   PossibleAnswers:
   - fit
   - fist

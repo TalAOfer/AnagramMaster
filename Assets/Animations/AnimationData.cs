@@ -92,7 +92,8 @@ public class AnimationData : ScriptableObject
     public float giftItemHeightSpacing;
     [FoldoutGroup("Gift")]
     public float giftItemDelaySpacing;
-
+    [FoldoutGroup("Gift")]
+    public string giftItemSoundName;
 
     [FoldoutGroup("Animals")]
     [Title("Solo")]

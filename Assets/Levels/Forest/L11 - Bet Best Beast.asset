@@ -19,6 +19,7 @@ MonoBehaviour:
   PossibleAnswers:
   - bet
   - best
+  - bets
   - beast
   - bates
   Difficulty: 0

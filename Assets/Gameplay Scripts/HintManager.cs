@@ -19,7 +19,8 @@ public class HintManager : MonoBehaviour
     public void Initialize()
     {
         UpdateHintText();
-        OnNewWord();
+        ResetState();
+        InitializeFirstWord();
     }
 
     public void UpdateHintText()
@@ -44,7 +45,19 @@ public class HintManager : MonoBehaviour
         hintButtonButton.interactable = enable;
     }
 
-    public void OnNewWord()
+    public void InitializeFirstWord()
+    {
+        for (int i = 0; i < ActiveGuessContainers.Count; i++)
+        {
+            if (Data.Level.HintState[i])
+            {
+                GuessContainer container = ActiveGuessContainers[i];
+                container.ToggleHint(true);
+            }
+        }
+    }
+
+    public void ResetState()
     {
         currentHintWord = BiomeBank.GetHintWord(Data);
         for (int i = 0; i < ActiveGuessContainers.Count; i++)
@@ -87,6 +100,8 @@ public class HintManager : MonoBehaviour
         SoundManager.PlaySound("HintApplied", chosenContainer.transform.position);
         chosenContainer.PlayHintAnimation();
         ChangeHintAmount(-1);
+        Data.Level.HintState[rand] = true;
+        SaveSystem.Save(Data);
         return true;
     }
 

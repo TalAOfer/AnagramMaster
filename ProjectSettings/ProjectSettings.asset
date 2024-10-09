@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: HOPENOPE
-  productName: Word Tracks
+  productName: Wild Words
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -287,7 +287,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 2b4093702dffb2d4c8522c25700932a9, type: 3}
+      m_Icon: {fileID: 2800000, guid: d5ec4773e8d743c49883f6f185488f55, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -451,7 +451,9 @@ PlayerSettings:
       m_Height: 36
       m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: bf9c06f16ff4cb0469c0181208b07c00, type: 3}
+      - {fileID: 2800000, guid: 78e594dfc43b61d4cbbca2fb541efd3d, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
