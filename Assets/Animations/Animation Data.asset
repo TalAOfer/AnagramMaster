@@ -185,6 +185,7 @@ MonoBehaviour:
   defaultGiftItemHeight: 300
   giftItemHeightSpacing: 50
   giftItemDelaySpacing: 0.25
+  giftItemSoundName: GiftItemPop
   SoloAnimalFlashFade:
     PreDelay: 0
     PostDelay: 0.7

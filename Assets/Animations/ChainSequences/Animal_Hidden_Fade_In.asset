@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Animal_Hidden_Fade_In
   m_EditorClassIdentifier: 
   PreDelay: 0
-  PostDelay: 0.5
+  PostDelay: 1
   Value:
   - ElementPointer: {fileID: 11400000, guid: f27b9cc8c18119940820a38917235753, type: 2}
     SequencingType: 0
