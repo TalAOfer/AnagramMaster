@@ -31,9 +31,10 @@ public class GameDataManager : MonoBehaviour
         else if (Data.Value.Level.DidFinish)
         {
             NextLevelData nextLevelData = new(Data.Value.IndexHierarchy, BiomeBank);
-            if (nextLevelData.NextLevelEvent is NextLevelEvent.FinishedGame) return;
-
-            LoadNextLevel();
+            if (nextLevelData.NextLevelEvent != NextLevelEvent.FinishedGame)
+            {
+                LoadNextLevel();
+            }
         }
 
         OnDataInitialized.Raise();
@@ -65,9 +66,9 @@ public class GameDataManager : MonoBehaviour
             Data.Value.GiftTypeIndex = 0;
         }
 
-        Data.Value.IncrementProgression(GiftBank.Blueprints[Data.Value.GiftTypeIndex]);
+        if (nextLevelData.NextLevelEvent == NextLevelEvent.FinishedGame) return;
 
-        if (nextLevelData.NextLevelEvent is NextLevelEvent.FinishedGame) return;
+        Data.Value.IncrementProgression(GiftBank.Blueprints[Data.Value.GiftTypeIndex]);
 
         LevelBlueprint nextLevelBlueprint = BiomeBank.GetLevel(nextLevelData.IndexHierarchy);
         InitializeLevel(nextLevelData.IndexHierarchy, nextLevelBlueprint);
@@ -93,7 +94,7 @@ public class GameDataManager : MonoBehaviour
         int levelIndex = index - 1;
         LevelIndexHierarchy indexHierarchy = BiomeBank.GetLevelIndexHierarchyWithTotalIndex(levelIndex);
         InitializeNewGameData(indexHierarchy, levelIndex);
-        Data.Value.IsInitialized = true; 
+        Data.Value.IsInitialized = true;
         SaveNewData();
     }
 

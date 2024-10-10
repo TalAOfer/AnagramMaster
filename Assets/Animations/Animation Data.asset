@@ -472,8 +472,8 @@ MonoBehaviour:
         Duration: 0.5
       playSoundData:
         Sound: 
-    - SequencingType: 0
-      ActionType: 5
+    - SequencingType: 1
+      ActionType: 1
       PreDelay: 0
       PostDelay: 0
       zoomData:
@@ -483,11 +483,11 @@ MonoBehaviour:
         ScaleAddition: {x: 0.25, y: 0.25}
       slideData:
         AnimationDirection: 0
-        Ease: 0
-        Duration: 1
+        Ease: 9
+        Duration: 1.5
         ScreenSnap: 0
         Direction: 0
-        AddedValue: {x: 0, y: 0}
+        AddedValue: {x: 0, y: -100}
       jumpData:
         AnimationDirection: 0
         Ease: 0
@@ -526,65 +526,8 @@ MonoBehaviour:
       playSoundData:
         Sound: 
     - SequencingType: 1
-      ActionType: 5
-      PreDelay: 0
-      PostDelay: 0
-      zoomData:
-        AnimationDirection: 0
-        Ease: 0
-        Duration: 1
-        ScaleAddition: {x: 0, y: 0}
-      slideData:
-        AnimationDirection: 0
-        Ease: 0
-        Duration: 1
-        ScreenSnap: 0
-        Direction: 0
-        AddedValue: {x: 0, y: 0}
-      jumpData:
-        AnimationDirection: 0
-        Ease: 0
-        Duration: 1
-        OutOfScreen: 0
-        Direction: 0
-        Power: 0
-        AddedValue: {x: 0, y: 0}
-      spinData:
-        AnimationDirection: 0
-        Ease: 0
-        Duration: 1
-        AddedValue: 0
-      shakeData:
-        Subtype: 0
-        Ease: 0
-        Duration: 1
-        Strength: {x: 0, y: 0}
-        SpinStrength: 0
-        Vibrato: 10
-        Randomness: 25
-      punchData:
-        Subtype: 2
-        Ease: 1
-        Duration: 1
-        Punch: {x: 0, y: 10}
-        Vibrato: 0
-        Elasticity: 1
-      callEventData:
-        GameEvent: {fileID: 0}
-      fadeData:
-        SetActiveAccordingToFade: 1
-        Fade: 0
-        Ease: 0
-        Duration: 1
-      playSoundData:
-        Sound: 
-  Animal_Album_Text_Out:
-    PreDelay: 0
-    PostDelay: 0
-    SequenceBlueprint:
-    - SequencingType: 1
       ActionType: 6
-      PreDelay: 0
+      PreDelay: 1
       PostDelay: 0
       zoomData:
         AnimationDirection: 0
@@ -631,7 +574,7 @@ MonoBehaviour:
       fadeData:
         SetActiveAccordingToFade: 1
         Fade: 1
-        Ease: 0
+        Ease: 5
         Duration: 0.5
       playSoundData:
         Sound: 

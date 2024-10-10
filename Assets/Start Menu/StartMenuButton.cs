@@ -19,19 +19,6 @@ public class StartMenuButton : UIButton
 
         elementController.GetElement(Main_BG).GetComponent<Image>().sprite = BiomeBank.GetArea(Data.IndexHierarchy).Sprite;
 
-        bool finishedGame = nextLevelData.NextLevelEvent is NextLevelEvent.FinishedGame;
-
-        if (finishedGame)
-        {
-            text = "More Levels Soon!";
-            button.interactable = false;
-        }
-
-        else
-        {
-            text = "Level " + (Data.OverallLevelIndex + 1).ToString();
-        }
-
         switch (BiomeBank.GetLevel(Data.IndexHierarchy).Difficulty)
         {
             case LevelDifficulty.Normal:
@@ -43,6 +30,20 @@ public class StartMenuButton : UIButton
             case LevelDifficulty.VeryHard:
                 button.image.sprite = VeryHardSprite;
                 break;
+        }
+
+        bool finishedGame = Data.Level.DidFinish && nextLevelData.NextLevelEvent is NextLevelEvent.FinishedGame;
+
+        if (finishedGame)
+        {
+            text = "More Levels Soon!";
+            button.interactable = false;
+            button.image.sprite = NormalSprite;
+        }
+
+        else
+        {
+            text = "Level " + (Data.OverallLevelIndex + 1).ToString();
         }
 
         Tmp.text = text;

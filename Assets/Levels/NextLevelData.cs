@@ -29,7 +29,8 @@ public class NextLevelData
         if (nextLevelIndices.Biome > BiomeBank.LastBiomeIndex)
         {
             NextLevelEvent = NextLevelEvent.FinishedGame;
-        }
+            return;
+        } 
 
         IndexHierarchy = nextLevelIndices;
 

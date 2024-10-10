@@ -124,8 +124,4 @@ public class AnimationData : ScriptableObject
     public LoopingActionSequenceBlueprint FinishedAlbumAnim;
     [FoldoutGroup("Animals")]
     public ActionSequenceBlueprint Animal_Album_Text_In;
-    [FoldoutGroup("Animals")]
-    public ActionSequenceBlueprint Animal_Album_Text_Out;
-
-
 }

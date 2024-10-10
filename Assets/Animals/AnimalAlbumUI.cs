@@ -57,7 +57,6 @@ public class AnimalAlbumUI : MonoBehaviour
 
         yield return AnimationData.CorrectGuessAnim.PlayAndWait(containerElements);
         yield return AnimationData.Animal_Album_Text_In.PlayAndWait(textElement);
-        yield return AnimationData.Animal_Album_Text_Out.PlayAndWait(textElement);
     }
 }
 
