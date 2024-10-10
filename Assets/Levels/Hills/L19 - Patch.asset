@@ -19,6 +19,7 @@ MonoBehaviour:
   PossibleAnswers:
   - tap
   - pat
+  - apt
   - path
   - patch
   Difficulty: 0
